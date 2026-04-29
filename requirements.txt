@@ -1,0 +1,5 @@
+google-genai
+supabase
+beautifulsoup4
+playwright
+httpx
