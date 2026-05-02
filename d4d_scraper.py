@@ -2,6 +2,7 @@ import asyncio
 import json
 import logging
 import re
+import os
 from pathlib import Path
 from random import uniform
 from typing import Optional, List, Dict
@@ -16,9 +17,6 @@ from supabase import create_client, Client
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-
-# --- 1. INSERT YOUR GEMINI API KEY HERE ---
-import os
 
 # --- CLOUD SECURITY: Pulling keys from hidden environment variables ---
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -52,7 +50,6 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 def load_cache() -> Dict[str, str]:
     log.info("☁️  Connecting to Supabase to load memory...")
     try:
-        # Ask Supabase for all our saved items
         response = supabase.table("ai_cache").select("*").execute()
         raw_data = response.data
         
@@ -71,7 +68,6 @@ def load_cache() -> Dict[str, str]:
         # --- THE CLOUD AUTO-CLEANER ---
         if bad_urls:
             log.info("🧹 Auto-cleaning %d 'Unknown item' entries from Supabase...", len(bad_urls))
-            # Tell Supabase to delete all the bad URLs in one quick batch
             supabase.table("ai_cache").delete().in_("image_url", bad_urls).execute()
             
         log.info("✅ Loaded %d healthy items from Cloud Memory.", len(healthy_cache))
@@ -83,9 +79,7 @@ def load_cache() -> Dict[str, str]:
         return {}
 
 def save_to_cloud(image_url: str, product_name: str) -> None:
-    """Instantly beams a new product directly to the Supabase database."""
     try:
-        # Upsert means "Insert it, but if the URL already exists, just update it"
         supabase.table("ai_cache").upsert({
             "image_url": image_url, 
             "product_name": product_name
@@ -429,7 +423,7 @@ def save_html(data: List[Dict]) -> None:
     
 <div class="filter-group">
                 <label>SORT BY</label>
-                <!-- UI CHANGE 2: Default selected is Price Low to High -->
+                <!-- FIXED ID AND ONCHANGE -->
                 <select id="sortDropdown" onchange="applyFilters()">
                     <option value="default">Default Order</option>
                     <option value="price-asc" selected>Price: Low to High</option>
@@ -447,16 +441,15 @@ def save_html(data: List[Dict]) -> None:
     
 <div class="filter-group">
                 <label>FILTER BRANDS / STORES</label>
-                <!-- UI CHANGE 3: Live Store Search Box -->
+                <!-- FIXED STORE SEARCH JS TRIGGER -->
                 <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a store..." onkeyup="filterStoreList()">
                 
-                <div class="checkbox-list" id="storeCheckboxes">
-                    <!-- Python will inject store checkboxes here automatically -->
-                    {{STORE_CHECKBOXES_PLACEHOLDER}}
+                <div class="checkbox-panel" id="store-checkboxes">
+                    <!-- Javascript auto-fills checkboxes here based on your data -->
                 </div>
             </div>
             
-    <button class="filter-btn" onclick="toggleModal(false)">Apply Filters</button>
+    <button class="filter-btn" onclick="toggleSidebar()">Apply Filters</button>
     <button class="btn-reset" onclick="resetFilters()">Clear All Filters</button>
   </div>
 </div>
@@ -523,7 +516,8 @@ def save_html(data: List[Dict]) -> None:
     const searchQuery = document.getElementById('filter-product').value.toLowerCase().trim();
     const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
     
-    const sortVal     = document.getElementById('sort-price').value;
+    // FIXED: Target the right dropdown ID
+    const sortVal     = document.getElementById('sortDropdown').value;
     const max         = parseFloat(slider.value);
     
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
@@ -545,9 +539,10 @@ def save_html(data: List[Dict]) -> None:
       return matchSearch && matchStore && matchPrice;
     }});
 
-    if (sortVal === 'asc') {{
+    // FIXED: Compare against correct values
+    if (sortVal === 'price-asc') {{
         filteredData.sort((a, b) => (a.Price || 0) - (b.Price || 0));
-    }} else if (sortVal === 'desc') {{
+    }} else if (sortVal === 'price-desc') {{
         filteredData.sort((a, b) => (b.Price || 0) - (a.Price || 0));
     }}
 
@@ -604,26 +599,29 @@ def save_html(data: List[Dict]) -> None:
 
   function resetFilters() {{
     document.getElementById('filter-product').value = '';
-    document.getElementById('sort-price').value = '';
+    // FIXED: Reset Dropdown correctly
+    document.getElementById('sortDropdown').value = 'price-asc';
+    document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
     slider.value = maxPrice;
+    filterStoreList();
     applyFilters();
   }}
 
-// UI CHANGE 3: JavaScript to make the Store Search Box work
-        function filterStoreList() {
-            let input = document.getElementById('storeSearchInput').value.toLowerCase();
-            let storeLabels = document.querySelectorAll('.checkbox-label'); // Grabs all store checkboxes
-            
-            storeLabels.forEach(label => {
-                let storeName = label.innerText.toLowerCase();
-                if (storeName.includes(input)) {
-                    label.style.display = "flex"; // Show it
-                } else {
-                    label.style.display = "none"; // Hide it
-                }
-            });
-        }
+// UI CHANGE 3: FIXED Python brackets ({{ and }})
+  function filterStoreList() {{
+      let input = document.getElementById('storeSearchInput').value.toLowerCase();
+      let storeLabels = document.querySelectorAll('.checkbox-label');
+      
+      storeLabels.forEach(label => {{
+          let storeName = label.innerText.toLowerCase();
+          if (storeName.includes(input)) {{
+              label.style.display = "flex";
+          }} else {{
+              label.style.display = "none";
+          }}
+      }});
+  }}
 
   function openPopup(src, title) {{
     const img = document.getElementById('popup-img');
