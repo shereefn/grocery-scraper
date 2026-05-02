@@ -41,7 +41,7 @@ PRICE_ALERTS = [
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
-TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
+TEST_STORES = [ "Mark & Save", "Grand Hyper"]
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
