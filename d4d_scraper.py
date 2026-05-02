@@ -32,16 +32,14 @@ RECEIVER_EMAIL = "shereefneikkan@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
 PRICE_ALERTS = [
-    {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
-    {"keyword": "almarai milk", "max_price": 45.0},
-    {"keyword": "nido", "max_price": 60.0}
+    {"keyword": "anchor milk powder 2.25", "max_price": 40.0}
 ]
 
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
 # The stores your robot will scan
-TEST_STORES = ["Othaim Markets", "Mark & Save"] 
+TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
