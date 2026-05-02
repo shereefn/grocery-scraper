@@ -427,14 +427,15 @@ def save_html(data: List[Dict]) -> None:
   
   <div class="sidebar-content">
     
-    <div class="filter-group">
-      <label>Sort By</label>
-      <select id="sort-price" onchange="applyFilters()">
-        <option value="">Default Order</option>
-        <option value="asc">Price: Low to High</option>
-        <option value="desc">Price: High to Low</option>
-      </select>
-    </div>
+<div class="filter-group">
+                <label>SORT BY</label>
+                <!-- UI CHANGE 2: Default selected is Price Low to High -->
+                <select id="sortDropdown" onchange="applyFilters()">
+                    <option value="default">Default Order</option>
+                    <option value="price-asc" selected>Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
+            </div>
 
     <div class="filter-group">
       <label>Max Price</label>
@@ -444,12 +445,18 @@ def save_html(data: List[Dict]) -> None:
       </div>
     </div>
     
-    <div class="filter-group">
-      <label>Filter Brands / Stores</label>
-      <div class="checkbox-panel" id="store-checkboxes">
-      </div>
-    </div>
-
+<div class="filter-group">
+                <label>FILTER BRANDS / STORES</label>
+                <!-- UI CHANGE 3: Live Store Search Box -->
+                <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a store..." onkeyup="filterStoreList()">
+                
+                <div class="checkbox-list" id="storeCheckboxes">
+                    <!-- Python will inject store checkboxes here automatically -->
+                    {{STORE_CHECKBOXES_PLACEHOLDER}}
+                </div>
+            </div>
+            
+    <button class="filter-btn" onclick="toggleModal(false)">Apply Filters</button>
     <button class="btn-reset" onclick="resetFilters()">Clear All Filters</button>
   </div>
 </div>
@@ -602,6 +609,21 @@ def save_html(data: List[Dict]) -> None:
     slider.value = maxPrice;
     applyFilters();
   }}
+
+// UI CHANGE 3: JavaScript to make the Store Search Box work
+        function filterStoreList() {
+            let input = document.getElementById('storeSearchInput').value.toLowerCase();
+            let storeLabels = document.querySelectorAll('.checkbox-label'); // Grabs all store checkboxes
+            
+            storeLabels.forEach(label => {
+                let storeName = label.innerText.toLowerCase();
+                if (storeName.includes(input)) {
+                    label.style.display = "flex"; // Show it
+                } else {
+                    label.style.display = "none"; // Hide it
+                }
+            });
+        }
 
   function openPopup(src, title) {{
     const img = document.getElementById('popup-img');
