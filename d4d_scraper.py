@@ -44,30 +44,46 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 # ---------------------------------------------------------------------------
-# Supabase Cloud Database Helpers (With Auto-Cleaning)
+# Supabase Cloud Database Helpers (With Auto-Cleaning & Pagination)
 # ---------------------------------------------------------------------------
 
 def load_cache() -> Dict[str, str]:
     log.info("☁️  Connecting to Supabase to load memory...")
     try:
-        response = supabase.table("ai_cache").select("*").execute()
-        raw_data = response.data
-        
         healthy_cache = {}
         bad_urls = []
         
-        for row in raw_data:
-            url = row["image_url"]
-            name = row["product_name"]
+        # --- SUPABASE PAGINATION FIX ---
+        # Read the database in chunks of 1000 until we get everything
+        offset = 0
+        limit = 1000
+        
+        while True:
+            response = supabase.table("ai_cache").select("*").range(offset, offset + limit - 1).execute()
+            raw_data = response.data
             
-            if name != "Unknown item":
-                healthy_cache[url] = name
-            else:
-                bad_urls.append(url)
+            if not raw_data:
+                break
                 
+            for row in raw_data:
+                url = row["image_url"]
+                name = row["product_name"]
+                
+                if name != "Unknown item":
+                    healthy_cache[url] = name
+                else:
+                    bad_urls.append(url)
+            
+            # If we got fewer than 1000 items, we've reached the end!
+            if len(raw_data) < limit:
+                break
+                
+            offset += limit
+            
         # --- THE CLOUD AUTO-CLEANER ---
         if bad_urls:
             log.info("🧹 Auto-cleaning %d 'Unknown item' entries from Supabase...", len(bad_urls))
+            # Delete bad URLs so we don't scan them again
             supabase.table("ai_cache").delete().in_("image_url", bad_urls).execute()
             
         log.info("✅ Loaded %d healthy items from Cloud Memory.", len(healthy_cache))
@@ -253,9 +269,9 @@ async def scrape(url: str) -> List[Dict]:
             for store in store_links:
                 store_name = store["name"] or store["href"]
 
-                if TEST_STORES and not any(
-                    t.lower() in store_name.lower() for t in TEST_STORES
-                ):
+                # CHECK FILTER HERE
+                if TEST_STORES and not any(t.lower() in store_name.lower() for t in TEST_STORES):
+                    log.info("Skipping store: %s (Not in TEST_STORES)", store_name)
                     continue
 
                 store_url = "https://d4donline.com/en/saudi-arabia/riyadh/" + store["href"].lstrip("/")
@@ -423,7 +439,6 @@ def save_html(data: List[Dict]) -> None:
     
 <div class="filter-group">
                 <label>SORT BY</label>
-                <!-- FIXED ID AND ONCHANGE -->
                 <select id="sortDropdown" onchange="applyFilters()">
                     <option value="default">Default Order</option>
                     <option value="price-asc" selected>Price: Low to High</option>
@@ -441,7 +456,6 @@ def save_html(data: List[Dict]) -> None:
     
 <div class="filter-group">
                 <label>FILTER BRANDS / STORES</label>
-                <!-- FIXED STORE SEARCH JS TRIGGER -->
                 <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a store..." onkeyup="filterStoreList()">
                 
                 <div class="checkbox-panel" id="store-checkboxes">
@@ -516,7 +530,6 @@ def save_html(data: List[Dict]) -> None:
     const searchQuery = document.getElementById('filter-product').value.toLowerCase().trim();
     const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
     
-    // FIXED: Target the right dropdown ID
     const sortVal     = document.getElementById('sortDropdown').value;
     const max         = parseFloat(slider.value);
     
@@ -539,7 +552,6 @@ def save_html(data: List[Dict]) -> None:
       return matchSearch && matchStore && matchPrice;
     }});
 
-    // FIXED: Compare against correct values
     if (sortVal === 'price-asc') {{
         filteredData.sort((a, b) => (a.Price || 0) - (b.Price || 0));
     }} else if (sortVal === 'price-desc') {{
@@ -599,7 +611,6 @@ def save_html(data: List[Dict]) -> None:
 
   function resetFilters() {{
     document.getElementById('filter-product').value = '';
-    // FIXED: Reset Dropdown correctly
     document.getElementById('sortDropdown').value = 'price-asc';
     document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
@@ -608,7 +619,6 @@ def save_html(data: List[Dict]) -> None:
     applyFilters();
   }}
 
-// UI CHANGE 3: FIXED Python brackets ({{ and }})
   function filterStoreList() {{
       let input = document.getElementById('storeSearchInput').value.toLowerCase();
       let storeLabels = document.querySelectorAll('.checkbox-label');
