@@ -3,6 +3,9 @@ import json
 import logging
 import re
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 from random import uniform
 from typing import Optional, List, Dict
@@ -18,15 +21,27 @@ from supabase import create_client, Client
 # Configuration
 # ---------------------------------------------------------------------------
 
-# --- CLOUD SECURITY: Pulling keys from hidden environment variables ---
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 SUPABASE_URL   = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY   = os.environ.get("SUPABASE_KEY")
+EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD") # From GitHub Secrets
+
+# --- EMAIL ALERT SETTINGS ---
+SENDER_EMAIL = "srf.mpm.09@gmail.com"
+RECEIVER_EMAIL = "itzshereef@gmail.com"
+
+# ADD YOUR CUSTOM ALERTS HERE! 
+# It searches exactly like your website (e.g., "anchor milk" will match "Anchor Daily Plus Milk Powder 2.25kg")
+PRICE_ALERTS = [
+    {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
+    {"keyword": "almarai milk", "max_price": 45.0},
+    {"keyword": "nido", "max_price": 60.0}
+]
 
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
-TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
+TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto"] 
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
@@ -44,7 +59,78 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 # ---------------------------------------------------------------------------
-# Supabase Cloud Database Helpers (With Auto-Cleaning & Pagination)
+# Email Alert Engine
+# ---------------------------------------------------------------------------
+def check_alerts_and_send_email(products: List[Dict]):
+    if not EMAIL_APP_PASSWORD:
+        log.warning("No EMAIL_APP_PASSWORD found in secrets. Skipping email alerts.")
+        return
+
+    log.info("Checking products against your Price Alerts...")
+    found_deals = []
+
+    for p in products:
+        product_name = p.get("Product", "").lower()
+        price = p.get("Price")
+        store = p.get("Store", "Unknown Store")
+        
+        if not price: 
+            continue
+            
+        for alert in PRICE_ALERTS:
+            # Same search logic as your UI (splits into words and checks if ALL words are in the name)
+            search_tokens = alert["keyword"].lower().split()
+            match_search = all(token in product_name for token in search_tokens)
+            
+            if match_search and price <= alert["max_price"]:
+                found_deals.append({
+                    "alert_keyword": alert["keyword"],
+                    "target_price": alert["max_price"],
+                    "product_name": p.get("Product"),
+                    "store": store,
+                    "price": price,
+                    "image": p.get("Image_URL")
+                })
+
+    if not found_deals:
+        log.info("No products matched your target prices today.")
+        return
+
+    # If we found deals, build and send the email!
+    log.info(f"🚨 FOUND {len(found_deals)} DEALS MATCHING ALERTS! Sending email...")
+    
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = f"🚨 Grocery Alert: Found {len(found_deals)} items below your target price!"
+    msg["From"] = SENDER_EMAIL
+    msg["To"] = RECEIVER_EMAIL
+
+    # Build HTML email body
+    html_body = "<h2>Your Deal Alerts for Today:</h2><hr>"
+    for deal in found_deals:
+        html_body += f"""
+        <div style="margin-bottom: 20px; font-family: Arial, sans-serif;">
+            <h3 style="color: #1a73e8; margin-bottom: 5px;">{deal['product_name']}</h3>
+            <p style="margin: 2px 0;"><strong>Store:</strong> {deal['store']}</p>
+            <p style="margin: 2px 0;"><strong>Price:</strong> <span style="color: #188038; font-weight: bold; font-size: 18px;">SAR {deal['price']}</span> <em>(Target was <= {deal['target_price']})</em></p>
+        </div>
+        """
+    html_body += f'<br><a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" style="padding: 10px 20px; background-color: #1a73e8; color: white; text-decoration: none; border-radius: 5px;">View All Deals on Website</a>'
+
+    msg.attach(MIMEText(html_body, "html"))
+
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(SENDER_EMAIL, EMAIL_APP_PASSWORD)
+        server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
+        server.quit()
+        log.info("✅ Alert email sent successfully!")
+    except Exception as e:
+        log.error(f"❌ Failed to send email: {e}")
+
+
+# ---------------------------------------------------------------------------
+# Supabase Cloud Database Helpers
 # ---------------------------------------------------------------------------
 
 def load_cache() -> Dict[str, str]:
@@ -53,8 +139,6 @@ def load_cache() -> Dict[str, str]:
         healthy_cache = {}
         bad_urls = []
         
-        # --- SUPABASE PAGINATION FIX ---
-        # Read the database in chunks of 1000 until we get everything
         offset = 0
         limit = 1000
         
@@ -74,16 +158,13 @@ def load_cache() -> Dict[str, str]:
                 else:
                     bad_urls.append(url)
             
-            # If we got fewer than 1000 items, we've reached the end!
             if len(raw_data) < limit:
                 break
                 
             offset += limit
             
-        # --- THE CLOUD AUTO-CLEANER ---
         if bad_urls:
             log.info("🧹 Auto-cleaning %d 'Unknown item' entries from Supabase...", len(bad_urls))
-            # Delete bad URLs so we don't scan them again
             supabase.table("ai_cache").delete().in_("image_url", bad_urls).execute()
             
         log.info("✅ Loaded %d healthy items from Cloud Memory.", len(healthy_cache))
@@ -91,7 +172,6 @@ def load_cache() -> Dict[str, str]:
         
     except Exception as e:
         log.error("❌ Failed to connect to Supabase: %s", e)
-        log.warning("Starting with an empty memory for this run.")
         return {}
 
 def save_to_cloud(image_url: str, product_name: str) -> None:
@@ -105,7 +185,7 @@ def save_to_cloud(image_url: str, product_name: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Helpers
+# AI and Parsing Helpers
 # ---------------------------------------------------------------------------
 
 def clean_price(raw: str) -> Optional[float]:
@@ -129,7 +209,6 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
         return "Unknown item"
         
     max_retries = 3
-    
     for attempt in range(max_retries):
         try:
             resp = await http_client.get(image_url, timeout=15)
@@ -151,10 +230,9 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             error_message = str(e)
             if "503" in error_message or "429" in error_message:
                 wait_time = (attempt + 1) * 5 
-                log.warning("Google API busy! Retrying image in %d seconds... (Attempt %d/%d)", wait_time, attempt + 1, max_retries)
+                log.warning("Google API busy! Retrying... (Attempt %d/%d)", attempt + 1, max_retries)
                 await asyncio.sleep(wait_time)
             else:
-                log.warning("Gemini AI failed for %s: %s", image_url, e)
                 break 
 
     return "Unknown item"
@@ -182,8 +260,6 @@ def parse_products(html: str) -> List[Dict]:
             "Offer":     offer,
             "Image_URL": image_url,
         })
-
-    log.info("Parsed %d products.", len(results))
     return results
 
 
@@ -200,7 +276,6 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
 
     if uncached_products:
         log.info("Running Gemini AI for %d NEW images...", len(uncached_products))
-        
         semaphore = asyncio.Semaphore(3)
 
         async def process_with_limit(product, client_instance):
@@ -208,9 +283,7 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
                 name = await read_product_name_from_image(product["Image_URL"], client_instance)
                 return product, name
 
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-        }
+        headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"}
         limits = httpx.Limits(max_connections=10)
         
         async with httpx.AsyncClient(limits=limits, headers=headers) as http_client:
@@ -220,9 +293,6 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             for idx, (p, name) in enumerate(completed):
                 p["Product"] = name
                 ai_cache[p["Image_URL"]] = name
-                log.info("  [%d/%d] Identified: %s", idx + 1, len(uncached_products), name)
-                
-                # Instantly save the new item directly to Supabase!
                 save_to_cloud(p["Image_URL"], name)
                 
     else:
@@ -239,18 +309,12 @@ async def scrape(url: str) -> List[Dict]:
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
         context = await browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            ),
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
             viewport={"width": 1366, "height": 768},
             locale="ar-SA",
             timezone_id="Asia/Riyadh"
         )
-        await context.add_init_script(
-            "Object.defineProperty(navigator,'webdriver',{get:()=>undefined})"
-        )
+        await context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
         page        = await context.new_page()
         all_results = []
@@ -264,14 +328,11 @@ async def scrape(url: str) -> List[Dict]:
                 "a.disable_link.company-product",
                 "els => els.map(e => ({ name: e.getAttribute('title'), href: e.getAttribute('href') }))"
             )
-            log.info("Found %d stores.", len(store_links))
 
             for store in store_links:
                 store_name = store["name"] or store["href"]
 
-                # CHECK FILTER HERE
                 if TEST_STORES and not any(t.lower() in store_name.lower() for t in TEST_STORES):
-                    log.info("Skipping store: %s (Not in TEST_STORES)", store_name)
                     continue
 
                 store_url = "https://d4donline.com/en/saudi-arabia/riyadh/" + store["href"].lstrip("/")
@@ -305,36 +366,25 @@ async def scrape(url: str) -> List[Dict]:
         except PwTimeout:
             log.error("Timed out. Check selectors or network.")
             return []
-
         finally:
             await context.close()
             await browser.close()
 
-    log.info("Stage 1 Deduplication (Image URL based)...")
     unique_results = []
     seen = set()
     for p in all_results:
         base_img_url = p.get('Image_URL', '').split('?')[0]
         fingerprint = f"{base_img_url}|{p.get('Store', '')}"
-        
         if fingerprint not in seen:
             seen.add(fingerprint)
             unique_results.append(p)
             
-    all_results = unique_results
+    all_results = await enrich_product_names(unique_results)
 
-    all_results = await enrich_product_names(all_results)
-
-    log.info("Stage 2 Deduplication (AI Name + Price + Store based)...")
     final_results = []
     seen_post = set()
     for p in all_results:
-        product_name = p.get('Product', '').lower().strip()
-        store = p.get('Store', '')
-        price = p.get('Price', 0)
-        
-        post_fingerprint = f"{product_name}|{store}|{price}"
-        
+        post_fingerprint = f"{p.get('Product', '').lower()}|{p.get('Store', '')}|{p.get('Price', 0)}"
         if post_fingerprint not in seen_post:
             seen_post.add(post_fingerprint)
             final_results.append(p)
@@ -686,12 +736,15 @@ async def main() -> None:
                 filtered_results.append(item)
                 
         results = filtered_results
-        log.info("Filtered down to %d matched products.", len(results))
-    
+        
     if results:
         OUTPUT_JSON.write_text(
             json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
         )
+        
+        # ---> 🚨 THIS IS WHERE IT CHECKS ALERTS AND SENDS THE EMAIL! 🚨 <---
+        check_alerts_and_send_email(results)
+        
         save_html(results)
         log.info("Done. %d products saved.", len(results))
     else:
