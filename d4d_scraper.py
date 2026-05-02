@@ -27,11 +27,10 @@ SUPABASE_KEY   = os.environ.get("SUPABASE_KEY")
 EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD") # From GitHub Secrets
 
 # --- EMAIL ALERT SETTINGS ---
-SENDER_EMAIL = "itzshereef@gmail.com"
-RECEIVER_EMAIL = "shereefneikkan@gmail.com"
+SENDER_EMAIL = "srf.mpm.09@gmail.com"
+RECEIVER_EMAIL = "itzshereef@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
-# It searches exactly like your website (e.g., "anchor milk" will match "Anchor Daily Plus Milk Powder 2.25kg")
 PRICE_ALERTS = [
     {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
     {"keyword": "almarai milk", "max_price": 45.0},
@@ -41,7 +40,7 @@ PRICE_ALERTS = [
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
-TEST_STORES = [ "Mark & Save", "Grand Hyper"]
+TEST_STORES = ["Othaim Markets", "Mark & Save"] 
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
@@ -73,30 +72,29 @@ def check_alerts_and_send_email(products: List[Dict]):
         product_name = p.get("Product", "").lower()
         price = p.get("Price")
         store = p.get("Store", "Unknown Store")
+        image_url = p.get("Image_URL")
         
         if not price: 
             continue
             
         for alert in PRICE_ALERTS:
-            # Same search logic as your UI (splits into words and checks if ALL words are in the name)
             search_tokens = alert["keyword"].lower().split()
             match_search = all(token in product_name for token in search_tokens)
             
             if match_search and price <= alert["max_price"]:
                 found_deals.append({
-                    "alert_keyword": alert["keyword"],
                     "target_price": alert["max_price"],
                     "product_name": p.get("Product"),
                     "store": store,
                     "price": price,
-                    "image": p.get("Image_URL")
+                    # We need the image here to add to the HTML mail
+                    "image": image_url 
                 })
 
     if not found_deals:
         log.info("No products matched your target prices today.")
         return
 
-    # If we found deals, build and send the email!
     log.info(f"🚨 FOUND {len(found_deals)} DEALS MATCHING ALERTS! Sending email...")
     
     msg = MIMEMultipart("alternative")
@@ -104,17 +102,58 @@ def check_alerts_and_send_email(products: List[Dict]):
     msg["From"] = SENDER_EMAIL
     msg["To"] = RECEIVER_EMAIL
 
-    # Build HTML email body
-    html_body = "<h2>Your Deal Alerts for Today:</h2><hr>"
+    # --- HTML Email Body (Redesigned with Website Style Cards) ---
+    html_body = f"""
+    <html>
+    <head>
+        <style>
+            .container {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background-color: #f4f6f8; padding: 20px; }}
+            .card {{ background-color: #ffffff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e4e8; }}
+            .card-img-link {{ text-decoration: none; display: block; text-align: center; margin-bottom: 15px; }}
+            .card-img {{ width: 150px; height: 150px; object-fit: contain; border-radius: 8px; border: 1px solid #f1f3f4; background-color: white; }}
+            .card-details {{ text-align: left; }}
+            .card-title {{ color: #1a73e8; font-size: 18px; font-weight: 600; text-decoration: none; margin-bottom: 8px; display: block; }}
+            .card-store {{ color: #5f6368; font-size: 14px; margin-bottom: 8px; }}
+            .card-price-container {{ font-size: 16px; margin-top: 10px; }}
+            .card-price {{ color: #188038; font-weight: bold; font-size: 20px; }}
+            .target-price {{ color: #5f6368; font-size: 13px; font-style: italic; margin-left: 5px; }}
+            .website-btn {{ display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }}
+        </style>
+    </head>
+    <body class="container">
+        <h2>Your Deal Alerts for Today:</h2>
+        <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 20px;">
+    """
+
     for deal in found_deals:
+        # Wrap image and title in a link that points to the full-size image to "enlarge" it
+        product_url_enlarge = deal['image']
+        safe_name = deal['product_name'].replace('"', '&quot;')
+
         html_body += f"""
-        <div style="margin-bottom: 20px; font-family: Arial, sans-serif;">
-            <h3 style="color: #1a73e8; margin-bottom: 5px;">{deal['product_name']}</h3>
-            <p style="margin: 2px 0;"><strong>Store:</strong> {deal['store']}</p>
-            <p style="margin: 2px 0;"><strong>Price:</strong> <span style="color: #188038; font-weight: bold; font-size: 18px;">SAR {deal['price']}</span> <em>(Target was <= {deal['target_price']})</em></p>
+        <!-- Website Style Deal Card -->
+        <div class="card">
+            <a href="{product_url_enlarge}" class="card-img-link" title="Click to view full image">
+                <img src="{deal['image']}" alt="{safe_name}" class="card-img">
+            </a>
+            <div class="card-details">
+                <a href="{product_url_enlarge}" class="card-title" title="Click to view full image">{deal['product_name']}</a>
+                <p class="card-store"><strong>Store:</strong> {deal['store']}</p>
+                <div class="card-price-container">
+                    <span class="card-price">SAR {deal['price']}</span>
+                    <span class="target-price">(Target was <= {deal['target_price']})</span>
+                </div>
+            </div>
         </div>
         """
-    html_body += f'<br><a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" style="padding: 10px 20px; background-color: #1a73e8; color: white; text-decoration: none; border-radius: 5px;">View All Deals on Website</a>'
+    
+    html_body += f'''
+        <div style="text-align: center;">
+            <a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" class="website-btn">View All Deals on Website</a>
+        </div>
+    </body>
+    </html>
+    '''
 
     msg.attach(MIMEText(html_body, "html"))
 
@@ -742,7 +781,7 @@ async def main() -> None:
             json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
         )
         
-        # ---> 🚨 THIS IS WHERE IT CHECKS ALERTS AND SENDS THE EMAIL! 🚨 <---
+        # Check alerts and send the styled email
         check_alerts_and_send_email(results)
         
         save_html(results)
