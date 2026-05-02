@@ -40,6 +40,7 @@ PRICE_ALERTS = [
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
+# The stores your robot will scan
 TEST_STORES = ["Othaim Markets", "Mark & Save"] 
 TARGET_PRODUCTS = []
 
@@ -87,7 +88,6 @@ def check_alerts_and_send_email(products: List[Dict]):
                     "product_name": p.get("Product"),
                     "store": store,
                     "price": price,
-                    # We need the image here to add to the HTML mail
                     "image": image_url 
                 })
 
@@ -102,7 +102,7 @@ def check_alerts_and_send_email(products: List[Dict]):
     msg["From"] = SENDER_EMAIL
     msg["To"] = RECEIVER_EMAIL
 
-    # --- HTML Email Body (Redesigned with Website Style Cards) ---
+    # --- HTML Email Body ---
     html_body = f"""
     <html>
     <head>
@@ -117,7 +117,6 @@ def check_alerts_and_send_email(products: List[Dict]):
             .card-price-container {{ font-size: 16px; margin-top: 10px; }}
             .card-price {{ color: #188038; font-weight: bold; font-size: 20px; }}
             .target-price {{ color: #5f6368; font-size: 13px; font-style: italic; margin-left: 5px; }}
-            .website-btn {{ display: inline-block; padding: 12px 24px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }}
         </style>
     </head>
     <body class="container">
@@ -126,12 +125,10 @@ def check_alerts_and_send_email(products: List[Dict]):
     """
 
     for deal in found_deals:
-        # Wrap image and title in a link that points to the full-size image to "enlarge" it
         product_url_enlarge = deal['image']
         safe_name = deal['product_name'].replace('"', '&quot;')
 
         html_body += f"""
-        <!-- Website Style Deal Card -->
         <div class="card">
             <a href="{product_url_enlarge}" class="card-img-link" title="Click to view full image">
                 <img src="{deal['image']}" alt="{safe_name}" class="card-img">
@@ -147,9 +144,10 @@ def check_alerts_and_send_email(products: List[Dict]):
         </div>
         """
     
+    # The Fixed White-Text Button
     html_body += f'''
-        <div style="text-align: center;">
-            <a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" class="website-btn">View All Deals on Website</a>
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+            <a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" style="display: inline-block; padding: 14px 28px; background-color: #1a73e8; color: #ffffff !important; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: Arial, sans-serif; font-size: 16px;">View All Deals on Website</a>
         </div>
     </body>
     </html>
