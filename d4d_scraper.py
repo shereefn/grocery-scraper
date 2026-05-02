@@ -344,7 +344,7 @@ def save_html(data: List[Dict]) -> None:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shopping List Deals</title>
+<title>My Deals | Riyadh</title>
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }}
@@ -408,7 +408,7 @@ def save_html(data: List[Dict]) -> None:
 
 <div class="navbar">
   <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
-  <h1>Weekly Deals</h1>
+  <h1>My Deals</h1>
 </div>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
