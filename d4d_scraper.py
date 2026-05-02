@@ -409,6 +409,12 @@ def save_html(data: List[Dict]) -> None:
 <div class="navbar">
   <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
   <h1>My Deals</h1>
+
+      <div class="filter-group">
+      <label>Search</label>
+      <input type="text" id="filter-product" placeholder="e.g. almarai milk powder" oninput="applyFilters()">
+    </div>
+    
 </div>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
@@ -420,10 +426,6 @@ def save_html(data: List[Dict]) -> None:
   </div>
   
   <div class="sidebar-content">
-    <div class="filter-group">
-      <label>Search</label>
-      <input type="text" id="filter-product" placeholder="e.g. almarai milk powder" oninput="applyFilters()">
-    </div>
     
     <div class="filter-group">
       <label>Sort By</label>
