@@ -224,8 +224,11 @@ def save_to_cloud(image_url: str, product_name: str) -> None:
 # ---------------------------------------------------------------------------
 
 def clean_price(raw: str) -> Optional[float]:
+    if not raw: return None
     raw = re.sub(r"⚠.*", "", raw, flags=re.DOTALL).strip()
-    matches = re.findall(r"\d+(?:\.\d+)?", raw.replace(",", ""))
+    # Remove standard commas and Arabic thousands separators
+    raw = raw.replace(",", "").replace("،", "").replace("٬", "")
+    matches = re.findall(r"\d+(?:\.\d+)?", raw)
     if not matches:
         return None
     try:
@@ -233,10 +236,18 @@ def clean_price(raw: str) -> Optional[float]:
     except ValueError:
         return None
 
-def extract_price(price_elem) -> Optional[float]:
-    if not price_elem:
-        return None
-    return clean_price(price_elem.get_text(" ", strip=True))
+def extract_price(card) -> Optional[float]:
+    # 1. Target the exact final price class first (This fixes the TV issue!)
+    amt_elem = card.find(class_="product-amount")
+    if amt_elem and amt_elem.get_text(strip=True):
+        return clean_price(amt_elem.get_text(" ", strip=True))
+        
+    # 2. Fallback to the generic wrapper
+    wrapper = card.find(class_="price-wrapper")
+    if wrapper and wrapper.get_text(strip=True):
+        return clean_price(wrapper.get_text(" ", strip=True))
+        
+    return None
 
 
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
@@ -279,13 +290,20 @@ def parse_products(html: str) -> List[Dict]:
 
     results: List[Dict] = []
     for card in cards:
-        price_elem = card.find("div", class_="price-wrapper")
+        # Use our new aggressive price extractor
+        price = extract_price(card)
+        
         store_elem = card.find("h2",  class_="product-description")
         offer_elem = card.find("div", class_="offer_tag")
 
-        store_name = store_elem.get_text(strip=True) if store_elem else "Unknown store"
+        # Fallback for store names on special banner items
+        store_name = "Unknown store"
+        if store_elem and store_elem.get_text(strip=True):
+            store_name = store_elem.get_text(strip=True)
+        elif card.has_attr("data-pic-desc"):
+            store_name = card["data-pic-desc"].strip()
+
         image_url  = card.get("data-image-tr", "").strip()
-        price      = extract_price(price_elem)
         offer      = offer_elem.get_text(strip=True).replace('"', '') if offer_elem else ""
 
         results.append({
@@ -296,7 +314,6 @@ def parse_products(html: str) -> List[Dict]:
             "Image_URL": image_url,
         })
     return results
-
 
 async def enrich_product_names(products: List[Dict]) -> List[Dict]:
     ai_cache = load_cache()
