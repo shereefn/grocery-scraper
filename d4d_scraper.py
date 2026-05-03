@@ -32,7 +32,15 @@ RECEIVER_EMAIL = "shereefneikkan@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
 PRICE_ALERTS = [
-    {"keyword": "anchor milk powder 2.25", "max_price": 40.0}
+    {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
+    {"keyword": "Tide Detergent Powder 5", "max_price": 35.0},
+    {"keyword": "Galaxy Jewels 650", "max_price": 35.0},
+    {"keyword": "Abu Kass 10", "max_price": 50.0},
+    {"keyword": "Liquid Detergent 2.8", "max_price": 28.0},
+    {"keyword": "Drinking Water 40", "max_price": 10.0},
+    {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
+    {"keyword": "Detergent Liquid 1.8L", "max_price": 17.0},
+    {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
 ]
 
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
