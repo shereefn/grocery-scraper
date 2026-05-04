@@ -1,0 +1,25 @@
+name: Clean Supabase Database
+
+on:
+  workflow_dispatch: # This allows you to run it manually!
+
+jobs:
+  clean-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install supabase
+
+      - name: Run the Cleaner Script
+        run: python clean_database.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
