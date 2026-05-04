@@ -447,14 +447,17 @@ async def scrape(url: str) -> List[Dict]:
             
     all_results = await enrich_product_names(unique_results)
 
-    log.info("Stage 2 Deduplication (AI Name + Store based)...")
+log.info("Stage 2 Deduplication (Fuzzy Name + Store based)...")
     best_products = {}
     for p in all_results:
-        product_name = p.get('Product', '').lower().strip()
+        original_name = p.get('Product', '')
         store = p.get('Store', '')
         
-        # We removed Price from the fingerprint so identical names merge together!
-        post_fingerprint = f"{product_name}|{store}"
+        # Create a "fuzzy" name by removing all spaces and punctuation
+        # "Violet 50'S" and "Violet50'S" will both become "violet50s"
+        normalized_name = re.sub(r'[^a-z0-9]', '', original_name.lower())
+        
+        post_fingerprint = f"{normalized_name}|{store}"
         
         if post_fingerprint not in best_products:
             best_products[post_fingerprint] = p
