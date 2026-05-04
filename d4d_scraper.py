@@ -801,9 +801,24 @@ def save_html(data: List[Dict]) -> None:
 # Entry point
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
 async def main() -> None:
     results = await scrape(SEARCH_URL)
     
+    # ---> THE NEW AD BLOCKER <---
+    if TEST_STORES and results:
+        log.info("Scrubbing sponsored ads from unapproved stores...")
+        clean_results = []
+        for item in results:
+            store_name = item.get("Store", "").lower()
+            if any(t.lower() in store_name for t in TEST_STORES):
+                clean_results.append(item)
+        results = clean_results
+        log.info("Cleaned list down to %d approved store products.", len(results))
+        
     if TARGET_PRODUCTS and results:
         log.info("Filtering results to only include items from the TARGET_PRODUCTS list...")
         filtered_results = []
@@ -826,7 +841,6 @@ async def main() -> None:
         log.info("Done. %d products saved.", len(results))
     else:
         log.warning("No results found.")
-
 
 if __name__ == "__main__":
     asyncio.run(main())
