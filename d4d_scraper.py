@@ -37,9 +37,11 @@ PRICE_ALERTS = [
     {"keyword": "Galaxy Jewels 650", "max_price": 35.0},
     {"keyword": "Abu Kass 10", "max_price": 50.0},
     {"keyword": "Liquid Detergent 2.8", "max_price": 28.0},
-    {"keyword": "Drinking Water 40", "max_price": 10.0},
+    {"keyword": "Ival Drinking Water 40", "max_price": 10.0},
+    {"keyword": "Oska Drinking Water 40", "max_price": 10.0},
     {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
-    {"keyword": "Detergent Liquid 1.8L", "max_price": 17.0},
+    {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
+    {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
     {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
 ]
 
