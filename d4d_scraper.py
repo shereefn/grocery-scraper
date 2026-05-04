@@ -430,28 +430,41 @@ async def scrape(url: str) -> List[Dict]:
             await context.close()
             await browser.close()
 
-    unique_results = []
-    seen = set()
+  log.info("Stage 1 Deduplication (Image URL + Price preference)...")
+    unique_results_dict = {}
     for p in all_results:
         base_img_url = p.get('Image_URL', '').split('?')[0]
         fingerprint = f"{base_img_url}|{p.get('Store', '')}"
-        if fingerprint not in seen:
-            seen.add(fingerprint)
-            unique_results.append(p)
+        
+        if fingerprint not in unique_results_dict:
+            unique_results_dict[fingerprint] = p
+        else:
+            # If we found a duplicate image, keep the one that actually has a price!
+            if unique_results_dict[fingerprint].get('Price') is None and p.get('Price') is not None:
+                unique_results_dict[fingerprint] = p
+                
+    unique_results = list(unique_results_dict.values())
             
     all_results = await enrich_product_names(unique_results)
 
-    final_results = []
-    seen_post = set()
+    log.info("Stage 2 Deduplication (AI Name + Store based)...")
+    best_products = {}
     for p in all_results:
-        post_fingerprint = f"{p.get('Product', '').lower()}|{p.get('Store', '')}|{p.get('Price', 0)}"
-        if post_fingerprint not in seen_post:
-            seen_post.add(post_fingerprint)
-            final_results.append(p)
+        product_name = p.get('Product', '').lower().strip()
+        store = p.get('Store', '')
+        
+        # We removed Price from the fingerprint so identical names merge together!
+        post_fingerprint = f"{product_name}|{store}"
+        
+        if post_fingerprint not in best_products:
+            best_products[post_fingerprint] = p
+        else:
+            # If we found a duplicate name, keep the one that actually has a price!
+            if best_products[post_fingerprint].get('Price') is None and p.get('Price') is not None:
+                best_products[post_fingerprint] = p
 
-    return final_results
-
-
+    return list(best_products.values())
+    
 # ---------------------------------------------------------------------------
 # HTML output
 # ---------------------------------------------------------------------------
