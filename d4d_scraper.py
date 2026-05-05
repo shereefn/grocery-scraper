@@ -27,29 +27,25 @@ SUPABASE_KEY   = os.environ.get("SUPABASE_KEY")
 EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD") # From GitHub Secrets
 
 # --- EMAIL ALERT SETTINGS ---
-SENDER_EMAIL = "itzshereef@gmail.com"
-RECEIVER_EMAIL = "shereefneikkan@gmail.com"
+SENDER_EMAIL = "srf.mpm.09@gmail.com"
+RECEIVER_EMAIL = "itzshereef@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
 PRICE_ALERTS = [
     {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
-    {"keyword": "Tide Detergent Powder 5", "max_price": 35.0},
-    {"keyword": "Galaxy Jewels 650", "max_price": 35.0},
-    {"keyword": "Abu Kass 10", "max_price": 50.0},
-    {"keyword": "Liquid Detergent 2.8", "max_price": 28.0},
-    {"keyword": "Ival Drinking Water 40", "max_price": 10.0},
-    {"keyword": "Oska Drinking Water 40", "max_price": 10.0},
-    {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
-    {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
-    {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
-    {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
+    {"keyword": "almarai milk", "max_price": 45.0},
+    {"keyword": "nido", "max_price": 60.0}
 ]
 
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
-# The stores your robot will scan
-TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
+# The strictly approved stores your robot will keep
+TEST_STORES = [
+    "LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", 
+    "eXtra", "Danube", "Mark & Save", "Grand Hyper", 
+    "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"
+]
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
@@ -110,7 +106,6 @@ def check_alerts_and_send_email(products: List[Dict]):
     msg["From"] = SENDER_EMAIL
     msg["To"] = RECEIVER_EMAIL
 
-    # --- HTML Email Body ---
     html_body = f"""
     <html>
     <head>
@@ -152,7 +147,6 @@ def check_alerts_and_send_email(products: List[Dict]):
         </div>
         """
     
-    # The Fixed White-Text Button
     html_body += f'''
         <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
             <a href="https://shereefn.github.io/grocery-scraper/d4d_results.html" style="display: inline-block; padding: 14px 28px; background-color: #1a73e8; color: #ffffff !important; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: Arial, sans-serif; font-size: 16px;">View All Deals on Website</a>
@@ -236,7 +230,6 @@ def save_to_cloud(image_url: str, product_name: str) -> None:
 def clean_price(raw: str) -> Optional[float]:
     if not raw: return None
     raw = re.sub(r"⚠.*", "", raw, flags=re.DOTALL).strip()
-    # Remove standard commas and Arabic thousands separators
     raw = raw.replace(",", "").replace("،", "").replace("٬", "")
     matches = re.findall(r"\d+(?:\.\d+)?", raw)
     if not matches:
@@ -247,18 +240,15 @@ def clean_price(raw: str) -> Optional[float]:
         return None
 
 def extract_price(card) -> Optional[float]:
-    # 1. Target the exact final price class first (This fixes the TV issue!)
     amt_elem = card.find(class_="product-amount")
     if amt_elem and amt_elem.get_text(strip=True):
         return clean_price(amt_elem.get_text(" ", strip=True))
         
-    # 2. Fallback to the generic wrapper
     wrapper = card.find(class_="price-wrapper")
     if wrapper and wrapper.get_text(strip=True):
         return clean_price(wrapper.get_text(" ", strip=True))
         
     return None
-
 
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
@@ -300,13 +290,10 @@ def parse_products(html: str) -> List[Dict]:
 
     results: List[Dict] = []
     for card in cards:
-        # Use our new aggressive price extractor
         price = extract_price(card)
-        
         store_elem = card.find("h2",  class_="product-description")
         offer_elem = card.find("div", class_="offer_tag")
 
-        # Fallback for store names on special banner items
         store_name = "Unknown store"
         if store_elem and store_elem.get_text(strip=True):
             store_name = store_elem.get_text(strip=True)
@@ -324,6 +311,7 @@ def parse_products(html: str) -> List[Dict]:
             "Image_URL": image_url,
         })
     return results
+
 
 async def enrich_product_names(products: List[Dict]) -> List[Dict]:
     ai_cache = load_cache()
@@ -394,9 +382,6 @@ async def scrape(url: str) -> List[Dict]:
             for store in store_links:
                 store_name = store["name"] or store["href"]
 
-                if TEST_STORES and not any(t.lower() in store_name.lower() for t in TEST_STORES):
-                    continue
-
                 store_url = "https://d4donline.com/en/saudi-arabia/riyadh/" + store["href"].lstrip("/")
                 log.info("Scraping store: %s", store_name)
                 await page.goto(store_url, wait_until="domcontentloaded", timeout=30_000)
@@ -432,7 +417,7 @@ async def scrape(url: str) -> List[Dict]:
             await context.close()
             await browser.close()
 
-  log.info("Stage 1 Deduplication (Image URL + Price preference)...")
+    log.info("Stage 1 Deduplication (Image URL + Price preference)...")
     unique_results_dict = {}
     for p in all_results:
         base_img_url = p.get('Image_URL', '').split('?')[0]
@@ -441,7 +426,6 @@ async def scrape(url: str) -> List[Dict]:
         if fingerprint not in unique_results_dict:
             unique_results_dict[fingerprint] = p
         else:
-            # If we found a duplicate image, keep the one that actually has a price!
             if unique_results_dict[fingerprint].get('Price') is None and p.get('Price') is not None:
                 unique_results_dict[fingerprint] = p
                 
@@ -449,27 +433,24 @@ async def scrape(url: str) -> List[Dict]:
             
     all_results = await enrich_product_names(unique_results)
 
-log.info("Stage 2 Deduplication (Fuzzy Name + Store based)...")
+    log.info("Stage 2 Deduplication (Fuzzy Name + Store based)...")
     best_products = {}
     for p in all_results:
         original_name = p.get('Product', '')
         store = p.get('Store', '')
         
-        # Create a "fuzzy" name by removing all spaces and punctuation
-        # "Violet 50'S" and "Violet50'S" will both become "violet50s"
         normalized_name = re.sub(r'[^a-z0-9]', '', original_name.lower())
-        
         post_fingerprint = f"{normalized_name}|{store}"
         
         if post_fingerprint not in best_products:
             best_products[post_fingerprint] = p
         else:
-            # If we found a duplicate name, keep the one that actually has a price!
             if best_products[post_fingerprint].get('Price') is None and p.get('Price') is not None:
                 best_products[post_fingerprint] = p
 
     return list(best_products.values())
-    
+
+
 # ---------------------------------------------------------------------------
 # HTML output
 # ---------------------------------------------------------------------------
@@ -549,6 +530,7 @@ def save_html(data: List[Dict]) -> None:
   <h1>My Deals</h1>
 
       <div class="filter-group">
+      <label>Search</label>
       <input type="text" id="filter-product" placeholder="e.g. almarai milk powder" oninput="applyFilters()">
     </div>
     
@@ -801,14 +783,10 @@ def save_html(data: List[Dict]) -> None:
 # Entry point
 # ---------------------------------------------------------------------------
 
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
-
 async def main() -> None:
     results = await scrape(SEARCH_URL)
     
-    # ---> THE NEW AD BLOCKER <---
+    # THE AD BLOCKER: Scrub out sponsored pharmacies/unapproved stores
     if TEST_STORES and results:
         log.info("Scrubbing sponsored ads from unapproved stores...")
         clean_results = []
@@ -841,6 +819,7 @@ async def main() -> None:
         log.info("Done. %d products saved.", len(results))
     else:
         log.warning("No results found.")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
