@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 from random import uniform
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Tuple
 
 import httpx
 from google import genai
@@ -24,7 +24,7 @@ from supabase import create_client, Client
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 SUPABASE_URL   = os.environ.get("SUPABASE_URL")
 SUPABASE_KEY   = os.environ.get("SUPABASE_KEY")
-EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD") # From GitHub Secrets
+EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD")
 
 # --- EMAIL ALERT SETTINGS ---
 SENDER_EMAIL = "srf.mpm.09@gmail.com"
@@ -33,9 +33,18 @@ RECEIVER_EMAIL = "itzshereef@gmail.com"
 # ADD YOUR CUSTOM ALERTS HERE! 
 PRICE_ALERTS = [
     {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
-    {"keyword": "almarai milk", "max_price": 45.0},
-    {"keyword": "nido", "max_price": 60.0}
+    {"keyword": "Tide Detergent Powder 5", "max_price": 35.0},
+    {"keyword": "Galaxy Jewels 650", "max_price": 35.0},
+    {"keyword": "Abu Kass 10", "max_price": 50.0},
+    {"keyword": "Liquid Detergent 2.8", "max_price": 28.0},
+    {"keyword": "Ival Drinking Water 40", "max_price": 10.0},
+    {"keyword": "Oska Drinking Water 40", "max_price": 10.0},
+    {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
+    {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
+    {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
+    {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
 ]
+
 
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
@@ -227,8 +236,10 @@ def save_to_cloud(image_url: str, product_name: str) -> None:
 # AI and Parsing Helpers
 # ---------------------------------------------------------------------------
 
-def clean_price(raw: str) -> Optional[float]:
-    if not raw: return None
+def clean_price(raw) -> Optional[float]:
+    if raw is None: return None
+    if isinstance(raw, (int, float)): return float(raw)
+    raw = str(raw)
     raw = re.sub(r"⚠.*", "", raw, flags=re.DOTALL).strip()
     raw = raw.replace(",", "").replace("،", "").replace("٬", "")
     matches = re.findall(r"\d+(?:\.\d+)?", raw)
@@ -250,18 +261,48 @@ def extract_price(card) -> Optional[float]:
         
     return None
 
+def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
+    try:
+        data = json.loads(raw_val)
+        return data.get("name", "Unknown item"), data.get("price")
+    except json.JSONDecodeError:
+        pass
+        
+    if "||" in raw_val:
+        parts = raw_val.split("||", 1)
+        name = parts[0].strip()
+        price_str = parts[1].strip()
+        price = clean_price(price_str) if price_str.lower() != "none" else None
+        return name, price
+        
+    if "|" in raw_val:
+        parts = raw_val.split("|", 1)
+        name = parts[0].strip()
+        price_str = parts[1].strip()
+        price = clean_price(price_str) if price_str.lower() != "none" else None
+        return name, price
+        
+    return raw_val.strip(), None
+
+
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
-        return "Unknown item"
+        return '{"name": "Unknown item", "price": null}'
         
     max_retries = 3
     for attempt in range(max_retries):
         try:
             resp = await http_client.get(image_url, timeout=15)
             if resp.status_code != 200:
-                return "Unknown item"
+                return '{"name": "Unknown item", "price": null}'
 
-            prompt = "You are a data extractor. Look at this grocery product image. Extract the Brand Name, Product Name, and Weight/Volume in English. Output ONLY the final product string on a single line. Ignore Arabic. Do not add markdown, quotes, or conversational text."
+            prompt = (
+                "You are a data extractor. Look at this grocery product image. "
+                "1. Extract the Brand Name, Product Name, and Weight/Volume in English. "
+                "2. Look for a highly visible promotional price painted on the image (e.g. 1.95 or 10.00). "
+                "Output ONLY a raw, valid JSON object in this exact format: {\"name\": \"Extracted Name\", \"price\": 1.95} "
+                "If you cannot find a price, use null for the price. Do not include markdown code blocks or any other text."
+            )
 
             response = await client.aio.models.generate_content(
                 model='gemini-2.5-flash-lite',
@@ -270,7 +311,14 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
                     prompt
                 ]
             )
-            return response.text.strip().replace('\n', ' ')
+            
+            raw = response.text.strip()
+            if raw.startswith("```json"): raw = raw[7:-3].strip()
+            elif raw.startswith("
+```"): raw = raw[3:-3].strip()
+            
+            json.loads(raw)
+            return raw
 
         except Exception as e:
             error_message = str(e)
@@ -281,7 +329,7 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             else:
                 break 
 
-    return "Unknown item"
+    return '{"name": "Unknown item", "price": null}'
 
 
 def parse_products(html: str) -> List[Dict]:
@@ -320,18 +368,28 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
     for p in products:
         img_url = p["Image_URL"]
         if img_url in ai_cache:
-            p["Product"] = ai_cache[img_url]
+            cached_val = ai_cache[img_url]
+            name, ai_price = parse_ai_result(cached_val)
+            
+            p["Product"] = name
+            
+            if ai_price is not None and p.get("Price") is None:
+                p["Price"] = ai_price
+                
+            if p.get("Price") is None:
+                uncached_products.append(p)
+                
         elif img_url:
             uncached_products.append(p)
 
     if uncached_products:
-        log.info("Running Gemini AI for %d NEW images...", len(uncached_products))
+        log.info("Running Gemini AI for %d missing/new items...", len(uncached_products))
         semaphore = asyncio.Semaphore(3)
 
         async def process_with_limit(product, client_instance):
             async with semaphore:
-                name = await read_product_name_from_image(product["Image_URL"], client_instance)
-                return product, name
+                ai_result_string = await read_product_name_from_image(product["Image_URL"], client_instance)
+                return product, ai_result_string
 
         headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"}
         limits = httpx.Limits(max_connections=10)
@@ -340,13 +398,19 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             tasks = [process_with_limit(p, http_client) for p in uncached_products]
             completed = await asyncio.gather(*tasks)
             
-            for idx, (p, name) in enumerate(completed):
+            for idx, (p, ai_result_string) in enumerate(completed):
+                name, ai_price = parse_ai_result(ai_result_string)
                 p["Product"] = name
-                ai_cache[p["Image_URL"]] = name
-                save_to_cloud(p["Image_URL"], name)
+                
+                if ai_price is not None and p.get("Price") is None:
+                    p["Price"] = ai_price
+
+                json_to_save = json.dumps({"name": name, "price": ai_price}, ensure_ascii=False)
+                ai_cache[p["Image_URL"]] = json_to_save
+                save_to_cloud(p["Image_URL"], json_to_save)
                 
     else:
-        log.info("All products were found in the Cloud Memory! Skipped AI processing.")
+        log.info("All products successfully loaded from Cloud Memory!")
 
     return products
 
@@ -530,7 +594,6 @@ def save_html(data: List[Dict]) -> None:
   <h1>My Deals</h1>
 
       <div class="filter-group">
-      <label>Search</label>
       <input type="text" id="filter-product" placeholder="e.g. almarai milk powder" oninput="applyFilters()">
     </div>
     
@@ -786,7 +849,6 @@ def save_html(data: List[Dict]) -> None:
 async def main() -> None:
     results = await scrape(SEARCH_URL)
     
-    # THE AD BLOCKER: Scrub out sponsored pharmacies/unapproved stores
     if TEST_STORES and results:
         log.info("Scrubbing sponsored ads from unapproved stores...")
         clean_results = []
@@ -795,7 +857,6 @@ async def main() -> None:
             if any(t.lower() in store_name for t in TEST_STORES):
                 clean_results.append(item)
         results = clean_results
-        log.info("Cleaned list down to %d approved store products.", len(results))
         
     if TARGET_PRODUCTS and results:
         log.info("Filtering results to only include items from the TARGET_PRODUCTS list...")
@@ -806,6 +867,16 @@ async def main() -> None:
                 filtered_results.append(item)
                 
         results = filtered_results
+
+    # ---> THE NEW PRICE FILTER <---
+    if results:
+        log.info("Removing promotional banners (items with no price)...")
+        valid_price_results = []
+        for item in results:
+            if item.get("Price") is not None:
+                valid_price_results.append(item)
+        results = valid_price_results
+        log.info("Kept %d items that actually have prices.", len(results))
         
     if results:
         OUTPUT_JSON.write_text(
