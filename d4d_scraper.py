@@ -452,6 +452,11 @@ async def scrape(url: str) -> List[Dict]:
             for store in store_links:
                 store_name = store["name"] or store["href"]
 
+                # ---> THE FRONT-DOOR BOUNCER <---
+                # Immediately skip this store if it's not in the approved TEST_STORES list
+                if TEST_STORES and not any(t.lower() in store_name.lower() for t in TEST_STORES):
+                    continue
+
                 store_url = "https://d4donline.com/en/saudi-arabia/riyadh/" + store["href"].lstrip("/")
                 log.info("Scraping store: %s", store_name)
                 await page.goto(store_url, wait_until="domcontentloaded", timeout=30_000)
@@ -667,6 +672,14 @@ def save_html(data: List[Dict]) -> None:
       </tbody>
     </table>
     <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
+  </div>
+</div>
+
+<div id="popup-overlay" onclick="closePopup(event)">
+  <div id="popup-box">
+    <button id="popup-close" onclick="closePopup(event)">&#10005;</button>
+    <img id="popup-img" src="" alt="" onclick="toggleZoom(event)">
+    <div id="popup-title"></div>
   </div>
 </div>
 
