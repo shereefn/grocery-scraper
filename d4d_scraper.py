@@ -27,8 +27,8 @@ SUPABASE_KEY   = os.environ.get("SUPABASE_KEY")
 EMAIL_APP_PASSWORD = os.environ.get("EMAIL_APP_PASSWORD")
 
 # --- EMAIL ALERT SETTINGS ---
-SENDER_EMAIL = "srf.mpm.09@gmail.com"
-RECEIVER_EMAIL = "itzshereef@gmail.com"
+SENDER_EMAIL = "itzshereef@gmail.com"
+RECEIVER_EMAIL = "shereefneikkan@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
 PRICE_ALERTS = [
