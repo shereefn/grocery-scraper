@@ -612,7 +612,6 @@ def save_html(data: List[Dict]) -> None:
   <h1>My Deals</h1>
 
       <div class="filter-group">
-      <label>Search</label>
       <input type="text" id="filter-product" placeholder="e.g. almarai milk powder" oninput="applyFilters()">
     </div>
     
