@@ -434,8 +434,7 @@ async def scrape(url: str) -> List[Dict]:
 
         page        = await context.new_page()
         all_results = []
-
- try:
+         try:
             log.info("Loading store list from %s", url)
             await page.goto(url, wait_until="domcontentloaded", timeout=30_000)
             await page.wait_for_selector("div#outlet-nav", timeout=20_000)
