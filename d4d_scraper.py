@@ -4,6 +4,7 @@ import logging
 import re
 import os
 import smtplib
+import urllib.parse
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
@@ -31,7 +32,6 @@ SENDER_EMAIL = "itzshereef@gmail.com"
 RECEIVER_EMAIL = "shereefneikkan@gmail.com"
 
 # ADD YOUR CUSTOM ALERTS HERE! 
-
 PRICE_ALERTS = [
     {"keyword": "anchor milk powder 2.25", "max_price": 40.0},
     {"keyword": "Tide Detergent Powder 5", "max_price": 35.0},
@@ -49,7 +49,13 @@ PRICE_ALERTS = [
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
-TEST_STORES = ["NESTO"]
+# Ensure stores are exactly as they appear in the database for the direct URL to work!
+TEST_STORES = [
+    "Nesto"
+    # "LULU Hypermarket", "Hyper Panda", "Othaim Markets", 
+    # "eXtra", "Danube", "Mark & Save", "Grand Hyper", 
+    # "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"
+]
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
@@ -308,7 +314,6 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             )
             
             raw = response.text.strip()
-            # Explicitly formatted on separate lines to prevent GitHub copy-paste SyntaxErrors
             if raw.startswith("```json"): 
                 raw = raw[7:-3].strip()
             elif raw.startswith("```"): 
@@ -318,12 +323,13 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             return raw
 
         except Exception as e:
-            error_message = str(e)
-            if "503" in error_message or "429" in error_message or "exhausted" in error_message.lower():
+            error_message = str(e).lower()
+            if any(term in error_message for term in ["503", "429", "exhausted", "exceed", "quota", "billing"]):
                 wait_time = (attempt + 1) * 15 
                 log.warning("Google API rate limit hit! Sleeping %d seconds... (Attempt %d/%d)", wait_time, attempt + 1, max_retries)
                 await asyncio.sleep(wait_time)
             else:
+                log.error(f"Unexpected AI Error: {error_message}")
                 break 
 
     return '{"name": "Unknown item", "price": null}'
@@ -380,15 +386,18 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
+        MAX_BUDGET_ITEMS = 150
+        if len(uncached_products) > MAX_BUDGET_ITEMS:
+            log.warning(f"💰 BUDGET CAP ACTIVE: Found {len(uncached_products)} new items. Limiting to {MAX_BUDGET_ITEMS} to protect API costs.")
+            uncached_products = uncached_products[:MAX_BUDGET_ITEMS]
+
         log.info("Running Gemini AI for %d missing/new items...", len(uncached_products))
         log.info("⏳ SPEED LIMIT ACTIVE: Processing max 15 items per minute to respect Google Quota.")
         
-        # Only process 1 item at a time to prevent API blocks
         semaphore = asyncio.Semaphore(1)
 
         async def process_with_limit(product, client_instance):
             async with semaphore:
-                # Force a 4.1 second pause between every single image
                 await asyncio.sleep(4.1)
                 ai_result_string = await read_product_name_from_image(product["Image_URL"], client_instance)
                 return product, ai_result_string
@@ -436,37 +445,23 @@ async def scrape(url: str) -> List[Dict]:
         all_results = []
 
         try:
-            log.info("Loading store list from %s", url)
-            await page.goto(url, wait_until="domcontentloaded", timeout=30_000)
-            await page.wait_for_selector("div#outlet-nav", timeout=20_000)
+            if not TEST_STORES:
+                log.error("TEST_STORES list is empty! Please add stores to scrape.")
+                return []
 
-            # ---> THE D4D BUG FIX (THE "HUMAN NUDGE") <---
-            log.info("Waiting for D4D to finish lazy-loading all stores...")
-            await asyncio.sleep(4.0) 
-            await page.evaluate("window.scrollBy(0, 500)") # Scroll down to wake up the page
-            await asyncio.sleep(1.0)
-            await page.evaluate("window.scrollBy(0, -500)") # Scroll back up
-
-            store_links = await page.eval_on_selector_all(
-                "a.disable_link.company-product",
-                "els => els.map(e => ({ name: e.getAttribute('title'), href: e.getAttribute('href') }))"
-            )
-
-            for store in store_links:
-                store_name = store["name"] or store["href"]
-
-                # ---> THE FRONT-DOOR BOUNCER <---
-                # Immediately skip this store if it's not in the approved TEST_STORES list
-                if TEST_STORES and not any(t.lower() in store_name.lower() for t in TEST_STORES):
-                    continue
-
-                store_url = "https://d4donline.com/en/saudi-arabia/riyadh/" + store["href"].lstrip("/")
-                log.info("Scraping store: %s", store_name)
+            # ---> THE TELEPORTER UPGRADE <---
+            # Instantly builds the direct URL for each store to bypass buggy D4D menus!
+            for store_name in TEST_STORES:
+                encoded_name = urllib.parse.quote(store_name)
+                store_url = f"https://d4donline.com/en/saudi-arabia/riyadh/products?search={encoded_name}"
+                
+                log.info("Scraping store: %s (Direct URL)", store_name)
                 await page.goto(store_url, wait_until="domcontentloaded", timeout=30_000)
 
                 try:
                     await page.wait_for_selector(CARD_SELECTOR, timeout=15_000)
                 except PwTimeout:
+                    log.warning("No products found for %s. (Store might have 0 deals today)", store_name)
                     continue
 
                 click_count = 0
@@ -488,8 +483,8 @@ async def scrape(url: str) -> List[Dict]:
                 all_results.extend(products)
                 await asyncio.sleep(uniform(1.0, 2.0))
 
-        except PwTimeout:
-            log.error("Timed out. Check selectors or network.")
+        except Exception as e:
+            log.error(f"Navigation error: {e}")
             return []
         finally:
             await context.close()
@@ -520,7 +515,6 @@ async def scrape(url: str) -> List[Dict]:
         
         normalized_name = re.sub(r'[^a-z0-9]', '', original_name.lower())
         
-        # If an item failed and is named "unknownitem", don't squash them all together!
         if "unknownitem" in normalized_name:
             post_fingerprint = f"unknownitem_{unknown_count}|{store}"
             unknown_count += 1
@@ -558,7 +552,7 @@ def save_html(data: List[Dict]) -> None:
   h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }}
   .sidebar {{ position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }}
   .sidebar.open {{ left: 0; }}
-  .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
+  .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity opacity 0.3s ease; }}
   .sidebar-overlay.active {{ opacity: 1; pointer-events: auto; }}
   .sidebar-header {{ display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #f1f3f4; }}
   .sidebar-header h2 {{ font-size: 18px; font-weight: 600; color: #202124; }}
