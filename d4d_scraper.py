@@ -50,12 +50,7 @@ SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
 # Ensure stores are exactly as they appear in the database for the direct URL to work!
-TEST_STORES = [
-    "Nesto"
-    # "LULU Hypermarket", "Hyper Panda", "Othaim Markets", 
-    # "eXtra", "Danube", "Mark & Save", "Grand Hyper", 
-    # "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"
-]
+TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
 TARGET_PRODUCTS = []
 
 OUTPUT_HTML = Path("d4d_results.html")
@@ -386,11 +381,6 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
-        MAX_BUDGET_ITEMS = 150
-        if len(uncached_products) > MAX_BUDGET_ITEMS:
-            log.warning(f"💰 BUDGET CAP ACTIVE: Found {len(uncached_products)} new items. Limiting to {MAX_BUDGET_ITEMS} to protect API costs.")
-            uncached_products = uncached_products[:MAX_BUDGET_ITEMS]
-
         log.info("Running Gemini AI for %d missing/new items...", len(uncached_products))
         log.info("⏳ SPEED LIMIT ACTIVE: Processing max 15 items per minute to respect Google Quota.")
         
@@ -552,7 +542,7 @@ def save_html(data: List[Dict]) -> None:
   h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }}
   .sidebar {{ position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }}
   .sidebar.open {{ left: 0; }}
-  .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity opacity 0.3s ease; }}
+  .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
   .sidebar-overlay.active {{ opacity: 1; pointer-events: auto; }}
   .sidebar-header {{ display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #f1f3f4; }}
   .sidebar-header h2 {{ font-size: 18px; font-weight: 600; color: #202124; }}
