@@ -434,7 +434,8 @@ async def scrape(url: str) -> List[Dict]:
 
         page        = await context.new_page()
         all_results = []
-         try:
+
+        try:
             log.info("Loading store list from %s", url)
             await page.goto(url, wait_until="domcontentloaded", timeout=30_000)
             await page.wait_for_selector("div#outlet-nav", timeout=20_000)
@@ -632,8 +633,8 @@ def save_html(data: List[Dict]) -> None:
 <div class="filter-group">
                 <label>SORT BY</label>
                 <select id="sortDropdown" onchange="applyFilters()">
-                    <option value="default">Default Order</option>
-                    <option value="price-asc" selected>Price: Low to High</option>
+                    <option value="store-asc" selected>Store Name (A to Z)</option>
+                    <option value="price-asc">Price: Low to High</option>
                     <option value="price-desc">Price: High to Low</option>
                 </select>
             </div>
@@ -747,6 +748,8 @@ def save_html(data: List[Dict]) -> None:
         filteredData.sort((a, b) => (a.Price || 0) - (b.Price || 0));
     }} else if (sortVal === 'price-desc') {{
         filteredData.sort((a, b) => (b.Price || 0) - (a.Price || 0));
+    }} else if (sortVal === 'store-asc') {{
+        filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
     }}
 
     currentIndex = 0;
@@ -802,7 +805,7 @@ def save_html(data: List[Dict]) -> None:
 
   function resetFilters() {{
     document.getElementById('filter-product').value = '';
-    document.getElementById('sortDropdown').value = 'price-asc';
+    document.getElementById('sortDropdown').value = 'store-asc';
     document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
     slider.value = maxPrice;
