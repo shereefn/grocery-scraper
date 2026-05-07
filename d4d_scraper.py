@@ -435,10 +435,17 @@ async def scrape(url: str) -> List[Dict]:
         page        = await context.new_page()
         all_results = []
 
-        try:
+ try:
             log.info("Loading store list from %s", url)
             await page.goto(url, wait_until="domcontentloaded", timeout=30_000)
             await page.wait_for_selector("div#outlet-nav", timeout=20_000)
+
+            # ---> THE D4D BUG FIX (THE "HUMAN NUDGE") <---
+            log.info("Waiting for D4D to finish lazy-loading all stores...")
+            await asyncio.sleep(4.0) 
+            await page.evaluate("window.scrollBy(0, 500)") # Scroll down to wake up the page
+            await asyncio.sleep(1.0)
+            await page.evaluate("window.scrollBy(0, -500)") # Scroll back up
 
             store_links = await page.eval_on_selector_all(
                 "a.disable_link.company-product",
