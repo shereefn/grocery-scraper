@@ -381,6 +381,14 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
+        # ---> THE BATCH LIMITER <---
+        # Prevents GitHub Actions from killing the script after 6 hours!
+        # 1500 items will take approx 1.5 to 2 hours to process safely.
+        MAX_ITEMS_PER_RUN = 1500
+        if len(uncached_products) > MAX_ITEMS_PER_RUN:
+            log.warning(f"Batch limit active: Found {len(uncached_products)} new items. Limiting to {MAX_ITEMS_PER_RUN} to prevent GitHub timeout.")
+            uncached_products = uncached_products[:MAX_ITEMS_PER_RUN]
+
         log.info("Running Gemini AI for %d missing/new items...", len(uncached_products))
         log.info("⏳ SPEED LIMIT ACTIVE: Processing max 15 items per minute to respect Google Quota.")
         
