@@ -51,7 +51,6 @@ PRICE_ALERTS = [
 # 👇 PASTE YOUR PUBLISHED GOOGLE SHEETS CSV LINK HERE 👇
 SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93Ln5VB7EGXhSw7GLTNd5OgGzt-xk5Paxa4ftBHbdtPVZMyJwGX4xFJOjzVjyQMQd5C/pub?gid=0&single=true&output=csv"
 
-SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
 # Ensure stores are exactly as they appear in the database for the direct URL to work!
@@ -88,7 +87,7 @@ def fetch_sheet_shopping_list() -> List[str]:
         
         items = []
         for row in reader:
-            if row: # Check if the row is not empty
+            if row: 
                 item = row[0].strip().lower()
                 if item:
                     items.append(item)
@@ -463,7 +462,7 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
 # Playwright scraping
 # ---------------------------------------------------------------------------
 
-async def scrape(url: str) -> List[Dict]:
+async def scrape(target_list: List[str]) -> List[Dict]:
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
         context = await browser.new_context(
@@ -478,40 +477,49 @@ async def scrape(url: str) -> List[Dict]:
         all_results = []
 
         try:
-            if not TEST_STORES:
-                log.error("TEST_STORES list is empty! Please add stores to scrape.")
+            if not target_list:
+                log.error("Shopping list is empty! Nothing to search for.")
                 return []
 
-            for store_name in TEST_STORES:
-                encoded_name = urllib.parse.quote(store_name)
-                store_url = f"https://d4donline.com/en/saudi-arabia/riyadh/products?search={encoded_name}"
+            # ---> THE SEARCH BAR PIVOT <---
+            # We search for your SPECIFIC GROCERY ITEMS instead of entire stores!
+            for item_name in target_list:
+                encoded_name = urllib.parse.quote(item_name)
+                search_url = f"https://d4donline.com/en/saudi-arabia/riyadh/products?search={encoded_name}"
                 
-                log.info("Scraping store: %s (Direct URL)", store_name)
-                await page.goto(store_url, wait_until="domcontentloaded", timeout=30_000)
+                log.info("🔍 Searching D4D for: %s", item_name)
+                await page.goto(search_url, wait_until="domcontentloaded", timeout=30_000)
 
                 try:
-                    await page.wait_for_selector(CARD_SELECTOR, timeout=15_000)
+                    await page.wait_for_selector(CARD_SELECTOR, timeout=10_000)
                 except PwTimeout:
-                    log.warning("No products found for %s. (Store might have 0 deals today)", store_name)
+                    log.warning("No deals found on D4D for: %s", item_name)
                     continue
 
+                # We don't need 100 clicks for a specific item search, 10 is plenty!
                 click_count = 0
-                max_clicks = 100 
+                max_clicks = 10 
 
                 while click_count < max_clicks:
                     try:
-                        btn = await page.wait_for_selector("a.view-more-products", timeout=5_000)
+                        btn = await page.wait_for_selector("a.view-more-products", timeout=3_000)
                         await btn.scroll_into_view_if_needed()
                         await btn.click()
                         click_count += 1
-                        await asyncio.sleep(uniform(1.5, 2.5))
+                        await asyncio.sleep(uniform(1.0, 2.0))
                     except PwTimeout:
                         break
 
                 html     = await page.content()
                 products = parse_products(html)
-                log.info("  → %d products from %s", len(products), store_name)
-                all_results.extend(products)
+                
+                # Filter immediately so we ONLY keep items from your approved stores
+                for p in products:
+                    store_name = p.get("Store", "").lower()
+                    if TEST_STORES and any(t.lower() in store_name for t in TEST_STORES):
+                        all_results.append(p)
+                        
+                log.info("  → Found %d matching store deals for '%s'", len(products), item_name)
                 await asyncio.sleep(uniform(1.0, 2.0))
 
         except Exception as e:
@@ -903,19 +911,10 @@ async def main() -> None:
         import sys
         sys.exit(1) # This completely stops the script right here!
 
-    results = await scrape(SEARCH_URL)
+    results = await scrape(TARGET_PRODUCTS) # <--- NOW WE PASS YOUR LIST TO THE SCRAPER!
     
-    if TEST_STORES and results:
-        log.info("Scrubbing sponsored ads from unapproved stores...")
-        clean_results = []
-        for item in results:
-            store_name = item.get("Store", "").lower()
-            if any(t.lower() in store_name for t in TEST_STORES):
-                clean_results.append(item)
-        results = clean_results
-        
     if TARGET_PRODUCTS and results:
-        log.info(f"Filtering results to ONLY include your {len(TARGET_PRODUCTS)} list items...")
+        log.info(f"Filtering results to firmly include your {len(TARGET_PRODUCTS)} list items...")
         filtered_results = []
         for item in results:
             product_name = item.get("Product", "").lower()
