@@ -12,6 +12,7 @@ from random import uniform
 from typing import Optional, List, Dict, Tuple
 
 import httpx
+import gkeepapi
 from google import genai
 from google.genai import types
 from bs4 import BeautifulSoup
@@ -51,7 +52,7 @@ CARD_SELECTOR = "a.product-card"
 
 # Ensure stores are exactly as they appear in the database for the direct URL to work!
 TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
-TARGET_PRODUCTS = []
+TARGET_PRODUCTS = [] # This will now be dynamically filled by Google Keep!
 
 OUTPUT_HTML = Path("d4d_results.html")
 OUTPUT_JSON = Path("d4d_results.json")
@@ -65,6 +66,52 @@ log = logging.getLogger(__name__)
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+
+# ---------------------------------------------------------------------------
+# Google Keep Engine
+# ---------------------------------------------------------------------------
+def fetch_keep_shopping_list() -> List[str]:
+    if not EMAIL_APP_PASSWORD:
+        log.warning("No App Password found. Cannot connect to Google Keep.")
+        return []
+    
+    log.info("📱 Connecting to Google Keep to fetch your shopping list...")
+    try:
+        keep = gkeepapi.Keep()
+        # Uses your existing app password to log into Keep!
+        keep.login(SENDER_EMAIL, EMAIL_APP_PASSWORD)
+        
+        # Find the specific note
+        notes = list(keep.find(query='Weekly Shopping List'))
+        target_note = None
+        
+        for n in notes:
+            if n.title.strip().lower() == 'weekly shopping list':
+                target_note = n
+                break
+                
+        if not target_note:
+            if notes:
+                target_note = notes[0] # Fallback if exact title match fails
+            else:
+                log.warning("Could not find a note named 'Weekly Shopping List' in your Google Keep.")
+                return []
+        
+        items = []
+        for item in target_note.items:
+            # Only grab items that are NOT checked off yet
+            if not item.checked:
+                text = item.text.strip().lower()
+                if text:
+                    items.append(text)
+        
+        log.info(f"✅ Loaded {len(items)} active items from Google Keep: {items}")
+        return items
+        
+    except Exception as e:
+        log.error(f"❌ Failed to connect to Google Keep: {e}")
+        return []
 
 
 # ---------------------------------------------------------------------------
@@ -381,13 +428,10 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
-        # ---> THE BATCH LIMITER <---
-        # Prevents GitHub Actions from killing the script after 6 hours!
-        # 1500 items will take approx 1.5 to 2 hours to process safely.
-        MAX_ITEMS_PER_RUN = 2500
-        if len(uncached_products) > MAX_ITEMS_PER_RUN:
-            log.warning(f"Batch limit active: Found {len(uncached_products)} new items. Limiting to {MAX_ITEMS_PER_RUN} to prevent GitHub timeout.")
-            uncached_products = uncached_products[:MAX_ITEMS_PER_RUN]
+        MAX_BUDGET_ITEMS = 2500
+        if len(uncached_products) > MAX_BUDGET_ITEMS:
+            log.warning(f"💰 BUDGET CAP ACTIVE: Found {len(uncached_products)} new items. Limiting to {MAX_BUDGET_ITEMS} to protect API costs.")
+            uncached_products = uncached_products[:MAX_BUDGET_ITEMS]
 
         log.info("Running Gemini AI for %d missing/new items...", len(uncached_products))
         log.info("⏳ SPEED LIMIT ACTIVE: Processing max 15 items per minute to respect Google Quota.")
@@ -447,8 +491,6 @@ async def scrape(url: str) -> List[Dict]:
                 log.error("TEST_STORES list is empty! Please add stores to scrape.")
                 return []
 
-            # ---> THE TELEPORTER UPGRADE <---
-            # Instantly builds the direct URL for each store to bypass buggy D4D menus!
             for store_name in TEST_STORES:
                 encoded_name = urllib.parse.quote(store_name)
                 store_url = f"https://d4donline.com/en/saudi-arabia/riyadh/products?search={encoded_name}"
@@ -861,6 +903,13 @@ def save_html(data: List[Dict]) -> None:
 # ---------------------------------------------------------------------------
 
 async def main() -> None:
+    # Fetch your dynamically requested list from Google Keep FIRST!
+    global TARGET_PRODUCTS
+    TARGET_PRODUCTS = fetch_keep_shopping_list()
+    
+    if not TARGET_PRODUCTS:
+        log.warning("⚠️ TARGET_PRODUCTS list from Keep is empty or failed to load. The script will scrape ALL items.")
+
     results = await scrape(SEARCH_URL)
     
     if TEST_STORES and results:
@@ -873,10 +922,11 @@ async def main() -> None:
         results = clean_results
         
     if TARGET_PRODUCTS and results:
-        log.info("Filtering results to only include items from the TARGET_PRODUCTS list...")
+        log.info(f"Filtering results to ONLY include your {len(TARGET_PRODUCTS)} Keep items...")
         filtered_results = []
         for item in results:
             product_name = item.get("Product", "").lower()
+            # If ANY word from your Google Keep list matches the product name, keep it!
             if any(target.lower() in product_name for target in TARGET_PRODUCTS):
                 filtered_results.append(item)
                 
