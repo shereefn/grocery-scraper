@@ -3,6 +3,7 @@ import json
 import logging
 import re
 import os
+import sys
 import smtplib
 import urllib.parse
 from email.mime.text import MIMEText
@@ -73,14 +74,14 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # ---------------------------------------------------------------------------
 def fetch_keep_shopping_list() -> List[str]:
     if not EMAIL_APP_PASSWORD:
-        log.warning("No App Password found. Cannot connect to Google Keep.")
+        log.error("No App Password found. Cannot connect to Google Keep.")
         return []
     
     log.info("📱 Connecting to Google Keep to fetch your shopping list...")
     try:
         keep = gkeepapi.Keep()
-        # Uses your existing app password to log into Keep!
-        keep.login(SENDER_EMAIL, EMAIL_APP_PASSWORD)
+        # UPDATED: Changed from login to authenticate to fix the deprecation error
+        keep.authenticate(SENDER_EMAIL, EMAIL_APP_PASSWORD)
         
         # Find the specific note
         notes = list(keep.find(query='Weekly Shopping List'))
@@ -95,7 +96,7 @@ def fetch_keep_shopping_list() -> List[str]:
             if notes:
                 target_note = notes[0] # Fallback if exact title match fails
             else:
-                log.warning("Could not find a note named 'Weekly Shopping List' in your Google Keep.")
+                log.error("Could not find a note named 'Weekly Shopping List' in your Google Keep.")
                 return []
         
         items = []
@@ -106,7 +107,11 @@ def fetch_keep_shopping_list() -> List[str]:
                 if text:
                     items.append(text)
         
-        log.info(f"✅ Loaded {len(items)} active items from Google Keep: {items}")
+        if items:
+            log.info(f"✅ Loaded {len(items)} active items from Google Keep: {items}")
+        else:
+            log.info("✅ Connected to Google Keep, but your 'Weekly Shopping List' has no unchecked items!")
+            
         return items
         
     except Exception as e:
@@ -428,7 +433,7 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
-        MAX_BUDGET_ITEMS = 2500
+        MAX_BUDGET_ITEMS = 3000
         if len(uncached_products) > MAX_BUDGET_ITEMS:
             log.warning(f"💰 BUDGET CAP ACTIVE: Found {len(uncached_products)} new items. Limiting to {MAX_BUDGET_ITEMS} to protect API costs.")
             uncached_products = uncached_products[:MAX_BUDGET_ITEMS]
@@ -908,7 +913,8 @@ async def main() -> None:
     TARGET_PRODUCTS = fetch_keep_shopping_list()
     
     if not TARGET_PRODUCTS:
-        log.warning("⚠️ TARGET_PRODUCTS list from Keep is empty or failed to load. The script will scrape ALL items.")
+        log.error("🚨 CRITICAL: Failed to load Google Keep list (or list is empty). STOPPING THE SCRIPT so it doesn't scrape everything!")
+        sys.exit(1) # This completely stops the script right here!
 
     results = await scrape(SEARCH_URL)
     
