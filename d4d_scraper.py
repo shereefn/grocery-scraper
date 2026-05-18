@@ -3,9 +3,10 @@ import json
 import logging
 import re
 import os
-import sys
 import smtplib
+import urllib.request
 import urllib.parse
+import csv
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
@@ -13,7 +14,6 @@ from random import uniform
 from typing import Optional, List, Dict, Tuple
 
 import httpx
-import gkeepapi
 from google import genai
 from google.genai import types
 from bs4 import BeautifulSoup
@@ -48,12 +48,15 @@ PRICE_ALERTS = [
     {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
 ]
 
+# 👇 PASTE YOUR PUBLISHED GOOGLE SHEETS CSV LINK HERE 👇
+SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93Ln5VB7EGXhSw7GLTNd5OgGzt-xk5Paxa4ftBHbdtPVZMyJwGX4xFJOjzVjyQMQd5C/pub?gid=0&single=true&output=csv"
+
 SEARCH_URL    = "https://d4donline.com/en/saudi-arabia/riyadh/products"
 CARD_SELECTOR = "a.product-card"
 
 # Ensure stores are exactly as they appear in the database for the direct URL to work!
 TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
-TARGET_PRODUCTS = [] # This will now be dynamically filled by Google Keep!
+TARGET_PRODUCTS = [] # This will now be dynamically filled by Google Sheets!
 
 OUTPUT_HTML = Path("d4d_results.html")
 OUTPUT_JSON = Path("d4d_results.json")
@@ -70,52 +73,35 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 # ---------------------------------------------------------------------------
-# Google Keep Engine
+# Google Sheets Engine (Password-Free!)
 # ---------------------------------------------------------------------------
-def fetch_keep_shopping_list() -> List[str]:
-    if not EMAIL_APP_PASSWORD:
-        log.error("No App Password found. Cannot connect to Google Keep.")
+def fetch_sheet_shopping_list() -> List[str]:
+    if SHEET_CSV_URL == "PASTE_YOUR_LINK_HERE":
+        log.error("🚨 CRITICAL: You forgot to paste your Google Sheets CSV link in the code!")
         return []
-    
-    log.info("📱 Connecting to Google Keep to fetch your shopping list...")
+
+    log.info("📊 Fetching shopping list from Google Sheets...")
     try:
-        keep = gkeepapi.Keep()
-        # UPDATED: Changed from login to authenticate to fix the deprecation error
-        keep.authenticate(SENDER_EMAIL, EMAIL_APP_PASSWORD)
-        
-        # Find the specific note
-        notes = list(keep.find(query='Weekly Shopping List'))
-        target_note = None
-        
-        for n in notes:
-            if n.title.strip().lower() == 'weekly shopping list':
-                target_note = n
-                break
-                
-        if not target_note:
-            if notes:
-                target_note = notes[0] # Fallback if exact title match fails
-            else:
-                log.error("Could not find a note named 'Weekly Shopping List' in your Google Keep.")
-                return []
+        response = urllib.request.urlopen(SHEET_CSV_URL)
+        lines = [l.decode('utf-8') for l in response.readlines()]
+        reader = csv.reader(lines)
         
         items = []
-        for item in target_note.items:
-            # Only grab items that are NOT checked off yet
-            if not item.checked:
-                text = item.text.strip().lower()
-                if text:
-                    items.append(text)
-        
+        for row in reader:
+            if row: # Check if the row is not empty
+                item = row[0].strip().lower()
+                if item:
+                    items.append(item)
+                    
         if items:
-            log.info(f"✅ Loaded {len(items)} active items from Google Keep: {items}")
+            log.info(f"✅ Loaded {len(items)} active items from Google Sheets: {items}")
         else:
-            log.info("✅ Connected to Google Keep, but your 'Weekly Shopping List' has no unchecked items!")
+            log.info("✅ Connected to Google Sheets, but your list is empty!")
             
         return items
         
     except Exception as e:
-        log.error(f"❌ Failed to connect to Google Keep: {e}")
+        log.error(f"❌ Failed to fetch Google Sheet: {e}")
         return []
 
 
@@ -908,12 +894,13 @@ def save_html(data: List[Dict]) -> None:
 # ---------------------------------------------------------------------------
 
 async def main() -> None:
-    # Fetch your dynamically requested list from Google Keep FIRST!
+    # Fetch your dynamically requested list from Google Sheets FIRST!
     global TARGET_PRODUCTS
-    TARGET_PRODUCTS = fetch_keep_shopping_list()
+    TARGET_PRODUCTS = fetch_sheet_shopping_list()
     
     if not TARGET_PRODUCTS:
-        log.error("🚨 CRITICAL: Failed to load Google Keep list (or list is empty). STOPPING THE SCRIPT so it doesn't scrape everything!")
+        log.error("🚨 CRITICAL: Failed to load Google Sheets list (or list is empty). STOPPING THE SCRIPT so it doesn't scrape everything!")
+        import sys
         sys.exit(1) # This completely stops the script right here!
 
     results = await scrape(SEARCH_URL)
@@ -928,11 +915,11 @@ async def main() -> None:
         results = clean_results
         
     if TARGET_PRODUCTS and results:
-        log.info(f"Filtering results to ONLY include your {len(TARGET_PRODUCTS)} Keep items...")
+        log.info(f"Filtering results to ONLY include your {len(TARGET_PRODUCTS)} list items...")
         filtered_results = []
         for item in results:
             product_name = item.get("Product", "").lower()
-            # If ANY word from your Google Keep list matches the product name, keep it!
+            # If ANY word from your list matches the product name, keep it!
             if any(target.lower() in product_name for target in TARGET_PRODUCTS):
                 filtered_results.append(item)
                 
