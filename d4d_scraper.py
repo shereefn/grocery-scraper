@@ -45,7 +45,8 @@ PRICE_ALERTS = [
     {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
     {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
     {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
-    {"keyword": "Long Life Milk 1L", "max_price": 44.0} 
+    {"keyword": "Long Life Milk 1L", "max_price": 44.0} ,
+    {"keyword": "Lux Dishwash 1.25ltr", "max_price": 10.0} 
 ]
 
 # 👇 PASTE YOUR PUBLISHED GOOGLE SHEETS CSV LINK HERE 👇
