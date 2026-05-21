@@ -298,10 +298,23 @@ def extract_price(card) -> Optional[float]:
 def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
     try:
         data = json.loads(raw_val)
-        return data.get("name", "Unknown item"), data.get("price")
+        
+        # ---> NEW SAFETY NET <---
+        # If Gemini accidentally wraps the JSON in a list [ ], grab the first item inside it
+        if isinstance(data, list):
+            if len(data) > 0 and isinstance(data[0], dict):
+                data = data[0]
+            else:
+                return "Unknown item", None
+                
+        # Now safely extract using .get() since we know it is a dictionary
+        if isinstance(data, dict):
+            return data.get("name", "Unknown item"), data.get("price")
+            
     except json.JSONDecodeError:
         pass
         
+    # Fallback parsing for weird AI text formats
     if "||" in raw_val:
         parts = raw_val.split("||", 1)
         name = parts[0].strip()
@@ -317,7 +330,6 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
         return name, price
         
     return raw_val.strip(), None
-
 
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
