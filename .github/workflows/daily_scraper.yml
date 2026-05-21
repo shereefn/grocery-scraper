@@ -2,12 +2,8 @@ name: Daily D4D Scraper
 
 on:
   schedule:
-    # 04:00 UTC = 7:00 AM Saudi Time (Every Monday)
-    - cron: '0 4 * * 1'
-    # 05:00 UTC = 8:00 AM Saudi Time (Every Thursday)
-    - cron: '0 5 * * 4'
-    # 11:00 UTC = 2:00 PM Saudi Time (Every Thursday)
-    - cron: '0 11 * * 4'
+    # 01:00 UTC = 4:00 AM Saudi Time (Runs every 2 days)
+    - cron: '0 1 */2 * *'
   workflow_dispatch:
 
 # --- NEW: Gives the robot permission to save files to your repository ---
