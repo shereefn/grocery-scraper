@@ -677,13 +677,14 @@ def save_html(data: List[Dict]) -> None:
   <div class="sidebar-content">
     
 <div class="filter-group">
-                <label>SORT BY</label>
-                <select id="sortDropdown" onchange="applyFilters()">
-                    <option value="store-asc" selected>Store Name (A to Z)</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                </select>
-            </div>
+    <label>SORT BY</label>
+    <select id="sortDropdown" onchange="applyFilters()">
+        <option value="offer-desc" selected>Highest Offer %</option>
+        <option value="store-asc">Store Name (A to Z)</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+    </select>
+</div>
 
     <div class="filter-group">
       <label>Max Price</label>
@@ -797,6 +798,9 @@ def save_html(data: List[Dict]) -> None:
     }} else if (sortVal === 'store-asc') {{
         filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
     }}
+    else if (sortVal === 'offer-desc') {{
+        filteredData.sort((a, b) => getOfferVal(b.Offer) - getOfferVal(a.Offer));
+    }}
 
     currentIndex = 0;
     tbody.innerHTML = ''; 
@@ -849,15 +853,15 @@ def save_html(data: List[Dict]) -> None:
 
   applyFilters();
 
-  function resetFilters() {{
+function resetFilters() {
     document.getElementById('filter-product').value = '';
-    document.getElementById('sortDropdown').value = 'store-asc';
+    document.getElementById('sortDropdown').value = 'offer-desc'; // <--- Update this line!
     document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
     slider.value = maxPrice;
     filterStoreList();
     applyFilters();
-  }}
+  }
 
   function filterStoreList() {{
       let input = document.getElementById('storeSearchInput').value.toLowerCase();
