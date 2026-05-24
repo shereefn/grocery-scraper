@@ -45,7 +45,7 @@ PRICE_ALERTS = [
     {"keyword": "Noor Sunflower Oil 2x1.5 500ml", "max_price": 35.0},
     {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
     {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
-    {"keyword": "Long Life Milk 1L", "max_price": 44.0} ,
+    {"keyword": "Long Life Milk 1L", "max_price": 44.0},
     {"keyword": "Lux Dishwash 1.25ltr", "max_price": 10.0} 
 ]
 
@@ -330,6 +330,7 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
         return name, price
         
     return raw_val.strip(), None
+
 
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
@@ -764,6 +765,13 @@ def save_html(data: List[Dict]) -> None:
     sidebar.classList.toggle('open');
     overlay.classList.toggle('active');
   }}
+  
+  // Helper function to extract the number from "50.4 % Off"
+  function getOfferVal(offerStr) {{
+      if (!offerStr) return 0;
+      const match = String(offerStr).match(/[\d.]+/);
+      return match ? parseFloat(match[0]) : 0;
+  }}
 
   function applyFilters() {{
     const searchQuery = document.getElementById('filter-product').value.toLowerCase().trim();
@@ -797,8 +805,7 @@ def save_html(data: List[Dict]) -> None:
         filteredData.sort((a, b) => (b.Price || 0) - (a.Price || 0));
     }} else if (sortVal === 'store-asc') {{
         filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
-    }}
-    else if (sortVal === 'offer-desc') {{
+    }} else if (sortVal === 'offer-desc') {{
         filteredData.sort((a, b) => getOfferVal(b.Offer) - getOfferVal(a.Offer));
     }}
 
@@ -853,15 +860,15 @@ def save_html(data: List[Dict]) -> None:
 
   applyFilters();
 
-function resetFilters() {
+  function resetFilters() {{
     document.getElementById('filter-product').value = '';
-    document.getElementById('sortDropdown').value = 'offer-desc'; // <--- Update this line!
+    document.getElementById('sortDropdown').value = 'offer-desc'; 
     document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
     slider.value = maxPrice;
     filterStoreList();
     applyFilters();
-  }
+  }}
 
   function filterStoreList() {{
       let input = document.getElementById('storeSearchInput').value.toLowerCase();
