@@ -161,6 +161,13 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/03/16/d7c7c6e87fb2c4124c6432210ab75157.jpg"
   },
   {
+    "Store": "Hyper Al Wafa",
+    "Product": "Apple iPhone 17 Pro Max 256GB",
+    "Price": 4999.0,
+    "Offer": "3.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/eecbaca15ada229ade95c9182d95989b.jpg"
+  },
+  {
     "Store": "Mark & Save",
     "Product": "Apple iPhone 17 Pro Max 256GB",
     "Price": 5399.0,
@@ -186,7 +193,7 @@
     "Product": "Potato/Kg",
     "Price": 2.95,
     "Offer": "50.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/250f93f4ff3ded4d5d36a8de360f7b8b.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a636266d366cdc22310006810600b1f1.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -442,10 +449,10 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "ANCHOR MILK POWDER 2.250 KG",
-    "Price": 56.99,
-    "Offer": "32.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/b0eb7c04adf919d0f05d30fd3dafafe2.jpg"
+    "Product": "Anchor Milk Powder 2.25 Kg",
+    "Price": 52.95,
+    "Offer": "36.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/ac953fc70bc051d8e97aaa8b06091c30.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -554,17 +561,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Cadbury Dairy Milk Bubbly 87GM",
-    "Price": 7.95,
-    "Offer": "16.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/5c9f4fde2b07e8a75ca4d99d4a61389d.jpg"
+    "Product": "Cadbury Dairy Milk Minis Hazelnut Chocolate Bag 156 g",
+    "Price": 9.95,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/990482cd8e595e5cf9f35af0c04715d9.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Cadbury Dairy Milk Chocolate Bar 12X18.5g",
+    "Price": 9.95,
+    "Offer": "41.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a1c4769f3e33596934d72d7e69805ab2.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
     "Product": "Cadbury Milk Chocolate Assortment Tin 500g",
-    "Price": 31.95,
-    "Offer": "54.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/b87a67604883efba9ee2362149e164d8.jpg"
+    "Price": 25.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e463f21375ff31125ab4f20a0822b372.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -708,24 +722,10 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "SAFIO UHT MILK ASTD 18X140ML",
-    "Price": 18.95,
-    "Offer": "24                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/1cfe3f5b8579acd07e358f954c8cd67e.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Nadec UHT Milk 12x1L",
-    "Price": 49.95,
-    "Offer": "20.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/d735b7ea153a0042f1c5c44edfd0af40.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "NADA UHT MILK 4X1LTR",
-    "Price": 14.99,
-    "Offer": "34.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/94d6f8bafd34cd22f7d7c806606e61d7.jpg"
+    "Product": "Almarai UHT Milk 4x1 Ltr",
+    "Price": 16.95,
+    "Offer": "32.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/c4f3b7739f13a6645ddf1c7d2d01ec5d.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -767,7 +767,7 @@
     "Product": "Toblerone Chocolate 6x100g",
     "Price": 31.95,
     "Offer": "20                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/1d918cf350eea49a2bf9a2b3d7c5457e.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a54d82fb9bdaf35d9185540d09ca8dbf.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -810,13 +810,6 @@
     "Price": 4.5,
     "Offer": "28                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/ec3ff1472c204773a8b223771974304a.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Watermelon/ Kg",
-    "Price": 1.75,
-    "Offer": "55.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/bf67d9b456a52945fadb61049c3307c0.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -1155,20 +1148,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/68824f46f22967b7d274165fbe873dee.jpg"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "RANI JUICE ASSTD 1.4LTR",
-    "Price": 6.95,
-    "Offer": "22.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/f77d1a812958a373e174068fc91f35e3.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "ALMARAI UHT JUICE ASTD 18X140ML",
-    "Price": 13.99,
-    "Offer": "36.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/bc3cdb3abfcfdcea2601422a5b25ffc6.jpg"
-  },
-  {
     "Store": "Mark & Save",
     "Product": "Almarai Fresh Juice 1.4 L",
     "Price": 8.25,
@@ -1258,6 +1237,13 @@
     "Price": 18.99,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/707133eae59d8efd1b4dc1fcd8bbea8d.jpg"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Al Alia Chicken Strips 700Gm",
+    "Price": 18.99,
+    "Offer": "42.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/bc4306775a1715871720f4eb1db0b4c4.jpg"
   },
   {
     "Store": "Nesto",
@@ -1513,101 +1499,199 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "SADIA CHICKEN 1200GM",
-    "Price": 17.99,
-    "Offer": "24.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/01c737124f9a4e25e3fcdca0041e785a.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "ADDOHA FROZEN CHICKEN PARTS 2KG",
-    "Price": 18.95,
-    "Offer": "29.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/eb2e96882203ad495a7395ff0b6f5c89.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "WAFRAH CHICKEN NUGGETS REGULAR 400GM",
-    "Price": 14.95,
-    "Offer": "23.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/6596cae5922bb22ff9a52eeb230334b7.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Entaj Frozen Chicken Liver 400gm",
-    "Price": 2.95,
-    "Offer": "34.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/f26d8a806a88bec1f440a67fb7a9e306.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Seara Frozen Chicken Franks 3x340gm",
-    "Price": 13.95,
-    "Offer": "22.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/abc55432b5290bb0ee64004823dd2756.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Waseel Chicken Burger 1kg",
-    "Price": 9.95,
+    "Product": "Seara Breaded Chicken Burger 840g",
+    "Price": 19.95,
     "Offer": "37.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/a2489b652e49856e703408c5d73c5860.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/8cd18e6f78deafcdbe5fee03df6c7606.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "MAYDA TENDER CHICKEN BREAST 1KG",
-    "Price": 18.99,
-    "Offer": "34.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/3b95a5e2e3efa6afb02049afaaaacacd.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Fakieh Frozen Chicken 10x600GM",
-    "Price": 89.0,
-    "Offer": "15.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/2d8e7fa35b35de38229dd0b510053366.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Fakieh Chicken Whole Leg 400g",
+    "Product": "Seara Chicken /Beef Minced 350g",
     "Price": 6.95,
-    "Offer": "30.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/6e0069c6627ef6616c5122f030bdfc01.jpg"
+    "Offer": "22.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/740fd4d0bb9aae2527dc083890e47b9a.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Fakieh Chicken Wings 400g",
-    "Price": 3.95,
-    "Offer": "43.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/b41633eed8baaffdf72961c5d1900e44.jpg"
+    "Product": "Seara Chicken Nuggets 350g",
+    "Price": 10.95,
+    "Offer": "42.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/0179973a41de0545f2d6cfbc489f54b8.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Strips/spicy 750g",
+    "Price": 26.95,
+    "Offer": "37.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/4b859dee3d644eabda5059eb2d19dd09.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Fillet / spicy 750g",
+    "Price": 26.95,
+    "Offer": "15.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/609d817a1c11e057cb07361f9e92004b.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Musahab 750g",
+    "Price": 21.95,
+    "Offer": "26.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a708fef882872ef8003cc4e5f72b90af.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Nuggets Tempura 750g",
+    "Price": 21.95,
+    "Offer": "35.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/2796377ec5bb30f70d5a3b6c2c97be2e.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Tikka 400g",
+    "Price": 13.5,
+    "Offer": "41.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a8c898aada3de2106d24af71b7c6d841.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Fillets 400g",
+    "Price": 16.95,
+    "Offer": "26.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b9ebffcf2f69dbb709cb8c2c5552c898.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Strips/Spicy 350g",
+    "Price": 12.95,
+    "Offer": "43.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/c3ed04144e068b8573b9e4a4ee522267.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Seara Chicken Nuggets 750g",
+    "Price": 19.95,
+    "Offer": "37.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/5e6b6dfc4e9f68fdb25af5e8a37cc4f7.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Qualiko Chicken Nuggets 700g",
+    "Price": 10.95,
+    "Offer": "42.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7e44401e6e5ab174cd866a0929b7af16.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Sadia Chicken Drumsticks 900g",
+    "Price": 11.95,
+    "Offer": "45.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/24902edc73e58ea159de1d31c2e26171.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Fakieh Chicken Liver 400g",
+    "Price": 3.5,
+    "Offer": "56                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/bcbba8dbb408ed8a7029861710d3c599.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Doux Chicken Nuggets 1Kg",
+    "Price": 20.95,
+    "Offer": "19.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/07dce15437efe2e01634d67dc5229b8a.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Mayda Chicken Franks 300g",
+    "Price": 3.5,
+    "Offer": "49.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/0aaa4014ecaf25f0ca56ab0eefb660b8.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Sadia Chicken Griller 10x1200g",
+    "Price": 17.95,
+    "Offer": "28.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/57e4c561115c023fd93deeb9ef63671b.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Mayda Tender Chicken Breast 1Kg",
+    "Price": 19.95,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/17f9081134f721bb63ce7354d19f8cc8.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Addoha Chicken Mix Parts 2kg",
+    "Price": 19.95,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/cd3dd541a53ff0ff5699ae2ab2ff7a6a.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Royal Chicken Burger 672g",
+    "Price": 10.95,
+    "Offer": "26.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7780410ba3c6baebdc260857b29410a5.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
     "Product": "Al Nasriyah Fresh Chicken 1000g",
-    "Price": 14.95,
+    "Price": 15.95,
     "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/82fd673a5add391509946daf43db6f6c.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/ef331b92c9d71f531edf58bb28271cad.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Albashayer Chicken Mix Parts 800g",
-    "Price": 9.95,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/fbe2ea65e133936dc5cfc7d038f685f5.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Sadia Chicken Drumstick 900g",
-    "Price": 10.95,
-    "Offer": "50.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/78b0b75cfd406f4d62cb7d336528591a.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Sadia Frozen Chicken 1200g",
+    "Product": "Doux Frozen Chicken 1300g",
     "Price": 14.95,
-    "Offer": "34.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/92acc6feb450b70ed8febc21bc3b3157.jpg"
+    "Offer": "37.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/4a485357d63cea6328db461c755796a8.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Entaj Frozen Chicken 1200Gm",
+    "Price": 17.95,
+    "Offer": "21.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/3f5413a38ea464e3945743175e460bd6.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Al Watania Fresh Chicken 1000 GM",
+    "Price": 17.5,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/b5cdb3b1eea2ff5d26a2cec8c60d00b2.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Golden Fresh Whole Chicken",
+    "Price": 17.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/abcd070a487d11c7dc66047ae312e59d.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Tanmiah Fresh Chicken Bag 1000 GM",
+    "Price": 17.5,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/574cec184ce69a2036b3d73be45580ac.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Daily Fresh Chicken Breast Boneless 500 GM",
+    "Price": 15.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/7b86e686bf6765d748736a9ef35b5a80.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Golden Fresh Chicken Mixed Parts 800 gm",
+    "Price": 10.5,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/eb26ad3c1905759e59e870effbc2efe4.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -1932,97 +2016,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/890e9a8ab9ca5fbcff1d4adb17f92393.jpg"
   },
   {
-    "Store": "Grand Hyper",
-    "Product": "AMERICANA CHICKEN FRANKS 3X300GM",
-    "Price": 9.95,
-    "Offer": "23.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/c6ebb7f5f561933cb8a6f5a1001a33b4.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "AMERICANA CHICKEN BURGER 1KG",
-    "Price": 22.95,
-    "Offer": "23.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/ea5119df6c948fadc64b70446a4ccbe3.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "AMERICANA CHICKEN STRIPS (PLAIN/SPICY) 750GM",
-    "Price": 24.5,
-    "Offer": "18.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/d9bcc29c6d29ac57c561b96d3dce4d05.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "AMERICANA 12 BURGER CHICKEN 672 GM",
-    "Price": 17.5,
-    "Offer": "39.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/30b60e04a5bcac2f3f444bc6e6a1fbc5.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "MAYDA MINCED CHICKEN 400GM",
-    "Price": 3.95,
-    "Offer": "28.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/8629ee6c4cb6f7eab9beadae4afd0ef8.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "Sadia Tender Chicken Breast 1KG",
-    "Price": 23.95,
-    "Offer": "22.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/bf41e8c02796f7d145d149072a74313a.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "OSSOUL FROZEN CHICKEN LIVER 400GM",
-    "Price": 3.5,
-    "Offer": "22.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/e4b1691acc6644f579c9b0d82344207a.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "SEARA CHICKEN FRANKS 340GM",
-    "Price": 3.95,
-    "Offer": "20.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/09b508c1d377a2de7386d89489eec839.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "Sadia Chicken Nuggets 270gm or Tenders 280gm",
-    "Price": 8.5,
-    "Offer": "39.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/0edc59ea6fb2bd0f01f3a2e7a81f0aa5.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "ADDOHA FRESH WHOLE CHICKEN BAG 1000G",
-    "Price": 17.95,
-    "Offer": "12.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/71648c1785f0c0544d704b89e26416f7.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "AL NASIRIYAH FRESH CHICKEN MIXED PARTS SKINLESS 800GM",
-    "Price": 11.95,
-    "Offer": "4.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/179c02e1a3becdc64ec78d88e8cef1cf.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "AL NASIRIYAH FRESH WHOLE CHICKEN BAG 1000G",
-    "Price": 15.95,
-    "Offer": "18.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/b1533c80815a908135bc6b3c66d3c693.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "MAYDA CHICKEN BREAST 1KG",
-    "Price": 18.95,
-    "Offer": "36.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/479abf4a9a8a81bcd351773c679834df.jpg"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Fakieh Fresh White Eggs Medium 30s",
     "Price": 10.95,
@@ -2147,6 +2140,13 @@
     "Price": 19.95,
     "Offer": "45.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/5cfa21aa971a337d1d60754a1676b8dc.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Himalaya Purifying Neem Face Wash 150ml",
+    "Price": 17.95,
+    "Offer": "35.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7edb2bf42ea3f6249897203ead637226.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -2422,20 +2422,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/4276a72f9c35574e12fa7ee8ade8cfc4.jpg"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Vaseline Intensive Care Aloe Soothe Body Lotion 400ml",
-    "Price": 18.95,
-    "Offer": "27                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/cfed49af7dcb7dab43c7b0ddb3d7b56a.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Vaseline Hair Tonic 400ml",
-    "Price": 13.95,
-    "Offer": "36.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/26025f4553d912ff14c7e919fd5636ff.jpg"
-  },
-  {
     "Store": "Hyper Al Wafa",
     "Product": "Vaseline Intensive Hair Tonic 300Ml",
     "Price": 10.95,
@@ -2514,6 +2500,13 @@
   },
   {
     "Store": "Grand Hyper",
+    "Product": "Vaseline Intensive Care Aloe Soothe Body Lotion 400ml",
+    "Price": 16.95,
+    "Offer": "43.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/8f122580933f2cd6ed1c0fafd91b303e.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
     "Product": "Vaseline Regular Hair Tonic 300ml",
     "Price": 12.95,
     "Offer": "31.7                    % Off",
@@ -2539,13 +2532,6 @@
     "Price": 19.99,
     "Offer": "38.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/1cbf29d8b69cfea60197cd98bde5303f.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "Vaseline Intensive Care Aloe Soothe Body Lotion 400ml",
-    "Price": 16.95,
-    "Offer": "43.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/31d7b6a719a363e1b5577d6ed0e4d5d2.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -2654,10 +2640,10 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Jergens Soap 125g 5+1 Assorted",
+    "Product": "Jergens Soap 125g5+1 Assorted",
     "Price": 9.95,
     "Offer": "61.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/3c2be66e68777260e8b0efa0bb1652cb.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/22/31c06ba1d231d6318d21c1f5782ef9fc.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -2815,59 +2801,31 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "DOVE BEAUTY SOAP 6X125GM",
-    "Price": 29.95,
-    "Offer": "21.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/7bce34c40adea40f8561c3bf6b6ad162.jpg"
+    "Product": "Lux Soap 6x170g",
+    "Price": 21.95,
+    "Offer": "31.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/14e57c155771d332a6cb96815b190a3a.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Enchanteur Perfumed Soap 6x125gm",
-    "Price": 15.95,
-    "Offer": "36.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/5d872111517eb85093cec5d4220bc17e.jpg"
+    "Product": "Jergens Softening Musk Soap 6x125g",
+    "Price": 12.95,
+    "Offer": "35.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b0bca43d008356aba50182940c05c18a.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Pears Soap 4x 125gm",
-    "Price": 14.95,
-    "Offer": "37.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/0b095744fb8d5192dc45259b19cddfb5.jpg"
+    "Product": "Dove Pink/White Soap 4x75g",
+    "Price": 11.95,
+    "Offer": "36.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e4c1c927004a942727dac206b301eed0.jpg"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Lux Soap 6x120g",
-    "Price": 17.95,
-    "Offer": "43.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/c1fc62d8dd28a2921554df959b520ae5.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Dove Pink/White Soap 6x125g",
-    "Price": 28.95,
-    "Offer": "27.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/22a802cc6bc9a597942a6495dff89489.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Dettol Soap 4x165g",
-    "Price": 15.95,
-    "Offer": "54.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/b1b461ae6860092e2d326aa4120de87e.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Cinthol Soap 4x175g",
-    "Price": 9.95,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/6a4fb7814a08c33819110d703ca5d545.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Yardley Soap 3x100g",
-    "Price": 8.95,
-    "Offer": "65.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/0d4de5aaf8789e1d50f3e5f6058d8c53.jpg"
+    "Store": "Mark & Save",
+    "Product": "Dove Beauty Soap Pink/White 4x75Gm",
+    "Price": 10.95,
+    "Offer": "42.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/f1bb4c28ca39efb8b679387b1f28eb09.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -3319,13 +3277,6 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Head & Shoulders Shampoo 350ml",
-    "Price": 8.95,
-    "Offer": "55.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/7d38f1ba7f44361a9bd8c88f424016da.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "Herbal Essences Shampoo & Conditioners",
     "Price": 14.5,
     "Offer": "32.6                    % Off",
@@ -3437,13 +3388,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/ef69db47a6ff95893e7c14951394a0a1.jpg"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Head & Shoulders Smooth & Silky Anti-Dandruff Shampoo 350ml",
-    "Price": 8.95,
-    "Offer": "55.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/84ad9def8c390a12a86de932e66e61d8.jpg"
-  },
-  {
     "Store": "Hyper Panda",
     "Product": "Dabur Amla Kids Shampoo (200ml)",
     "Price": 9.5,
@@ -3536,45 +3480,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "PANTENE SHAMPOO 500ML",
-    "Price": 12.95,
-    "Offer": "53.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/41dc39484f6338c5866411ca14e914f7.jpg"
+    "Product": "Johnson's Baby Shampoo 750ml",
+    "Price": 16.95,
+    "Offer": "66.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/3b84bcbae966937207a1889f3aec158e.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "CLEAR SHAMPOO 600ML",
-    "Price": 15.95,
-    "Offer": "30.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/8cb40bc09199a484a86e225ed43beaae.jpg"
+    "Product": "Loreal Shampoo 600ml",
+    "Price": 18.95,
+    "Offer": "32.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e260057c653de9976e9d13cb25be25c7.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "L'OREAL ELVIVE Extraordinary Oil Nourishing Shampoo 400ml",
-    "Price": 11.95,
-    "Offer": "52.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/bcd61b914e8aaf0d90a0d65e70b8145d.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Sunsilk Shampoo 700ml",
-    "Price": 14.95,
-    "Offer": "54.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/eaf0746a35b02c7cd33c032a176c9ca0.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Garnier Ultra Blends Shampoo 600ml",
-    "Price": 15.95,
-    "Offer": "38.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/2c5895ac71090e1291682091df49152c.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Nunu Shampoo 800+400ml",
-    "Price": 23.95,
-    "Offer": "11.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/c7e809c64eaff9268228c51ee16c02a9.jpg"
+    "Product": "Sunsilk Shampoo 400ml",
+    "Price": 9.95,
+    "Offer": "69.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/3522e706f7036a793fd8fae1b628310a.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -3914,17 +3837,10 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "DREAM HOUSE NATURAL HONEY WITH COMB 500G",
-    "Price": 16.95,
-    "Offer": "41.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/4c99f89b6caa3082a006477020e01306.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Dream House Honey 250g",
-    "Price": 5.95,
-    "Offer": "54.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/198766e6005af58c1ba3b9b3d9365f64.jpg"
+    "Product": "Sary natural honey 500g",
+    "Price": 12.95,
+    "Offer": "51.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/36864570f724bee4040ddc9332851a20.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -4166,17 +4082,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "KMC Refrigerator KMF90K",
-    "Price": 339.0,
-    "Offer": "38.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/ec2cd500048ae1879382938b31b9e81b.jpg"
+    "Product": "SHREE Double Door Refrigerator SRT M218DFS",
+    "Price": 669.0,
+    "Offer": "39.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/14bed931a98ddc562f16a8328f2156ee.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Double Door Refrigerator SRT-M218DF/S-REEN",
-    "Price": 669.0,
-    "Offer": "39.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/57841d62f6aee74208f445380c766fa4.jpg"
+    "Product": "KMC Refrigerator KMF90K",
+    "Price": 339.0,
+    "Offer": "38.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/af0eb60c65f79bc7f53c73a451047099.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Impex S/Door Refrigerator 90Lt",
+    "Price": 399.0,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/4483661b9c8e5e0005c011172e1539ae.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -4264,6 +4187,13 @@
   },
   {
     "Store": "LULU Hypermarket",
+    "Product": "IKON Google Smart LED TV 40 Inch",
+    "Price": 649.0,
+    "Offer": "43.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/04fac1a4d9b51c7319cec0ad7a06a6b8.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
     "Product": "Sony 4K Google Smart TV K-75S20 75inch",
     "Price": 3099.0,
     "Offer": "29.6                    % Off",
@@ -4285,80 +4215,80 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Oscar OS32ATVLED 32 Inch LED TV",
-    "Price": 289.0,
-    "Offer": "12.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/4890a63abe834fd50ba960748d8b8ceb.jpg"
+    "Product": "NIKAI 32' LED Smart TV NTV32SLED",
+    "Price": 369,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/ef709522017b883be0c363e34d066215.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "KMC QLED 70\" 4K Smart WEB OS LED TV K25M70298T",
-    "Price": 1549.0,
-    "Offer": "31.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/c37065171216e022b064a002fe537684.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Impex 55\" Web OS Smart 4K LED TV WIOS55Q",
+    "Product": "Impex 55\" WEB OS Smart 4K LED TV WIOS55Q",
     "Price": 1129.0,
     "Offer": "27.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/847eac675c00380596e240fe9fce0704.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "50\" Smart LED TV SRET504K2",
-    "Price": 829.0,
-    "Offer": "24.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/9f18f75bae00573ae4045b5354ecaf40.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "KMC QLED 50\" 4k Smart WEB OS LED TV K25M50298T",
-    "Price": 949.0,
-    "Offer": "26.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/1fa37f69a456ec3a0151057d49ec3c9f.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/9a215f2ee92fc5bcbe62919db9fde68f.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
     "Product": "43\" Google Smart LED TV TI43G2025",
     "Price": 699.0,
     "Offer": "26.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/9015f17631363b121d1287b5b919818d.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e800f2c598345208685a9070b666856c.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "GEEPAS 43\" LED Smart TV GLED4328SXD",
-    "Price": 659.0,
-    "Offer": "25                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/07e88071c948370fba55ec3c1b13e79d.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Sreen 40\" Smart LED TV SRET40S1",
-    "Price": 549.0,
-    "Offer": "26.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/68159d6de2550c9ac67cad39b836374e.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Clikon 32' LED Smart TV CK915",
-    "Price": 389.0,
-    "Offer": "27.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/680ebd73fd7d3a1dd4abae89700e2002.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "NIKAI 32' LED Smart TV NTV32SLED",
-    "Price": 369.0,
-    "Offer": "32.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/fa2a50866844b9033d48f5285a25b527.jpg"
+    "Product": "Sreen 43\" Smart LED TV SRET43S1",
+    "Price": 649.0,
+    "Offer": "23.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e3ab0419e5c7ea21e0412524cc594e2e.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
     "Product": "FUJIKA 24\" LED TV FJK24KA",
     "Price": 259.0,
     "Offer": "25.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/530246ca793e763badc76ae72e415b6b.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/892bd30491414ee210041cc0ef321299.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "KMC 50\" 4k Smart WEB OS LED TV K25M50298T",
+    "Price": 949.0,
+    "Offer": "26.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/1de67d00fd3a40f17a115d08d065fc2f.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Clikon 32' LED Smart TV CK915",
+    "Price": 389.0,
+    "Offer": "27.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/1be7ab21b093348434d7643c978eebe1.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "S-REEN 50\" Smart LED TV SRET504K2",
+    "Price": 829.0,
+    "Offer": "24.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/92011c986dbe8b2a70eacf10a52052f1.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "GEEPAS 43\" LED Smart TV GLED4328SXD",
+    "Price": 659.0,
+    "Offer": "25                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/eb42f2d436076115c6976151486d1df6.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "KMC 70\" 4K Smart WEB OS LED TV K25M70298T",
+    "Price": 1549.0,
+    "Offer": "31.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b2712ab1335ae1842e5de478dd783374.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "GEEPAS 32' LED Smart TV GLED3202SEHD",
+    "Price": 389,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/870da9e0435a06546d1ce8d7a3f0d525.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -4366,6 +4296,13 @@
     "Price": 429.0,
     "Offer": "28.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/cc2ac9cff4a6c2f2c0fe4ea7ef5fdfae.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Impex 65In 4K Smart LED TV GLORIA 65",
+    "Price": 1399.0,
+    "Offer": "30                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/66531abbd8303505aa3c7f16e602aa25.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -4387,13 +4324,6 @@
     "Price": 2799.0,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/21/c2a1810828d4d7173acb203917aaa53e.jpg"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "Impex 65In 4K Smart LED TV GLORIA 65",
-    "Price": 1499.0,
-    "Offer": "25                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/21/47e5f101ede1308d65232b6a9c6ca4db.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -4589,14 +4519,35 @@
     "Product": "Impex 4K UHD Smart TV Gloria 55inch",
     "Price": 999.0,
     "Offer": "47.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/d54a5c606745287f496d0cc981daa384.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/b16b894e51f4ffbded81cac9ba92c509.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "TCL QLED Google Smart TV 75T6D 75inch",
+    "Price": 1999.0,
+    "Offer": "60                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/15b46ac892492fa4a0771be8a57eaf19.jpg"
   },
   {
     "Store": "LULU Hypermarket",
     "Product": "TCL QLED Google Smart TV 65P71L 65inch",
-    "Price": 2099.0,
-    "Offer": "47.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/c82415beb028ba47e5669138c77f7f1d.jpg"
+    "Price": 2049.0,
+    "Offer": "48.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/4e017bc7b81f3ee914595f135d099645.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "SAMSUNG QLED TV QA75Q7FAA JXSA 75 inch",
+    "Price": 2649.0,
+    "Offer": "48.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/c5f9c6d673ff9696fb03cca2897ecebd.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "LG 4K OLED TV 65CS6VA 65inch",
+    "Price": 5499.0,
+    "Offer": "11.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/cc440a00b23d81f8b0d0613cbbbdbdc7.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -4697,18 +4648,11 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/5bcd9cafb4e2e23364ab93a883e6d9b9.jpg"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "IMPPEX 4K SMART TV IX65HDS",
-    "Price": 1599.0,
-    "Offer": "13.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/f12f5962fadf942ae5b961f792ef9b88.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "SREEN SMART TV SRET-43S2",
-    "Price": 649.0,
-    "Offer": "11                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/c7343e61ceeae9a1bc5269f4b698ba7a.jpg"
+    "Store": "Hyper Al Wafa",
+    "Product": "IMPEX QLED Smart TV 50In GLORIA50Q",
+    "Price": 799.0,
+    "Offer": "27.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/88ce0448871346099127155effdfbeaa.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -4716,13 +4660,6 @@
     "Price": 799.0,
     "Offer": "20                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/e7f1de7aff157ab4cd82991d61d76b89.jpg"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "Impex QLED Smart TV 50in GLORIA50Q",
-    "Price": 749.0,
-    "Offer": "31.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/21/6af4900ea96f44f57fc44f6bec91c945.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -5012,6 +4949,20 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/07dfddc6442b42f27fb566c5ded9a1d5.jpg"
   },
   {
+    "Store": "Hyper Al Wafa",
+    "Product": "Laptop Backpack 26007",
+    "Price": 49.0,
+    "Offer": "29                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/209e405a3dc7c3ab9ca648237069377a.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Laptop Stand",
+    "Price": 20.0,
+    "Offer": "48.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/0d239d411eb4c9758b33257d5d26340b.jpg"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "ATRIUM Atrium Luggage Harness Laptop Carry Case",
     "Price": 179.0,
@@ -5258,10 +5209,24 @@
   },
   {
     "Store": "Hyper Al Wafa",
+    "Product": "HP AIO DJ PRO Printer 2878A 70S63",
+    "Price": 229.0,
+    "Offer": "25.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/bcc539c7ea581923678b09b35317667a.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
     "Product": "HP Deskjet All In One Printer 2320",
     "Price": 139.0,
     "Offer": "39.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/c2d93096c91f5ad20361fd48b3331296.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b59f10af97acddc2ed84a6cbd66e4a6b.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Canon Pixma AiO Printer TS5340A",
+    "Price": 229.0,
+    "Offer": "4.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/776fdd20e3586f1572cac2b738743f3c.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -5377,10 +5342,10 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Lux Sunlight Dishwash 1225ml",
-    "Price": 9.95,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/00d9454bca851c39f30c5cedb4fe8a0d.jpg"
+    "Product": "Pril Dishwash 1.25ltr",
+    "Price": 8.95,
+    "Offer": "47.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/53f4abc0e26fb06c7db47cec9ccfad14.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -5993,10 +5958,17 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Galaxy Jewels 650g",
-    "Price": 34.95,
-    "Offer": "30                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/e66c4a24196a6ab7f329d9d86190c073.jpg"
+    "Product": "Galaxy Jewels 400g",
+    "Price": 28.95,
+    "Offer": "27.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7c885cdb6a0192b531db641742fdb668.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Galaxy Jewels Assorted Chocolates 650g",
+    "Price": 36.95,
+    "Offer": "47.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/1b5b9b4da8bf81c9d0ea9093aa77fd83.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -6056,17 +6028,10 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Kinder Schoko Bons Crispy 89GM",
-    "Price": 9.95,
-    "Offer": "23.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/3477fca507e7d73856f42e0610a369de.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Kinder Bueno White 15x39g",
-    "Price": 36.95,
-    "Offer": "26                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/19/7d2de4755caffd486caa3c4eb6959c8a.jpg"
+    "Product": "Kinder Bueno 8+2",
+    "Price": 25.95,
+    "Offer": "25.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/c6cccbbd23ee171b6d0e003bef1d2b05.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -6147,17 +6112,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "GALAXY MINIS 400GM",
-    "Price": 17.95,
-    "Offer": "21.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/a73d8003210a019653921d85b6b51d73.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
     "Product": "Snickers Chocolate 24x40g",
     "Price": 54.95,
     "Offer": "26.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/3e2ac7b31a4d1b798395a50b591e1d27.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7613fd90f731c7d299aea03e28385283.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Galaxy Best Of Minis 400g",
+    "Price": 18.95,
+    "Offer": "48.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/1eb2629bec5672c62d7400d0435748d1.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Bounty/Snickers/Mars miniatures 150g",
+    "Price": 6.95,
+    "Offer": "56.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/0f7fbf885902c21808d403b9384afa28.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -6255,7 +6227,7 @@
     "Product": "Nestle Quality Street 550g",
     "Price": 31.95,
     "Offer": "31.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/406e125ffe47b63520dc1a38da8f6f96.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/9e3d42a4e3dfca3f01e54bcbc07484eb.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -6266,10 +6238,17 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "BOUNTY STANDERD 24X57GM",
-    "Price": 54.95,
-    "Offer": "26.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/2956d2c6d0de716a6f822a2bdddd9cd0.jpg"
+    "Product": "Bounty Chocolate 24x57g",
+    "Price": 57.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/834739aab190b740811dc392abe098c0.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Bounty Chocolate 24x50g",
+    "Price": 57.95,
+    "Offer": "31.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/40596e4a383aa09733c18399a3d9effa.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -6476,24 +6455,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
+    "Product": "SAMSUNG Galaxy A36 5G",
+    "Price": 999.0,
+    "Offer": "16.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b26861e0615d5062a2aa374683906c07.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
     "Product": "Galaxy Kunafa Milk/ Dark 90g",
-    "Price": 8.95,
-    "Offer": "75.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/2d7036811e30e01417a7ae46c5a7cb89.jpg"
+    "Price": 11.95,
+    "Offer": "66.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/fe56d12075aaac42ebd819e527f8426b.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "SAMSUNG Galaxy A36 5G 128 GB / 8 GB",
-    "Price": 999.0,
-    "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/4453c666fc7488a7a6a12f1e8042b00a.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "SAMSUNG Galaxy A36 5G 128 GB",
-    "Price": 999.0,
-    "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/1c4300f866b48f0fd93a8b5c5d2e1e0a.jpg"
+    "Product": "Galaxy Flutes Chocolate-Filled Wafer Bars, 33+3",
+    "Price": 41.95,
+    "Offer": "10.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/49e40f4342fdf414025302e5a0864a7c.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -6510,6 +6489,34 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/22/5b43d1e08b16613568083e7a34547eb2.jpg"
   },
   {
+    "Store": "Hyper Al Wafa",
+    "Product": "Clikon Galaxy Blender",
+    "Price": 229.0,
+    "Offer": "34.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a644eb06638ff09511f7143b6842833c.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Samsung Galaxy S26 Ultra",
+    "Price": 4599.0,
+    "Offer": "16.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/0608fbef468cff5827a41fd9c513e1d9.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Samsung Galaxy A37 5G",
+    "Price": 1359.0,
+    "Offer": "4.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/a2a41c4c00d37c6f6cc15554dff20259.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Samsung Galaxy S25 Ultra",
+    "Price": 3599.0,
+    "Offer": "33.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/f7224f326e7efd8493debe7f0e168833.jpg"
+  },
+  {
     "Store": "Mark & Save",
     "Product": "Samsung Galaxy A16 4/128GB",
     "Price": 499.0,
@@ -6522,13 +6529,6 @@
     "Price": 21.95,
     "Offer": "32.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7f3b78cae8585779d18c4fe7cd83305a.jpg"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "Samsung Galaxy S25Ultra",
-    "Price": 3499.0,
-    "Offer": "35.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/23/93f4cca9943bb5fc65db7797ada6083b.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -6627,6 +6627,13 @@
     "Price": 5199.0,
     "Offer": "36.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/8d1da6508a670f8aee1308c7e833eaf9.jpg"
+  },
+  {
+    "Store": "Jarir Bookstore",
+    "Product": "Samsung Galaxy Z Flip7 512GB",
+    "Price": 2799.0,
+    "Offer": "42.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/f24931cd14abb55980d5373c55aee6f6.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -6853,6 +6860,13 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/b00d26f46f66676606c2aafbd289f6d5.jpg"
   },
   {
+    "Store": "Hyper Al Wafa",
+    "Product": "Mars Best of Minis 500Gm",
+    "Price": 21.99,
+    "Offer": "37.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/8a79a2dd50644d64596b149a5d25d89e.jpg"
+  },
+  {
     "Store": "Othaim Markets",
     "Product": "Bogart Marshmallow Twiddles Strawberry 150g",
     "Price": 4.99,
@@ -6955,7 +6969,7 @@
     "Product": "Cadbury Flake minis 145g",
     "Price": 10.95,
     "Offer": "45.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/ab5b071d83367032973e5f944eb68bf8.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/53ea215d3ab56d2da9686f97f938baa7.jpg"
   },
   {
     "Store": "Danube",
