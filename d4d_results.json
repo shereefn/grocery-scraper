@@ -637,13 +637,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/325c6a68d988fb6b5e72dfbc3a7c4345.jpg"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "WATERMELON /KG",
-    "Price": 1.99,
-    "Offer": "50.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/beea37a6b8b97ba2ca3b6ffb671cac37.jpg"
-  },
-  {
     "Store": "Othaim Markets",
     "Product": "Labello Lips Balm Watermelon Sorbet",
     "Price": 5.99,
@@ -1590,13 +1583,6 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "TANMIAH FRESH CHICKEN 1000GM",
-    "Price": 17.99,
-    "Offer": "14.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/8428ccb0d50375fad656ff2934de9b5d.jpg"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
     "Product": "ENTAJ FROZEN CHICKEN 10X600GM",
     "Price": 89.0,
     "Offer": "15.2                    % Off",
@@ -1715,6 +1701,13 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/bde8bdb090ac6ff721275102e4b29dca.jpg"
   },
   {
+    "Store": "Othaim Markets",
+    "Product": "Golden Chicken Mix Parts 800g",
+    "Price": 10.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/0b85e7769ed35cf0fe614338382ebd5c.jpg"
+  },
+  {
     "Store": "LULU Hypermarket",
     "Product": "Fakieh Fresh White Eggs Medium 30s",
     "Price": 12.95,
@@ -1783,6 +1776,13 @@
     "Price": 19.95,
     "Offer": "45.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/661a6b18c5dec950e6a614a48b480183.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Mamaearth Onion Scalp Serum 50ml, Mamaearth Ultra Light Indian Sunscreen 50g, Mamaearth Onion Shampoo 400ml, Mamaearth Aloe Vera Face Wash 100ml, Mamaearth Nourishing Cold Pressed Almond Oil 150ml, Mamaearth Ubtan Face Serum 30ml",
+    "Price": 25.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/549efd236a4dee2565ac9d599d97ff75.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -2091,6 +2091,69 @@
     "Price": 15.99,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/cdb1315e16935d60f8c87ed92244c77b.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Vaseline Petroleum Jelly Original 250ml",
+    "Price": 13.99,
+    "Offer": "29.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/be88bad6696c1e03a0a359d0fda0434d.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Vaseline Coco Radiance Body Lotion 725Ml",
+    "Price": 29.99,
+    "Offer": "45.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/f6ef9618fee2b64b5f0ead5ef818a62f.jpg"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Vaseline Intensive Hair Tonic 400ml",
+    "Price": 16.99,
+    "Offer": "31.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/6c4b792a2e293577e07553ae28332931.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Vaseline Intensive Care Cocoa Radiant Lotion 725ml Or Vaseline Intensive Care Aloe Soothe Lotion 725ml",
+    "Price": 21.99,
+    "Offer": "54.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/b3ab411ba54259a66bc775f35015e7ba.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Vaseline Petroleum Jelly Original 250ml",
+    "Price": 14.99,
+    "Offer": "31.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/ad40f516cfee4880fe18abbdda41fd3a.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Pure Petroleum Jelly 250ml",
+    "Price": 12.5,
+    "Offer": "39                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/901d8a3504e2a28c080ce6f43cbf6cca.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Body Lotion 400ml (Aloe/ Cocoa/ Ice Cool)",
+    "Price": 16.95,
+    "Offer": "43.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/17da8fd72742db9928b40cea9992f8df.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Regular Hair Tonic 300ml",
+    "Price": 12.95,
+    "Offer": "31.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/da25264e2754678df06cbf08be9ae2d8.jpg"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Vaseline Jelly 450ml",
+    "Price": 19.99,
+    "Offer": "38.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/1cbf29d8b69cfea60197cd98bde5303f.jpg"
   },
   {
     "Store": "Nesto",
@@ -3437,20 +3500,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/36864570f724bee4040ddc9332851a20.jpg"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Sary Honey Jars 1Kg",
-    "Price": 24.95,
-    "Offer": "41.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/2e5e132c71dd48bbd04c50e7c4706613.jpg"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "Al Shifa Honey Natural 500Gm",
-    "Price": 24.99,
-    "Offer": "24.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/9ab714ead388ade1b097440a0ba87efa.jpg"
-  },
-  {
     "Store": "Othaim Markets",
     "Product": "Garnier Ultra Doux Honey Treasures Replenishing Shampoo 600ml",
     "Price": 11.99,
@@ -4600,13 +4649,6 @@
   },
   {
     "Store": "Mark & Save",
-    "Product": "Laptop Bag Pu 16*12",
-    "Price": 37.95,
-    "Offer": "36.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/07dfddc6442b42f27fb566c5ded9a1d5.jpg"
-  },
-  {
-    "Store": "Mark & Save",
     "Product": "Laptop Table",
     "Price": 19.99,
     "Offer": "20                    % Off",
@@ -4618,6 +4660,13 @@
     "Price": 49.0,
     "Offer": "29                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/209e405a3dc7c3ab9ca648237069377a.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Laptop Bag Pu 16*12",
+    "Price": 37.95,
+    "Offer": "36.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/07dfddc6442b42f27fb566c5ded9a1d5.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
