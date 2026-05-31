@@ -77,7 +77,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Google Sheets Engine (Password-Free!)
 # ---------------------------------------------------------------------------
 def fetch_sheet_shopping_list() -> List[str]:
-    if SHEET_CSV_URL == "PASTE_YOUR_LINK_HERE":
+    if SHEET_CSV_URL == "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93Ln5VB7EGXhSw7GLTNd5OgGzt-xk5Paxa4ftBHbdtPVZMyJwGX4xFJOjzVjyQMQd5C/pub?gid=0&single=true&output=csv":
         log.error("🚨 CRITICAL: You forgot to paste your Google Sheets CSV link in the code!")
         return []
 
