@@ -1,17 +1,17 @@
 [
   {
     "Store": "LULU Hypermarket",
-    "Product": "Apple AirPods Pro 3",
-    "Price": 899.0,
-    "Offer": "14.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/3d4d5c45af1cd74224f012ee274baec2.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "Apple AirPods 4 ANC",
     "Price": 679.0,
     "Offer": "18.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/8287a5c9bb8a1d620e6e7255e7d7e1e1.jpg"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Apple Airpods Pro 3",
+    "Price": 949.0,
+    "Offer": "9.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/e5ccafde79136d15bc656c4c982f28f9.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -37,9 +37,9 @@
   {
     "Store": "LULU Hypermarket",
     "Product": "Apple iPad A16 128GB",
-    "Price": 1449.0,
-    "Offer": "9.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/492f948fb49704274adc2de06e4bb729.jpg"
+    "Price": 1499.0,
+    "Offer": "6.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/3c2987610bf45ee504be36d2361fc0c3.jpg"
   },
   {
     "Store": "Hyper Panda",
@@ -126,6 +126,20 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/bcd50668710d723b9e1a2fa58a79be5e.jpg"
   },
   {
+    "Store": "eXtra",
+    "Product": "Apple Watch SE, 46mm, Aluminum Case, Sport Band, Medium/Large",
+    "Price": 1799.0,
+    "Offer": "6.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/e587088ca36473b770d0170458f4e680.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Apple Watch SE 2nd Gen, 40mm, Aluminum Case with Sport Band, Midnight",
+    "Price": 999.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/127d13c34d43643c884428e7075113b8.jpg"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "Nike Sport Loop Wrist Strap for Apple Watch Ultra 3/Watch Ultra 2/Watch Series 11 46/Watch Series 10 46",
     "Price": 199.0,
@@ -180,6 +194,13 @@
     "Price": 2.99,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/9ec2abcef40e09fcbd754f3173052289.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Onion Bag Small /Pc",
+    "Price": 3.95,
+    "Offer": "43.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/d529a6a4df662346ff3299f588852836.jpg"
   },
   {
     "Store": "Othaim Markets",
@@ -287,6 +308,20 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/53422a12abe8ed247805516049cd9e47.jpg"
   },
   {
+    "Store": "Mark & Save",
+    "Product": "Al Batal Chips Assstd 12x23G",
+    "Price": 8.99,
+    "Offer": "38                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/8cbac4e017b2ee0bea7054766a921ecb.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Al Batal Chips Asstt 23G",
+    "Price": 8.95,
+    "Offer": "40.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/2740b337651cd83847a25d69bd3d4dbc.jpg"
+  },
+  {
     "Store": "Hyper Al Wafa",
     "Product": "Al Batal Potato Chips Cheese 12 X 23Gm Asstd",
     "Price": 9.99,
@@ -312,21 +347,21 @@
     "Product": "Pringles Potato Crisps (Assorted) 165GM",
     "Price": 6.95,
     "Offer": "48.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/bc5e4a9cd1b90ef94796d25fc84ab344.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/bc5e4a9cd1b90ef94796d25fc84ab344.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "FAIRCO POTATO CHIPS (ASSORTED) 15 X 18GM",
     "Price": 10.95,
     "Offer": "18.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/f9be54c0b685d781c93649887b283187.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/f9be54c0b685d781c93649887b283187.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "AL BATAL POTATO CHIPS (ASSORTED) 3 X 110GM",
     "Price": 9.95,
     "Offer": "26.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/9b0b21746b7253345c2a0849346fb3a5.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/9b0b21746b7253345c2a0849346fb3a5.jpg"
   },
   {
     "Store": "Danube",
@@ -348,6 +383,13 @@
     "Price": 10.99,
     "Offer": "38.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/6e512b451514880f85c5ea52b2bdf62d.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Anchor Milk Powder 2.25 Kg",
+    "Price": 52.95,
+    "Offer": "36.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/5beccd6dedd760b5680e93d16ec6e6a4.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -372,6 +414,13 @@
   },
   {
     "Store": "Mark & Save",
+    "Product": "Tide Detergent Powder 5kg",
+    "Price": 29.95,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/3fd8eafb7834044a8e4768a2f41dadfc.jpg"
+  },
+  {
+    "Store": "Mark & Save",
     "Product": "Tide Detergent Liquid 1.8Ltr",
     "Price": 18.95,
     "Offer": "42.5                    % Off",
@@ -383,6 +432,13 @@
     "Price": 29.99,
     "Offer": "45.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/aa72d1b17c22ed8c297da90324497824.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "TIDE DETERGENT POWDER (ASSORTED) 2.5KG",
+    "Price": 21.95,
+    "Offer": "45.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/dabce4ccf28a82cc2d0a74a878da4669.jpg"
   },
   {
     "Store": "Danube",
@@ -446,6 +502,13 @@
     "Price": 4.99,
     "Offer": "23.2                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/f783a0b9810bd610617f4eee71955304.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Cadbury Milk Chocolate Assortment Tin 500g",
+    "Price": 25.95,
+    "Offer": "56.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/70d3fa355e4d33ed766b3549abe62e64.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
@@ -561,10 +624,24 @@
   },
   {
     "Store": "Al Madina Hypermarket",
-    "Product": "Almarai UHT Milk 4x1Ltr",
-    "Price": 15.99,
-    "Offer": "30.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/2a0cf2a8c93553bf7299bcb9d87c4e43.jpg"
+    "Product": "Almarai UHT Milk 4x1 Ltr",
+    "Price": 16.95,
+    "Offer": "32.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/21373bd51c1636b923f6a611359d71b4.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Al Safi UHT Milk Full Fat 4x1Ltr",
+    "Price": 16.99,
+    "Offer": "27.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/4053f49891fac92e6cafcf13eb629f34.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Al Safi FF Uht Milk 12X1Ltr",
+    "Price": 49.99,
+    "Offer": "31.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/239e4b7a92b760379f46a9cb755d29e7.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -637,6 +714,13 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/325c6a68d988fb6b5e72dfbc3a7c4345.jpg"
   },
   {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Watermelon/ Kg",
+    "Price": 1.95,
+    "Offer": "50.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/1bf3539b2aba3dd7c267f91e6e74c2c0.jpg"
+  },
+  {
     "Store": "Othaim Markets",
     "Product": "Labello Lips Balm Watermelon Sorbet",
     "Price": 5.99,
@@ -677,20 +761,6 @@
     "Price": 11.95,
     "Offer": "33.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/72ecb3a585ccaee8b413a55755db7c61.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Colgate Tooth Paste Total 75ml",
-    "Price": 13.95,
-    "Offer": "46.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/225f356684095b1864361ef409caea71.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Parodontax Gum Strengthen & Protect Whitening Toothpaste with Hyaluronic Acid 75 ml",
-    "Price": 29.95,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/574df37ef4de5284127a597c5259fc61.jpg"
   },
   {
     "Store": "Hyper Panda",
@@ -753,7 +823,7 @@
     "Product": "BATOOK CHEWING GUM (ASSORTED) 20 X 12.5GM",
     "Price": 6.95,
     "Offer": "30.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/97467ca45762a867198b49589cc9f8db.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/97467ca45762a867198b49589cc9f8db.jpg"
   },
   {
     "Store": "Nesto",
@@ -952,6 +1022,20 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/6c4296d2b0296b24b6de56509f0d05aa.jpg"
   },
   {
+    "Store": "Grand Hyper",
+    "Product": "FRESH JUICE GRAPE",
+    "Price": 5.95,
+    "Offer": "25.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/37ad08444f06fdf8d6d4fc5837e442c1.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "FRESH AVOCADO JUICE",
+    "Price": 5.95,
+    "Offer": "33.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/45f6ff4e3deb4938d10f260b602f4576.jpg"
+  },
+  {
     "Store": "Danube",
     "Product": "Sante No Sugar Added juice 24x200ml",
     "Price": 27.99,
@@ -1037,41 +1121,6 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Tanmiah Fresh Chicken Bag",
-    "Price": 17.5,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/855a1544d3196728107a2c2993d61f46.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Fresh Whole Chicken 1000gm",
-    "Price": 17.95,
-    "Offer": "10                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/866792796267c159f2c261eb513a2b19.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Fresh Chicken Breast Fillet 900g",
-    "Price": 33.95,
-    "Offer": "26.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/9fe2a478fd1f8b202a9cdbe4575fe4df.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Tannmiah Fresh Chicken Bag 1000 GM",
-    "Price": 17.5,
-    "Offer": "12.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/71b5cdba07d575bf03a2ea16c1d3118b.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Fresh Whole Chicken",
-    "Price": 17.95,
-    "Offer": "10                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/58f27889090b28e105133ce8e7d4df69.jpg"
-  },
-  {
-    "Store": "Nesto",
     "Product": "Sunbulah Chicken Strips 750gm",
     "Price": 20.95,
     "Offer": "36.4                    % Off",
@@ -1128,17 +1177,10 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Tanmiah Fresh Chicken Bag 1000GM",
-    "Price": 17.5,
-    "Offer": "12.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/5c878965d396cc7365699ce5be3e6fb1.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Chicken Fresh Chicken Breast Fillet 900g",
-    "Price": 33.95,
-    "Offer": "26.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/68bee0a376b76d89a8c01ac08452c268.jpg"
+    "Product": "Golden Fresh Whole Chicken",
+    "Price": 17.95,
+    "Offer": "10                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/b08db02be06c3bff2ce1dd6bc28380bf.jpg"
   },
   {
     "Store": "Nesto",
@@ -1146,27 +1188,6 @@
     "Price": 19.99,
     "Offer": "37.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/05/26/82501b4f3504d1a4ee208c5444bed6b6.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Tanmiah Fresh Chicken Mixed Portions 800gm",
-    "Price": 9.95,
-    "Offer": "23.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/423a55e88ba613abdc76fbfbe1f2930b.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Chicken Fresh Chicken Breasts Fillet 900gm",
-    "Price": 33.95,
-    "Offer": "26.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/70e3d7731ec18abcf3b5e62c151b8a0b.jpg"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Golden Fresh Chicken Breast Fillet",
-    "Price": 33.95,
-    "Offer": "26.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/68a51ef86b8e420ce42012ba5eb68908.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -1177,31 +1198,10 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Addoha Frozen Chicken 1Kg",
-    "Price": 13.95,
-    "Offer": "26.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/35074bbb56a3b41c6121960befc7aa22.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Golden Chicken Fresh Chicken Breast Fillet 900g",
-    "Price": 35.95,
-    "Offer": "18.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/a7a5e41e7ce2f207c410e2bc70a24c5b.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Golden Chicken Fresh Chicken Shawarma 400g/Italiano Chicken Shawarma 400g",
-    "Price": 15.95,
-    "Offer": "24.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/16e45e0647e17c1504371a6f0047dad2.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "Golden Chicken Fresh Chicken Bag 1100gm",
     "Price": 17.95,
     "Offer": "14.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/89b7f104c5ec661c47a1c7a9681719a7.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/043b37a183fe676a26bbf4c28291ba31.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -1583,6 +1583,20 @@
   },
   {
     "Store": "Al Madina Hypermarket",
+    "Product": "Al Nasriyah Fresh Chicken 1000g",
+    "Price": 15.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/970de143f6a209a526e0b9f5b2eba737.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Doux Frozen Chicken 1300g",
+    "Price": 14.95,
+    "Offer": "37.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/6265ba4e26e849dac5d54068dea12e88.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
     "Product": "ENTAJ FROZEN CHICKEN 10X600GM",
     "Price": 89.0,
     "Offer": "15.2                    % Off",
@@ -1611,24 +1625,31 @@
   },
   {
     "Store": "Mark & Save",
-    "Product": "Entaj Frozen Chicken 1200Gm",
-    "Price": 17.95,
-    "Offer": "21.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/3f5413a38ea464e3945743175e460bd6.jpg"
+    "Product": "Addoha Fresh Chicken Whole Leg 500gm",
+    "Price": 7.95,
+    "Offer": "27.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/1af4dab291ac28eb4c85f58c63108678.jpg"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Golden Fresh Whole Chicken 1000gm",
-    "Price": 17.95,
-    "Offer": "10                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/837079f21114e8a25bcfcf4eeba84965.jpg"
+    "Store": "Mark & Save",
+    "Product": "Osoul Frozen Chicken Wings 900Gm",
+    "Price": 7.99,
+    "Offer": "38.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/17a01d0347b5ebaa598220b7f3934b53.jpg"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Tanmiah Fresh Chicken Bag 1000Gm",
-    "Price": 17.5,
-    "Offer": "12.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/c9f58de218172b1955bb13f24ce7bcfa.jpg"
+    "Store": "Mark & Save",
+    "Product": "Royal Chicken Burger 672Gm",
+    "Price": 11.95,
+    "Offer": "29.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/b7d8a99124092f8192ac9c246b291a26.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Al Watania Frozen Chicken 10x700Gm",
+    "Price": 109.95,
+    "Offer": "35.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/777395132a496f53871706412f34ca00.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -1708,6 +1729,125 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/0b85e7769ed35cf0fe614338382ebd5c.jpg"
   },
   {
+    "Store": "Othaim Markets",
+    "Product": "Alyoum Chicken Breast Fillets",
+    "Price": 19.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/721cf8ec1210ffc871adeac7d905340f.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Alyoum Whole Legs Chicken 900g",
+    "Price": 16.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/e8353817049dc13ff86714fc45464b50.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Entaj Shawarma Chicken 400g",
+    "Price": 15.5,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/25f21fa08fdfed491204985d895731d7.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Royal Chicken Strips 750GM",
+    "Price": 22.95,
+    "Offer": "27.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/c5faa13d5bc26c8fd978a2dbeca0682a.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "AMERICANA CHICKEN FRANKS 300GM",
+    "Price": 3.95,
+    "Offer": "33.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/70cbe7268b8196127416128329ad94d2.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Mayda Chicken Breast 1KG",
+    "Price": 18.95,
+    "Offer": "36.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/dcc16664d7566cbe69f02746ac2cb8e5.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Seara Spicy Chicken Strips 750gm",
+    "Price": 26.95,
+    "Offer": "35.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/51f41ace2005be2823a1ef3cfe336ccd.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "SEARA CHICKEN TIKKA/SEARA SHISH TAWOUK 350GM",
+    "Price": 12.95,
+    "Offer": "27.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/f4562452e97272cf15a0c039e8282b00.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "OSSOUL FROZEN CHICKEN LIVER 3X400GM",
+    "Price": 9.95,
+    "Offer": "26.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/8b6cb400c6a88572fb462e0ac57f0871.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "SEARA CHICKEN FILLET (REGULAR/SPICY) 400GM",
+    "Price": 17.5,
+    "Offer": "12.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/28fe1514c6bc8f370eb1e30e6c401101.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Sadia Chicken Burger 840GM/1KG",
+    "Price": 19.95,
+    "Offer": "36.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/08211ed3321ac05712b0a9765e579589.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "SEARA CHICKEN FRANKS 3 X 340GM",
+    "Price": 9.95,
+    "Offer": "37.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/9d03d5878971726039113422af27613b.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "AL NASIRIYAH FRESH CHICKEN MIXED PARTS 800GM",
+    "Price": 11.95,
+    "Offer": "7.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/398368f0de5cc65857ce78206a82c89d.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "AL NASIRIYAH FRESH CHICKEN MIXED PARTS SKINLESS 800GM",
+    "Price": 11.95,
+    "Offer": "4.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/ed4927007cc83ca70070a13da59dc069.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "AL NASIRIYAH FRESH WHOLE CHICKEN BAG 1000G",
+    "Price": 16.95,
+    "Offer": "13.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/501063b96a713274357f6267ac55f921.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "ALBASHAYER FROZEN WHOLE CHICKEN 1200GM",
+    "Price": 16.95,
+    "Offer": "22.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/3460702c93edf9e630d28cedffb853ad.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Sadia Frozen Chicken 10x1200GM",
+    "Price": 18.5,
+    "Offer": "11.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/196c17c121337dab7c06c4bca7f5224c.jpg"
+  },
+  {
     "Store": "LULU Hypermarket",
     "Product": "Fakieh Fresh White Eggs Medium 30s",
     "Price": 12.95,
@@ -1722,11 +1862,11 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/b604a6ba861a9ecaca376e6c47827dfc.jpg"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Selal Aljazera Fresh White Eggs Big 30's",
-    "Price": 13.5,
-    "Offer": "43.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/cfd296885c1006cd5736d88de7832c62.jpg"
+    "Store": "Mark & Save",
+    "Product": "Al Qaryah White Eggs Large 30's",
+    "Price": 14.95,
+    "Offer": "37.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/28ae585a5017a55503f1629a13e460d6.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -1778,48 +1918,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/661a6b18c5dec950e6a614a48b480183.jpg"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Mamaearth Onion Scalp Serum 50ml, Mamaearth Ultra Light Indian Sunscreen 50g, Mamaearth Onion Shampoo 400ml, Mamaearth Aloe Vera Face Wash 100ml, Mamaearth Nourishing Cold Pressed Almond Oil 150ml, Mamaearth Ubtan Face Serum 30ml",
-    "Price": 25.0,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/549efd236a4dee2565ac9d599d97ff75.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Yong Chin Face Wash 100ml Assorted",
-    "Price": 9.95,
-    "Offer": "35.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/d5855e3f7fb523a99dd8acdd58265173.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Himalaya Herbals Clear Complexion Whitening Face Wash",
-    "Price": 18.95,
-    "Offer": "44.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/261546e4013cd891c43639d9a8f17cb4.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Garnier Fast Fairness Face Wash Vitamin C Fast Bright Lemon 100ml",
-    "Price": 15.95,
-    "Offer": "32.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/3bfda8dcc922f711191cfc0480edbf8b.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Nivea Face Wash 150ml Assorted",
-    "Price": 19.95,
-    "Offer": "42.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/186ecd8a1bed2992d69ea95ece0af038.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Glow & Lovely Face Wash Insta Glow 150g",
-    "Price": 19.95,
-    "Offer": "45.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/5cfa21aa971a337d1d60754a1676b8dc.jpg"
-  },
-  {
     "Store": "Hyper Panda",
     "Product": "Glow & Lovely Face Wash (150g)",
     "Price": 11.5,
@@ -1832,6 +1930,13 @@
     "Price": 17.95,
     "Offer": "35.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/7edb2bf42ea3f6249897203ead637226.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Glow&Lovely 100Gm+Face Wash 45Gm",
+    "Price": 15.95,
+    "Offer": "27.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/65b3f6ce79e9886a82bdb2faf6c0d9e3.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -1929,14 +2034,14 @@
     "Product": "Fair & Lovely Glow & Lovely Face Wash (Oil Control / Spotless Glow) 150ml",
     "Price": 19.95,
     "Offer": "42.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/bf8a6259bfb963b02339a64e1a0d7721.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/bf8a6259bfb963b02339a64e1a0d7721.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "GARNIER SN LIGHT FAIRNESS FACE WASH 100ML",
     "Price": 12.95,
     "Offer": "48.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/99551964e42ac575d0d897a5f5b80494.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/76ef494ceeeb1718a1f0beba72f3c0bf.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -2037,27 +2142,6 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/881cfa2687097984b6159cd1fb3519d5.jpg"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Vaseline Lip Therapy Assorted 4.8gm Assorted",
-    "Price": 7.95,
-    "Offer": "35.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/d6c11492ef8135387b994993fa29018c.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Vaseline Cocoa Radiant Body Oil 200ml",
-    "Price": 27.95,
-    "Offer": "36.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/a32d43e4f2bfb5a31baedf8aa09cf595.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Vaseline UV Protection Sun Stick SPF50 15g",
-    "Price": 31.95,
-    "Offer": "34.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/bfdd17e9ca6260b5ccbfa1c818b271a0.jpg"
-  },
-  {
     "Store": "Hyper Panda",
     "Product": "Vaseline Hair Tonic (200ml)",
     "Price": 12.99,
@@ -2132,7 +2216,28 @@
     "Product": "Vaseline Pure Petroleum Jelly 250ml",
     "Price": 12.5,
     "Offer": "39                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/901d8a3504e2a28c080ce6f43cbf6cca.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/901d8a3504e2a28c080ce6f43cbf6cca.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Intensive Care Aloe Soothe, Vaseline Intensive Care Cocoa Radiant, Vaseline Ice Cool Hydration Body Lotion 400ml (Aloe / Cocoa / Ice Cool)",
+    "Price": 16.95,
+    "Offer": "19.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/17da8fd72742db9928b40cea9992f8df.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Regular Hair Tonic 300ML",
+    "Price": 12.95,
+    "Offer": "31.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/a5ab5aacb0e9508a6ff75796628814a5.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Vaseline Intensive Care Cocoa Radiant Body Lotion 400ml",
+    "Price": 16.95,
+    "Offer": "19.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/889e013ac1d16f5aecc897b22aeb8217.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -2140,13 +2245,6 @@
     "Price": 16.95,
     "Offer": "43.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/17da8fd72742db9928b40cea9992f8df.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "Vaseline Regular Hair Tonic 300ml",
-    "Price": 12.95,
-    "Offer": "31.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/da25264e2754678df06cbf08be9ae2d8.jpg"
   },
   {
     "Store": "Danube",
@@ -2262,13 +2360,6 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Himalaya Moisture Rich Jasmine Soap",
-    "Price": 9.95,
-    "Offer": "47.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/eab1ed95be4d6d088fbed236d243570f.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "Dettol Sensitive Bar Soap Lavender & White Musk Scent 4 x 120 g",
     "Price": 13.95,
     "Offer": "26.4                    % Off",
@@ -2287,69 +2378,6 @@
     "Price": 14.95,
     "Offer": "31.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/0cf71c67714886cecf41973086c2e739.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Dexclusive Liquid Soap Bloom#1 400ml",
-    "Price": 6.95,
-    "Offer": "18.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/4c2f46cf414ea9b4249845efe3a318e9.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Pyary Turmeric Soap 75g 4Pcs",
-    "Price": 11.95,
-    "Offer": "24.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/eea295d7a1acf47fba8364073e4a035f.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Yong Chin Colgn/White Soap Gold Caviar 100gm",
-    "Price": 9.95,
-    "Offer": "47.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/79bb4376659d4b73a23b3d20b2b77c30.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Yong Chin Soap 100gm Assorted",
-    "Price": 5.95,
-    "Offer": "47.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/5acbd07157b2824458c5d0472b4acc13.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "JDO Moroccan Black Soap 500g Assorted",
-    "Price": 11.5,
-    "Offer": "25.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/8f64bedab44c302098492e1cc5d411d7.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Yardley Soap 90gm & 100g 2+1 Assorted",
-    "Price": 10.95,
-    "Offer": "33.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/1a1e63ee20d6df95fb2938647d888d6a.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Himalaya Soap 6x125g PO Assorted",
-    "Price": 13.95,
-    "Offer": "26.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/80a7cdc34a56111245166cc2f6f4f7de.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Enchanteur Soap 125g 4+2",
-    "Price": 15.95,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/b78b3c587a8ef2b8739483507a7e633e.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Dettol Instant Cool Antibacterial Bar Soap 120g 4's Assorted",
-    "Price": 13.95,
-    "Offer": "26.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/e35c674603bbff68badaa043cbd33717.jpg"
   },
   {
     "Store": "Hyper Panda",
@@ -2451,10 +2479,10 @@
   },
   {
     "Store": "Mark & Save",
-    "Product": "Dove Beauty Soap Pink/White 4x75Gm",
-    "Price": 10.95,
-    "Offer": "42.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/f1bb4c28ca39efb8b679387b1f28eb09.jpg"
+    "Product": "Himalaya Soap 6x125Gm",
+    "Price": 9.99,
+    "Offer": "44.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/ea23b2bb9fa51e03188df34d3b5be199.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -2696,31 +2724,38 @@
   },
   {
     "Store": "Grand Hyper",
-    "Product": "Lux Beauty Bar Soap 6x120g",
+    "Product": "LUX BEAUTY BAR SOAP 6X120G",
     "Price": 17.95,
     "Offer": "45.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/2fe0442b00d09ba8252c204961b3adf5.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/2fe0442b00d09ba8252c204961b3adf5.jpg"
   },
   {
     "Store": "Grand Hyper",
-    "Product": "Yardley Beauty Soap 6 x 100gm",
+    "Product": "YARDLEY BEAUTY SOAP 6 X 100GM",
     "Price": 15.95,
     "Offer": "54.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/282582a9e533f0319c5ea1025e41e43d.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/282582a9e533f0319c5ea1025e41e43d.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "CLEOPATRA BEAUTY SOAP 6 X 120GM",
     "Price": 16.95,
     "Offer": "57.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/6a0e164f673544bf73fc04f43d13e7b5.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/6a0e164f673544bf73fc04f43d13e7b5.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "GODREJ CINTHOL SOAP 125GM 6PCS (ASSORTED)",
     "Price": 9.95,
-    "Offer": "49                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/56a67372a7242589f5160ee6e0924197.jpg"
+    "Offer": "5.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/8d4759f05bd79e1d489b30c62cda1526.jpg"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Dove Soap 4x125g",
+    "Price": 18.99,
+    "Offer": "48.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/866cf68a7821d3b24c905bdcda5d3eda.jpg"
   },
   {
     "Store": "Nesto",
@@ -2843,13 +2878,6 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Pantene Shampoo 375ml Assorted",
-    "Price": 9.95,
-    "Offer": "9.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/a8aa7889a4e2c2d435eaabc3b1f0031c.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "Dove Shampoo 400ml Assorted",
     "Price": 10.95,
     "Offer": "47.7                    % Off",
@@ -2910,104 +2938,6 @@
     "Price": 29.75,
     "Offer": "36.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/e6f3f7540e625c98168d16616bc8792a.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Iber Shampoo w/ Chamomile 750ml",
-    "Price": 8.5,
-    "Offer": "34.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/0c0ef0d4ebfbe802fe9831faefd02ea0.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Johnson's Baby Shampoo 750ml",
-    "Price": 22.95,
-    "Offer": "45.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/83eed1180b4b4d9acf8a7929afc54ec1.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Pert Shampoo 400ml Assorted",
-    "Price": 8.95,
-    "Offer": "55.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/edacb8ee2281a13aeb447b03863c2269.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Pert Shampoo 600ml Assorted",
-    "Price": 13.95,
-    "Offer": "51.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/8c3222eb11c0419aedd1b165418aa18f.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Himalaya Anti-Dandruff Shampoo 400ml",
-    "Price": 9.95,
-    "Offer": "43.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/bbcc0b79797e00a48022737b5e3b723a.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Parachute Shampoo 340ml Assorted",
-    "Price": 9.95,
-    "Offer": "43                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/77412d582894650c1e9a39685cbb7a73.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "OGX Shampoo 385ml Assorted",
-    "Price": 35.95,
-    "Offer": "43.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/c4e31c98485f668a3f95a857077f00b7.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Loreal Elvive Shampoo 400ml and Conditioners 300ml Assorted",
-    "Price": 10.95,
-    "Offer": "54.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/db946721d51e66d36e4d1cf5991746ae.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Dabur Vatika Shampoo 400ml Assorted",
-    "Price": 8.95,
-    "Offer": "52.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/5195c2ca85999c5d040018075a9cc59c.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Dove Nourishing Oil Care Shampoo 400ml Assorted",
-    "Price": 10.95,
-    "Offer": "47.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/bc27f775b8207376e41af8f793642d7b.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "TRESemmé Shampoo 600ml Assorted",
-    "Price": 16.95,
-    "Offer": "45.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/182ccb2862f72b80e1131aa4a0b60099.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Johnson's Baby Shampoo Yellow 500ml",
-    "Price": 17.95,
-    "Offer": "47.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/558951b27412a6361d33eba8e1a60322.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Head & Shoulder Shampoo 350ml Assorted",
-    "Price": 8.95,
-    "Offer": "55.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/bf3b84a1f5c9ee995f2767d56d177cf4.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Herbal Essence Shampoo & Conditioners 400ml Assorted",
-    "Price": 14.5,
-    "Offer": "32.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/17/ef69db47a6ff95893e7c14951394a0a1.jpg"
   },
   {
     "Store": "Hyper Panda",
@@ -3088,6 +3018,13 @@
   },
   {
     "Store": "Al Madina Hypermarket",
+    "Product": "Sunsilk Shampoo 400ml",
+    "Price": 9.95,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/14c9361fca375990e6e5b6e6cc9eaf36.jpg"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
     "Product": "Sunsilk Shampoo 700ml",
     "Price": 15.95,
     "Offer": "51.6                    % Off",
@@ -3113,6 +3050,27 @@
     "Price": 16.95,
     "Offer": "66.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/3b84bcbae966937207a1889f3aec158e.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Clenso Abaya Shampoo 25 Ltr",
+    "Price": 69.95,
+    "Offer": "22.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/e4ac3d2e48244b7a0416e452100c43a8.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Garnier Ultra Doux Shampoo Assstd 400MI",
+    "Price": 9.95,
+    "Offer": "50.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/3818701ee64a578c451a42c870b0b090.jpg"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Pantene Shampoo 400/375Ml",
+    "Price": 8.95,
+    "Offer": "59.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/7f38aec7d45ee260cd0bb31323ccc96e.jpg"
   },
   {
     "Store": "Mark & Save",
@@ -3260,6 +3218,104 @@
     "Price": 9.99,
     "Offer": "54.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/b1ad286be3c3a71260431fdadb29f785.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Rex Abaya Shampoo 2L",
+    "Price": 13.99,
+    "Offer": "53.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/4739bf14d545b943ca711869cc1d0682.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "AlRheden Shampoo Abaya 2L",
+    "Price": 10.99,
+    "Offer": "47.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/2519c47c6f946b55afc3f8561dc8e1f7.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Garnier Ultra Doux Grape Moisture Hydrating Regenerative Shampoo 400ml",
+    "Price": 9.99,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/82683efad4c555ff6c4cf8884c10a9de.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Dove Shampoo Hairfall Rescue 590ml",
+    "Price": 14.99,
+    "Offer": "25                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/7cec527263cc99ad902f15e2ccd21317.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Pert Plus Shampoo Normal Hair 600ml",
+    "Price": 13.99,
+    "Offer": "57.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/27f0041234f49c480dddedebca96c75f.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Garnier Ultra Doux Honey Treasures Replenishing Shampoo 600ml",
+    "Price": 11.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/9a6d512639f40645dd2176b04c27629a.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Sunsilk Shampoo Strength & Shine 700ml",
+    "Price": 13.99,
+    "Offer": "57.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/bd516fee7ac19e5b69c5744945e275b5.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Pantene Daily Care 2 in 1 Shampoo 500ml",
+    "Price": 13.99,
+    "Offer": "33.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/92d3e3265faf0d78efe0de99d91f0e17.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Pantene Pro-V Curlastic Shampoo 400ml",
+    "Price": 14.99,
+    "Offer": "40                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/8c4f66eb3ad73951487f44bef79eb7ad.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Garnier Ultra Doux Honey Treasures Reconstructing Shampoo 1000ml",
+    "Price": 18.99,
+    "Offer": "47.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/65a897d723531f8d713070a79f56756e.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Elvive Hyaluron Shampoo 400ml",
+    "Price": 10.99,
+    "Offer": "52.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/f3057c1ca0a69e18d758525e0bbe3989.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Tresemme Shampoo Botanic & Replenish",
+    "Price": 12.99,
+    "Offer": "60.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/e2dcfae252ea096044f2f287e5601695.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Sunsilk Shampoo Soft & Smooth 400ml",
+    "Price": 10.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/797305a6c658596d2d77717564c7657e.jpg"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Head & Shoulder Sub Zero Shampoo 1000ml",
+    "Price": 29.99,
+    "Offer": "33.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/14db5994369bec6157dbde2a21f8f420.jpg"
   },
   {
     "Store": "Nesto",
@@ -3500,18 +3556,18 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/36864570f724bee4040ddc9332851a20.jpg"
   },
   {
-    "Store": "Othaim Markets",
-    "Product": "Garnier Ultra Doux Honey Treasures Replenishing Shampoo 600ml",
-    "Price": 11.99,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/9a6d512639f40645dd2176b04c27629a.jpg"
+    "Store": "Hyper Al Wafa",
+    "Product": "Sary Honey Jars 1Kg",
+    "Price": 24.95,
+    "Offer": "41.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/2e5e132c71dd48bbd04c50e7c4706613.jpg"
   },
   {
-    "Store": "Othaim Markets",
-    "Product": "Garnier Ultra Doux Honey Treasures Reconstructing Shampoo 1000ml",
-    "Price": 18.99,
-    "Offer": "47.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/65a897d723531f8d713070a79f56756e.jpg"
+    "Store": "Hyper Al Wafa",
+    "Product": "Al Shifa Honey Natural 500Gm",
+    "Price": 24.99,
+    "Offer": "24.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/25/9ab714ead388ade1b097440a0ba87efa.jpg"
   },
   {
     "Store": "Othaim Markets",
@@ -3560,7 +3616,7 @@
     "Product": "ZAIQA PURE HONEY 250GM",
     "Price": 5.95,
     "Offer": "50.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/da558ccfc29fbffcb5856c37267932bd.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/da558ccfc29fbffcb5856c37267932bd.jpg"
   },
   {
     "Store": "Danube",
@@ -3704,17 +3760,17 @@
   },
   {
     "Store": "Grand Hyper",
+    "Product": "ELECTRO GENERAL DOUBLE DOOR REFRIGERATOR 182L NEG-SDL183",
+    "Price": 699.0,
+    "Offer": "27.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/53140b8a3c3db9cdd1d35d985ca92735.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
     "Product": "IMPEX DEFROST REFRIGERATOR 230LTR IRF220W",
     "Price": 899.0,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/c98e5d840402ae72dced29c6ca99b9ae.jpg"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "ELECTRO GENERAL DOUBLE DOOR REFRIGERATOR 182L NEG-SDL183",
-    "Price": 699.0,
-    "Offer": "27.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/53140b8a3c3db9cdd1d35d985ca92735.jpg"
   },
   {
     "Store": "Nesto",
@@ -3900,6 +3956,13 @@
   },
   {
     "Store": "Mark & Save",
+    "Product": "Oscar HD Ready LED TV Os45S32Atvs 32Inch",
+    "Price": 199.0,
+    "Offer": "50.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/248a960bc4b8eebc2d29dfce6c43d149.jpg"
+  },
+  {
+    "Store": "Mark & Save",
     "Product": "Thoshiro 70 in Uhd 4K Smart Led Tv",
     "Price": 1249.0,
     "Offer": "30.6                    % Off",
@@ -3918,13 +3981,6 @@
     "Price": 349.0,
     "Offer": "12.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/e6b2fa15681dfce7d113f557a9568f1b.jpg"
-  },
-  {
-    "Store": "Mark & Save",
-    "Product": "Oscar HD Ready LED TV OS45S32ATVS 32Inch",
-    "Price": 199.0,
-    "Offer": "50.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/71eaa579a69980ddda11b05a543ffac8.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -4028,15 +4084,22 @@
     "Store": "Grand Hyper",
     "Product": "FUJIKA LED SMART TV HD 32 FJK-32D01S",
     "Price": 339.0,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/5b3c8f74829e5abf67b5b3eab534d80a.jpg"
+    "Offer": "22.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/5b3c8f74829e5abf67b5b3eab534d80a.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "IMPEX FHD GOOGLE LED TV 43 INCH",
     "Price": 899.0,
     "Offer": "21.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/8cc531b42ead483d480638d56862c49a.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/5fbeed3c7406677977f83a34f9e97f32.jpg"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "IMPPEX FHD GOOGLE LED TV 43 INCH",
+    "Price": 899.0,
+    "Offer": "21.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/a57e7c991480ed4de8c8a6710788d2d8.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -4044,6 +4107,41 @@
     "Price": 899.0,
     "Offer": "21.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/77acade6364e73904415b2b118e80c59.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Hisense 65\" QLED 4K UHD Smart TV",
+    "Price": 2499.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/a883f539fd7989b84f7b4671bb2f7369.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Hisense 75\" Mini LED ULED TV",
+    "Price": 5499.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/6daceffc7223111122ffe4e4cc8b4c66.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Hisense 75\" QLED TV",
+    "Price": 3499.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/ed227329e18010d162bc2ce7e5709ba3.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Hisense 85\" QLED TV",
+    "Price": 3899.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/09e9ef936051857ff3641581973ab193.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Samsung Mini LED TV",
+    "Price": 2099.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/2f5a40709872c6c8785e44ae8587dfe1.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -4378,8 +4476,15 @@
     "Store": "Grand Hyper",
     "Product": "IMPEX GLORIA 40INCH SMART TV",
     "Price": 639.0,
+    "Offer": "22.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/d5ada83b48a2364501172fa89dac21fd.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "TCL 75\" Smart TV",
+    "Price": 2599.0,
     "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/d5ada83b48a2364501172fa89dac21fd.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/4e5ea7b10b5b3fcbb6dd3cefd52806cb.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -4916,9 +5021,9 @@
   {
     "Store": "LULU Hypermarket",
     "Product": "Canon Ink Jet Printer TS3640",
-    "Price": 159.0,
-    "Offer": "36.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/1afb6a11cbe8e261b680bef94fe5abf9.jpg"
+    "Price": 199.0,
+    "Offer": "16.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/19/fa8b166ff34adff52a209daa7bed36d0.jpg"
   },
   {
     "Store": "Hyper Al Wafa",
@@ -4940,6 +5045,20 @@
     "Price": 139.0,
     "Offer": "39.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/b59f10af97acddc2ed84a6cbd66e4a6b.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Brother T430W 3-in-1 Color Ink Tank Printer",
+    "Price": 499.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/b9695534245d430733aa3121e6221a2a.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "Brother DCP-T730DW 3-in-1 Ink Tank Color Printer",
+    "Price": 899.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/9e8788f4368c4f30f762ed0433207f6c.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -5072,7 +5191,7 @@
     "Product": "BAHAR ULTRA DISHWASH (LEMON) 2 X 1LTR + 500ML",
     "Price": 13.95,
     "Offer": "46.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/4af2ea1587dcc4533eb90c5da4096684.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/4af2ea1587dcc4533eb90c5da4096684.jpg"
   },
   {
     "Store": "Grand Hyper",
@@ -5129,6 +5248,13 @@
     "Price": 16.95,
     "Offer": "22.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/05/26/d596489450ae6f092c7c5c9294a1dbcf.jpg"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Falcon Fella Chocolate Assorted per 500 GM",
+    "Price": 10.95,
+    "Offer": "26.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/264d401cd45a9f6d322d1d0deee1303b.jpg"
   },
   {
     "Store": "Nesto",
@@ -5597,7 +5723,7 @@
     "Product": "GALAXY JEWELS ASSORTED CHOCOLATES 200GM",
     "Price": 19.95,
     "Offer": "39.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/96bdceb0c9b40db66216035e6e332e2a.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/96bdceb0c9b40db66216035e6e332e2a.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
@@ -5605,13 +5731,6 @@
     "Price": 25.95,
     "Offer": "25.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/24/c6cccbbd23ee171b6d0e003bef1d2b05.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Mars Mix Minis 710gm",
-    "Price": 28.95,
-    "Offer": "51.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/ad2c84232da0ced6bf3357e505a2f2e3.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -5642,6 +5761,13 @@
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/18de84902ec416d243aa095d9ce73ad1.jpg"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "Mars Mix Minis 710gm",
+    "Price": 31.95,
+    "Offer": "46.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/11f51e3bb2e5307c378261a88fbe1aa3.jpg"
+  },
+  {
     "Store": "Hyper Panda",
     "Product": "M&M's / Snickers / Galaxy Ice Cream Cone (70/110g)",
     "Price": 6.99,
@@ -5661,13 +5787,6 @@
     "Price": 4.99,
     "Offer": "33.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/bd88a6cec290dd7d1bd72598dad8d404.jpg"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Twix / M&M's / Mars / Bounty / Snickers / Cadbury / Flake Chocolates (36/37/40/42/45/46/50/36.5g)",
-    "Price": 9.99,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/27/cfa1a23dfc4db3e369f371b9e214d609.jpg"
   },
   {
     "Store": "Al Madina Hypermarket",
@@ -5734,10 +5853,10 @@
   },
   {
     "Store": "Grand Hyper",
-    "Product": "BOUNTY / SNICKERS MINIATURES CHOCOLATE (ASSORTED) 150GM",
+    "Product": "Bounty / Snickers Miniatures Chocolate (Assorted) 150gm",
     "Price": 9.95,
     "Offer": "37.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/87fb1e81bfd43ab1541380840b9d3acb.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/87fb1e81bfd43ab1541380840b9d3acb.jpg"
   },
   {
     "Store": "Danube",
@@ -5839,13 +5958,6 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Galaxy Concept Deo Spray Le Desir 200ml asrt",
-    "Price": 8.95,
-    "Offer": "47.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/403b9b99c9cbda3bcc3b7dd9db3699b5.jpg"
-  },
-  {
-    "Store": "Nesto",
     "Product": "Clikon Galaxy Blender",
     "Price": 229.0,
     "Offer": "34.4                    % Off",
@@ -5864,27 +5976,6 @@
     "Price": 1359.0,
     "Offer": "4.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/23/fc889d7ed75283061016ec133acd4d3d.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "SAMSUNG Galaxy S25 Ultra, 5G, 256 GB",
-    "Price": 3599.0,
-    "Offer": "33.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/3acbdcf8ff6943ba5fc74106a2d1e9d8.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Samsung Galaxy A56 A566 256GB 5G",
-    "Price": 1299.0,
-    "Offer": "23.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/211d8a1d39fc695cedb21466615e1d44.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Samsung Galaxy A16 4GB/128GB",
-    "Price": 429.0,
-    "Offer": "30.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/250ec81c0f710d04ad713ed412c1056d.jpg"
   },
   {
     "Store": "LULU Hypermarket",
@@ -6070,13 +6161,6 @@
   },
   {
     "Store": "Hyper Al Wafa",
-    "Product": "Galaxy Concept Deo Spray Le Desir 200ml asrt",
-    "Price": 8.95,
-    "Offer": "47.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/24/d3e3d44dfae90f19827cb01e10cf4ead.jpg"
-  },
-  {
-    "Store": "Hyper Al Wafa",
     "Product": "Clikon Galaxy Blender",
     "Price": 229.0,
     "Offer": "34.4                    % Off",
@@ -6136,7 +6220,7 @@
     "Product": "GALAXY SMOOTH MILK CHOCOLATE 5 X 36GM",
     "Price": 11.95,
     "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/a6f5281949aad9c0e6d48b06bd62ec6b.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/a6f5281949aad9c0e6d48b06bd62ec6b.jpg"
   },
   {
     "Store": "Danube",
@@ -6158,6 +6242,13 @@
     "Price": 15.99,
     "Offer": "38.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/20/5494dfc3d4dc438071cdfc9cb8fe1df8.jpg"
+  },
+  {
+    "Store": "eXtra",
+    "Product": "SAMSUNG Galaxy Tab A11 WiFi",
+    "Price": 699.0,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/84a0bd4973bdd91713c1f733c9454fcb.jpg"
   },
   {
     "Store": "Jarir Bookstore",
@@ -6444,7 +6535,7 @@
     "Product": "NESTLE KITKAT 2 FINGER CHOCOLATE 36 X 17.7 GM",
     "Price": 34.95,
     "Offer": "36.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/d3eabb1ffe463dca0a395d345d21e68b.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/d3eabb1ffe463dca0a395d345d21e68b.jpg"
   },
   {
     "Store": "Danube",
@@ -6550,34 +6641,6 @@
     "Price": 5.95,
     "Offer": "45.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/aae37ce3dfe22d32e0c780e3f075733b.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Colgate Max Fresh Toothpaste 125ml Assorted",
-    "Price": 5.95,
-    "Offer": "45.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/a064c8b99d002e03408f96a0a3df3a54.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Colgate Tooth Paste OpticWhite 75ml Assorted",
-    "Price": 23.95,
-    "Offer": "40.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/7bb108be5db533f71554c194d410109c.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Colgate Plax Fresh Breath Mouthwash, 500ml + 250ml Free",
-    "Price": 25.95,
-    "Offer": "26.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/f2ac9c988db07283a4ad58045268dfb0.jpg"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Colgate Tooth Brush 360 Intradental, Whole Mouth Clean, 360Medium & Optic White 2s Assorted",
-    "Price": 18.95,
-    "Offer": "34.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/05/17/c7a827d4923ec0bfa41616eb294b48df.jpg"
   },
   {
     "Store": "Hyper Panda",
@@ -6724,13 +6787,13 @@
     "Product": "Colgate Tooth Paste 4 x 75ml",
     "Price": 7.95,
     "Offer": "53.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/0f76225834e2ad6eb1afbe07cccd21d3.jpg"
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/0f76225834e2ad6eb1afbe07cccd21d3.jpg"
   },
   {
     "Store": "Grand Hyper",
     "Product": "COLGATE EXTRA CLEAN TOOTH BRUSH 4S",
     "Price": 7.95,
-    "Offer": "27.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/26/6300851cb6320a4c842de23b2eba5b2a.jpg"
+    "Offer": "60.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/05/30/6300851cb6320a4c842de23b2eba5b2a.jpg"
   }
 ]
