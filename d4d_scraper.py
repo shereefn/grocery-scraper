@@ -7,6 +7,7 @@ import smtplib
 import urllib.request
 import urllib.parse
 import csv
+from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
@@ -299,7 +300,6 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
     try:
         data = json.loads(raw_val)
         
-        # ---> NEW SAFETY NET <---
         # If Gemini accidentally wraps the JSON in a list [ ], grab the first item inside it
         if isinstance(data, list):
             if len(data) > 0 and isinstance(data[0], dict):
@@ -331,7 +331,6 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
         
     return raw_val.strip(), None
 
-
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
         return '{"name": "Unknown item", "price": null}'
@@ -362,7 +361,8 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             raw = response.text.strip()
             if raw.startswith("```json"): 
                 raw = raw[7:-3].strip()
-            elif raw.startswith("```"): 
+            elif raw.startswith("
+```"): 
                 raw = raw[3:-3].strip()
             
             json.loads(raw)
@@ -386,6 +386,8 @@ def parse_products(html: str) -> List[Dict]:
     cards = soup.find_all("a", class_="product-card")
 
     results: List[Dict] = []
+    today_str = datetime.now().strftime("%Y-%m-%d") # Mark with today's fetch date
+    
     for card in cards:
         price = extract_price(card)
         store_elem = card.find("h2",  class_="product-description")
@@ -401,11 +403,12 @@ def parse_products(html: str) -> List[Dict]:
         offer      = offer_elem.get_text(strip=True).replace('"', '') if offer_elem else ""
 
         results.append({
-            "Store":     store_name,
-            "Product":   "",
-            "Price":     price,
-            "Offer":     offer,
-            "Image_URL": image_url,
+            "Store":        store_name,
+            "Product":      "",
+            "Price":        price,
+            "Offer":        offer,
+            "Image_URL":    image_url,
+            "Fetched_Date": today_str  # Added date tracking property
         })
     return results
 
@@ -495,7 +498,6 @@ async def scrape(target_list: List[str]) -> List[Dict]:
                 log.error("Shopping list is empty! Nothing to search for.")
                 return []
 
-            # ---> THE SEARCH BAR PIVOT <---
             # We search for your SPECIFIC GROCERY ITEMS instead of entire stores!
             for item_name in target_list:
                 encoded_name = urllib.parse.quote(item_name)
@@ -510,7 +512,6 @@ async def scrape(target_list: List[str]) -> List[Dict]:
                     log.warning("No deals found on D4D for: %s", item_name)
                     continue
 
-                # We don't need 100 clicks for a specific item search, 10 is plenty!
                 click_count = 0
                 max_clicks = 10 
 
@@ -680,7 +681,7 @@ def save_html(data: List[Dict]) -> None:
 <div class="filter-group">
     <label>SORT BY</label>
     <select id="sortDropdown" onchange="applyFilters()">
-        <option value="offer-desc" selected>Highest Offer %</option>
+        <option value="offer-desc" selected>Highest Offer % + Newest</option>
         <option value="store-asc">Store Name (A to Z)</option>
         <option value="price-asc">Price: Low to High</option>
         <option value="price-desc">Price: High to Low</option>
@@ -700,7 +701,8 @@ def save_html(data: List[Dict]) -> None:
                 <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a store..." onkeyup="filterStoreList()">
                 
                 <div class="checkbox-panel" id="store-checkboxes">
-                    </div>
+                    <!-- Javascript auto-fills checkboxes here based on your data -->
+                </div>
             </div>
             
     <button class="filter-btn" onclick="toggleSidebar()">Apply Filters</button>
@@ -806,7 +808,17 @@ def save_html(data: List[Dict]) -> None:
     }} else if (sortVal === 'store-asc') {{
         filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
     }} else if (sortVal === 'offer-desc') {{
-        filteredData.sort((a, b) => getOfferVal(b.Offer) - getOfferVal(a.Offer));
+        // ---> MULTI LEVEL SORT LOGIC <---
+        // First sort by Offer percentage (highest first)
+        // If percentages match, sort by Fetched_Date string descending (newest first)
+        filteredData.sort((a, b) => {{
+            const offerDiff = getOfferVal(b.Offer) - getOfferVal(a.Offer);
+            if (offerDiff !== 0) return offerDiff;
+            
+            const dateA = a.Fetched_Date || "";
+            const dateB = b.Fetched_Date || "";
+            return dateB.localeCompare(dateA);
+        }});
     }}
 
     currentIndex = 0;
@@ -933,29 +945,52 @@ async def main() -> None:
     if not TARGET_PRODUCTS:
         log.error("🚨 CRITICAL: Failed to load Google Sheets list (or list is empty). STOPPING THE SCRIPT so it doesn't scrape everything!")
         import sys
-        sys.exit(1) # This completely stops the script right here!
+        sys.exit(1)
 
-    results = await scrape(TARGET_PRODUCTS) # <--- NOW WE PASS YOUR LIST TO THE SCRAPER!
+    new_results = await scrape(TARGET_PRODUCTS) # <--- NOW WE PASS YOUR LIST TO THE SCRAPER!
     
-    if TARGET_PRODUCTS and results:
+    if TARGET_PRODUCTS and new_results:
         log.info(f"Filtering results to firmly include your {len(TARGET_PRODUCTS)} list items...")
         filtered_results = []
-        for item in results:
+        for item in new_results:
             product_name = item.get("Product", "").lower()
-            # If ANY word from your list matches the product name, keep it!
             if any(target.lower() in product_name for target in TARGET_PRODUCTS):
                 filtered_results.append(item)
-                
-        results = filtered_results
+        new_results = filtered_results
 
-    if results:
+    if new_results:
         log.info("Removing promotional banners (items with no price)...")
         valid_price_results = []
-        for item in results:
+        for item in new_results:
             if item.get("Price") is not None:
                 valid_price_results.append(item)
-        results = valid_price_results
-        log.info("Kept %d items that actually have prices.", len(results))
+        new_results = valid_price_results
+        log.info("Kept %d items that actually have prices.", len(new_results))
+
+    # ---> HISTORY MERGER LOGIC <---
+    # Load the historical results from the last runs to blend new and old data safely
+    historical_data = []
+    if OUTPUT_JSON.exists():
+        try:
+            historical_data = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
+            if not isinstance(historical_data, list):
+                historical_data = []
+        except Exception:
+            historical_data = []
+
+    # Map previous data by unique combination of Product Name + Store
+    merged_dict = {}
+    for item in historical_data:
+        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
+        if key:
+            merged_dict[key] = item
+
+    # Add or update items with the brand new runs fetched today
+    for item in new_results:
+        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
+        merged_dict[key] = item
+
+    results = list(merged_dict.values())
         
     if results:
         OUTPUT_JSON.write_text(
@@ -963,10 +998,10 @@ async def main() -> None:
         )
         
         # Check alerts and send the styled email
-        check_alerts_and_send_email(results)
+        check_alerts_and_send_email(new_results)
         
         save_html(results)
-        log.info("Done. %d products saved.", len(results))
+        log.info("Done. %d historical and fresh products tracked and saved.", len(results))
     else:
         log.warning("No results found.")
 
