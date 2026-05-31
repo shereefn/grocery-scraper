@@ -358,11 +358,10 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
                 ]
             )
             
-            raw = response.text.strip()
+        raw = response.text.strip()
             if raw.startswith("```json"): 
                 raw = raw[7:-3].strip()
-            elif raw.startswith("
-```"): 
+            elif raw.startswith("```"): 
                 raw = raw[3:-3].strip()
             
             json.loads(raw)
