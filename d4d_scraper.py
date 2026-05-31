@@ -77,7 +77,8 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Google Sheets Engine (Password-Free!)
 # ---------------------------------------------------------------------------
 def fetch_sheet_shopping_list() -> List[str]:
-    if SHEET_CSV_URL == "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93Ln5VB7EGXhSw7GLTNd5OgGzt-xk5Paxa4ftBHbdtPVZMyJwGX4xFJOjzVjyQMQd5C/pub?gid=0&single=true&output=csv":
+    # FIXED: Restored the proper safety check so it doesn't block your actual URL
+    if not SHEET_CSV_URL or SHEET_CSV_URL == "PASTE_YOUR_LINK_HERE":
         log.error("🚨 CRITICAL: You forgot to paste your Google Sheets CSV link in the code!")
         return []
 
@@ -358,7 +359,8 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
                 ]
             )
             
-        raw = response.text.strip()
+            # FIXED: Corrected indentation on these lines
+            raw = response.text.strip()
             if raw.startswith("```json"): 
                 raw = raw[7:-3].strip()
             elif raw.startswith("```"): 
@@ -700,8 +702,7 @@ def save_html(data: List[Dict]) -> None:
                 <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a store..." onkeyup="filterStoreList()">
                 
                 <div class="checkbox-panel" id="store-checkboxes">
-                    <!-- Javascript auto-fills checkboxes here based on your data -->
-                </div>
+                    </div>
             </div>
             
     <button class="filter-btn" onclick="toggleSidebar()">Apply Filters</button>
