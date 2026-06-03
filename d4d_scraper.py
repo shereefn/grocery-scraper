@@ -837,7 +837,7 @@ def save_html(data: List[Dict]) -> None:
     const chunk = filteredData.slice(currentIndex, currentIndex + CHUNK_SIZE);
     const fragment = document.createDocumentFragment();
 
-    chunk.forEach(item => {{
+chunk.forEach(item => {{
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       const priceStr = item.Price ? `SAR ${{item.Price}}` : "—";
@@ -846,9 +846,17 @@ def save_html(data: List[Dict]) -> None:
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
+      // ---> NEW: Format the date string <---
+      const fetchDate = item.Fetched_Date 
+          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{item.Fetched_Date}}</div>` 
+          : "";
+
       tr.innerHTML = `
           <td>${{imgTag}}</td>
-          <td>${{item.Product || "Unknown item"}}</td>
+          <td>
+             <div style="font-weight: 500;">${{item.Product || "Unknown item"}}</div>
+             ${{fetchDate}}
+          </td>
           <td>${{item.Store || "Unknown store"}}</td>
           <td>${{priceStr}}</td>
           <td>${{offerStr}}</td>
