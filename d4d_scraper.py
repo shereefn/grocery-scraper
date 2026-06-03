@@ -47,7 +47,9 @@ PRICE_ALERTS = [
     {"keyword": "Tide Detergent Liquid 1.8L", "max_price": 17.0},
     {"keyword": "Arial Detergent Liquid 1.8L", "max_price": 17.0},
     {"keyword": "Long Life Milk 1L", "max_price": 44.0},
-    {"keyword": "Lux Dishwash 1.25ltr", "max_price": 10.0} 
+    {"keyword": "Lux Dishwash 1.25ltr", "max_price": 10.0} ,
+    {"keyword": "Charcoal Face Wash 150ml", "max_price": 15.0} ,
+    {"keyword": "Vaseline Lip Care", "max_price": 12.0}
 ]
 
 # 👇 PASTE YOUR PUBLISHED GOOGLE SHEETS CSV LINK HERE 👇
