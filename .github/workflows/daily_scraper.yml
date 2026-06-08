@@ -29,6 +29,9 @@ jobs:
 
       - name: Install Playwright Web Browser
         run: playwright install chromium --with-deps
+        
+      - name: Run Cobone Food Scraper
+        run: python cobone_scraper.py
 
       - name: Run D4D Grocery Scraper
         env:
@@ -38,8 +41,6 @@ jobs:
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
         run: python d4d_scraper.py
 
-      - name: Run Cobone Food Scraper
-        run: python cobone_scraper.py
 
       # --- Saves ALL the generated HTML and JSON files back to your GitHub folder ---
       - name: Save Website Files
