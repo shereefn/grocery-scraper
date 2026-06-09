@@ -450,7 +450,7 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
 
         async def process_with_limit(product, client_instance):
             async with semaphore:
-                await asyncio.sleep(4.1)
+                await asyncio.sleep(5.1)
                 ai_result_string = await read_product_name_from_image(product["Image_URL"], client_instance)
                 return product, ai_result_string
 
