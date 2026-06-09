@@ -79,7 +79,6 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Google Sheets Engine (Password-Free!)
 # ---------------------------------------------------------------------------
 def fetch_sheet_shopping_list() -> List[str]:
-    # FIXED: Restored the proper safety check so it doesn't block your actual URL
     if not SHEET_CSV_URL or SHEET_CSV_URL == "PASTE_YOUR_LINK_HERE":
         log.error("🚨 CRITICAL: You forgot to paste your Google Sheets CSV link in the code!")
         return []
@@ -299,7 +298,8 @@ def extract_price(card) -> Optional[float]:
         
     return None
 
-def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
+def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float], Optional[float]]:
+    """Returns (Name, Price, Old_Price)"""
     try:
         data = json.loads(raw_val)
         
@@ -308,11 +308,11 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
             if len(data) > 0 and isinstance(data[0], dict):
                 data = data[0]
             else:
-                return "Unknown item", None
+                return "Unknown item", None, None
                 
         # Now safely extract using .get() since we know it is a dictionary
         if isinstance(data, dict):
-            return data.get("name", "Unknown item"), data.get("price")
+            return data.get("name", "Unknown item"), data.get("price"), data.get("old_price")
             
     except json.JSONDecodeError:
         pass
@@ -323,45 +323,45 @@ def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float]]:
         name = parts[0].strip()
         price_str = parts[1].strip()
         price = clean_price(price_str) if price_str.lower() != "none" else None
-        return name, price
+        return name, price, None
         
     if "|" in raw_val:
         parts = raw_val.split("|", 1)
         name = parts[0].strip()
         price_str = parts[1].strip()
         price = clean_price(price_str) if price_str.lower() != "none" else None
-        return name, price
+        return name, price, None
         
-    return raw_val.strip(), None
+    return raw_val.strip(), None, None
 
 async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncClient) -> str:
     if not image_url:
-        return '{"name": "Unknown item", "price": null}'
+        return '{"name": "Unknown item", "price": null, "old_price": null}'
         
     max_retries = 6 
     for attempt in range(max_retries):
         try:
             resp = await http_client.get(image_url, timeout=15)
             if resp.status_code != 200:
-                return '{"name": "Unknown item", "price": null}'
+                return '{"name": "Unknown item", "price": null, "old_price": null}'
 
             prompt = (
                 "You are a data extractor. Look at this grocery product image. "
                 "1. Extract the Brand Name, Product Name, and Weight/Volume in English. "
                 "2. Look for a highly visible promotional price painted on the image (e.g. 1.95 or 10.00). "
-                "Output ONLY a raw, valid JSON object in this exact format: {\"name\": \"Extracted Name\", \"price\": 1.95} "
-                "If you cannot find a price, use null for the price. Do not include markdown code blocks or any other text."
+                "3. Look for an original, crossed-out, or 'was' price usually written near the promo price. "
+                "Output ONLY a raw, valid JSON object in this exact format: {\"name\": \"Extracted Name\", \"price\": 1.95, \"old_price\": 2.50} "
+                "If you cannot find a price or old_price, use null for them. Do not include markdown code blocks or any other text."
             )
 
             response = await client.aio.models.generate_content(
-                model='gemini-2.5-flash-lite',
+                model='gemini-2.5-flash',
                 contents=[
                     types.Part.from_bytes(data=resp.content, mime_type='image/jpeg'),
                     prompt
                 ]
             )
             
-            # FIXED: Corrected indentation on these lines
             raw = response.text.strip()
             if raw.startswith("```json"): 
                 raw = raw[7:-3].strip()
@@ -381,7 +381,7 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
                 log.error(f"Unexpected AI Error: {error_message}")
                 break 
 
-    return '{"name": "Unknown item", "price": null}'
+    return '{"name": "Unknown item", "price": null, "old_price": null}'
 
 
 def parse_products(html: str) -> List[Dict]:
@@ -409,6 +409,7 @@ def parse_products(html: str) -> List[Dict]:
             "Store":        store_name,
             "Product":      "",
             "Price":        price,
+            "Old_Price":    None,
             "Offer":        offer,
             "Image_URL":    image_url,
             "Fetched_Date": today_str  # Added date tracking property
@@ -424,12 +425,14 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
         img_url = p["Image_URL"]
         if img_url in ai_cache:
             cached_val = ai_cache[img_url]
-            name, ai_price = parse_ai_result(cached_val)
+            name, ai_price, ai_old_price = parse_ai_result(cached_val)
             
             p["Product"] = name
             
             if ai_price is not None and p.get("Price") is None:
                 p["Price"] = ai_price
+            if ai_old_price is not None and p.get("Old_Price") is None:
+                p["Old_Price"] = ai_old_price
                 
             if p.get("Price") is None or name == "Unknown item":
                 uncached_products.append(p)
@@ -462,13 +465,15 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             completed = await asyncio.gather(*tasks)
             
             for idx, (p, ai_result_string) in enumerate(completed):
-                name, ai_price = parse_ai_result(ai_result_string)
+                name, ai_price, ai_old_price = parse_ai_result(ai_result_string)
                 p["Product"] = name
                 
                 if ai_price is not None and p.get("Price") is None:
                     p["Price"] = ai_price
+                if ai_old_price is not None and p.get("Old_Price") is None:
+                    p["Old_Price"] = ai_old_price
 
-                json_to_save = json.dumps({"name": name, "price": ai_price}, ensure_ascii=False)
+                json_to_save = json.dumps({"name": name, "price": ai_price, "old_price": ai_old_price}, ensure_ascii=False)
                 ai_cache[p["Image_URL"]] = json_to_save
                 save_to_cloud(p["Image_URL"], json_to_save)
                 
@@ -640,7 +645,7 @@ def save_html(data: List[Dict]) -> None:
   td:nth-child(3) {{ color: #5f6368; font-size: 14px; width: 150px; }}
   td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
   td:nth-child(5) {{ width: 130px; }}
-  .badge-offer {{ background: #fce8e6; color: #c5221f; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; }}
+  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }}
   img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
   img:hover {{ transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }}
@@ -814,9 +819,6 @@ def save_html(data: List[Dict]) -> None:
     }} else if (sortVal === 'store-asc') {{
         filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
     }} else if (sortVal === 'offer-desc') {{
-        // ---> MULTI LEVEL SORT LOGIC <---
-        // First sort by Offer percentage (highest first)
-        // If percentages match, sort by Fetched_Date string descending (newest first)
         filteredData.sort((a, b) => {{
             const offerDiff = getOfferVal(b.Offer) - getOfferVal(a.Offer);
             if (offerDiff !== 0) return offerDiff;
@@ -846,13 +848,16 @@ def save_html(data: List[Dict]) -> None:
 chunk.forEach(item => {{
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-      const priceStr = item.Price ? `SAR ${{item.Price}}` : "—";
+      
+      const priceHtml = item.Price 
+          ? `SAR ${{item.Price}}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${{item.Old_Price}}</span>` : "")
+          : "—";
+          
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "—";
       const imgTag = item.Image_URL 
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-      // ---> NEW: Format the date string <---
       const fetchDate = item.Fetched_Date 
           ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{item.Fetched_Date}}</div>` 
           : "";
@@ -864,7 +869,7 @@ chunk.forEach(item => {{
              ${{fetchDate}}
           </td>
           <td>${{item.Store || "Unknown store"}}</td>
-          <td>${{priceStr}}</td>
+          <td>${{priceHtml}}</td>
           <td>${{offerStr}}</td>
       `;
       fragment.appendChild(tr);
