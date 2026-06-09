@@ -29,10 +29,12 @@ jobs:
 
       - name: Install Playwright Web Browser
         run: playwright install chromium --with-deps
-        
+
+      # ---> Food scraper runs FIRST! <---
       - name: Run Cobone Food Scraper
         run: python cobone_scraper.py
 
+      # ---> Grocery scraper runs SECOND! <---
       - name: Run D4D Grocery Scraper
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -41,12 +43,15 @@ jobs:
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
         run: python d4d_scraper.py
 
-
-      # --- Saves ALL the generated HTML and JSON files back to your GitHub folder ---
+      # --- Saves files safely back to your GitHub folder only if they exist ---
       - name: Save Website Files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add d4d_results.html d4d_results.json cobone_results.html cobone_results.json
+          
+          # Only add files if they were successfully created during this run
+          if [ -f d4d_results.html ]; then git add d4d_results.html d4d_results.json; fi
+          if [ -f cobone_results.html ]; then git add cobone_results.html cobone_results.json; fi
+          
           git commit -m "🤖 Auto-updated grocery and food deals" || exit 0
           git push
