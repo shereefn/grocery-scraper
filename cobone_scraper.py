@@ -21,23 +21,33 @@ log = logging.getLogger(__name__)
 
 async def scrape_cobone(url: str) -> List[Dict]:
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+        # STEALTH MODE: Hiding the automated robot flags from Cloudflare
+        browser = await pw.chromium.launch(
+            headless=True,
+            args=["--disable-blink-features=AutomationControlled"]
+        )
         context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             viewport={"width": 1366, "height": 768},
             locale="en-US"
         )
         page = await context.new_page()
         log.info("🔍 Loading Cobone Riyadh Food Deals...")
         
-        await page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        
-        # Scroll down to load all deals
-        for _ in range(8):
-            await page.mouse.wheel(0, 1500)
-            await asyncio.sleep(1.5)
+        try:
+            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
             
-        html = await page.content()
+            # Scroll down to load all deals
+            for i in range(8):
+                await page.mouse.wheel(0, 1500)
+                await asyncio.sleep(1.5)
+                
+            html = await page.content()
+            log.info("✅ Successfully grabbed website HTML.")
+        except Exception as e:
+            log.error(f"❌ Failed to load page: {e}")
+            html = ""
+            
         await browser.close()
         
     soup = BeautifulSoup(html, "html.parser")
@@ -45,6 +55,8 @@ async def scrape_cobone(url: str) -> List[Dict]:
     today_str = datetime.now().strftime("%Y-%m-%d")
     
     deals = soup.find_all("a", href=True)
+    log.info(f"🔎 Found {len(deals)} total links on the page. Filtering for food deals...")
+    
     for a in deals:
         if "/deals/" not in a['href']: continue
         text_content = a.get_text(" | ", strip=True)
@@ -387,6 +399,7 @@ def save_html(data: List[Dict]) -> None:
 
 async def main() -> None:
     new_results = await scrape_cobone(TARGET_URL)
+    log.info(f"🏁 Total valid deals parsed: {len(new_results)}")
     
     historical_data = []
     if OUTPUT_JSON.exists():
@@ -410,7 +423,12 @@ async def main() -> None:
     if results:
         OUTPUT_JSON.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
         save_html(results)
-        log.info("Done. %d food deals saved.", len(results))
+        log.info("🎉 Done. %d food deals saved to database.", len(results))
+    else:
+        log.warning("🚨 ZERO DEALS SAVED! Cobone likely blocked the request with a Captcha.")
+        # We must still generate an empty file so GitHub Actions doesn't crash on the 'git add' step!
+        OUTPUT_JSON.write_text("[]", encoding="utf-8")
+        save_html([])
 
 if __name__ == "__main__":
     asyncio.run(main())
