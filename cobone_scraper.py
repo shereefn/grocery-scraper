@@ -69,7 +69,7 @@ async def scrape_cobone(url: str) -> List[Dict]:
         
         # 1. Target exactly the <span class="title">
         title_tag = card.select_one(".title")
-        if not title_tag: continue  # Skip if it's not a real deal card
+        if not title_tag: continue  
         title = title_tag.get_text(strip=True)
         
         # 2. Target exactly the <span class="new"> for the discounted price
@@ -81,7 +81,16 @@ async def scrape_cobone(url: str) -> List[Dict]:
         except ValueError:
             continue
             
-        # 3. Target the <span class="discount"> box
+        # 3. Target exactly the <span class="old"> for the original price
+        old_price = None
+        old_price_tag = card.select_one("span.old")
+        if old_price_tag:
+            try:
+                old_price = float(re.sub(r'[^\d.]', '', old_price_tag.get_text(strip=True)))
+            except ValueError:
+                pass
+            
+        # 4. Target the <span class="discount"> box
         offer = ""
         discount_tag = card.select_one(".discount")
         if discount_tag:
@@ -89,15 +98,14 @@ async def scrape_cobone(url: str) -> List[Dict]:
             if offer_match:
                 offer = f"{offer_match.group(1)}% Off"
                 
-        # 4. Target the Location/Store
+        # 5. Target the Location/Store
         store_name = "Cobone Deal"
         loc_tag = card.select_one(".locations-sold-flex")
         if loc_tag:
             loc_text = loc_tag.get_text(" ", strip=True)
-            # Remove the "2546 Sold" text to isolate just the restaurant name
             store_name = re.sub(r'\d+\s*Sold', '', loc_text, flags=re.IGNORECASE).strip()
             
-        # 5. Extract the Image URL
+        # 6. Extract the Image URL
         img = card.select_one("img")
         image_url = ""
         if img:
@@ -108,6 +116,7 @@ async def scrape_cobone(url: str) -> List[Dict]:
             "Store": store_name,
             "Product": title,
             "Price": price,
+            "Old_Price": old_price,
             "Offer": offer,
             "Image_URL": image_url,
             "Deal_URL": deal_link,
@@ -164,7 +173,11 @@ def save_html(data: List[Dict]) -> None:
   table {{ width: 100%; border-collapse: collapse; min-width: 650px; }}
   th {{ background: #f8f9fa; color: #5f6368; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dadce0; }}
   td {{ padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }}
-  .badge-offer {{ background: #fce8e6; color: #c5221f; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; }}
+  td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
+  
+  /* NEW GREEN BADGE STYLING */
+  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }}
+  
   img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }}
 </style>
@@ -333,7 +346,12 @@ def save_html(data: List[Dict]) -> None:
     chunk.forEach(item => {{
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-      const priceStr = item.Price ? `${{item.Price}}` : "—";
+      
+      // NEW: Layout for the Original crossed out price
+      const priceHtml = item.Price 
+          ? `SAR ${{item.Price}}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${{item.Old_Price}}</span>` : "")
+          : "—";
+          
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "—";
       const imgTag = item.Image_URL ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy">` : "No image";
 
@@ -352,7 +370,7 @@ def save_html(data: List[Dict]) -> None:
              ${{fetchDate}}
           </td>
           <td>${{item.Store || "Unknown store"}}</td>
-          <td>SAR ${{priceStr}}</td>
+          <td>${{priceHtml}}</td>
           <td>${{offerStr}}</td>
       `;
       fragment.appendChild(tr);
