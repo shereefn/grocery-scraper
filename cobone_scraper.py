@@ -54,66 +54,56 @@ async def scrape_cobone(url: str) -> List[Dict]:
     all_results = []
     today_str = datetime.now().strftime("%Y-%m-%d")
     
-    deals = soup.find_all("a", href=True)
-    log.info(f"🔎 Found {len(deals)} total links on the page. Activating Tree Climber...")
+    # Target the exact links wrapping the deal cards
+    deals = soup.select("a[href*='/deals/']")
+    log.info(f"🔎 Found {len(deals)} potential deal links. Extracting precise data...")
     
     seen_urls = set()
     
-    for a in deals:
-        href = a.get('href', '')
-        if "/deals/" not in href: continue
-        
-        # Skip top menu links
+    for card in deals:
+        href = card.get('href', '')
         if "categories" in href.lower() or "/ar/" in href.lower(): continue
         
         deal_link = "https://www.cobone.com" + href if href.startswith('/') else href
         if deal_link in seen_urls: continue
         
-        # --- THE TREE CLIMBER ---
-        # Start at the link, and climb up the HTML boxes to find the container holding the price
-        node = a
-        found_card = None
-        for _ in range(6):  # Climb up to 6 levels higher
-            if not node or node.name == 'body': break
+        # 1. Target exactly the <span class="title">
+        title_tag = card.select_one(".title")
+        if not title_tag: continue  # Skip if it's not a real deal card
+        title = title_tag.get_text(strip=True)
+        
+        # 2. Target exactly the <span class="new"> for the discounted price
+        price_tag = card.select_one("span.new")
+        if not price_tag: continue
+        price_str = price_tag.get_text(strip=True)
+        try:
+            price = float(re.sub(r'[^\d.]', '', price_str))
+        except ValueError:
+            continue
             
-            text_chunk = node.get_text(" | ", strip=True)
-            if re.search(r'SAR|SR|AED', text_chunk, re.IGNORECASE):
-                found_card = node
-                break
-            node = node.parent
+        # 3. Target the <span class="discount"> box
+        offer = ""
+        discount_tag = card.select_one(".discount")
+        if discount_tag:
+            offer_match = re.search(r'(\d+)', discount_tag.get_text(strip=True))
+            if offer_match:
+                offer = f"{offer_match.group(1)}% Off"
+                
+        # 4. Target the Location/Store
+        store_name = "Cobone Deal"
+        loc_tag = card.select_one(".locations-sold-flex")
+        if loc_tag:
+            loc_text = loc_tag.get_text(" ", strip=True)
+            # Remove the "2546 Sold" text to isolate just the restaurant name
+            store_name = re.sub(r'\d+\s*Sold', '', loc_text, flags=re.IGNORECASE).strip()
             
-        if not found_card: continue
-        # -------------------------
-        
-        text_content = found_card.get_text(" | ", strip=True)
-        
-        img = found_card.find("img")
-        if not img: continue
-        image_url = img.get("src") or img.get("data-src") or ""
-        if not image_url or "base64" in image_url: continue
-        
-        title = img.get("alt", "").strip() or a.get("title", "").strip()
-        if not title:
-            blocks = text_content.split(" | ")
-            title = blocks[0] if blocks else "Unknown Deal"
+        # 5. Extract the Image URL
+        img = card.select_one("img")
+        image_url = ""
+        if img:
+            image_url = img.get("src") or img.get("data-src") or ""
+        if "base64" in image_url: image_url = ""
             
-        if len(title) < 5: continue
-            
-        price_match = re.search(r'(?:SAR|SR|AED|USD|\$)[^\d]*(\d+)', text_content, re.IGNORECASE)
-        price = float(price_match.group(1)) if price_match else None
-        if not price: continue
-        
-        offer_match = re.search(r'(\d+)\s*%', text_content)
-        offer = f"{offer_match.group(1)}% Off" if offer_match else ""
-        
-        store_name = "Cobone Food Deal"
-        if "Sold" in text_content:
-            store_parts = text_content.split("|")
-            for i, part in enumerate(store_parts):
-                if "Sold" in part and i > 0:
-                    store_name = store_parts[i-1].strip()
-                    break
-        
         all_results.append({
             "Store": store_name,
             "Product": title,
@@ -362,7 +352,7 @@ def save_html(data: List[Dict]) -> None:
              ${{fetchDate}}
           </td>
           <td>${{item.Store || "Unknown store"}}</td>
-          <td>${{priceStr}}</td>
+          <td>SAR ${{priceStr}}</td>
           <td>${{offerStr}}</td>
       `;
       fragment.appendChild(tr);
