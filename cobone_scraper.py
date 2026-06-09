@@ -1,3 +1,23 @@
+This is fantastic news! Your screenshot shows two huge victories:
+
+1. **Cloudflare is beaten.** The "Page Title" proves the robot is inside the real website, not stuck on a captcha.
+2. **The deals are loading.** It successfully found all 237 links on the page.
+
+So why did it throw them all away? You have discovered a classic **Web Scraping Trap.**
+
+### The Trap: Separated HTML
+
+When you look at Cobone, you see a nice little card with a picture, a title, and a price. But in the code, Cobone separates them. The `<a href>` link only wraps around the **Title**. The **Price** is sitting in a completely different box right next to it.
+
+Because our script was strictly looking at the link, it saw the text `"1-Meter Pizza"`. Since the word `"SAR"` was nowhere inside that specific link tag, the script assumed it wasn't a deal and threw it in the trash!
+
+### The Fix: The "Tree Climber"
+
+We need to make your scraper smarter. I have added a new "Tree Climbing" algorithm. Now, when the script finds a link, it will "climb up" the HTML code (looking at the parent boxes) until it finds the box that holds *both* the link *and* the price together.
+
+Replace your entire `cobone_scraper.py` file with this final version.
+
+```python
 import asyncio
 import json
 import logging
@@ -37,6 +57,7 @@ async def scrape_cobone(url: str) -> List[Dict]:
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=60000)
             
+            # Scroll to load all dynamic deal cards
             for i in range(8):
                 await page.mouse.wheel(0, 1500)
                 await asyncio.sleep(1.5)
@@ -54,20 +75,39 @@ async def scrape_cobone(url: str) -> List[Dict]:
     today_str = datetime.now().strftime("%Y-%m-%d")
     
     deals = soup.find_all("a", href=True)
-    log.info(f"🔎 Found {len(deals)} total links on the page.")
+    log.info(f"🔎 Found {len(deals)} total links on the page. Activating Tree Climber...")
     
-    # --- X-RAY DEBUGGING ---
-    log.info(f"🕵️ PAGE TITLE SEEN BY GITHUB: {soup.title.string if soup.title else 'No Title'}")
-    deal_links = [a for a in deals if "/deals/" in a.get('href', '')]
-    if deal_links:
-        log.info(f"🕵️ FIRST DEAL TEXT SEEN: {deal_links[0].get_text(' | ', strip=True)}")
-    # -----------------------
+    seen_urls = set()
     
     for a in deals:
-        if "/deals/" not in a['href']: continue
-        text_content = a.get_text(" | ", strip=True)
+        href = a.get('href', '')
+        if "/deals/" not in href: continue
         
-        img = a.find("img")
+        # Skip top menu links
+        if "categories" in href.lower() or "/ar/" in href.lower(): continue
+        
+        deal_link = "https://www.cobone.com" + href if href.startswith('/') else href
+        if deal_link in seen_urls: continue
+        
+        # --- THE TREE CLIMBER ---
+        # Start at the link, and climb up the HTML boxes to find the container holding the price
+        node = a
+        found_card = None
+        for _ in range(6):  # Climb up to 6 levels higher
+            if not node or node.name == 'body': break
+            
+            text_chunk = node.get_text(" | ", strip=True)
+            if re.search(r'SAR|SR|AED', text_chunk, re.IGNORECASE):
+                found_card = node
+                break
+            node = node.parent
+            
+        if not found_card: continue
+        # -------------------------
+        
+        text_content = found_card.get_text(" | ", strip=True)
+        
+        img = found_card.find("img")
         if not img: continue
         image_url = img.get("src") or img.get("data-src") or ""
         if not image_url or "base64" in image_url: continue
@@ -75,12 +115,11 @@ async def scrape_cobone(url: str) -> List[Dict]:
         title = img.get("alt", "").strip() or a.get("title", "").strip()
         if not title:
             blocks = text_content.split(" | ")
-            if blocks: title = blocks[0]
+            title = blocks[0] if blocks else "Unknown Deal"
             
         if len(title) < 5: continue
             
-        # Relaxed currency regex to catch USD, AED, or SAR
-        price_match = re.search(r'(?:SAR|AED|USD|\$)[^\d]*(\d+)', text_content, re.IGNORECASE)
+        price_match = re.search(r'(?:SAR|SR|AED|USD|\$)[^\d]*(\d+)', text_content, re.IGNORECASE)
         price = float(price_match.group(1)) if price_match else None
         if not price: continue
         
@@ -95,8 +134,6 @@ async def scrape_cobone(url: str) -> List[Dict]:
                     store_name = store_parts[i-1].strip()
                     break
         
-        deal_link = "https://www.cobone.com" + a['href'] if a['href'].startswith('/') else a['href']
-        
         all_results.append({
             "Store": store_name,
             "Product": title,
@@ -106,6 +143,7 @@ async def scrape_cobone(url: str) -> List[Dict]:
             "Deal_URL": deal_link,
             "Fetched_Date": today_str
         })
+        seen_urls.add(deal_link)
         
     return all_results
 
@@ -388,7 +426,7 @@ def save_html(data: List[Dict]) -> None:
 
 async def main() -> None:
     new_results = await scrape_cobone(TARGET_URL)
-    log.info(f"🏁 Total valid deals parsed: {len(new_results)}")
+    log.info(f"🏁 Total valid deals extracted: {len(new_results)}")
     
     historical_data = []
     if OUTPUT_JSON.exists():
@@ -414,9 +452,11 @@ async def main() -> None:
         save_html(results)
         log.info("🎉 Done. %d food deals saved to database.", len(results))
     else:
-        log.warning("🚨 ZERO DEALS SAVED! Cobone likely blocked the request with a Captcha.")
+        log.warning("🚨 ZERO DEALS SAVED! Ensure the website layout hasn't changed.")
         OUTPUT_JSON.write_text("[]", encoding="utf-8")
         save_html([])
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+```
