@@ -1,3 +1,16 @@
+Ah, I see exactly what happened! This is a super common copy-paste trap.
+
+If you look closely at your error log on line 12, it says: `Because our script was strictly looking at the link, it saw the text "1-Meter Pizza"...`
+
+That is actually my English explanation text from our chat, not Python code! You accidentally copied my introductory paragraphs *along with* the code block into your `cobone_scraper.py` file. Python got completely confused trying to read English sentences as programming instructions, which is why it crashed immediately with a `SyntaxError`.
+
+### The Fix
+
+To fix this, we just need to give Python the clean code.
+
+Go into your `cobone_scraper.py` file, **delete everything inside it completely**, and paste **ONLY** the code inside the black box below. Do not include any of this text you are reading right now!
+
+```python
 import asyncio
 import json
 import logging
@@ -401,4 +414,40 @@ def save_html(data: List[Dict]) -> None:
 </body>
 </html>"""
 
-    OUTPUT_HTML.write_text(html, encoding
+    OUTPUT_HTML.write_text(html, encoding="utf-8")
+    log.info("Saved HTML → %s", OUTPUT_HTML)
+
+async def main() -> None:
+    new_results = await scrape_cobone(TARGET_URL)
+    log.info(f"🏁 Total valid deals extracted: {len(new_results)}")
+    
+    historical_data = []
+    if OUTPUT_JSON.exists():
+        try:
+            historical_data = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
+            if not isinstance(historical_data, list): historical_data = []
+        except Exception:
+            historical_data = []
+
+    merged_dict = {}
+    for item in historical_data:
+        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
+        merged_dict[key] = item
+
+    for item in new_results:
+        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
+        merged_dict[key] = item
+
+    results = list(merged_dict.values())
+        
+    if results:
+        OUTPUT_JSON.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
+        save_html(results)
+        log.info("🎉 Done. %d food deals saved to database.", len(results))
+    else:
+        log.warning("🚨 ZERO DEALS SAVED! Ensure the website layout hasn't changed.")
+        OUTPUT_JSON.write_text("[]", encoding="utf-8")
+        save_html([])
+
+if __name__ == "__main__":
+    asyncio.run(main())
