@@ -1,23 +1,3 @@
-This is fantastic news! Your screenshot shows two huge victories:
-
-1. **Cloudflare is beaten.** The "Page Title" proves the robot is inside the real website, not stuck on a captcha.
-2. **The deals are loading.** It successfully found all 237 links on the page.
-
-So why did it throw them all away? You have discovered a classic **Web Scraping Trap.**
-
-### The Trap: Separated HTML
-
-When you look at Cobone, you see a nice little card with a picture, a title, and a price. But in the code, Cobone separates them. The `<a href>` link only wraps around the **Title**. The **Price** is sitting in a completely different box right next to it.
-
-Because our script was strictly looking at the link, it saw the text `"1-Meter Pizza"`. Since the word `"SAR"` was nowhere inside that specific link tag, the script assumed it wasn't a deal and threw it in the trash!
-
-### The Fix: The "Tree Climber"
-
-We need to make your scraper smarter. I have added a new "Tree Climbing" algorithm. Now, when the script finds a link, it will "climb up" the HTML code (looking at the parent boxes) until it finds the box that holds *both* the link *and* the price together.
-
-Replace your entire `cobone_scraper.py` file with this final version.
-
-```python
 import asyncio
 import json
 import logging
@@ -421,42 +401,4 @@ def save_html(data: List[Dict]) -> None:
 </body>
 </html>"""
 
-    OUTPUT_HTML.write_text(html, encoding="utf-8")
-    log.info("Saved HTML → %s", OUTPUT_HTML)
-
-async def main() -> None:
-    new_results = await scrape_cobone(TARGET_URL)
-    log.info(f"🏁 Total valid deals extracted: {len(new_results)}")
-    
-    historical_data = []
-    if OUTPUT_JSON.exists():
-        try:
-            historical_data = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
-            if not isinstance(historical_data, list): historical_data = []
-        except Exception:
-            historical_data = []
-
-    merged_dict = {}
-    for item in historical_data:
-        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
-        merged_dict[key] = item
-
-    for item in new_results:
-        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
-        merged_dict[key] = item
-
-    results = list(merged_dict.values())
-        
-    if results:
-        OUTPUT_JSON.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
-        save_html(results)
-        log.info("🎉 Done. %d food deals saved to database.", len(results))
-    else:
-        log.warning("🚨 ZERO DEALS SAVED! Ensure the website layout hasn't changed.")
-        OUTPUT_JSON.write_text("[]", encoding="utf-8")
-        save_html([])
-
-if __name__ == "__main__":
-    asyncio.run(main())
-
-```
+    OUTPUT_HTML.write_text(html, encoding
