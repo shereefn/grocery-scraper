@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Offers | Riyadh</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }
+  .navbar { display: flex; align-items: center; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
+  .hamburger { background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }
+  .hamburger:hover { background: #f1f3f4; color: #202124; }
+  h1 { color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }
+  
+  .nav-tabs { display: flex; gap: 8px; margin-left: 20px; flex-wrap: wrap; }
+  .nav-tabs a { text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+  .tab-inactive { background: #f1f3f4; color: #202124; border: 1px solid #dadce0; }
+  .tab-inactive:hover { background: #e8eaed; }
+  .tab-active { background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none; }
+
+  .sidebar { position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }
+  .sidebar.open { left: 0; }
+  .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+  .sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #f1f3f4; }
+  .sidebar-header h2 { font-size: 18px; font-weight: 600; color: #202124; }
+  .close-btn { background: none; border: none; font-size: 28px; cursor: pointer; color: #5f6368; line-height: 1; padding: 0 8px; }
+  .sidebar-content { padding: 24px; display: flex; flex-direction: column; gap: 24px; }
+  .filter-group { display: flex; flex-direction: column; gap: 8px; }
+  .filter-group.search-box { margin-left: auto; min-width: 200px; }
+  .filter-group label { font-size: 13px; color: #5f6368; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  select, input[type=text] { padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }
+  .checkbox-panel { border: 1px solid #dadce0; border-radius: 8px; padding: 16px; background: #fafafa; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+  .checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #3c4043; cursor: pointer; }
+  .slider-container { display: flex; align-items: center; gap: 12px; }
+  input[type=range] { flex: 1; accent-color: #1a73e8; cursor: pointer; }
+  #price-range-label { font-size: 14px; color: #1a73e8; font-weight: 700; min-width: 80px; text-align: right; }
+  .btn-reset { padding: 12px; background: #f1f3f4; color: #202124; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: auto; }
+  .main-wrapper { padding: 24px; max-width: 1400px; margin: 0 auto; }
+  .meta-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }
+  .table-wrap { border-radius: 12px; overflow-x: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.1); background: white; border: 1px solid #dadce0; }
+  table { width: 100%; border-collapse: collapse; min-width: 650px; }
+  th { background: #f8f9fa; color: #5f6368; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dadce0; }
+  td { padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }
+  td:nth-child(4) { color: #188038; font-weight: 700; font-size: 16px; width: 120px; }
+  
+  /* GREEN BADGE STYLING */
+  .badge-offer { background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }
+  
+  img { width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }
+  .loading-indicator { text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+  <h1>My Deals</h1>
+
+  <div class="nav-tabs">
+    <a href="d4d_results.html" class="tab-inactive">🛒 Groceries</a>
+    <a href="cobone_results.html" class="tab-active">🍽️ Food Offers</a>
+  </div>
+
+  <div class="filter-group search-box">
+      <input type="text" id="filter-product" placeholder="Search food deals..." oninput="applyFilters()">
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<div class="sidebar" id="filterSidebar">
+  <div class="sidebar-header">
+    <h2>Filters & Sorting</h2>
+    <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+  </div>
+  
+  <div class="sidebar-content">
+<div class="filter-group">
+    <label>SORT BY</label>
+    <select id="sortDropdown" onchange="applyFilters()">
+        <option value="offer-desc" selected>Highest Offer % + Newest</option>
+        <option value="store-asc">Restaurant Name (A to Z)</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+    </select>
+</div>
+
+    <div class="filter-group">
+      <label>Max Price</label>
+      <div class="slider-container">
+        <input type="range" id="filter-price" min="0" max="1000" value="1000" step="5" oninput="applyFilters()">
+        <span id="price-range-label">SAR 1000</span>
+      </div>
+    </div>
+    
+<div class="filter-group">
+    <label>FILTER RESTAURANTS</label>
+    <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a restaurant..." onkeyup="filterStoreList()">
+    <div class="checkbox-panel" id="store-checkboxes"></div>
+</div>
+            
+    <button class="btn-reset" onclick="resetFilters()">Clear All Filters</button>
+  </div>
+</div>
+
+<div class="main-wrapper">
+  <div class="meta-bar">
+    <span id="count">Loading deals...</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Image</th><th>Deal Name</th><th>Restaurant</th><th>Price</th><th>Offer</th></tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+    <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
+  </div>
+</div>
+
+<script>
+  const rawData = [{"Store": "Cobone Deal", "Product": "Int'l Dinner Buffet at Holiday Inn Olaya", "Price": 84.0, "Old_Price": null, "Offer": "", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/185447/141414441414.webp?v=16", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-dinner-buffet-at-holiday-inn-olaya/206840", "Fetched_Date": "2026-06-09"}, {"Store": "Cobone Deal", "Product": "Seafood Dinner Buffet at Braira Hotel Olaya", "Price": 99.0, "Old_Price": null, "Offer": "", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/185319/1.webp?v=9", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-seafood-dinner-buffet-braira-olaya/210856", "Fetched_Date": "2026-06-09"}, {"Store": "Cobone Deal", "Product": "International Dinner Buffet at Madareem Hotel", "Price": 119.0, "Old_Price": null, "Offer": "", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/190340/3.webp?v=14", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-dinner-buffet-madareem-hotel/190340", "Fetched_Date": "2026-06-09"}, {"Store": "Cobone Deal", "Product": "International Lunch at Joudyan Hotel", "Price": 89.0, "Old_Price": null, "Offer": "", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215539/1.webp?v=13", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-joudyan-hotel-adult/215539", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Al Nakheel Hotel", "Product": "Seafood Market Buffet at Braira Al Nakheel Hotel", "Price": 109.0, "Old_Price": 189.0, "Offer": "42% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/156387/main%20%282%29-Recovered-Recovered.webp?v=8", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-seafood-dinner-buffet-braira-alnakheel-hotel/210820", "Fetched_Date": "2026-06-09"}, {"Store": "Boudl Al Sahafa Hotel", "Product": "Pool Access & Meal at Boudl Al Sahafa Hotel", "Price": 45.0, "Old_Price": 100.0, "Offer": "55% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/204688/1.webp?v=8", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-pool-access-meal-boudl-al-sahafa-hotel/205971", "Fetched_Date": "2026-06-09"}, {"Store": "VOCO Riyadh Hotel", "Product": "5* Breakfast Buffet at voco Riyadh", "Price": 85.0, "Old_Price": 165.0, "Offer": "48% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/146108/2%20%282%29.webp?v=13", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-voco-riyadh-hotel/202545", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday Inn Olaya", "Product": "International Breakfast at Holiday Inn Olaya", "Price": 59.0, "Old_Price": 137.0, "Offer": "57% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/201425/bf1.webp?v=12", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-at-holiday-inn-olaya/201425", "Fetched_Date": "2026-06-09"}, {"Store": "Joudyan Hotel", "Product": "International Dinner Buffet at Joudyan Hotel", "Price": 89.0, "Old_Price": 178.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215537/1.webp?v=4", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-dinner-buffet-joudyan-hotel-adult/215537", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Hotel - Al wazarat", "Product": "Breakfast Buffet at Braira Hotel - Al Wazarat", "Price": 55.0, "Old_Price": 110.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215493/1.webp?v=15", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-braira-wazarat/215493", "Fetched_Date": "2026-06-09"}, {"Store": "Elian Hotel Al Sahafa", "Product": "International Breakfast Buffet at Elian Hotel Al Sahafa", "Price": 29.0, "Old_Price": 55.0, "Offer": "47% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215227/f.webp?v=23", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-myrtle-hotel/215227", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday inn - Meydan", "Product": "Lunch or Dinner Buffet at Holiday Inn Meydan", "Price": 99.0, "Old_Price": 210.0, "Offer": "53% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/204300/1.webp?v=6", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-dinner-buffet-holiday-inn-meydan/209833", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday Inn Riyadh the Business District, an IHG H", "Product": "Pool Access & Drink at Holiday Inn Riyadh the Business District", "Price": 100.0, "Old_Price": 150.0, "Offer": "33% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/206985/1.webp?v=6", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-pool-access-meal-holiday-inn-business-district/218186", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Al Nakheel Hotel", "Product": "Theatre Kitchen Dinner at Braira Al Nakheel", "Price": 99.0, "Old_Price": 198.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/210822/IMG-20250311-WA0512%20%282%29%20copy.webp?v=9", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-theatre-kitchen-dinner-at-braira-al-nakheel/210822", "Fetched_Date": "2026-06-09"}, {"Store": "Radisson Hotel & Residence Riyadh Olaya", "Product": "Breakfast & Pool Access at Radisson Olaya", "Price": 124.0, "Old_Price": 190.0, "Offer": "35% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/181012/Z6.webp?v=39", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-radisson-riyadh-olaya-adult/181012", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Hotel Olaya", "Product": "Seafood Lunch Buffet at Braira Hotel Olaya", "Price": 99.0, "Old_Price": 119.0, "Offer": "17% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/185317/1.webp?v=7", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-seafood-lunch-buffet-braira-olaya/211176", "Fetched_Date": "2026-06-09"}, {"Store": "Goodies Selections", "Product": "Breakfast Buffet at Goodies Selections", "Price": 55.0, "Old_Price": 65.0, "Offer": "15% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215859/5.webp?v=41", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-at-goodies-selections/215859", "Fetched_Date": "2026-06-09"}, {"Store": "Melissa Hotel", "Product": "International Breakfast at Melissa Al Riyadh", "Price": 49.0, "Old_Price": 85.0, "Offer": "42% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/198425/1.webp?v=10", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-melissa-hotel/198425", "Fetched_Date": "2026-06-09"}, {"Store": "Indian Corner Restaurant", "Product": "Discount Voucher from Indian Corner, Al Malaz", "Price": 75.0, "Old_Price": 100.0, "Offer": "25% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/127221/Indian.webp?v=38", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/indian-corner-restaurant-discount-voucher/127221", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Al Nakheel Hotel", "Product": "Breakfast Buffet at Braira Al Nakheel Hotel", "Price": 79.0, "Old_Price": 105.0, "Offer": "25% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/210812/egg-juice-bacon-breakfast.webp?v=15", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-braira-alnakheel-hotel/210812", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Hotel - Qurtubah", "Product": "Indian Dinner From Braira Hotel - Qurtubah", "Price": 75.0, "Old_Price": 159.0, "Offer": "53% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/210835/id1.webp?v=7", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-indian-dinner-buffet-braira-hotel-qurtubah/210835", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday inn - Meydan", "Product": "FLASH SALE! Lunch or Dinner at Holiday Inn Meydan", "Price": 75.0, "Old_Price": 210.0, "Offer": "64% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/200357/1.webp?v=4", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-dinner-buffet-holiday-inn-meydan/218309", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday Inn Olaya", "Product": "Int'l Lunch Buffet at Holiday Inn Olaya", "Price": 79.0, "Old_Price": 164.0, "Offer": "52% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/202746/1.webp?v=10", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-lunch-buffet-holiday-inn-olaya/206836", "Fetched_Date": "2026-06-09"}, {"Store": "The Golden Ship Hotel", "Product": "Lunch or Dinner at The Golden Ship Hotel", "Price": 85.0, "Old_Price": 140.0, "Offer": "39% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/144550/1.webp?v=6", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-dinner-the-golden-ship-hotel/207026", "Fetched_Date": "2026-06-09"}, {"Store": "Rosa Grand Hotel Granada", "Product": "International Breakfast Buffet at Rosa Grand Hotel Granada", "Price": 29.0, "Old_Price": 70.0, "Offer": "59% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/214314/1.webp?v=18", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-rosa-grand-hotel/215451", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Al Nakheel Hotel", "Product": "Seafood Lunch Buffet at Braira Al Nakheel", "Price": 109.0, "Old_Price": 149.0, "Offer": "27% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/184956/1.webp?v=9", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-friday-seafood-lunch-buffet-braira-al-nakheel/215481", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday Inn Al Qasr Riyadh", "Product": "Breakfast Buffet @ Holiday Inn Riyadh Al Qasr", "Price": 59.0, "Old_Price": 110.0, "Offer": "46% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/151429/z158.webp?v=46", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-holiday-inn-riyadh-alqasr/151429", "Fetched_Date": "2026-06-09"}, {"Store": "Nesve Restaurant", "Product": "Business Lunch & Dinner Meal From Nesve Restaurant", "Price": 20.0, "Old_Price": 50.0, "Offer": "60% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/197999/1.webp?v=20", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-dinner-meal-nesve-restaurant/197999", "Fetched_Date": "2026-06-09"}, {"Store": "Tilal Riyadh Hotel", "Product": "5-Star Breakfast Buffet at Tilal Riyadh Hotel", "Price": 69.0, "Old_Price": 115.0, "Offer": "40% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/159052/New%20Project%20-%202025-05-26T152551.439.webp?v=39", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-tilal-riyadh-hotel/159052", "Fetched_Date": "2026-06-09"}, {"Store": "Novotel Riyadh Al Anoud Hotel", "Product": "International Breakfast @Novotel Al Anoud", "Price": 59.0, "Old_Price": 115.0, "Offer": "49% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/217079/1%20%281%29.webp?v=9", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-novotel-alanoud/217079", "Fetched_Date": "2026-06-09"}, {"Store": "Papa Johns KSA", "Product": "Buy One Get One Free on Medium Pizza at Papa Johns", "Price": 5.0, "Old_Price": null, "Offer": "", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/212440/papa-johns-bogo-offer-image%20%282%29.webp?v=34", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/buy-one-get-one-free-papa-johns-ksa/212440", "Fetched_Date": "2026-06-09"}, {"Store": "Myrtle Al Shuhada hotel", "Product": "Breakfast Buffet at Myrtle Hotel - Ghirnatah", "Price": 24.0, "Old_Price": 30.0, "Offer": "20% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/176509/11.webp?v=44", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-myrtle-hotel-breakfast-adult/176509", "Fetched_Date": "2026-06-09"}, {"Store": "Holiday Inn Izdihar", "Product": "International Dinner at Holiday Inn Izdihar", "Price": 105.0, "Old_Price": 212.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/204811/a.webp?v=9", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-dinner-buffet-holiday-inn-izdihar/215760", "Fetched_Date": "2026-06-09"}, {"Store": "Madareem Hotel", "Product": "International Breakfast Buffet at Madareem Hotel", "Price": 75.0, "Old_Price": 99.0, "Offer": "24% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/190336/2.webp?v=19", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-madareem-hotel/190336", "Fetched_Date": "2026-06-09"}, {"Store": "Cantonal Hotel by Warwick Riyadh", "Product": "Dinner Buffet From Cantonal Hotel", "Price": 135.0, "Old_Price": 170.0, "Offer": "21% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/158005/lunch-dinner-buffet-cantonal-hotel-by-warwick-riyadh-2.jpg?v=16", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-dinner-buffet-cantonal-hotel/182996", "Fetched_Date": "2026-06-09"}, {"Store": "Radisson Hotel Riyadh Airport", "Product": "Lunch and Pool Access at Radisson Hotel Airport", "Price": 189.0, "Old_Price": 255.0, "Offer": "26% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/185781/1.webp?v=7", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-pool-access-radisson-riyadh-airport/218122", "Fetched_Date": "2026-06-09"}, {"Store": "Crowne Plaza Riyadh Palace Hotel", "Product": "Meal with Pool Access at Crowne Plaza Riyadh", "Price": 99.0, "Old_Price": 195.0, "Offer": "49% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/215941/1.webp?v=11", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-meal-pool-crowne-plaza-riyadh-palace/215941", "Fetched_Date": "2026-06-09"}, {"Store": "Centro Olaya Hotel By Rotana", "Product": "Daily Breakfast Open Buffet at Centro Olaya Hotel By Rotana", "Price": 69.0, "Old_Price": 119.0, "Offer": "42% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/193245/big-breakfast-centro2.webp?v=19", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-centro-al-olaya/193245", "Fetched_Date": "2026-06-09"}, {"Store": "Crowne Plaza Riyadh Palace Hotel", "Product": "5* Breakfast Buffet at Crowne Plaza Riyadh Palace", "Price": 66.0, "Old_Price": 132.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/218190/1.webp?v=8", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-crowne-plaza-riyadh-palace/218190", "Fetched_Date": "2026-06-09"}, {"Store": "Rosh Olaya Hotel", "Product": "Lunch and Pool Access at Rosh Olaya  Hotel", "Price": 99.0, "Old_Price": 199.0, "Offer": "50% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/198376/New%20Project%20-%202025-05-08T121003.640.webp?v=16", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/lunch-and-pool-access-at-rosh-olaya-hotel/217162", "Fetched_Date": "2026-06-09"}, {"Store": "Braira Al Nakheel Hotel", "Product": "Arabic Coffee With Sweets at Ark Lounge", "Price": 29.0, "Old_Price": 49.0, "Offer": "41% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/189366/1.webp?v=6", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-arabic-coffee-sweets-ark-lounge-braira-nakheel/210828", "Fetched_Date": "2026-06-09"}, {"Store": "VOCO Riyadh Hotel", "Product": "international Dinner at 5* voco Riyadh Hotel", "Price": 209.0, "Old_Price": 260.0, "Offer": "20% Off", "Image_URL": "https://cdn.cobone.com/cdn-cgi/image/width=400,height=250,fit=cover,format=webp/https://cdn.cobone.com/deals/sau/146112/3%20%282%29.webp?v=18", "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-daily-international-dinner-voco-riyadh-hotel/214803", "Fetched_Date": "2026-06-09"}]; 
+  let filteredData = [];
+  let currentIndex = 0;
+  const CHUNK_SIZE = 30;
+
+  const tbody = document.getElementById('tbody');
+  const sentinel = document.getElementById('sentinel');
+  const countLabel = document.getElementById('count');
+
+  const stores = [...new Set(rawData.map(r => r.Store))].sort();
+  const cbContainer = document.getElementById('store-checkboxes');
+  stores.forEach(s => {
+    const lbl = document.createElement('label');
+    lbl.className = 'checkbox-label';
+    lbl.innerHTML = `<input type="checkbox" value="${s}" class="store-cb" onchange="applyFilters()"> ${s}`;
+    cbContainer.appendChild(lbl);
+  });
+
+  const prices = rawData.map(r => r.Price).filter(p => p > 0);
+  const maxPrice = prices.length ? Math.ceil(Math.max(...prices) / 10) * 10 : 1000;
+  const slider = document.getElementById('filter-price');
+  slider.max   = maxPrice;
+  slider.value = maxPrice;
+  document.getElementById('price-range-label').textContent = 'SAR ' + maxPrice;
+
+  function toggleSidebar() {
+    document.getElementById('filterSidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('active');
+  }
+  
+  function getOfferVal(offerStr) {
+      if (!offerStr) return 0;
+      const match = String(offerStr).match(/[\d.]+/);
+      return match ? parseFloat(match[0]) : 0;
+  }
+
+  function applyFilters() {
+    const searchQuery = document.getElementById('filter-product').value.toLowerCase().trim();
+    const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
+    
+    const sortVal     = document.getElementById('sortDropdown').value;
+    const max         = parseFloat(slider.value);
+    
+    const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
+    const selectedStores = checkedBoxes.map(cb => cb.value);
+
+    document.getElementById('price-range-label').textContent = 'SAR ' + max;
+
+    filteredData = rawData.filter(item => {
+      const productName = (item.Product || "Unknown item").toLowerCase();
+      let matchSearch = true;
+      if (searchTokens.length > 0) {
+          matchSearch = searchTokens.every(token => productName.includes(token));
+      }
+      const matchStore  = selectedStores.length === 0 || selectedStores.includes(item.Store);
+      const matchPrice  = (item.Price === null) || (item.Price <= max);
+      return matchSearch && matchStore && matchPrice;
+    });
+
+    if (sortVal === 'price-asc') {
+        filteredData.sort((a, b) => (a.Price || 0) - (b.Price || 0));
+    } else if (sortVal === 'price-desc') {
+        filteredData.sort((a, b) => (b.Price || 0) - (a.Price || 0));
+    } else if (sortVal === 'store-asc') {
+        filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
+    } else if (sortVal === 'offer-desc') {
+        filteredData.sort((a, b) => {
+            const offerDiff = getOfferVal(b.Offer) - getOfferVal(a.Offer);
+            if (offerDiff !== 0) return offerDiff;
+            const dateA = a.Fetched_Date || "";
+            const dateB = b.Fetched_Date || "";
+            return dateB.localeCompare(dateA);
+        });
+    }
+
+    currentIndex = 0;
+    tbody.innerHTML = ''; 
+    loadMore();
+  }
+
+  function loadMore() {
+    if (currentIndex >= filteredData.length) {
+        sentinel.style.display = 'none';
+        return;
+    }
+    sentinel.style.display = 'block';
+
+    const chunk = filteredData.slice(currentIndex, currentIndex + CHUNK_SIZE);
+    const fragment = document.createDocumentFragment();
+
+    chunk.forEach(item => {
+      const tr = document.createElement('tr');
+      const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+      
+      const priceHtml = item.Price 
+          ? `SAR ${item.Price}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${item.Old_Price}</span>` : "")
+          : "—";
+          
+      const offerStr = item.Offer ? `<span class="badge-offer">${item.Offer}</span>` : "—";
+      const imgTag = item.Image_URL ? `<img src="${item.Image_URL}" alt="${safeName}" loading="lazy">` : "No image";
+
+      const titleHtml = item.Deal_URL 
+          ? `<a href="${item.Deal_URL}" target="_blank" style="color: #1a73e8; text-decoration: none; font-weight: 600;">${item.Product || "Unknown item"}</a>`
+          : `<div style="font-weight: 500;">${item.Product || "Unknown item"}</div>`;
+
+      const fetchDate = item.Fetched_Date 
+          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${item.Fetched_Date}</div>` 
+          : "";
+
+      tr.innerHTML = `
+          <td>${imgTag}</td>
+          <td>
+             ${titleHtml}
+             ${fetchDate}
+          </td>
+          <td>${item.Store || "Unknown store"}</td>
+          <td>${priceHtml}</td>
+          <td>${offerStr}</td>
+      `;
+      fragment.appendChild(tr);
+    });
+
+    tbody.appendChild(fragment);
+    currentIndex += chunk.length;
+    countLabel.innerHTML = `Showing <strong>${currentIndex}</strong> of <strong>${filteredData.length}</strong> deals`;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { loadMore(); }
+  }, { rootMargin: "200px" }); 
+  observer.observe(sentinel);
+
+  applyFilters();
+
+  function resetFilters() {
+    document.getElementById('filter-product').value = '';
+    document.getElementById('sortDropdown').value = 'offer-desc'; 
+    document.getElementById('storeSearchInput').value = '';
+    document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
+    slider.value = maxPrice;
+    applyFilters();
+  }
+
+  function filterStoreList() {
+      let input = document.getElementById('storeSearchInput').value.toLowerCase();
+      let storeLabels = document.querySelectorAll('.checkbox-label');
+      storeLabels.forEach(label => {
+          let storeName = label.innerText.toLowerCase();
+          label.style.display = storeName.includes(input) ? "flex" : "none";
+      });
+  }
+</script>
+</body>
+</html>
