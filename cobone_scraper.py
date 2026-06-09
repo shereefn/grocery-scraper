@@ -105,12 +105,22 @@ async def scrape_cobone(url: str) -> List[Dict]:
             loc_text = loc_tag.get_text(" ", strip=True)
             store_name = re.sub(r'\d+\s*Sold', '', loc_text, flags=re.IGNORECASE).strip()
             
-        # 6. Extract the Image URL
+        # 6. Extract the Image URL (SMART LAZY-LOAD FIX WITH 'data-lazy')
         img = card.select_one("img")
         image_url = ""
         if img:
-            image_url = img.get("src") or img.get("data-src") or ""
-        if "base64" in image_url: image_url = ""
+            # We added 'data-lazy' to the very front of the list!
+            for attr in ["data-lazy", "data-src", "data-original", "src"]:
+                url = img.get(attr, "")
+                if url and "base64" not in url:
+                    image_url = url
+                    break
+        
+        # Fix CDN links that are missing the protocol
+        if image_url.startswith("//"):
+            image_url = "https:" + image_url
+        elif image_url.startswith("/"):
+            image_url = "https://www.cobone.com" + image_url
             
         all_results.append({
             "Store": store_name,
@@ -175,7 +185,7 @@ def save_html(data: List[Dict]) -> None:
   td {{ padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }}
   td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
   
-  /* NEW GREEN BADGE STYLING */
+  /* GREEN BADGE STYLING */
   .badge-offer {{ background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }}
   
   img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
@@ -347,7 +357,6 @@ def save_html(data: List[Dict]) -> None:
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       
-      // NEW: Layout for the Original crossed out price
       const priceHtml = item.Price 
           ? `SAR ${{item.Price}}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${{item.Old_Price}}</span>` : "")
           : "—";
