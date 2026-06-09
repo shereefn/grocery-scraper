@@ -1,16 +1,3 @@
-Ah, I see exactly what happened! This is a super common copy-paste trap.
-
-If you look closely at your error log on line 12, it says: `Because our script was strictly looking at the link, it saw the text "1-Meter Pizza"...`
-
-That is actually my English explanation text from our chat, not Python code! You accidentally copied my introductory paragraphs *along with* the code block into your `cobone_scraper.py` file. Python got completely confused trying to read English sentences as programming instructions, which is why it crashed immediately with a `SyntaxError`.
-
-### The Fix
-
-To fix this, we just need to give Python the clean code.
-
-Go into your `cobone_scraper.py` file, **delete everything inside it completely**, and paste **ONLY** the code inside the black box below. Do not include any of this text you are reading right now!
-
-```python
 import asyncio
 import json
 import logging
