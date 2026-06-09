@@ -354,7 +354,7 @@ async def read_product_name_from_image(image_url: str, http_client: httpx.AsyncC
             )
 
             response = await client.aio.models.generate_content(
-                model='gemini-2.0-flash',
+                model='gemini-2.5-flash-lite',
                 contents=[
                     types.Part.from_bytes(data=resp.content, mime_type='image/jpeg'),
                     prompt
