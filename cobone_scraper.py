@@ -21,7 +21,7 @@ log = logging.getLogger(__name__)
 
 async def scrape_cobone(url: str) -> List[Dict]:
     async with async_playwright() as pw:
-        # STEALTH MODE: Hiding the automated robot flags from Cloudflare
+        # STEALTH MODE
         browser = await pw.chromium.launch(
             headless=True,
             args=["--disable-blink-features=AutomationControlled"]
@@ -37,7 +37,6 @@ async def scrape_cobone(url: str) -> List[Dict]:
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=60000)
             
-            # Scroll down to load all deals
             for i in range(8):
                 await page.mouse.wheel(0, 1500)
                 await asyncio.sleep(1.5)
@@ -55,12 +54,18 @@ async def scrape_cobone(url: str) -> List[Dict]:
     today_str = datetime.now().strftime("%Y-%m-%d")
     
     deals = soup.find_all("a", href=True)
-    log.info(f"🔎 Found {len(deals)} total links on the page. Filtering for food deals...")
+    log.info(f"🔎 Found {len(deals)} total links on the page.")
+    
+    # --- X-RAY DEBUGGING ---
+    log.info(f"🕵️ PAGE TITLE SEEN BY GITHUB: {soup.title.string if soup.title else 'No Title'}")
+    deal_links = [a for a in deals if "/deals/" in a.get('href', '')]
+    if deal_links:
+        log.info(f"🕵️ FIRST DEAL TEXT SEEN: {deal_links[0].get_text(' | ', strip=True)}")
+    # -----------------------
     
     for a in deals:
         if "/deals/" not in a['href']: continue
         text_content = a.get_text(" | ", strip=True)
-        if "SAR" not in text_content: continue
         
         img = a.find("img")
         if not img: continue
@@ -74,7 +79,8 @@ async def scrape_cobone(url: str) -> List[Dict]:
             
         if len(title) < 5: continue
             
-        price_match = re.search(r'SAR[^\d]*(\d+)', text_content)
+        # Relaxed currency regex to catch USD, AED, or SAR
+        price_match = re.search(r'(?:SAR|AED|USD|\$)[^\d]*(\d+)', text_content, re.IGNORECASE)
         price = float(price_match.group(1)) if price_match else None
         if not price: continue
         
@@ -120,7 +126,6 @@ def save_html(data: List[Dict]) -> None:
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
   h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }}
   
-  /* Navigation Tabs */
   .nav-tabs {{ display: flex; gap: 8px; margin-left: 20px; flex-wrap: wrap; }}
   .nav-tabs a {{ text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; transition: all 0.2s; }}
   .tab-inactive {{ background: #f1f3f4; color: #202124; border: 1px solid #dadce0; }}
@@ -134,41 +139,26 @@ def save_html(data: List[Dict]) -> None:
   .sidebar-header {{ display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #f1f3f4; }}
   .sidebar-header h2 {{ font-size: 18px; font-weight: 600; color: #202124; }}
   .close-btn {{ background: none; border: none; font-size: 28px; cursor: pointer; color: #5f6368; line-height: 1; padding: 0 8px; }}
-  .close-btn:hover {{ color: #202124; }}
   .sidebar-content {{ padding: 24px; display: flex; flex-direction: column; gap: 24px; }}
   .filter-group {{ display: flex; flex-direction: column; gap: 8px; }}
   .filter-group.search-box {{ margin-left: auto; min-width: 200px; }}
   .filter-group label {{ font-size: 13px; color: #5f6368; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }}
   select, input[type=text] {{ padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }}
-  select:focus, input[type=text]:focus {{ border-color: #1a73e8; }}
   .checkbox-panel {{ border: 1px solid #dadce0; border-radius: 8px; padding: 16px; background: #fafafa; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }}
   .checkbox-label {{ display: flex; align-items: center; gap: 10px; font-size: 14px; color: #3c4043; cursor: pointer; }}
-  .checkbox-label input {{ cursor: pointer; width: 18px; height: 18px; accent-color: #1a73e8; }}
   .slider-container {{ display: flex; align-items: center; gap: 12px; }}
   input[type=range] {{ flex: 1; accent-color: #1a73e8; cursor: pointer; }}
   #price-range-label {{ font-size: 14px; color: #1a73e8; font-weight: 700; min-width: 80px; text-align: right; }}
   .btn-reset {{ padding: 12px; background: #f1f3f4; color: #202124; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: auto; }}
-  .btn-reset:hover {{ background: #e8eaed; }}
   .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
   .table-wrap {{ border-radius: 12px; overflow-x: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.1); background: white; border: 1px solid #dadce0; }}
   table {{ width: 100%; border-collapse: collapse; min-width: 650px; }}
   th {{ background: #f8f9fa; color: #5f6368; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dadce0; }}
   td {{ padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }}
-  tr:hover td {{ background: #f8f9fa; }}
-  td:first-child {{ width: 100px; padding: 10px; }}
-  td:nth-child(2) {{ font-size: 15px; color: #202124; font-weight: 500; line-height: 1.4; }}
-  td:nth-child(3) {{ color: #5f6368; font-size: 14px; width: 150px; }}
-  td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
-  td:nth-child(5) {{ width: 130px; }}
   .badge-offer {{ background: #fce8e6; color: #c5221f; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; }}
   img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
-  img:hover {{ transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }}
-  
-  @media (max-width: 768px) {{
-      .filter-group.search-box {{ margin-left: 0; width: 100%; margin-top: 10px; }}
-  }}
 </style>
 </head>
 <body>
@@ -335,11 +325,10 @@ def save_html(data: List[Dict]) -> None:
     chunk.forEach(item => {{
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-      const priceStr = item.Price ? `SAR ${{item.Price}}` : "—";
+      const priceStr = item.Price ? `${{item.Price}}` : "—";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "—";
       const imgTag = item.Image_URL ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy">` : "No image";
 
-      // CLickable Title pointing directly to Cobone!
       const titleHtml = item.Deal_URL 
           ? `<a href="${{item.Deal_URL}}" target="_blank" style="color: #1a73e8; text-decoration: none; font-weight: 600;">${{item.Product || "Unknown item"}}</a>`
           : `<div style="font-weight: 500;">${{item.Product || "Unknown item"}}</div>`;
@@ -426,7 +415,6 @@ async def main() -> None:
         log.info("🎉 Done. %d food deals saved to database.", len(results))
     else:
         log.warning("🚨 ZERO DEALS SAVED! Cobone likely blocked the request with a Captcha.")
-        # We must still generate an empty file so GitHub Actions doesn't crash on the 'git add' step!
         OUTPUT_JSON.write_text("[]", encoding="utf-8")
         save_html([])
 
