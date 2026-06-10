@@ -6,6 +6,7 @@ import os
 import smtplib
 import urllib.request
 import urllib.parse
+import difflib
 import csv
 from datetime import datetime
 from email.mime.text import MIMEText
@@ -568,29 +569,60 @@ async def scrape(target_list: List[str]) -> List[Dict]:
             
     all_results = await enrich_product_names(unique_results)
 
-    log.info("Stage 2 Deduplication (Fuzzy Name + Store based)...")
-    best_products = {}
-    unknown_count = 0 
+    log.info("Stage 2 Deduplication (Advanced AI Fuzzy Matching & Store Merger)...")
+    
+    def is_similar(name1: str, name2: str) -> bool:
+        if not name1 or not name2: return False
+        n1, n2 = name1.lower(), name2.lower()
+        
+        # 1. Check direct string similarity (Catches typos like Zaiga vs Zaiqa)
+        if difflib.SequenceMatcher(None, n1, n2).ratio() > 0.85:
+            return True
+            
+        # 2. Check word overlap (Catches mixed-up words like "DLC Blender" vs "Blender DLC")
+        words1 = set(re.findall(r'\w+', n1))
+        words2 = set(re.findall(r'\w+', n2))
+        if not words1 or not words2: return False
+        
+        overlap = len(words1.intersection(words2))
+        shortest = min(len(words1), len(words2))
+        
+        # If 80% of the words in the shorter name match the longer name, it's a duplicate
+        if shortest > 0 and (overlap / shortest) >= 0.80:
+            return True
+            
+        return False
+
+    final_products = []
+    
     for p in all_results:
-        original_name = p.get('Product', '')
-        store = p.get('Store', '')
-        
-        normalized_name = re.sub(r'[^a-z0-9]', '', original_name.lower())
-        
-        if "unknownitem" in normalized_name:
-            post_fingerprint = f"unknownitem_{unknown_count}|{store}"
-            unknown_count += 1
-        else:
-            post_fingerprint = f"{normalized_name}|{store}"
-        
-        if post_fingerprint not in best_products:
-            best_products[post_fingerprint] = p
-        else:
-            if best_products[post_fingerprint].get('Price') is None and p.get('Price') is not None:
-                best_products[post_fingerprint] = p
+        # Don't merge unknown items, let them pass through
+        if "unknownitem" in p.get("Product", "").lower():
+            final_products.append(p)
+            continue
+            
+        is_duplicate = False
+        for existing in final_products:
+            # If they have the exact same price AND the names are similar
+            if p.get("Price") == existing.get("Price") and is_similar(p.get("Product"), existing.get("Product")):
+                is_duplicate = True
+                
+                # MAGIC MERGE: If it's a different store, combine the store names in the UI!
+                new_store = p.get("Store", "")
+                existing_stores = existing.get("Store", "")
+                if new_store and new_store not in existing_stores:
+                    existing["Store"] = existing_stores + " & " + new_store
+                
+                # Automatically keep the item with the longer/better name
+                if len(p.get("Product", "")) > len(existing.get("Product", "")):
+                    existing["Product"] = p.get("Product")
+                    
+                break
+                
+        if not is_duplicate:
+            final_products.append(p)
 
-    return list(best_products.values())
-
+    return final_products
 
 # ---------------------------------------------------------------------------
 # HTML output
