@@ -6,8 +6,8 @@ import os
 import smtplib
 import urllib.request
 import urllib.parse
-import difflib
 import csv
+import difflib
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -58,9 +58,8 @@ SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93L
 
 CARD_SELECTOR = "a.product-card"
 
-# Ensure stores are exactly as they appear in the database for the direct URL to work!
-TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore"]
-TARGET_PRODUCTS = [] # This will now be dynamically filled by Google Sheets!
+TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore","SACO","Home Box"]
+TARGET_PRODUCTS = [] 
 
 OUTPUT_HTML = Path("d4d_results.html")
 OUTPUT_JSON = Path("d4d_results.json")
@@ -77,7 +76,28 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 # ---------------------------------------------------------------------------
-# Google Sheets Engine (Password-Free!)
+# Global Fuzzy Matcher
+# ---------------------------------------------------------------------------
+def is_similar_product(name1: str, name2: str) -> bool:
+    if not name1 or not name2: return False
+    n1, n2 = str(name1).lower(), str(name2).lower()
+    
+    if difflib.SequenceMatcher(None, n1, n2).ratio() > 0.85:
+        return True
+        
+    words1 = set(re.findall(r'\w+', n1))
+    words2 = set(re.findall(r'\w+', n2))
+    if not words1 or not words2: return False
+    
+    overlap = len(words1.intersection(words2))
+    shortest = min(len(words1), len(words2))
+    if shortest > 0 and (overlap / shortest) >= 0.80:
+        return True
+        
+    return False
+
+# ---------------------------------------------------------------------------
+# Google Sheets Engine 
 # ---------------------------------------------------------------------------
 def fetch_sheet_shopping_list() -> List[str]:
     if not SHEET_CSV_URL or SHEET_CSV_URL == "PASTE_YOUR_LINK_HERE":
@@ -300,25 +320,20 @@ def extract_price(card) -> Optional[float]:
     return None
 
 def parse_ai_result(raw_val: str) -> Tuple[str, Optional[float], Optional[float]]:
-    """Returns (Name, Price, Old_Price)"""
     try:
         data = json.loads(raw_val)
-        
-        # If Gemini accidentally wraps the JSON in a list [ ], grab the first item inside it
         if isinstance(data, list):
             if len(data) > 0 and isinstance(data[0], dict):
                 data = data[0]
             else:
                 return "Unknown item", None, None
                 
-        # Now safely extract using .get() since we know it is a dictionary
         if isinstance(data, dict):
             return data.get("name", "Unknown item"), data.get("price"), data.get("old_price")
             
     except json.JSONDecodeError:
         pass
         
-    # Fallback parsing for weird AI text formats
     if "||" in raw_val:
         parts = raw_val.split("||", 1)
         name = parts[0].strip()
@@ -390,7 +405,7 @@ def parse_products(html: str) -> List[Dict]:
     cards = soup.find_all("a", class_="product-card")
 
     results: List[Dict] = []
-    today_str = datetime.now().strftime("%Y-%m-%d") # Mark with today's fetch date
+    today_str = datetime.now().strftime("%Y-%m-%d") 
     
     for card in cards:
         price = extract_price(card)
@@ -413,7 +428,7 @@ def parse_products(html: str) -> List[Dict]:
             "Old_Price":    None,
             "Offer":        offer,
             "Image_URL":    image_url,
-            "Fetched_Date": today_str  # Added date tracking property
+            "Fetched_Date": today_str
         })
     return results
 
@@ -507,7 +522,6 @@ async def scrape(target_list: List[str]) -> List[Dict]:
                 log.error("Shopping list is empty! Nothing to search for.")
                 return []
 
-            # We search for your SPECIFIC GROCERY ITEMS instead of entire stores!
             for item_name in target_list:
                 encoded_name = urllib.parse.quote(item_name)
                 search_url = f"https://d4donline.com/en/saudi-arabia/riyadh/products?search={encoded_name}"
@@ -537,7 +551,6 @@ async def scrape(target_list: List[str]) -> List[Dict]:
                 html     = await page.content()
                 products = parse_products(html)
                 
-                # Filter immediately so we ONLY keep items from your approved stores
                 for p in products:
                     store_name = p.get("Store", "").lower()
                     if TEST_STORES and any(t.lower() in store_name for t in TEST_STORES):
@@ -569,60 +582,31 @@ async def scrape(target_list: List[str]) -> List[Dict]:
             
     all_results = await enrich_product_names(unique_results)
 
-    log.info("Stage 2 Deduplication (Advanced AI Fuzzy Matching & Store Merger)...")
-    
-    def is_similar(name1: str, name2: str) -> bool:
-        if not name1 or not name2: return False
-        n1, n2 = name1.lower(), name2.lower()
-        
-        # 1. Check direct string similarity (Catches typos like Zaiga vs Zaiqa)
-        if difflib.SequenceMatcher(None, n1, n2).ratio() > 0.85:
-            return True
-            
-        # 2. Check word overlap (Catches mixed-up words like "DLC Blender" vs "Blender DLC")
-        words1 = set(re.findall(r'\w+', n1))
-        words2 = set(re.findall(r'\w+', n2))
-        if not words1 or not words2: return False
-        
-        overlap = len(words1.intersection(words2))
-        shortest = min(len(words1), len(words2))
-        
-        # If 80% of the words in the shorter name match the longer name, it's a duplicate
-        if shortest > 0 and (overlap / shortest) >= 0.80:
-            return True
-            
-        return False
-
+    log.info("Stage 2 Deduplication (Fuzzy Name + Store based)...")
     final_products = []
     
     for p in all_results:
-        # Don't merge unknown items, let them pass through
         if "unknownitem" in p.get("Product", "").lower():
             final_products.append(p)
             continue
             
         is_duplicate = False
         for existing in final_products:
-            # If they have the exact same price AND the names are similar
-            if p.get("Price") == existing.get("Price") and is_similar(p.get("Product"), existing.get("Product")):
+            if p.get("Price") == existing.get("Price") and is_similar_product(p.get("Product"), existing.get("Product")):
                 is_duplicate = True
-                
-                # MAGIC MERGE: If it's a different store, combine the store names in the UI!
                 new_store = p.get("Store", "")
                 existing_stores = existing.get("Store", "")
                 if new_store and new_store not in existing_stores:
                     existing["Store"] = existing_stores + " & " + new_store
-                
-                # Automatically keep the item with the longer/better name
                 if len(p.get("Product", "")) > len(existing.get("Product", "")):
                     existing["Product"] = p.get("Product")
-                    
                 break
                 
         if not is_duplicate:
             final_products.append(p)
 
     return final_products
+
 
 # ---------------------------------------------------------------------------
 # HTML output
@@ -788,16 +772,13 @@ def save_html(data: List[Dict]) -> None:
   const sentinel = document.getElementById('sentinel');
   const countLabel = document.getElementById('count');
 
-  // ---> FIX: Splitting merged store names for the filter menu <---
   const rawStoreList = [];
   rawData.forEach(r => {{
       if (r.Store) {{
-          // Split by "&" and clean up spaces so we only get individual store names
           const parts = r.Store.split("&").map(s => s.trim());
           rawStoreList.push(...parts);
       }}
   }});
-  // Get unique individual stores and sort them alphabetically
   const stores = [...new Set(rawStoreList)].sort();
   
   const cbContainer = document.getElementById('store-checkboxes');
@@ -849,7 +830,6 @@ def save_html(data: List[Dict]) -> None:
           matchSearch = searchTokens.every(token => productName.includes(token));
       }}
 
-      // ---> FIX: Check if the selected individual store is inside the potentially merged string <---
       const matchStore  = selectedStores.length === 0 || selectedStores.some(selected => item.Store && item.Store.includes(selected));
       const matchPrice  = (item.Price === null) || (item.Price <= max);
       
@@ -996,12 +976,12 @@ def save_html(data: List[Dict]) -> None:
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
 
+
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
 async def main() -> None:
-    # Fetch your dynamically requested list from Google Sheets FIRST!
     global TARGET_PRODUCTS
     TARGET_PRODUCTS = fetch_sheet_shopping_list()
     
@@ -1010,7 +990,7 @@ async def main() -> None:
         import sys
         sys.exit(1)
 
-    new_results = await scrape(TARGET_PRODUCTS) # <--- NOW WE PASS YOUR LIST TO THE SCRAPER!
+    new_results = await scrape(TARGET_PRODUCTS)
     
     if TARGET_PRODUCTS and new_results:
         log.info(f"Filtering results to firmly include your {len(TARGET_PRODUCTS)} list items...")
@@ -1030,8 +1010,7 @@ async def main() -> None:
         new_results = valid_price_results
         log.info("Kept %d items that actually have prices.", len(new_results))
 
-    # ---> HISTORY MERGER LOGIC <---
-    # Load the historical results from the last runs to blend new and old data safely
+    # ---> NEW: SMART HISTORY MERGER LOGIC <---
     historical_data = []
     if OUTPUT_JSON.exists():
         try:
@@ -1041,28 +1020,42 @@ async def main() -> None:
         except Exception:
             historical_data = []
 
-    # Map previous data by unique combination of Product Name + Store
-    merged_dict = {}
-    for item in historical_data:
-        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
-        if key:
-            merged_dict[key] = item
+    # Put today's fresh results FIRST so they take priority, then attach history
+    combined_data = new_results + historical_data
 
-    # Add or update items with the brand new runs fetched today
-    for item in new_results:
-        key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
-        merged_dict[key] = item
-
-    results = list(merged_dict.values())
+    log.info("Stage 3 Deduplication (Cleaning historical ghosts)...")
+    merged_results = []
+    
+    for item in combined_data:
+        is_duplicate = False
+        for existing in merged_results:
+            # Rule 1: Same Store & Similar Name = Historical Duplicate (Keep the newest one)
+            if item.get("Store") == existing.get("Store") and is_similar_product(item.get("Product"), existing.get("Product")):
+                is_duplicate = True
+                break
+                
+            # Rule 2: Different Store, Same Price & Similar Name = Cross-store Magic Merge
+            elif item.get("Price") == existing.get("Price") and is_similar_product(item.get("Product"), existing.get("Product")):
+                is_duplicate = True
+                new_store = item.get("Store", "")
+                existing_stores = existing.get("Store", "")
+                if new_store and new_store not in existing_stores:
+                    existing["Store"] = existing_stores + " & " + new_store
+                # Grab the better spelling if available
+                if len(item.get("Product", "")) > len(existing.get("Product", "")):
+                    existing["Product"] = item.get("Product")
+                break
+                
+        if not is_duplicate:
+            merged_results.append(item)
+            
+    results = merged_results
         
     if results:
         OUTPUT_JSON.write_text(
             json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        
-        # Check alerts and send the styled email
         check_alerts_and_send_email(new_results)
-        
         save_html(results)
         log.info("Done. %d historical and fresh products tracked and saved.", len(results))
     else:
