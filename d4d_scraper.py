@@ -788,9 +788,21 @@ def save_html(data: List[Dict]) -> None:
   const sentinel = document.getElementById('sentinel');
   const countLabel = document.getElementById('count');
 
-  const stores = [...new Set(rawData.map(r => r.Store))].sort();
+  // ---> FIX: Splitting merged store names for the filter menu <---
+  const rawStoreList = [];
+  rawData.forEach(r => {{
+      if (r.Store) {{
+          // Split by "&" and clean up spaces so we only get individual store names
+          const parts = r.Store.split("&").map(s => s.trim());
+          rawStoreList.push(...parts);
+      }}
+  }});
+  // Get unique individual stores and sort them alphabetically
+  const stores = [...new Set(rawStoreList)].sort();
+  
   const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {{
+    if(!s) return;
     const lbl = document.createElement('label');
     lbl.className = 'checkbox-label';
     lbl.innerHTML = `<input type="checkbox" value="${{s}}" class="store-cb" onchange="applyFilters()"> ${{s}}`;
@@ -811,7 +823,6 @@ def save_html(data: List[Dict]) -> None:
     overlay.classList.toggle('active');
   }}
   
-  // Helper function to extract the number from "50.4 % Off"
   function getOfferVal(offerStr) {{
       if (!offerStr) return 0;
       const match = String(offerStr).match(/[\d.]+/);
@@ -838,7 +849,8 @@ def save_html(data: List[Dict]) -> None:
           matchSearch = searchTokens.every(token => productName.includes(token));
       }}
 
-      const matchStore  = selectedStores.length === 0 || selectedStores.includes(item.Store);
+      // ---> FIX: Check if the selected individual store is inside the potentially merged string <---
+      const matchStore  = selectedStores.length === 0 || selectedStores.some(selected => item.Store && item.Store.includes(selected));
       const matchPrice  = (item.Price === null) || (item.Price <= max);
       
       return matchSearch && matchStore && matchPrice;
@@ -877,7 +889,7 @@ def save_html(data: List[Dict]) -> None:
     const chunk = filteredData.slice(currentIndex, currentIndex + CHUNK_SIZE);
     const fragment = document.createDocumentFragment();
 
-chunk.forEach(item => {{
+    chunk.forEach(item => {{
       const tr = document.createElement('tr');
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       
@@ -980,9 +992,9 @@ chunk.forEach(item => {{
 </body>
 </html>"""
 
+    OUTPUT_HTML = Path("d4d_results.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
-
 
 # ---------------------------------------------------------------------------
 # Entry point
