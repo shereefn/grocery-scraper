@@ -8,7 +8,7 @@ import urllib.request
 import urllib.parse
 import csv
 import difflib
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
@@ -1014,11 +1014,20 @@ async def main() -> None:
     historical_data = []
     if OUTPUT_JSON.exists():
         try:
-            historical_data = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
-            if not isinstance(historical_data, list):
-                historical_data = []
+            raw_history = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
+            if isinstance(raw_history, list):
+                # DATA RETENTION POLICY: Only keep items fetched in the last 7 days
+                today_date = datetime.now()
+                for item in raw_history:
+                    date_str = item.get("Fetched_Date", "2000-01-01")
+                    try:
+                        item_date = datetime.strptime(date_str, "%Y-%m-%d")
+                        if (today_date - item_date).days <= 7:
+                            historical_data.append(item)
+                    except ValueError:
+                        pass
         except Exception:
-            historical_data = []
+            pass
 
     # Put today's fresh results FIRST so they take priority, then attach history
     combined_data = new_results + historical_data
@@ -1060,7 +1069,5 @@ async def main() -> None:
         log.info("Done. %d historical and fresh products tracked and saved.", len(results))
     else:
         log.warning("No results found.")
-
-
 if __name__ == "__main__":
     asyncio.run(main())
