@@ -1046,18 +1046,26 @@ async def main() -> None:
             # Rule 2: Different Store, Same Price & Similar Name = Cross-store Magic Merge
             elif item.get("Price") == existing.get("Price") and is_similar_product(item.get("Product"), existing.get("Product")):
                 is_duplicate = True
-                new_store = item.get("Store", "")
-                existing_stores = existing.get("Store", "")
-                if new_store and new_store not in existing_stores:
-                    existing["Store"] = existing_stores + " & " + new_store
+                
+                # ---> THE FIX IS HERE <---
+                # Split strings by '&' and put them into a Set (which destroys duplicates instantly)
+                new_stores = set(s.strip() for s in item.get("Store", "").split("&") if s.strip())
+                existing_stores = set(s.strip() for s in existing.get("Store", "").split("&") if s.strip())
+                
+                # Combine both sets to get only unique store names
+                combined_stores = existing_stores.union(new_stores)
+                
+                # Join them back together, SORTED alphabetically. 
+                # This guarantees "LULU & Panda" will never be written as "Panda & LULU".
+                existing["Store"] = " & ".join(sorted(list(combined_stores)))
+                
                 # Grab the better spelling if available
                 if len(item.get("Product", "")) > len(existing.get("Product", "")):
                     existing["Product"] = item.get("Product")
                 break
                 
         if not is_duplicate:
-            merged_results.append(item)
-            
+            merged_results.append(item)            
     results = merged_results
         
     if results:
