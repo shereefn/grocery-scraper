@@ -768,6 +768,15 @@ def save_html(data: List[Dict]) -> None:
   let currentIndex = 0;
   const CHUNK_SIZE = 30;
 
+function formatDisplayDate(dateStr) {{
+      if (!dateStr) return "";
+      const parts = dateStr.split('-');
+      if (parts.length !== 3) return dateStr;
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const day = parts[2].padStart(2, '0');
+      return `${{day}}/${{months[parseInt(parts[1], 10) - 1]}}/${{parts[0]}}`;
+  }}
+
   const tbody = document.getElementById('tbody');
   const sentinel = document.getElementById('sentinel');
   const countLabel = document.getElementById('count');
@@ -882,8 +891,10 @@ def save_html(data: List[Dict]) -> None:
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
+// ---> UPDATED: Apply the formatting to the UI <---
+      const displayDate = formatDisplayDate(item.Fetched_Date);
       const fetchDate = item.Fetched_Date 
-          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{item.Fetched_Date}}</div>` 
+          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{displayDate}}</div>` 
           : "";
 
       tr.innerHTML = `
