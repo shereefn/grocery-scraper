@@ -2,10 +2,9 @@ import asyncio
 import json
 import logging
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict
-
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
@@ -566,19 +565,34 @@ async def main() -> None:
     new_results = await scrape_cobone(TARGET_URL)
     log.info(f"🏁 Total valid deals extracted: {len(new_results)}")
     
+    # ---> SMART HISTORY MERGER & 7-DAY RETENTION POLICY <---
     historical_data = []
     if OUTPUT_JSON.exists():
         try:
-            historical_data = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
-            if not isinstance(historical_data, list): historical_data = []
+            raw_history = json.loads(OUTPUT_JSON.read_text(encoding="utf-8"))
+            if isinstance(raw_history, list):
+                today_date = datetime.now()
+                for item in raw_history:
+                    # Look for the date it was fetched
+                    date_str = item.get("Fetched_Date", "2000-01-01")
+                    try:
+                        item_date = datetime.strptime(date_str, "%Y-%m-%d")
+                        # Only keep deals that are 7 days old or newer
+                        if (today_date - item_date).days <= 7:
+                            historical_data.append(item)
+                    except ValueError:
+                        pass
         except Exception:
-            historical_data = []
+            pass
 
     merged_dict = {}
+    
+    # Load the filtered historical data into the dictionary first
     for item in historical_data:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
 
+    # Load today's fresh results, overwriting any matching historical items
     for item in new_results:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
