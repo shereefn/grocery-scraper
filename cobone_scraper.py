@@ -144,21 +144,26 @@ def save_html(data: List[Dict]) -> None:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Food Offers | Riyadh</title>
+<title>My Deals | Food Offers</title>
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }}
-  .navbar {{ display: flex; align-items: center; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
+  
+  /* NAVBAR & HERO SEARCH BAR UI */
+  .navbar {{ display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
+  .nav-left {{ display: flex; align-items: center; gap: 16px; }}
+  .nav-center {{ flex: 1; display: flex; justify-content: center; padding: 0 20px; min-width: 300px; }}
+  .nav-right {{ display: flex; gap: 8px; flex-wrap: wrap; }}
+  
   .hamburger {{ background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }}
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
-  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }}
+  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; margin: 0; }}
   
-  .nav-tabs {{ display: flex; gap: 8px; margin-left: 20px; flex-wrap: wrap; }}
-  .nav-tabs a {{ text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; transition: all 0.2s; }}
-  .tab-inactive {{ background: #f1f3f4; color: #202124; border: 1px solid #dadce0; }}
-  .tab-inactive:hover {{ background: #e8eaed; }}
-  .tab-active {{ background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none; }}
-
+  .search-container {{ width: 100%; max-width: 700px; position: relative; }}
+  .search-container input {{ width: 100%; padding: 16px 24px 16px 48px; border: 2px solid #e1e4e8; border-radius: 40px; font-size: 16px; font-weight: 500; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #f8f9fa; }}
+  .search-container input:focus {{ border-color: #1a73e8; box-shadow: 0 6px 16px rgba(26, 115, 232, 0.15); background: #ffffff; }}
+  .search-container::before {{ content: '🔍'; position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #5f6368; pointer-events: none; }}
+  
   .sidebar {{ position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }}
   .sidebar.open {{ left: 0; }}
   .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
@@ -166,45 +171,92 @@ def save_html(data: List[Dict]) -> None:
   .sidebar-header {{ display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #f1f3f4; }}
   .sidebar-header h2 {{ font-size: 18px; font-weight: 600; color: #202124; }}
   .close-btn {{ background: none; border: none; font-size: 28px; cursor: pointer; color: #5f6368; line-height: 1; padding: 0 8px; }}
+  .close-btn:hover {{ color: #202124; }}
   .sidebar-content {{ padding: 24px; display: flex; flex-direction: column; gap: 24px; }}
   .filter-group {{ display: flex; flex-direction: column; gap: 8px; }}
-  .filter-group.search-box {{ margin-left: auto; min-width: 200px; }}
   .filter-group label {{ font-size: 13px; color: #5f6368; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }}
-  select, input[type=text] {{ padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }}
+  select, input[type=text]:not(#filter-product) {{ padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }}
+  select:focus, input[type=text]:focus {{ border-color: #1a73e8; }}
   .checkbox-panel {{ border: 1px solid #dadce0; border-radius: 8px; padding: 16px; background: #fafafa; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }}
   .checkbox-label {{ display: flex; align-items: center; gap: 10px; font-size: 14px; color: #3c4043; cursor: pointer; }}
+  .checkbox-label input {{ cursor: pointer; width: 18px; height: 18px; accent-color: #1a73e8; }}
   .slider-container {{ display: flex; align-items: center; gap: 12px; }}
   input[type=range] {{ flex: 1; accent-color: #1a73e8; cursor: pointer; }}
   #price-range-label {{ font-size: 14px; color: #1a73e8; font-weight: 700; min-width: 80px; text-align: right; }}
   .btn-reset {{ padding: 12px; background: #f1f3f4; color: #202124; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: auto; }}
+  .btn-reset:hover {{ background: #e8eaed; }}
+  
   .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
-  .table-wrap {{ border-radius: 12px; overflow-x: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.1); background: white; border: 1px solid #dadce0; }}
-  table {{ width: 100%; border-collapse: collapse; min-width: 650px; }}
-  th {{ background: #f8f9fa; color: #5f6368; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dadce0; }}
-  td {{ padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }}
-  td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
   
-  /* GREEN BADGE STYLING */
-  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }}
+  /* CARD LAYOUT */
+  .deal-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
   
-  img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
-  .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }}
+  .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
+  .card:hover {{ transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }}
+  
+  .card-img-wrapper {{ height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; padding: 4px; border-radius: 8px; }}
+  .card-img-wrapper img {{ max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }}
+  .card-img-wrapper img:hover {{ transform: scale(1.05); }}
+  
+  .card-title {{ font-size: 15px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; margin-bottom: 4px; }}
+  
+  /* STICKER PRICE BADGE & CURRENCY */
+  .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
+  .price-badge {{ background-color: #ffcc00; color: #000000; border: 2px solid #000000; border-radius: 8px; padding: 4px 10px; display: inline-flex; align-items: center; box-shadow: 2px 2px 0px #000000; font-weight: 800; }}
+  .card-price {{ font-size: 18px; line-height: 1; }}
+  
+  /* UNICODE RIYAL SYMBOL */
+  .currency-icon {{ font-size: 1.1em; font-weight: 800; margin-right: 4px; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }}
+  .currency-icon-small {{ font-size: 0.9em; font-weight: 600; margin-right: 3px; display: inline-block; }}
+  
+  .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 14px; font-weight: 600; }}
+  .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  
+  /* STORE/RESTAURANT BADGE */
+  .card-store {{ font-size: 12px; color: #1a73e8; background: #e8f0fe; padding: 4px 12px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  
+  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; margin-top: 2px; }}
+  
+  .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }}
+  
+  /* THEATER MODE POPUP */
+  #popup-overlay {{ display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); flex-direction: column; }}
+  #popup-overlay.active {{ display: flex; }}
+  #popup-box {{ background: white; border-radius: 16px; padding: 0; width: 90vw; max-width: 500px; aspect-ratio: 1 / 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }}
+  #popup-img {{ width: 100%; height: 100%; object-fit: contain; cursor: zoom-in; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); }}
+  #popup-img.zoomed {{ transform: scale(1.8); cursor: zoom-out; }}
+  #popup-title {{ display: none; }}
+  #popup-close {{ position: absolute; top: 12px; right: 12px; background: #ef4444; color: white; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 2002; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }}
+  #popup-close:hover {{ background: #dc2626; transform: scale(1.1); }}
+
+  @media (max-width: 768px) {{
+    .navbar {{ flex-direction: column; gap: 12px; padding: 12px; align-items: stretch; }}
+    .nav-left {{ width: 100%; justify-content: flex-start; gap: 12px; }}
+    .nav-center {{ width: 100%; padding: 0; min-width: auto; }}
+    .nav-right {{ width: 100%; justify-content: center; }}
+  }}
 </style>
 </head>
 <body>
 
 <div class="navbar">
-  <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
-  <h1>My Deals</h1>
-
-  <div class="nav-tabs">
-    <a href="d4d_results.html" class="tab-inactive">🛒 Groceries</a>
-    <a href="cobone_results.html" class="tab-active">🍽️ Food Offers</a>
+  <div class="nav-left">
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <h1>My Deals</h1>
+  </div>
+  
+  <div class="nav-center">
+    <div class="search-container">
+        <!-- FIX: Updated placeholder text for food -->
+        <input type="text" id="filter-product" placeholder="Search for amazing food deals..." oninput="applyFilters()">
+    </div>
   </div>
 
-  <div class="filter-group search-box">
-      <input type="text" id="filter-product" placeholder="Search food deals..." oninput="applyFilters()">
+  <div class="nav-right">
+    <!-- FIX: Swapped active styling to the Food tab -->
+    <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🛒 Groceries</a>
+    <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🍽️ Food</a>
   </div>
 </div>
 
@@ -217,11 +269,12 @@ def save_html(data: List[Dict]) -> None:
   </div>
   
   <div class="sidebar-content">
+    
 <div class="filter-group">
     <label>SORT BY</label>
     <select id="sortDropdown" onchange="applyFilters()">
         <option value="offer-desc" selected>Highest Offer % + Newest</option>
-        <option value="store-asc">Restaurant Name (A to Z)</option>
+        <option value="store-asc">Store/Restaurant (A to Z)</option>
         <option value="price-asc">Price: Low to High</option>
         <option value="price-desc">Price: High to Low</option>
     </select>
@@ -230,17 +283,20 @@ def save_html(data: List[Dict]) -> None:
     <div class="filter-group">
       <label>Max Price</label>
       <div class="slider-container">
-        <input type="range" id="filter-price" min="0" max="1000" value="1000" step="5" oninput="applyFilters()">
-        <span id="price-range-label">SAR 1000</span>
+        <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
+        <span id="price-range-label"><span class="currency-icon-small">&#x20C1;</span>10,000</span>
       </div>
     </div>
     
 <div class="filter-group">
-    <label>FILTER RESTAURANTS</label>
-    <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a restaurant..." onkeyup="filterStoreList()">
-    <div class="checkbox-panel" id="store-checkboxes"></div>
-</div>
+                <label>FILTER BRANDS / RESTAURANTS</label>
+                <input type="text" id="storeSearchInput" class="store-search-box" placeholder="Find a restaurant..." onkeyup="filterStoreList()">
+                
+                <div class="checkbox-panel" id="store-checkboxes">
+                    </div>
+            </div>
             
+    <button class="filter-btn" onclick="toggleSidebar()">Apply Filters</button>
     <button class="btn-reset" onclick="resetFilters()">Clear All Filters</button>
   </div>
 </div>
@@ -250,15 +306,16 @@ def save_html(data: List[Dict]) -> None:
     <span id="count">Loading deals...</span>
   </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Image</th><th>Deal Name</th><th>Restaurant</th><th>Price</th><th>Offer</th></tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </table>
-    <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
+  <div id="deal-grid" class="deal-grid">
+  </div>
+  <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
+</div>
+
+<div id="popup-overlay" onclick="closePopup(event)">
+  <div id="popup-box">
+    <button id="popup-close" onclick="closePopup(event)">&#10005;</button>
+    <img id="popup-img" src="" alt="" onclick="toggleZoom(event)">
+    <div id="popup-title"></div>
   </div>
 </div>
 
@@ -268,13 +325,38 @@ def save_html(data: List[Dict]) -> None:
   let currentIndex = 0;
   const CHUNK_SIZE = 30;
 
-  const tbody = document.getElementById('tbody');
+  const dealGrid = document.getElementById('deal-grid');
   const sentinel = document.getElementById('sentinel');
   const countLabel = document.getElementById('count');
 
-  const stores = [...new Set(rawData.map(r => r.Store))].sort();
+  function formatDisplayDate(dateStr) {{
+      if (!dateStr) return "";
+      const parts = dateStr.split('-');
+      if (parts.length !== 3) return dateStr;
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const day = parts[2].padStart(2, '0');
+      return `${{day}}/${{months[parseInt(parts[1], 10) - 1]}}/${{parts[0]}}`;
+  }}
+
+  function formatPriceNumber(num) {{
+      if (num == null) return "";
+      return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
+  }}
+
+  // FIX: Dynamic check for Store OR Restaurant key
+  const rawStoreList = [];
+  rawData.forEach(r => {{
+      const storeName = r.Store || r.Restaurant;
+      if (storeName) {{
+          const parts = storeName.split("&").map(s => s.trim());
+          rawStoreList.push(...parts);
+      }}
+  }});
+  const stores = [...new Set(rawStoreList)].sort();
+  
   const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {{
+    if(!s) return;
     const lbl = document.createElement('label');
     lbl.className = 'checkbox-label';
     lbl.innerHTML = `<input type="checkbox" value="${{s}}" class="store-cb" onchange="applyFilters()"> ${{s}}`;
@@ -282,15 +364,17 @@ def save_html(data: List[Dict]) -> None:
   }});
 
   const prices = rawData.map(r => r.Price).filter(p => p > 0);
-  const maxPrice = prices.length ? Math.ceil(Math.max(...prices) / 10) * 10 : 1000;
+  const maxPrice = prices.length ? Math.ceil(Math.max(...prices) / 10) * 10 : 100;
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').textContent = 'SAR ' + maxPrice;
+  document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(maxPrice);
 
+  const sidebar = document.getElementById('filterSidebar');
+  const overlay = document.getElementById('sidebarOverlay');
   function toggleSidebar() {{
-    document.getElementById('filterSidebar').classList.toggle('open');
-    document.getElementById('sidebarOverlay').classList.toggle('active');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
   }}
   
   function getOfferVal(offerStr) {{
@@ -309,16 +393,23 @@ def save_html(data: List[Dict]) -> None:
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').textContent = 'SAR ' + max;
+    document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(max);
 
     filteredData = rawData.filter(item => {{
-      const productName = (item.Product || "Unknown item").toLowerCase();
+      // FIX: Check for Deal_Name or Product depending on your scraper setup
+      const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
+      const productName = pName.toLowerCase();
+      
       let matchSearch = true;
       if (searchTokens.length > 0) {{
           matchSearch = searchTokens.every(token => productName.includes(token));
       }}
-      const matchStore  = selectedStores.length === 0 || selectedStores.includes(item.Store);
+
+      // FIX: Check for Restaurant or Store
+      const sName = item.Restaurant || item.Store || "";
+      const matchStore  = selectedStores.length === 0 || selectedStores.some(selected => sName.includes(selected));
       const matchPrice  = (item.Price === null) || (item.Price <= max);
+      
       return matchSearch && matchStore && matchPrice;
     }});
 
@@ -327,11 +418,12 @@ def save_html(data: List[Dict]) -> None:
     }} else if (sortVal === 'price-desc') {{
         filteredData.sort((a, b) => (b.Price || 0) - (a.Price || 0));
     }} else if (sortVal === 'store-asc') {{
-        filteredData.sort((a, b) => (a.Store || "").localeCompare(b.Store || ""));
+        filteredData.sort((a, b) => (a.Restaurant || a.Store || "").localeCompare(b.Restaurant || b.Store || ""));
     }} else if (sortVal === 'offer-desc') {{
         filteredData.sort((a, b) => {{
             const offerDiff = getOfferVal(b.Offer) - getOfferVal(a.Offer);
             if (offerDiff !== 0) return offerDiff;
+            
             const dateA = a.Fetched_Date || "";
             const dateB = b.Fetched_Date || "";
             return dateB.localeCompare(dateA);
@@ -339,7 +431,8 @@ def save_html(data: List[Dict]) -> None:
     }}
 
     currentIndex = 0;
-    tbody.innerHTML = ''; 
+    dealGrid.innerHTML = ''; 
+    
     loadMore();
   }}
 
@@ -354,45 +447,55 @@ def save_html(data: List[Dict]) -> None:
     const fragment = document.createDocumentFragment();
 
     chunk.forEach(item => {{
-      const tr = document.createElement('tr');
-      const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+      const card = document.createElement('div');
+      card.className = 'card';
       
+      // FIX: Unified keys for Deal_Name / Product
+      const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
+      const sName = item.Restaurant || item.Store || "Unknown place";
+      
+      const safeName = pName.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+      
+      const imgTag = item.Image_URL 
+          ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
+          : "No image";
+
       const priceHtml = item.Price 
-          ? `SAR ${{item.Price}}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${{item.Old_Price}}</span>` : "")
-          : "—";
-          
-      const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "—";
-      const imgTag = item.Image_URL ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy">` : "No image";
-
-      const titleHtml = item.Deal_URL 
-          ? `<a href="${{item.Deal_URL}}" target="_blank" style="color: #1a73e8; text-decoration: none; font-weight: 600;">${{item.Product || "Unknown item"}}</a>`
-          : `<div style="font-weight: 500;">${{item.Product || "Unknown item"}}</div>`;
-
-      const fetchDate = item.Fetched_Date 
-          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{item.Fetched_Date}}</div>` 
+          ? `<div class="price-badge"><span class="currency-icon">&#x20C1;</span><span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
           : "";
+          
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price"><span class="currency-icon-small">&#x20C1;</span>${{formatPriceNumber(item.Old_Price)}}</span>` : "";
+      const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
-      tr.innerHTML = `
-          <td>${{imgTag}}</td>
-          <td>
-             ${{titleHtml}}
-             ${{fetchDate}}
-          </td>
-          <td>${{item.Store || "Unknown store"}}</td>
-          <td>${{priceHtml}}</td>
-          <td>${{offerStr}}</td>
+      const displayDate = formatDisplayDate(item.Fetched_Date);
+      const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
+
+      card.innerHTML = `
+          <div class="card-img-wrapper">${{imgTag}}</div>
+          <div class="card-title">${{pName}}</div>
+          <div class="card-price-row">
+              ${{priceHtml}}
+              ${{oldPriceHtml}}
+              ${{offerStr}}
+          </div>
+          <div class="card-store">${{sName}}</div>
+          <div class="card-date">${{fetchDate}}</div>
       `;
-      fragment.appendChild(tr);
+      fragment.appendChild(card);
     }});
 
-    tbody.appendChild(fragment);
+    dealGrid.appendChild(fragment);
     currentIndex += chunk.length;
+    
     countLabel.innerHTML = `Showing <strong>${{currentIndex}}</strong> of <strong>${{filteredData.length}}</strong> deals`;
   }}
 
   const observer = new IntersectionObserver((entries) => {{
-    if (entries[0].isIntersecting) {{ loadMore(); }}
+    if (entries[0].isIntersecting) {{
+        loadMore();
+    }}
   }}, {{ rootMargin: "200px" }}); 
+  
   observer.observe(sentinel);
 
   applyFilters();
@@ -403,21 +506,59 @@ def save_html(data: List[Dict]) -> None:
     document.getElementById('storeSearchInput').value = '';
     document.querySelectorAll('.store-cb').forEach(cb => cb.checked = false);
     slider.value = maxPrice;
+    filterStoreList();
     applyFilters();
   }}
 
   function filterStoreList() {{
       let input = document.getElementById('storeSearchInput').value.toLowerCase();
       let storeLabels = document.querySelectorAll('.checkbox-label');
+      
       storeLabels.forEach(label => {{
           let storeName = label.innerText.toLowerCase();
-          label.style.display = storeName.includes(input) ? "flex" : "none";
+          if (storeName.includes(input)) {{
+              label.style.display = "flex";
+          }} else {{
+              label.style.display = "none";
+          }}
       }});
   }}
+
+  function openPopup(src, title) {{
+    const img = document.getElementById('popup-img');
+    img.src = src;
+    img.classList.remove('zoomed'); 
+    
+    document.getElementById('popup-title').innerHTML = title;
+    
+    document.getElementById('popup-overlay').classList.add('active');
+  }}
+
+  function toggleZoom(e) {{
+    e.stopPropagation(); 
+    const img = document.getElementById('popup-img');
+    img.classList.toggle('zoomed');
+  }}
+
+  function closePopup(e) {{
+    if (e && e.target && e.target.id === 'popup-img') return;
+    
+    if (!e || e.target === document.getElementById('popup-overlay') || e.currentTarget === document.getElementById('popup-close')) {{
+      document.getElementById('popup-overlay').classList.remove('active');
+    }}
+  }}
+
+  document.addEventListener('keydown', e => {{
+    if (e.key === 'Escape') {{
+      document.getElementById('popup-overlay').classList.remove('active');
+    }}
+  }});
 </script>
 </body>
 </html>"""
 
+    # Make sure this points to your cobone HTML file name
+    OUTPUT_HTML = Path("cobone_results.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
 
