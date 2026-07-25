@@ -559,24 +559,21 @@ async def scrape_kfc(url: str) -> List[Dict]:
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     async with async_playwright() as pw:
-        # ---> GRAB PROXY FROM GITHUB SECRETS <---
         proxy_string = os.environ.get("PROXY_URL")
         proxy_settings = {"server": proxy_string} if proxy_string else None
 
-        # 1. STEALTH ARGS + PROXY INJECTION
         browser = await pw.chromium.launch(
             headless=True,
             proxy=proxy_settings,
             args=["--disable-blink-features=AutomationControlled"]
         )
         
-        # 2. SPOOF HEADERS & IGNORE HTTPS ERRORS
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             viewport={"width": 1920, "height": 1080},
             locale="en-SA",
             timezone_id="Asia/Riyadh",
-            ignore_https_errors=True,  # Bypasses proxy SSL delays
+            ignore_https_errors=True,
             extra_http_headers={
                 "Accept-Language": "en-SA,en-US;q=0.9,en;q=0.8,ar;q=0.7",
                 "Referer": "https://www.google.com/"
@@ -585,35 +582,32 @@ async def scrape_kfc(url: str) -> List[Dict]:
         page = await context.new_page()
 
         try:
-            # ---> THE FIX: 90 Seconds & Wait for 'commit' <---
-            await page.goto(url, wait_until="commit", timeout=90_000)
+            # FIX 1: Wait for the actual HTML DOM to load, with a generous 90s timeout for the proxy
+            await page.goto(url, wait_until="domcontentloaded", timeout=90_000)
             
-            # ---> DIAGNOSTIC PROBES <---
             current_url = page.url
             page_title = await page.title()
             log.info(f"📍 Landed on URL: {current_url}")
             log.info(f"📄 Page Title: {page_title}")
 
-            # Detect WAF blocks
             if "Just a moment" in page_title or "Cloudflare" in page_title or "Security" in page_title:
                 log.error("🚨 WAF Block Detected! KFC's firewall is blocking the Proxy IP.")
                 return []
                 
-            await asyncio.sleep(5) # Let React hydrate
+            await asyncio.sleep(5) 
 
             try:
-                # Wait up to 30 seconds for the proxy to finish delivering the DOM elements
                 await page.wait_for_selector('div[data-item-id]', timeout=30_000)
             except Exception:
                 log.warning("Timeout waiting for KFC cards. Checking what the browser actually sees...")
-                body_text = await page.evaluate("document.body.innerText.substring(0, 200)")
+                # FIX 2: Safely check if document.body exists before reading it to prevent the null error!
+                body_text = await page.evaluate("document.body ? document.body.innerText.substring(0, 200) : 'EMPTY DOM'")
                 log.info(f"🕵️‍♂️ DOM Text Preview: {body_text.strip().replace(chr(10), ' ')}")
 
-            # Scroll to trigger lazy-loading
-            await page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
+            # Safely scroll
+            await page.evaluate("if (document.body) window.scrollBy(0, document.body.scrollHeight)")
             await asyncio.sleep(2)
 
-            # 4. Bulletproof JS Extractor
             items = await page.evaluate("""() => {
                 let extracted = [];
                 let cards = document.querySelectorAll('div[data-item-id]');
@@ -659,7 +653,6 @@ async def scrape_kfc(url: str) -> List[Dict]:
                 return extracted;
             }""")
             
-            # Deduplicate and normalize
             unique_items = {}
             for item in items:
                 if item['title'] not in unique_items:
