@@ -32,6 +32,8 @@ jobs:
 
       # ---> Food scraper runs FIRST! <---
       - name: Run Cobone Food Scraper
+        env:
+          PROXY_URL: ${{ secrets.PROXY_URL }}
         run: python cobone_scraper.py
 
       # ---> Grocery scraper runs SECOND! <---
