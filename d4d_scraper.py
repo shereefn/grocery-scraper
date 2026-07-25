@@ -611,7 +611,6 @@ async def scrape(target_list: List[str]) -> List[Dict]:
 # ---------------------------------------------------------------------------
 # HTML output
 # ---------------------------------------------------------------------------
-
 def save_html(data: List[Dict]) -> None:
     products_json = json.dumps(data, ensure_ascii=False)
 
@@ -633,7 +632,7 @@ def save_html(data: List[Dict]) -> None:
   
   .hamburger {{ background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }}
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
-  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }}
+  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; margin: 0; }}
   
   .search-container {{ width: 100%; max-width: 700px; position: relative; }}
   .search-container input {{ width: 100%; padding: 16px 24px 16px 48px; border: 2px solid #e1e4e8; border-radius: 40px; font-size: 16px; font-weight: 500; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #f8f9fa; }}
@@ -665,7 +664,7 @@ def save_html(data: List[Dict]) -> None:
   .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
   
-  /* UPDATED CARD LAYOUT */
+  /* CARD LAYOUT */
   .deal-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
   
   .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
@@ -677,13 +676,14 @@ def save_html(data: List[Dict]) -> None:
   
   .card-title {{ font-size: 15px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; margin-bottom: 4px; }}
   
-  /* NEW: STICKER PRICE BADGE */
+  /* STICKER PRICE BADGE & CURRENCY */
   .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
-  .price-badge {{ background-color: #ffcc00; color: #000000; border: 2px solid #000000; border-radius: 8px; padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 2px 2px 0px #000000; font-weight: 800; }}
+  .price-badge {{ background-color: #ffcc00; color: #000000; border: 2px solid #000000; border-radius: 8px; padding: 4px 10px; display: inline-flex; align-items: center; box-shadow: 2px 2px 0px #000000; font-weight: 800; }}
   .card-price {{ font-size: 18px; line-height: 1; }}
   
-  /* SVG CURRENCY ICON */
-  .currency-icon {{ width: 16px; height: 16px; fill: currentColor; }}
+  /* UNICODE RIYAL SYMBOL */
+  .currency-icon {{ font-size: 1.1em; font-weight: 800; margin-right: 4px; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }}
+  .currency-icon-small {{ font-size: 0.9em; font-weight: 600; margin-right: 3px; display: inline-block; }}
   
   .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 14px; font-weight: 600; }}
   .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
@@ -706,9 +706,10 @@ def save_html(data: List[Dict]) -> None:
   #popup-close:hover {{ background: #dc2626; transform: scale(1.1); }}
 
   @media (max-width: 768px) {{
-    .navbar {{ flex-direction: column; gap: 12px; padding: 12px; }}
-    .nav-left {{ width: 100%; justify-content: space-between; }}
-    .nav-center {{ width: 100%; padding: 0; min-width: 100%; }}
+    .navbar {{ flex-direction: column; gap: 12px; padding: 12px; align-items: stretch; }}
+    /* FIX: Force left alignment for Hamburger and My Deals */
+    .nav-left {{ width: 100%; justify-content: flex-start; gap: 12px; }}
+    .nav-center {{ width: 100%; padding: 0; min-width: auto; }}
     .nav-right {{ width: 100%; justify-content: center; }}
   }}
 </style>
@@ -729,7 +730,8 @@ def save_html(data: List[Dict]) -> None:
 
   <div class="nav-right">
     <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Groceries</a>
-    <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food Offers</a>
+    <!-- FIX: Changed Text to just Food -->
+    <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food</a>
   </div>
 </div>
 
@@ -757,7 +759,7 @@ def save_html(data: List[Dict]) -> None:
       <label>Max Price</label>
       <div class="slider-container">
         <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
-        <span id="price-range-label">10,000</span>
+        <span id="price-range-label"><span class="currency-icon-small">&#x20C1;</span>10,000</span>
       </div>
     </div>
     
@@ -811,7 +813,6 @@ def save_html(data: List[Dict]) -> None:
       return `${{day}}/${{months[parseInt(parts[1], 10) - 1]}}/${{parts[0]}}`;
   }}
 
-  // Number Formatter for Commas (e.g., 2,699)
   function formatPriceNumber(num) {{
       if (num == null) return "";
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
@@ -840,7 +841,7 @@ def save_html(data: List[Dict]) -> None:
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').innerHTML = formatPriceNumber(maxPrice);
+  document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(maxPrice);
 
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -865,7 +866,7 @@ def save_html(data: List[Dict]) -> None:
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').innerHTML = formatPriceNumber(max);
+    document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(max);
 
     filteredData = rawData.filter(item => {{
       const productName = (item.Product || "Unknown item").toLowerCase();
@@ -923,22 +924,17 @@ def save_html(data: List[Dict]) -> None:
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-      // SVG Icon Path
-      const svgIcon = `<svg class="currency-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 5C13.1 5 12 6.1 12 7.5c0 1.9 2.5 2.5 2.5 3.5 0 .3-.2.5-.5.5h-2v2h2.5c1.4 0 2.5-1.1 2.5-2.5 0-1.9-2.5-2.5-2.5-3.5 0-.3.2-.5.5-.5h2V5h-2.5zm-5 0c-1.4 0-2.5 1.1-2.5 2.5 0 1.9 2.5 2.5 2.5 3.5 0 .3-.2.5-.5.5h-2v2h2.5c1.4 0 2.5-1.1 2.5-2.5 0-1.9-2.5-2.5-2.5-3.5 0-.3.2-.5.5-.5h2V5H9.5z"/></svg>`;
-
-      // Prices wrapped in the yellow sticker badge
+      // FIX: Applied the Unicode U+20C1 (&#x20C1;) riyal character here
       const priceHtml = item.Price 
-          ? `<div class="price-badge">${{svgIcon}}<span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
+          ? `<div class="price-badge"><span class="currency-icon">&#x20C1;</span><span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
           : "";
           
-      // Old price sits outside the badge (just the number)
-      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">${{formatPriceNumber(item.Old_Price)}}</span>` : "";
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price"><span class="currency-icon-small">&#x20C1;</span>${{formatPriceNumber(item.Old_Price)}}</span>` : "";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
       const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
 
-      // Exact layout order requested by user
       card.innerHTML = `
           <div class="card-img-wrapper">${{imgTag}}</div>
           <div class="card-title">${{item.Product || "Unknown item"}}</div>
