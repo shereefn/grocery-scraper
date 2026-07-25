@@ -562,7 +562,7 @@ async def scrape_kfc(url: str) -> List[Dict]:
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
         context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             viewport={"width": 1366, "height": 768},
             locale="en-SA",
             timezone_id="Asia/Riyadh"
@@ -570,52 +570,70 @@ async def scrape_kfc(url: str) -> List[Dict]:
         page = await context.new_page()
 
         try:
-            # Wait for network idle to ensure the KFC API has finished loading products
-            await page.goto(url, wait_until="networkidle", timeout=30_000)
-            await asyncio.sleep(5) 
+            # 1. Use 'domcontentloaded' instead of 'networkidle' to prevent premature timeouts in GitHub Actions
+            await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
+            
+            # 2. THE FIX: Force the scraper to wait until React actually renders the cards on the page
+            try:
+                await page.wait_for_selector('div[data-item-id]', timeout=20_000)
+            except Exception:
+                log.warning("Timeout waiting for KFC React cards to render. Proceeding anyway...")
 
-            # EXACT DOM TARGETING BASED ON YOUR SCREENSHOT
+            # 3. Scroll to trigger any lazy-loaded images or prices
+            await page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
+            await asyncio.sleep(3) 
+
+            # 4. Bulletproof JS Extractor
             items = await page.evaluate("""() => {
                 let extracted = [];
-                // Select all product cards by looking for the custom data-item-id attribute
                 let cards = document.querySelectorAll('div[data-item-id]');
                 
                 cards.forEach(card => {
-                    // Use wildcard selectors to ignore the random React hashes (e.g. "_gj6rr_681")
-                    let titleEl = card.querySelector('div[class*="_titleContainer_"]');
-                    let priceEl = card.querySelector('div[class*="_cost_"]');
-                    let oldPriceEl = card.querySelector('div[class*="_strikeOut_"]');
-                    let offerEl = card.querySelector('div[class*="_percentage_"]');
-                    let imgEl = card.querySelector('div[class*="_thumbnailContainer_"] img');
+                    // Title: Extract from the specific container, or fallback to the first line of text
+                    let titleEl = card.querySelector('[class*="_titleContainer_"]');
+                    let title = titleEl ? titleEl.innerText.split('\\n')[0].trim() : '';
                     
-                    if (titleEl && priceEl) {
-                        let title = titleEl.innerText.trim();
-                        let priceText = priceEl.innerText || "";
-                        
-                        // Extract only the numbers from the text
-                        let priceMatch = priceText.match(/[0-9]+(?:\\.[0-9]+)?/);
-                        
-                        if (priceMatch) {
-                            let oldPrice = null;
-                            if (oldPriceEl) {
-                                let oldMatch = oldPriceEl.innerText.match(/[0-9]+(?:\\.[0-9]+)?/);
-                                if (oldMatch) oldPrice = parseFloat(oldMatch[0]);
-                            }
-                            
-                            extracted.push({
-                                title: title,
-                                price: parseFloat(priceMatch[0]),
-                                old_price: oldPrice,
-                                offer: offerEl ? offerEl.innerText.trim() : "Exclusive",
-                                image: imgEl ? imgEl.src : ""
-                            });
+                    if (!title) {
+                        let hTags = card.querySelectorAll('h2, h3, h4');
+                        if (hTags.length) title = hTags[0].innerText.trim();
+                    }
+
+                    // Price: Grab the raw innerText of the whole card and hunt for the numbers
+                    let textContent = card.innerText || "";
+                    let priceMatch = textContent.match(/(?:SAR|SR|﷼)?\\s*([0-9]{1,3}\\.[0-9]{2})/i);
+                    let imgEl = card.querySelector('img');
+
+                    if (title && priceMatch) {
+                        let currentPrice = parseFloat(priceMatch[1]);
+                        let oldPrice = null;
+                        let offer = "Exclusive";
+
+                        // Old Price
+                        let oldPriceEl = card.querySelector('[class*="_strikeOut_"]');
+                        if (oldPriceEl) {
+                            let oldMatch = oldPriceEl.innerText.match(/([0-9]+(?:\\.[0-9]+)?)/);
+                            if (oldMatch) oldPrice = parseFloat(oldMatch[1]);
                         }
+
+                        // Offer %
+                        let offerEl = card.querySelector('[class*="_percentage_"]');
+                        if (offerEl) {
+                            offer = offerEl.innerText.trim();
+                        }
+
+                        extracted.push({
+                            title: title,
+                            price: currentPrice,
+                            old_price: oldPrice,
+                            offer: offer,
+                            image: imgEl ? imgEl.src : ""
+                        });
                     }
                 });
                 return extracted;
             }""")
             
-            # Deduplicate and format the data to perfectly match your ETL schema
+            # Deduplicate and normalize
             unique_items = {}
             for item in items:
                 if item['title'] not in unique_items:
@@ -639,8 +657,6 @@ async def scrape_kfc(url: str) -> List[Dict]:
             await browser.close()
 
     return results
-
-
 
 async def main() -> None:
     # 1. Fetch Cobone Deals
