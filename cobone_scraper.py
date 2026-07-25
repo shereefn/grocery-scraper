@@ -553,43 +553,65 @@ def save_html(data: List[Dict]) -> None:
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
 
-
 async def scrape_kfc(url: str) -> List[Dict]:
     log.info(f"🍗 Connecting to KFC: {url}")
     results = []
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+        # 1. STEALTH ARGS: Hide the fact that this is an automated browser
+        browser = await pw.chromium.launch(
+            headless=True,
+            args=["--disable-blink-features=AutomationControlled"]
+        )
+        
+        # 2. SPOOF HEADERS: Pretend to be a MacBook connecting from a Saudi network
         context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            viewport={"width": 1366, "height": 768},
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            viewport={"width": 1920, "height": 1080},
             locale="en-SA",
-            timezone_id="Asia/Riyadh"
+            timezone_id="Asia/Riyadh",
+            extra_http_headers={
+                "Accept-Language": "en-SA,en-US;q=0.9,en;q=0.8,ar;q=0.7",
+                "Referer": "https://www.google.com/"
+            }
         )
         page = await context.new_page()
 
         try:
-            # 1. Use 'domcontentloaded' instead of 'networkidle' to prevent premature timeouts in GitHub Actions
             await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
             
-            # 2. THE FIX: Force the scraper to wait until React actually renders the cards on the page
+            # ---> DIAGNOSTIC PROBES <---
+            current_url = page.url
+            page_title = await page.title()
+            log.info(f"📍 Landed on URL: {current_url}")
+            log.info(f"📄 Page Title: {page_title}")
+
+            # Detect WAF blocks
+            if "Just a moment" in page_title or "Cloudflare" in page_title or "Security" in page_title:
+                log.error("🚨 WAF Block Detected! KFC's firewall is blocking the GitHub Actions IP.")
+                return []
+                
+            await asyncio.sleep(5) # Let React hydrate
+
             try:
-                await page.wait_for_selector('div[data-item-id]', timeout=20_000)
+                await page.wait_for_selector('div[data-item-id]', timeout=15_000)
             except Exception:
-                log.warning("Timeout waiting for KFC React cards to render. Proceeding anyway...")
+                log.warning("Timeout waiting for KFC cards. Checking what the browser actually sees...")
+                # Extract the first 200 characters of the page to see if there's a popup or error
+                body_text = await page.evaluate("document.body.innerText.substring(0, 200)")
+                log.info(f"🕵️‍♂️ DOM Text Preview: {body_text.strip().replace(chr(10), ' ')}")
 
-            # 3. Scroll to trigger any lazy-loaded images or prices
+            # Scroll to trigger lazy-loading
             await page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
-            await asyncio.sleep(3) 
+            await asyncio.sleep(2)
 
-            # 4. Bulletproof JS Extractor
+            # Execution logic remains exactly the same
             items = await page.evaluate("""() => {
                 let extracted = [];
                 let cards = document.querySelectorAll('div[data-item-id]');
                 
                 cards.forEach(card => {
-                    // Title: Extract from the specific container, or fallback to the first line of text
                     let titleEl = card.querySelector('[class*="_titleContainer_"]');
                     let title = titleEl ? titleEl.innerText.split('\\n')[0].trim() : '';
                     
@@ -598,7 +620,6 @@ async def scrape_kfc(url: str) -> List[Dict]:
                         if (hTags.length) title = hTags[0].innerText.trim();
                     }
 
-                    // Price: Grab the raw innerText of the whole card and hunt for the numbers
                     let textContent = card.innerText || "";
                     let priceMatch = textContent.match(/(?:SAR|SR|﷼)?\\s*([0-9]{1,3}\\.[0-9]{2})/i);
                     let imgEl = card.querySelector('img');
@@ -608,14 +629,12 @@ async def scrape_kfc(url: str) -> List[Dict]:
                         let oldPrice = null;
                         let offer = "Exclusive";
 
-                        // Old Price
                         let oldPriceEl = card.querySelector('[class*="_strikeOut_"]');
                         if (oldPriceEl) {
                             let oldMatch = oldPriceEl.innerText.match(/([0-9]+(?:\\.[0-9]+)?)/);
                             if (oldMatch) oldPrice = parseFloat(oldMatch[1]);
                         }
 
-                        // Offer %
                         let offerEl = card.querySelector('[class*="_percentage_"]');
                         if (offerEl) {
                             offer = offerEl.innerText.trim();
@@ -633,7 +652,6 @@ async def scrape_kfc(url: str) -> List[Dict]:
                 return extracted;
             }""")
             
-            # Deduplicate and normalize
             unique_items = {}
             for item in items:
                 if item['title'] not in unique_items:
