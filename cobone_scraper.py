@@ -150,7 +150,7 @@ def save_html(data: List[Dict]) -> None:
   
   /* NAVBAR & HERO SEARCH BAR UI */
   .navbar {{ display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
-  .nav-left {{ display: flex; align-items: center; gap: 16px; }}
+  .nav-left {{ display: flex; align-items: center; gap: 16px; justify-content: flex-start; }}
   .nav-center {{ flex: 1; display: flex; justify-content: center; padding: 0 20px; min-width: 300px; }}
   .nav-right {{ display: flex; gap: 8px; flex-wrap: wrap; }}
   
@@ -247,13 +247,11 @@ def save_html(data: List[Dict]) -> None:
   
   <div class="nav-center">
     <div class="search-container">
-        <!-- FIX: Updated placeholder text for food -->
         <input type="text" id="filter-product" placeholder="Search for amazing food deals..." oninput="applyFilters()">
     </div>
   </div>
 
   <div class="nav-right">
-    <!-- FIX: Swapped active styling to the Food tab -->
     <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🛒 Groceries</a>
     <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🍽️ Food</a>
   </div>
@@ -342,7 +340,6 @@ def save_html(data: List[Dict]) -> None:
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
 
-  // FIX: Dynamic check for Store OR Restaurant key
   const rawStoreList = [];
   rawData.forEach(r => {{
       const storeName = r.Store || r.Restaurant;
@@ -395,7 +392,6 @@ def save_html(data: List[Dict]) -> None:
     document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(max);
 
     filteredData = rawData.filter(item => {{
-      // FIX: Check for Deal_Name or Product depending on your scraper setup
       const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
       const productName = pName.toLowerCase();
       
@@ -404,7 +400,6 @@ def save_html(data: List[Dict]) -> None:
           matchSearch = searchTokens.every(token => productName.includes(token));
       }}
 
-      // FIX: Check for Restaurant or Store
       const sName = item.Restaurant || item.Store || "";
       const matchStore  = selectedStores.length === 0 || selectedStores.some(selected => sName.includes(selected));
       const matchPrice  = (item.Price === null) || (item.Price <= max);
@@ -449,10 +444,8 @@ def save_html(data: List[Dict]) -> None:
       const card = document.createElement('div');
       card.className = 'card';
       
-      // FIX: Unified keys for Deal_Name / Product
       const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
       const sName = item.Restaurant || item.Store || "Unknown place";
-      
       const safeName = pName.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       
       const imgTag = item.Image_URL 
@@ -556,7 +549,6 @@ def save_html(data: List[Dict]) -> None:
 </body>
 </html>"""
 
-    # Make sure this points to your cobone HTML file name
     OUTPUT_HTML = Path("cobone_results.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
