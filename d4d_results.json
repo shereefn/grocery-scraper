@@ -2430,6 +2430,15 @@
     "Fetched_Date": "2026-07-25"
   },
   {
+    "Store": "Danube & Hyper Panda",
+    "Product": "Vaseline Intensive Care Cocoa Radiant Body Lotion 400ml",
+    "Price": 14.99,
+    "Old_Price": 41.95,
+    "Offer": "64.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/d969194e74499379c0025e6454199482.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
     "Store": "Hyper Panda",
     "Product": "Vaseline Lotion Ice Cool Hydration (725ml)",
     "Price": 21.99,
@@ -5328,12 +5337,12 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Bosch Dishwasher SMS26DI01B 6 Pgm",
-    "Price": 1799.0,
-    "Old_Price": 2199,
-    "Offer": "18.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/cd51756c75965b495bd133c6bd076177.jpg",
+    "Store": "Danube & LULU Hypermarket",
+    "Product": "Gento Dishwashing Liquid 1Ltr",
+    "Price": 6.99,
+    "Old_Price": 9.95,
+    "Offer": "29.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/0820cff96dc13a1370095bbcb92e6d1a.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5355,12 +5364,12 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube & LULU Hypermarket",
-    "Product": "Gento Dishwashing Liquid 1Ltr",
-    "Price": 6.99,
-    "Old_Price": 9.95,
-    "Offer": "29.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/0820cff96dc13a1370095bbcb92e6d1a.jpg",
+    "Store": "LULU Hypermarket",
+    "Product": "Bosch Dishwasher SMS26DI01B 6 Pgm",
+    "Price": 1799.0,
+    "Old_Price": 2199,
+    "Offer": "18.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/cd51756c75965b495bd133c6bd076177.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5553,21 +5562,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Canderel Sugar Free Chocolate 27/30gm",
-    "Price": 8.5,
-    "Old_Price": 17.0,
-    "Offer": "50                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/dca0527b732e0cd3ec103a9fbcebf21d.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Almarai Ice Cream Mini Bites 128ml",
     "Price": 7.99,
     "Old_Price": 10.0,
     "Offer": "20.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/22921780921843c21e2f840f55f7332d.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Canderel Sugar Free Chocolate 27/30gm",
+    "Price": 8.5,
+    "Old_Price": 17.0,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/dca0527b732e0cd3ec103a9fbcebf21d.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5643,21 +5652,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Eti Darelo Wafer with Dark Chocolate and Cream 50g",
-    "Price": 9.99,
-    "Old_Price": 15.99,
-    "Offer": "37.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/f87b6baa61e83c27bd3fe7cc0cf14321.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "KitKat Chunky Whole Grain Cereal 330gm",
     "Price": 22.99,
     "Old_Price": 31.9,
     "Offer": "27.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/85bc2fd27d7287863da08af253059cae.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Eti Darelo Wafer with Dark Chocolate and Cream 50g",
+    "Price": 9.99,
+    "Old_Price": 15.99,
+    "Offer": "37.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/f87b6baa61e83c27bd3fe7cc0cf14321.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5688,21 +5697,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Cadbury Time Out Chocolate Wafer Minis 247.2g",
-    "Price": 11.99,
-    "Old_Price": 18.5,
-    "Offer": "35.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/a9def36761dd6ca997de75ba3c93618f.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Nutella Chocolate Spread 1kg",
     "Price": 32.99,
     "Old_Price": 44.95,
     "Offer": "26.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/a024878d31313a80e4ecd7d0bf78ee93.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Cadbury Time Out Chocolate Wafer Minis 247.2g",
+    "Price": 11.99,
+    "Old_Price": 18.5,
+    "Offer": "35.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/a9def36761dd6ca997de75ba3c93618f.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5724,21 +5733,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Kellogg's Granola White Chocolate with Pistachio 540g",
-    "Price": 24.99,
-    "Old_Price": 37.5,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e1acd8a9bb2d79f81c2f9c5d829d89d0.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Nesto",
     "Product": "Horlicks Chocolate Flavour 400gm",
     "Price": 20.0,
     "Old_Price": null,
     "Offer": "50                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/21/15a8a6c5389bc21693192dc9c2ca39cd.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Kellogg's Granola White Chocolate with Pistachio 540g",
+    "Price": 24.99,
+    "Old_Price": 37.5,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e1acd8a9bb2d79f81c2f9c5d829d89d0.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5769,21 +5778,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Arjoon White / Brown Chocolate Coated Dates 425g",
-    "Price": 16.99,
-    "Old_Price": 24.95,
-    "Offer": "31.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/e2e14614f30c375d050f0da0f1e946c4.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Tottis Serenata Dark Chocolate Wafer Mini 180g",
     "Price": 15.95,
     "Old_Price": 19.95,
     "Offer": "20.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/42b9788baecae26565f97817bb40bb36.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Arjoon White / Brown Chocolate Coated Dates 425g",
+    "Price": 16.99,
+    "Old_Price": 24.95,
+    "Offer": "31.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/e2e14614f30c375d050f0da0f1e946c4.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5832,21 +5841,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Kagi - Mini Chocolate Wafer 125gm",
-    "Price": 15.99,
-    "Old_Price": 22.95,
-    "Offer": "30.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/4f72323e7b2d917c5b41f5bfb65576ef.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Galaxy Fusions Milk/Dark Chocolate 100gm",
     "Price": 14.99,
     "Old_Price": 19.95,
     "Offer": "24.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/b62df671807019a12f1285bf541ac32f.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Kagi - Mini Chocolate Wafer 125gm",
+    "Price": 15.99,
+    "Old_Price": 22.95,
+    "Offer": "30.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/4f72323e7b2d917c5b41f5bfb65576ef.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5868,15 +5877,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Tru Fru Frozen Fresh Assorted Fruit in Chocolate 200g",
-    "Price": 34.0,
-    "Old_Price": 48.0,
-    "Offer": "29.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/6973ab1cf403e2e20d70c79888db7b12.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Chocolate Cake Small",
     "Price": 23.95,
@@ -5887,11 +5887,11 @@
   },
   {
     "Store": "Danube",
-    "Product": "Canderel Chocolate 100g",
-    "Price": 16.99,
-    "Old_Price": 23.5,
-    "Offer": "27.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/0029d52f1a27175a2d28c93360e568a3.jpg",
+    "Product": "Tru Fru Frozen Fresh Assorted Fruit in Chocolate 200g",
+    "Price": 34.0,
+    "Old_Price": 48.0,
+    "Offer": "29.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/6973ab1cf403e2e20d70c79888db7b12.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5901,6 +5901,15 @@
     "Old_Price": 57.75,
     "Offer": "36                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/432f3029d48c30f1b22163cf8b6dad78.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Canderel Chocolate 100g",
+    "Price": 16.99,
+    "Old_Price": 23.5,
+    "Offer": "27.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/0029d52f1a27175a2d28c93360e568a3.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6003,21 +6012,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "Fonte Cup Cake Vanilla/Strawberry/Chocolate 30g 18s",
+    "Price": 9.75,
+    "Old_Price": 11.75,
+    "Offer": "17                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/ad83e70061cbefbdec86a84820f22459.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
     "Store": "Danube",
     "Product": "Born Winner High Protein 33% Stracciatella / Cookies & Chocolate Bar 60g",
     "Price": 10.99,
     "Old_Price": 14.5,
     "Offer": "24.2                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9203f254a05f961f27783c3c51d5208a.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Milka Chocolate Bars 90gm Assorted",
-    "Price": 7.95,
-    "Old_Price": 8.95,
-    "Offer": "11.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6049,11 +6058,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Fonte Cup Cake Vanilla/Strawberry/Chocolate 30g 18s",
-    "Price": 9.75,
-    "Old_Price": 11.75,
-    "Offer": "17                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/ad83e70061cbefbdec86a84820f22459.jpg",
+    "Product": "Milka Chocolate Bars 90gm Assorted",
+    "Price": 7.95,
+    "Old_Price": 8.95,
+    "Offer": "11.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6129,21 +6138,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube",
-    "Product": "Riesen Dark Chocolate 150g",
-    "Price": 8.99,
-    "Old_Price": 12.95,
-    "Offer": "30.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e6ada20be84f49aedcd7651bddfb1a8a.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "KitKat Choco Bar F1 66gm",
     "Price": 8.5,
     "Old_Price": 12.5,
     "Offer": "32                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/38830a112079b087291faeac277d039e.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Riesen Dark Chocolate 150g",
+    "Price": 8.99,
+    "Old_Price": 12.95,
+    "Offer": "30.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e6ada20be84f49aedcd7651bddfb1a8a.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -10252,6 +10261,15 @@
   },
   {
     "Store": "Danube",
+    "Product": "Cofique Privé Ground Coffee Beans Sachet 5 x 12 g",
+    "Price": 15.99,
+    "Old_Price": 26.0,
+    "Offer": "38.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9296f1a5101afe8a9f0d65e81f4be3fc.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
     "Product": "Davidoff Cafe coffee 90g",
     "Price": 28.99,
     "Old_Price": 43.0,
@@ -10266,15 +10284,6 @@
     "Old_Price": 34.0,
     "Offer": "20.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/7853156ef97d444f07e7e2df60b25d4c.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Cofique Privé Ground Coffee Beans Sachet 5 x 12 g",
-    "Price": 15.99,
-    "Old_Price": 26.0,
-    "Offer": "38.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9296f1a5101afe8a9f0d65e81f4be3fc.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -11826,6 +11835,15 @@
     "Fetched_Date": "2026-07-25"
   },
   {
+    "Store": "Danube",
+    "Product": "Alkhair Salt 700g",
+    "Price": 4.5,
+    "Old_Price": 6.0,
+    "Offer": "25                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/1a885e1fa77d97d737ef9a0bfe933264.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
     "Store": "LULU Hypermarket",
     "Product": "Quinoa Pulled Chicken Broccoli Salad 500g",
     "Price": 19.5,
@@ -11836,29 +11854,11 @@
   },
   {
     "Store": "Danube",
-    "Product": "Alkhair Salt 700g",
-    "Price": 4.5,
-    "Old_Price": 6.0,
-    "Offer": "25                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/1a885e1fa77d97d737ef9a0bfe933264.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
     "Product": "Snackits Baked Salt Sprinkled Crackers",
     "Price": 12.99,
     "Old_Price": 18.0,
     "Offer": "27.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/21d3e513808f32add93a1188f71c4cc1.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube & Hyper Panda",
-    "Product": "Vaseline Intensive Care Cocoa Radiant Body Lotion 400ml",
-    "Price": 14.99,
-    "Old_Price": 41.95,
-    "Offer": "64.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/d969194e74499379c0025e6454199482.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
