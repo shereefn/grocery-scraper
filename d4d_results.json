@@ -2430,15 +2430,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Danube & Hyper Panda",
-    "Product": "Vaseline Intensive Care Cocoa Radiant Body Lotion 400ml",
-    "Price": 14.99,
-    "Old_Price": 41.95,
-    "Offer": "64.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/d969194e74499379c0025e6454199482.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Hyper Panda",
     "Product": "Vaseline Lotion Ice Cool Hydration (725ml)",
     "Price": 21.99,
@@ -3624,15 +3615,6 @@
     "Old_Price": null,
     "Offer": "59.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/21/03403995b7fc5972d5541c07eda8b762.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "SK Gliss Shampoo Oil Nutritive 400ml",
-    "Price": 10.0,
-    "Old_Price": 19.99,
-    "Offer": "50                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/1ce20667376bd219e5ac2b38a8cce182.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6003,6 +5985,168 @@
     "Fetched_Date": "2026-07-25"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "McVities Digestive Milk Chocolate Biscuit 200gm",
+    "Price": 12.99,
+    "Old_Price": 16.95,
+    "Offer": "23.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/49d3cd0f9815472e545a341874769f62.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Hershey's Kisses Milk Chocolate (325g)",
+    "Price": 23.99,
+    "Old_Price": 41.99,
+    "Offer": "42.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/8f0f66e715274e70d74b4930de0804a8.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Born Winner High Protein 33% Stracciatella / Cookies & Chocolate Bar 60g",
+    "Price": 10.99,
+    "Old_Price": 14.5,
+    "Offer": "24.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9203f254a05f961f27783c3c51d5208a.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Milka Chocolate Bars 90gm Assorted",
+    "Price": 7.95,
+    "Old_Price": 8.95,
+    "Offer": "11.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Ferrero Raffaello Chocolate T15 150GmX2",
+    "Price": 30.0,
+    "Old_Price": 43.95,
+    "Offer": "31.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/cddeb9335efd1f88a84f47b135d59f17.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Oreo Original Chocolate Biscuit 24 x 36.8 g",
+    "Price": 18.95,
+    "Old_Price": 24.95,
+    "Offer": "24                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/a21014bf8f26629ba8f7ddced264b1a5.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Barni Chocolate Cake (5 x 30g) + Book",
+    "Price": 10.99,
+    "Old_Price": null,
+    "Offer": "38.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/f13f6fafed5164b570fe4bb32646259b.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Fonte Cup Cake Vanilla/Strawberry/Chocolate 30g 18s",
+    "Price": 9.75,
+    "Old_Price": 11.75,
+    "Offer": "17                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/ad83e70061cbefbdec86a84820f22459.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Lindt Excellence Chocolate (100g)",
+    "Price": 20.99,
+    "Old_Price": 29.99,
+    "Offer": "46.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/7c0a234065846e9796d5684893f36cdb.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Choki Choki Chocolate Paste 20x48gm",
+    "Price": 30.0,
+    "Old_Price": 35.99,
+    "Offer": "16.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/cfe9fd889ffa46f718d956ed3dc5ba15.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Snickers Chocolate 40gm x 24",
+    "Price": 49.99,
+    "Old_Price": 94.0,
+    "Offer": "46.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/5a9df667b9629935a6f2787f151a9691.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Mars Mixed Minis Chocolate (400g)",
+    "Price": 19.99,
+    "Old_Price": null,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/6c583bb4cb68104119f27f2aac8380ea.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Mr Beast Chocolate Bars 60g Assorted",
+    "Price": 19.25,
+    "Old_Price": 22.5,
+    "Offer": "14.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/97613a8ec8856b5274b4bb9e70e95936.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Betty Crocker Family Cake Chocolate (250g)",
+    "Price": 12.99,
+    "Old_Price": 17.75,
+    "Offer": "25.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/d6432c4f4dc84de60d4aa42e83473636.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Betty Crocker French Vanilla & Dark Chocolate Brownie Mix",
+    "Price": 30.95,
+    "Old_Price": 37.9,
+    "Offer": "18.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/07718181a1b0aea27b29ba7830e283d6.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Godiva Masterpieces Double Chocolate Bar (35g)",
+    "Price": 7.99,
+    "Old_Price": null,
+    "Offer": "20                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/739116f370ce93d98539adbb2c77401c.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Riesen Dark Chocolate 150g",
+    "Price": 8.99,
+    "Old_Price": 12.95,
+    "Offer": "30.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e6ada20be84f49aedcd7651bddfb1a8a.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "KitKat Choco Bar F1 66gm",
+    "Price": 8.5,
+    "Old_Price": 12.5,
+    "Offer": "32                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/38830a112079b087291faeac277d039e.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
     "Store": "Mark & Save",
     "Product": "Galaxy Jewels Assorted Chocolates 550Gm",
     "Price": 48.99,
@@ -6162,15 +6306,6 @@
     "Old_Price": null,
     "Offer": "53.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/7f788972904b49ff87fef49608b431c1.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Snickers Chocolate 40gm x 24",
-    "Price": 49.99,
-    "Old_Price": 94.0,
-    "Offer": "46.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/5a9df667b9629935a6f2787f151a9691.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6342,15 +6477,6 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/3a28fd927c25a5c922157d6a105c993d.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Mars Mixed Minis Chocolate (400g)",
-    "Price": 19.99,
-    "Old_Price": null,
-    "Offer": "50                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/6c583bb4cb68104119f27f2aac8380ea.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6903,15 +7029,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "KitKat Choco Bar F1 66gm",
-    "Price": 8.5,
-    "Old_Price": 12.5,
-    "Offer": "32                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/38830a112079b087291faeac277d039e.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Danube",
     "Product": "Nature Valley Oats & Chocolate Chip Bars 42g x5",
     "Price": 13.99,
@@ -6921,30 +7038,12 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Milka Chocolate Bars 90gm Assorted",
-    "Price": 7.95,
-    "Old_Price": 8.95,
-    "Offer": "11.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Danube",
     "Product": "Borgat Gummy Candy 80g",
     "Price": 7.99,
     "Old_Price": 11.0,
     "Offer": "27.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/3abbaa4daca993b8cbae7fbc6e404972.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Mr Beast Chocolate Bars 60g Assorted",
-    "Price": 19.25,
-    "Old_Price": 22.5,
-    "Offer": "14.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/97613a8ec8856b5274b4bb9e70e95936.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -10566,15 +10665,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Jarir Bookstore",
-    "Product": "Crash Team Racing Nitro-Fueled",
-    "Price": 149.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/f3bc31a95abb55bf23c49b9fe7039a08.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Danube",
     "Product": "Dilmah Ceylon Gold Black Tea 50g",
     "Price": 5.99,
@@ -10635,15 +10725,6 @@
     "Old_Price": 49,
     "Offer": "51                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/16/e06116f17b0df97a1cb598b3d58772e0.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Jarir Bookstore",
-    "Product": "Bloci Urban Construction Team Interlocking Bricks Set",
-    "Price": 49.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/e8050d26e5221e5af297d2c344ca13bd.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -11745,15 +11826,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Hyper Panda",
-    "Product": "Lindt Excellence Chocolate (100g)",
-    "Price": 20.99,
-    "Old_Price": 29.99,
-    "Offer": "46.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/7c0a234065846e9796d5684893f36cdb.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Quinoa Pulled Chicken Broccoli Salad 500g",
     "Price": 19.5,
@@ -11781,111 +11853,39 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "McVities Digestive Milk Chocolate Biscuit 200gm",
-    "Price": 12.99,
-    "Old_Price": 16.95,
-    "Offer": "23.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/49d3cd0f9815472e545a341874769f62.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Hershey's Kisses Milk Chocolate (325g)",
-    "Price": 23.99,
-    "Old_Price": 41.99,
-    "Offer": "42.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/8f0f66e715274e70d74b4930de0804a8.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Born Winner High Protein 33% Stracciatella / Cookies & Chocolate Bar 60g",
-    "Price": 10.99,
-    "Old_Price": 14.5,
-    "Offer": "24.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9203f254a05f961f27783c3c51d5208a.jpg",
+    "Store": "Danube & Hyper Panda",
+    "Product": "Vaseline Intensive Care Cocoa Radiant Body Lotion 400ml",
+    "Price": 14.99,
+    "Old_Price": 41.95,
+    "Offer": "64.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/d969194e74499379c0025e6454199482.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
     "Store": "Hyper Al Wafa",
-    "Product": "Ferrero Raffaello Chocolate T15 150GmX2",
-    "Price": 30.0,
-    "Old_Price": 43.95,
-    "Offer": "31.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/cddeb9335efd1f88a84f47b135d59f17.jpg",
+    "Product": "SK Gliss Shampoo Oil Nutritive 400ml",
+    "Price": 10.0,
+    "Old_Price": 19.99,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/1ce20667376bd219e5ac2b38a8cce182.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Oreo Original Chocolate Biscuit 24 x 36.8 g",
-    "Price": 18.95,
-    "Old_Price": 24.95,
-    "Offer": "24                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/a21014bf8f26629ba8f7ddced264b1a5.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Barni Chocolate Cake (5 x 30g) + Book",
-    "Price": 10.99,
+    "Store": "Jarir Bookstore",
+    "Product": "Crash Team Racing Nitro-Fueled",
+    "Price": 149.0,
     "Old_Price": null,
-    "Offer": "38.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/f13f6fafed5164b570fe4bb32646259b.jpg",
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/f3bc31a95abb55bf23c49b9fe7039a08.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Fonte Cup Cake Vanilla/Strawberry/Chocolate 30g 18s",
-    "Price": 9.75,
-    "Old_Price": 11.75,
-    "Offer": "17                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/ad83e70061cbefbdec86a84820f22459.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Choki Choki Chocolate Paste 20x48gm",
-    "Price": 30.0,
-    "Old_Price": 35.99,
-    "Offer": "16.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/cfe9fd889ffa46f718d956ed3dc5ba15.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Betty Crocker Family Cake Chocolate (250g)",
-    "Price": 12.99,
-    "Old_Price": 17.75,
-    "Offer": "25.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/d6432c4f4dc84de60d4aa42e83473636.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Betty Crocker French Vanilla & Dark Chocolate Brownie Mix",
-    "Price": 30.95,
-    "Old_Price": 37.9,
-    "Offer": "18.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/07718181a1b0aea27b29ba7830e283d6.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Godiva Masterpieces Double Chocolate Bar (35g)",
-    "Price": 7.99,
+    "Store": "Jarir Bookstore",
+    "Product": "Bloci Urban Construction Team Interlocking Bricks Set",
+    "Price": 49.0,
     "Old_Price": null,
-    "Offer": "20                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/739116f370ce93d98539adbb2c77401c.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Riesen Dark Chocolate 150g",
-    "Price": 8.99,
-    "Old_Price": 12.95,
-    "Offer": "30.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/e6ada20be84f49aedcd7651bddfb1a8a.jpg",
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/e8050d26e5221e5af297d2c344ca13bd.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
