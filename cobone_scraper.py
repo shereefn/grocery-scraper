@@ -559,13 +559,18 @@ async def scrape_kfc(url: str) -> List[Dict]:
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     async with async_playwright() as pw:
-        # 1. STEALTH ARGS: Hide the fact that this is an automated browser
+        # ---> GRAB PROXY FROM GITHUB SECRETS <---
+        proxy_string = os.environ.get("PROXY_URL")
+        proxy_settings = {"server": proxy_string} if proxy_string else None
+
+        # 1. STEALTH ARGS + PROXY INJECTION
         browser = await pw.chromium.launch(
             headless=True,
+            proxy=proxy_settings,
             args=["--disable-blink-features=AutomationControlled"]
         )
         
-        # 2. SPOOF HEADERS: Pretend to be a MacBook connecting from a Saudi network
+        # 2. SPOOF HEADERS
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             viewport={"width": 1920, "height": 1080},
@@ -577,7 +582,6 @@ async def scrape_kfc(url: str) -> List[Dict]:
             }
         )
         page = await context.new_page()
-
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
             
