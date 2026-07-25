@@ -625,7 +625,7 @@ def save_html(data: List[Dict]) -> None:
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }}
   
-  /* UPDATED NAVBAR & SEARCH BAR UI */
+  /* NAVBAR & HERO SEARCH BAR UI */
   .navbar {{ display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
   .nav-left {{ display: flex; align-items: center; gap: 16px; }}
   .nav-center {{ flex: 1; display: flex; justify-content: center; padding: 0 20px; min-width: 300px; }}
@@ -635,7 +635,6 @@ def save_html(data: List[Dict]) -> None:
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
   h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }}
   
-  /* HERO SEARCH BAR */
   .search-container {{ width: 100%; max-width: 700px; position: relative; }}
   .search-container input {{ width: 100%; padding: 16px 24px 16px 48px; border: 2px solid #e1e4e8; border-radius: 40px; font-size: 16px; font-weight: 500; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #f8f9fa; }}
   .search-container input:focus {{ border-color: #1a73e8; box-shadow: 0 6px 16px rgba(26, 115, 232, 0.15); background: #ffffff; }}
@@ -666,27 +665,33 @@ def save_html(data: List[Dict]) -> None:
   .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
   
-  /* GRID & CARD LAYOUT */
+  /* UPDATED CARD LAYOUT */
   .deal-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
   
-  .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease; }}
+  .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
   .card:hover {{ transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }}
   
   .card-img-wrapper {{ height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; padding: 4px; border-radius: 8px; }}
   .card-img-wrapper img {{ max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }}
   .card-img-wrapper img:hover {{ transform: scale(1.05); }}
   
-  .card-title {{ font-size: 15px; font-weight: 500; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; }}
+  .card-title {{ font-size: 15px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; margin-bottom: 4px; }}
   
-  .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; }}
-  .card-price {{ color: #188038; font-weight: 700; font-size: 18px; }}
-  .card-old-price {{ color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400; }}
-  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  /* NEW: STICKER PRICE BADGE */
+  .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
+  .price-badge {{ background-color: #ffcc00; color: #000000; border: 2px solid #000000; border-radius: 8px; padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 2px 2px 0px #000000; font-weight: 800; }}
+  .card-price {{ font-size: 18px; line-height: 1; }}
   
-  /* UPDATED BRAND BADGE STYLE */
-  .card-store {{ font-size: 12px; color: #1a73e8; background: #e8f0fe; padding: 4px 12px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; margin-top: 4px; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  /* SVG CURRENCY ICON */
+  .currency-icon {{ width: 16px; height: 16px; fill: currentColor; }}
   
-  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; margin-top: 4px; }}
+  .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 14px; font-weight: 600; }}
+  .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  
+  /* STORE BADGE */
+  .card-store {{ font-size: 12px; color: #1a73e8; background: #e8f0fe; padding: 4px 12px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  
+  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; margin-top: 2px; }}
   
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }}
   
@@ -752,7 +757,7 @@ def save_html(data: List[Dict]) -> None:
       <label>Max Price</label>
       <div class="slider-container">
         <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
-        <span id="price-range-label">﷼ 10,000</span>
+        <span id="price-range-label">10,000</span>
       </div>
     </div>
     
@@ -835,7 +840,7 @@ def save_html(data: List[Dict]) -> None:
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').textContent = '﷼ ' + formatPriceNumber(maxPrice);
+  document.getElementById('price-range-label').innerHTML = formatPriceNumber(maxPrice);
 
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -860,7 +865,7 @@ def save_html(data: List[Dict]) -> None:
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').textContent = '﷼ ' + formatPriceNumber(max);
+    document.getElementById('price-range-label').innerHTML = formatPriceNumber(max);
 
     filteredData = rawData.filter(item => {{
       const productName = (item.Product || "Unknown item").toLowerCase();
@@ -918,19 +923,27 @@ def save_html(data: List[Dict]) -> None:
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-      // Apply Riyal symbol and Comma Formatting
-      const priceHtml = item.Price ? `﷼ ${{formatPriceNumber(item.Price)}}` : "—";
-      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">﷼ ${{formatPriceNumber(item.Old_Price)}}</span>` : "";
+      // SVG Icon Path
+      const svgIcon = `<svg class="currency-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 5C13.1 5 12 6.1 12 7.5c0 1.9 2.5 2.5 2.5 3.5 0 .3-.2.5-.5.5h-2v2h2.5c1.4 0 2.5-1.1 2.5-2.5 0-1.9-2.5-2.5-2.5-3.5 0-.3.2-.5.5-.5h2V5h-2.5zm-5 0c-1.4 0-2.5 1.1-2.5 2.5 0 1.9 2.5 2.5 2.5 3.5 0 .3-.2.5-.5.5h-2v2h2.5c1.4 0 2.5-1.1 2.5-2.5 0-1.9-2.5-2.5-2.5-3.5 0-.3.2-.5.5-.5h2V5H9.5z"/></svg>`;
+
+      // Prices wrapped in the yellow sticker badge
+      const priceHtml = item.Price 
+          ? `<div class="price-badge">${{svgIcon}}<span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
+          : "";
+          
+      // Old price sits outside the badge (just the number)
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">${{formatPriceNumber(item.Old_Price)}}</span>` : "";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
       const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
 
+      // Exact layout order requested by user
       card.innerHTML = `
           <div class="card-img-wrapper">${{imgTag}}</div>
           <div class="card-title">${{item.Product || "Unknown item"}}</div>
           <div class="card-price-row">
-              <span class="card-price">${{priceHtml}}</span>
+              ${{priceHtml}}
               ${{oldPriceHtml}}
               ${{offerStr}}
           </div>
