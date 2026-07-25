@@ -695,7 +695,7 @@ def save_html(data: List[Dict]) -> None:
 
   <div class="nav-tabs" style="display: flex; gap: 8px; margin-left: 20px; flex-wrap: wrap;">
     <a href="d4d_results.html" style="text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Groceries</a>
-    <a href="cobone_results.html" style="text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food Offers</a>
+    <a href="cobone_results.html" style="text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food</a>
   </div>
 
   <div class="filter-group" style="margin-left: auto;">
