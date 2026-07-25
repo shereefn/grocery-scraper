@@ -628,6 +628,7 @@ def save_html(data: List[Dict]) -> None:
   .hamburger {{ background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }}
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
   h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }}
+  
   .sidebar {{ position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }}
   .sidebar.open {{ left: 0; }}
   .sidebar-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }}
@@ -649,33 +650,39 @@ def save_html(data: List[Dict]) -> None:
   #price-range-label {{ font-size: 14px; color: #1a73e8; font-weight: 700; min-width: 80px; text-align: right; }}
   .btn-reset {{ padding: 12px; background: #f1f3f4; color: #202124; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: auto; }}
   .btn-reset:hover {{ background: #e8eaed; }}
+  
   .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
-  .table-wrap {{ border-radius: 12px; overflow-x: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.1); background: white; border: 1px solid #dadce0; }}
-  table {{ width: 100%; border-collapse: collapse; min-width: 650px; }}
-  th {{ background: #f8f9fa; color: #5f6368; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #dadce0; }}
-  td {{ padding: 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; }}
-  tr:hover td {{ background: #f8f9fa; }}
-  td:first-child {{ width: 100px; padding: 10px; }}
-  td:nth-child(2) {{ font-size: 15px; color: #202124; font-weight: 500; line-height: 1.4; }}
-  td:nth-child(3) {{ color: #5f6368; font-size: 14px; width: 150px; }}
-  td:nth-child(4) {{ color: #188038; font-weight: 700; font-size: 16px; width: 120px; }}
-  td:nth-child(5) {{ width: 130px; }}
-  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }}
-  img {{ width: 80px; height: 80px; object-fit: contain; border-radius: 8px; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f3f4; background: white; display: block; }}
-  img:hover {{ transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
-  .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; }}
+  
+  /* GRID & CARD LAYOUT */
+  .deal-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
+  
+  .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease; }}
+  .card:hover {{ transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }}
+  
+  .card-img-wrapper {{ height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; padding: 4px; border-radius: 8px; }}
+  .card-img-wrapper img {{ max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }}
+  .card-img-wrapper img:hover {{ transform: scale(1.05); }}
+  
+  .card-title {{ font-size: 15px; font-weight: 500; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; }}
+  
+  .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; }}
+  .card-price {{ color: #188038; font-weight: 700; font-size: 18px; }}
+  .card-old-price {{ color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400; }}
+  .badge-offer {{ background: #0ba028; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  
+  .card-store {{ font-size: 13px; color: #5f6368; font-weight: 600; margin-top: 4px; }}
+  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; }}
+  
+  .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }}
   
   /* THEATER MODE POPUP */
   #popup-overlay {{ display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); flex-direction: column; }}
   #popup-overlay.active {{ display: flex; }}
   #popup-box {{ background: white; border-radius: 16px; padding: 0; width: 90vw; max-width: 500px; aspect-ratio: 1 / 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }}
-  
   #popup-img {{ width: 100%; height: 100%; object-fit: contain; cursor: zoom-in; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); }}
   #popup-img.zoomed {{ transform: scale(1.8); cursor: zoom-out; }}
-  
   #popup-title {{ display: none; }}
-  
   #popup-close {{ position: absolute; top: 12px; right: 12px; background: #ef4444; color: white; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 2002; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }}
   #popup-close:hover {{ background: #dc2626; transform: scale(1.1); }}
 </style>
@@ -742,16 +749,10 @@ def save_html(data: List[Dict]) -> None:
     <span id="count">Loading products...</span>
   </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Image</th><th>Product Name</th><th>Store</th><th>Price</th><th>Offer</th></tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </table>
-    <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
+  <!-- Replaced Table wrapper with Grid layout -->
+  <div id="deal-grid" class="deal-grid">
   </div>
+  <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
 </div>
 
 <div id="popup-overlay" onclick="closePopup(event)">
@@ -768,7 +769,11 @@ def save_html(data: List[Dict]) -> None:
   let currentIndex = 0;
   const CHUNK_SIZE = 30;
 
-function formatDisplayDate(dateStr) {{
+  const dealGrid = document.getElementById('deal-grid');
+  const sentinel = document.getElementById('sentinel');
+  const countLabel = document.getElementById('count');
+
+  function formatDisplayDate(dateStr) {{
       if (!dateStr) return "";
       const parts = dateStr.split('-');
       if (parts.length !== 3) return dateStr;
@@ -776,10 +781,6 @@ function formatDisplayDate(dateStr) {{
       const day = parts[2].padStart(2, '0');
       return `${{day}}/${{months[parseInt(parts[1], 10) - 1]}}/${{parts[0]}}`;
   }}
-
-  const tbody = document.getElementById('tbody');
-  const sentinel = document.getElementById('sentinel');
-  const countLabel = document.getElementById('count');
 
   const rawStoreList = [];
   rawData.forEach(r => {{
@@ -863,7 +864,7 @@ function formatDisplayDate(dateStr) {{
     }}
 
     currentIndex = 0;
-    tbody.innerHTML = ''; 
+    dealGrid.innerHTML = ''; 
     
     loadMore();
   }}
@@ -879,38 +880,36 @@ function formatDisplayDate(dateStr) {{
     const fragment = document.createDocumentFragment();
 
     chunk.forEach(item => {{
-      const tr = document.createElement('tr');
+      const card = document.createElement('div');
+      card.className = 'card';
       const safeName = (item.Product || "Unknown item").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       
-      const priceHtml = item.Price 
-          ? `SAR ${{item.Price}}` + (item.Old_Price ? `<br><span style="color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400;">SAR ${{item.Old_Price}}</span>` : "")
-          : "—";
-          
-      const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "—";
       const imgTag = item.Image_URL 
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-// ---> UPDATED: Apply the formatting to the UI <---
-      const displayDate = formatDisplayDate(item.Fetched_Date);
-      const fetchDate = item.Fetched_Date 
-          ? `<div style="font-size: 12px; color: #80868b; margin-top: 6px; font-weight: 400;">Updated: ${{displayDate}}</div>` 
-          : "";
+      const priceHtml = item.Price ? `SAR ${{item.Price}}` : "—";
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">SAR ${{item.Old_Price}}</span>` : "";
+      const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
-      tr.innerHTML = `
-          <td>${{imgTag}}</td>
-          <td>
-             <div style="font-weight: 500;">${{item.Product || "Unknown item"}}</div>
-             ${{fetchDate}}
-          </td>
-          <td>${{item.Store || "Unknown store"}}</td>
-          <td>${{priceHtml}}</td>
-          <td>${{offerStr}}</td>
+      const displayDate = formatDisplayDate(item.Fetched_Date);
+      const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
+
+      card.innerHTML = `
+          <div class="card-img-wrapper">${{imgTag}}</div>
+          <div class="card-title">${{item.Product || "Unknown item"}}</div>
+          <div class="card-price-row">
+              <span class="card-price">${{priceHtml}}</span>
+              ${{oldPriceHtml}}
+              ${{offerStr}}
+          </div>
+          <div class="card-store">${{item.Store || "Unknown store"}}</div>
+          <div class="card-date">${{fetchDate}}</div>
       `;
-      fragment.appendChild(tr);
+      fragment.appendChild(card);
     }});
 
-    tbody.appendChild(fragment);
+    dealGrid.appendChild(fragment);
     currentIndex += chunk.length;
     
     countLabel.innerHTML = `Showing <strong>${{currentIndex}}</strong> of <strong>${{filteredData.length}}</strong> products`;
@@ -986,8 +985,6 @@ function formatDisplayDate(dateStr) {{
     OUTPUT_HTML = Path("d4d_results.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
-
-
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
