@@ -624,10 +624,22 @@ def save_html(data: List[Dict]) -> None:
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }}
-  .navbar {{ display: flex; align-items: center; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }}
+  
+  /* UPDATED NAVBAR & SEARCH BAR UI */
+  .navbar {{ display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
+  .nav-left {{ display: flex; align-items: center; gap: 16px; }}
+  .nav-center {{ flex: 1; display: flex; justify-content: center; padding: 0 20px; min-width: 300px; }}
+  .nav-right {{ display: flex; gap: 8px; flex-wrap: wrap; }}
+  
   .hamburger {{ background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }}
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
-  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }}
+  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; }}
+  
+  /* HERO SEARCH BAR */
+  .search-container {{ width: 100%; max-width: 700px; position: relative; }}
+  .search-container input {{ width: 100%; padding: 16px 24px 16px 48px; border: 2px solid #e1e4e8; border-radius: 40px; font-size: 16px; font-weight: 500; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #f8f9fa; }}
+  .search-container input:focus {{ border-color: #1a73e8; box-shadow: 0 6px 16px rgba(26, 115, 232, 0.15); background: #ffffff; }}
+  .search-container::before {{ content: '🔍'; position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #5f6368; pointer-events: none; }}
   
   .sidebar {{ position: fixed; top: 0; left: -340px; width: 340px; height: 100%; background: #ffffff; box-shadow: 4px 0 16px rgba(0,0,0,0.1); transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; display: flex; flex-direction: column; overflow-y: auto; }}
   .sidebar.open {{ left: 0; }}
@@ -640,7 +652,7 @@ def save_html(data: List[Dict]) -> None:
   .sidebar-content {{ padding: 24px; display: flex; flex-direction: column; gap: 24px; }}
   .filter-group {{ display: flex; flex-direction: column; gap: 8px; }}
   .filter-group label {{ font-size: 13px; color: #5f6368; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }}
-  select, input[type=text] {{ padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }}
+  select, input[type=text]:not(#filter-product) {{ padding: 12px 14px; border: 1px solid #dadce0; border-radius: 8px; font-size: 14px; outline: none; background: #ffffff; width: 100%; transition: border-color 0.2s; }}
   select:focus, input[type=text]:focus {{ border-color: #1a73e8; }}
   .checkbox-panel {{ border: 1px solid #dadce0; border-radius: 8px; padding: 16px; background: #fafafa; max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }}
   .checkbox-label {{ display: flex; align-items: center; gap: 10px; font-size: 14px; color: #3c4043; cursor: pointer; }}
@@ -671,8 +683,10 @@ def save_html(data: List[Dict]) -> None:
   .card-old-price {{ color: #9aa0a6; text-decoration: line-through; font-size: 13px; font-weight: 400; }}
   .badge-offer {{ background: #0ba028; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
   
-  .card-store {{ font-size: 13px; color: #5f6368; font-weight: 600; margin-top: 4px; }}
-  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; }}
+  /* UPDATED BRAND BADGE STYLE */
+  .card-store {{ font-size: 12px; color: #1a73e8; background: #e8f0fe; padding: 4px 12px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; margin-top: 4px; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  
+  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; margin-top: 4px; }}
   
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }}
   
@@ -685,21 +699,32 @@ def save_html(data: List[Dict]) -> None:
   #popup-title {{ display: none; }}
   #popup-close {{ position: absolute; top: 12px; right: 12px; background: #ef4444; color: white; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 2002; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }}
   #popup-close:hover {{ background: #dc2626; transform: scale(1.1); }}
+
+  @media (max-width: 768px) {{
+    .navbar {{ flex-direction: column; gap: 12px; padding: 12px; }}
+    .nav-left {{ width: 100%; justify-content: space-between; }}
+    .nav-center {{ width: 100%; padding: 0; min-width: 100%; }}
+    .nav-right {{ width: 100%; justify-content: center; }}
+  }}
 </style>
 </head>
 <body>
 
 <div class="navbar">
-  <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
-  <h1>My Deals</h1>
-
-  <div class="nav-tabs" style="display: flex; gap: 8px; margin-left: 20px; flex-wrap: wrap;">
-    <a href="d4d_results.html" style="text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Groceries</a>
-    <a href="cobone_results.html" style="text-decoration: none; padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food</a>
+  <div class="nav-left">
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <h1>My Deals</h1>
+  </div>
+  
+  <div class="nav-center">
+    <div class="search-container">
+        <input type="text" id="filter-product" placeholder="Search for amazing grocery deals..." oninput="applyFilters()">
+    </div>
   </div>
 
-  <div class="filter-group" style="margin-left: auto;">
-      <input type="text" id="filter-product" placeholder="Search groceries..." oninput="applyFilters()">
+  <div class="nav-right">
+    <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Groceries</a>
+    <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food Offers</a>
   </div>
 </div>
 
@@ -727,7 +752,7 @@ def save_html(data: List[Dict]) -> None:
       <label>Max Price</label>
       <div class="slider-container">
         <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
-        <span id="price-range-label">SAR 10000</span>
+        <span id="price-range-label">﷼ 10,000</span>
       </div>
     </div>
     
@@ -749,7 +774,6 @@ def save_html(data: List[Dict]) -> None:
     <span id="count">Loading products...</span>
   </div>
 
-  <!-- Replaced Table wrapper with Grid layout -->
   <div id="deal-grid" class="deal-grid">
   </div>
   <div id="sentinel" class="loading-indicator">Scroll down for more deals...</div>
@@ -782,6 +806,12 @@ def save_html(data: List[Dict]) -> None:
       return `${{day}}/${{months[parseInt(parts[1], 10) - 1]}}/${{parts[0]}}`;
   }}
 
+  // Number Formatter for Commas (e.g., 2,699)
+  function formatPriceNumber(num) {{
+      if (num == null) return "";
+      return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
+  }}
+
   const rawStoreList = [];
   rawData.forEach(r => {{
       if (r.Store) {{
@@ -805,7 +835,7 @@ def save_html(data: List[Dict]) -> None:
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').textContent = 'SAR ' + maxPrice;
+  document.getElementById('price-range-label').textContent = '﷼ ' + formatPriceNumber(maxPrice);
 
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -830,7 +860,7 @@ def save_html(data: List[Dict]) -> None:
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').textContent = 'SAR ' + max;
+    document.getElementById('price-range-label').textContent = '﷼ ' + formatPriceNumber(max);
 
     filteredData = rawData.filter(item => {{
       const productName = (item.Product || "Unknown item").toLowerCase();
@@ -888,8 +918,9 @@ def save_html(data: List[Dict]) -> None:
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-      const priceHtml = item.Price ? `SAR ${{item.Price}}` : "—";
-      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">SAR ${{item.Old_Price}}</span>` : "";
+      // Apply Riyal symbol and Comma Formatting
+      const priceHtml = item.Price ? `﷼ ${{formatPriceNumber(item.Price)}}` : "—";
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">﷼ ${{formatPriceNumber(item.Old_Price)}}</span>` : "";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
