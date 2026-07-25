@@ -35,7 +35,7 @@ async def scrape_cobone(url: str) -> List[Dict]:
         log.info("🔍 Loading Cobone Riyadh Food Deals...")
         
         try:
-            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            await page.goto(url, wait_until="commit", timeout=90_000)
             
             # Scroll to load all dynamic deal cards
             for i in range(8):
@@ -577,6 +577,7 @@ async def scrape_kfc(url: str) -> List[Dict]:
             viewport={"width": 1920, "height": 1080},
             locale="en-SA",
             timezone_id="Asia/Riyadh",
+            ignore_https_errors=True,  # <--- ADD THIS LINE
             extra_http_headers={
                 "Accept-Language": "en-SA,en-US;q=0.9,en;q=0.8,ar;q=0.7",
                 "Referer": "https://www.google.com/"
