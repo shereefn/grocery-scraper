@@ -981,78 +981,6 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Hyper Panda",
-    "Product": "Wrigley's Extra Sugarfree Gum Strawberry Citrus (15.6g)",
-    "Price": 9.99,
-    "Old_Price": null,
-    "Offer": "16.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/e99f00a46e7febecc1e283b5e87e0f8a.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Nova Chewing Gum 20x5 pcs",
-    "Price": 14.99,
-    "Old_Price": 20.0,
-    "Offer": "25                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/389e5557c999d89bfcfecea66f6f852d.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Gandour Gum 32pcs",
-    "Price": 7.99,
-    "Old_Price": 9.95,
-    "Offer": "19.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/bfb858cbc9b83b8224811b93ec270e2b.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube & Hyper Panda",
-    "Product": "Wrigley's Extra Sugarfree Chewing Gum (84g)",
-    "Price": 10.99,
-    "Old_Price": 14.5,
-    "Offer": "24.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/650b9da5d2a007e4cb37a8317ab98268.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Jarir Bookstore",
-    "Product": "Lenovo IdeaPad 5 2-in-1 Laptop - Convertible",
-    "Price": 4699.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/65ae584cb218a4d13600256eb17eb292.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Airwaves sugarfree Chewing Gum",
-    "Price": 9.99,
-    "Old_Price": 13.95,
-    "Offer": "28.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/4b050dc327fc1eb3424942e2db86582e.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Extra Chewing Gum 67g",
-    "Price": 10.99,
-    "Old_Price": 14.0,
-    "Offer": "21.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/c5e522ea02b230bb31314f6c286b163b.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Nesto & Hyper Al Wafa",
-    "Product": "Impex 65in 4K Smart LED TV GLORIA 65",
-    "Price": 1399.0,
-    "Old_Price": 1999,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/63b649f06c7aecb98fe97c58789f6d5a.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Danube",
     "Product": "Vaseline Lip Balm 3g",
     "Price": 16.99,
@@ -4312,20 +4240,20 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Hitachi Side by Side Refrigerator R-S800PSGS 595Ltr",
-    "Price": 4399.0,
-    "Old_Price": 7199,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/ba6634eb5346a796a3ec41177c49e67d.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "LULU Hypermarket",
     "Product": "LG Side by side Refrigerator LS19GBBDI 17.9Cft",
     "Price": 3599.0,
     "Old_Price": 7499,
     "Offer": "52                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/3653f2eff9dab840c9a596150a288ffc.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Hitachi Side by Side Refrigerator R-S800PSGS 595Ltr",
+    "Price": 4399.0,
+    "Old_Price": 7199,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/ba6634eb5346a796a3ec41177c49e67d.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -4509,6 +4437,15 @@
     "Fetched_Date": "2026-07-25"
   },
   {
+    "Store": "Hyper Al Wafa & Nesto",
+    "Product": "Impex 65in 4K Smart LED TV GLORIA 65",
+    "Price": 1399.0,
+    "Old_Price": 1999,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/21/0f7567bca54d08edcfcb8c650b897442.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "Haier 55\" QLED Smart TV",
     "Price": 2699.0,
@@ -4545,21 +4482,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Jarir Bookstore",
-    "Product": "LG 65\" QNED evo AI 4K QNED Mini LED Smart TV 65QNED84B6T",
-    "Price": 5999.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/4f517dd09e753b455f4689ec4294b0d7.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "IKON 4K Smart LED TV 58 Inch Assorted",
     "Price": 1249.0,
     "Old_Price": 2099,
     "Offer": "40.5                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/aa8952b3dffbb801491f9973386a20ef.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Jarir Bookstore",
+    "Product": "LG 65\" QNED evo AI 4K QNED Mini LED Smart TV 65QNED84B6T",
+    "Price": 5999.0,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/4f517dd09e753b455f4689ec4294b0d7.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -4830,6 +4767,15 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/7e9072a5be586031301a4bc57cce7f51.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Jarir Bookstore",
+    "Product": "Lenovo IdeaPad 5 2-in-1 Laptop - Convertible",
+    "Price": 4699.0,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/65ae584cb218a4d13600256eb17eb292.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5337,21 +5283,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Bosch Dishwasher SMS26DI01B 6 Pgm",
-    "Price": 1799.0,
-    "Old_Price": 2199,
-    "Offer": "18.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/cd51756c75965b495bd133c6bd076177.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "Danube",
     "Product": "Fairy 5x Power Action Dish Soap",
     "Price": 13.99,
     "Old_Price": 22.99,
     "Offer": "39.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/5e91a76b1451f7d5a8774207b5e4ae23.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Bosch Dishwasher SMS26DI01B 6 Pgm",
+    "Price": 1799.0,
+    "Old_Price": 2199,
+    "Offer": "18.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/cd51756c75965b495bd133c6bd076177.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5941,11 +5887,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Choco Lake Diamond Twist Chocolate 450 gm Assorted",
-    "Price": 26.95,
-    "Old_Price": 32.5,
-    "Offer": "17.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/2be842d1951e8b40bf7185eb7d5adaca.jpg",
+    "Product": "5Fille Single Twist Chocolate Assorted Per Kg",
+    "Price": 21.95,
+    "Old_Price": 26.95,
+    "Offer": "18.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/618818d4c4d258062ce880187d54834e.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -5968,11 +5914,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "5Fille Single Twist Chocolate Assorted Per Kg",
-    "Price": 21.95,
-    "Old_Price": 26.95,
-    "Offer": "18.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/618818d4c4d258062ce880187d54834e.jpg",
+    "Product": "Choco Lake Diamond Twist Chocolate 450 gm Assorted",
+    "Price": 26.95,
+    "Old_Price": 32.5,
+    "Offer": "17.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/2be842d1951e8b40bf7185eb7d5adaca.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6004,11 +5950,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Milka Chocolate Bars 90gm Assorted",
-    "Price": 7.95,
-    "Old_Price": 8.95,
-    "Offer": "11.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
+    "Product": "McVities Digestive Milk Chocolate Biscuit 200gm",
+    "Price": 12.99,
+    "Old_Price": 16.95,
+    "Offer": "23.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/49d3cd0f9815472e545a341874769f62.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6031,11 +5977,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "McVities Digestive Milk Chocolate Biscuit 200gm",
-    "Price": 12.99,
-    "Old_Price": 16.95,
-    "Offer": "23.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/49d3cd0f9815472e545a341874769f62.jpg",
+    "Product": "Milka Chocolate Bars 90gm Assorted",
+    "Price": 7.95,
+    "Old_Price": 8.95,
+    "Offer": "11.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/d73dd7d7caa5457f7ff92fdfffe42f7a.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6094,11 +6040,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Mr Beast Chocolate Bars 60g Assorted",
-    "Price": 19.25,
-    "Old_Price": 22.5,
-    "Offer": "14.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/97613a8ec8856b5274b4bb9e70e95936.jpg",
+    "Product": "Snickers Chocolate 40gm x 24",
+    "Price": 49.99,
+    "Old_Price": 94.0,
+    "Offer": "46.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/5a9df667b9629935a6f2787f151a9691.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6112,11 +6058,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Snickers Chocolate 40gm x 24",
-    "Price": 49.99,
-    "Old_Price": 94.0,
-    "Offer": "46.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/5a9df667b9629935a6f2787f151a9691.jpg",
+    "Product": "Mr Beast Chocolate Bars 60g Assorted",
+    "Price": 19.25,
+    "Old_Price": 22.5,
+    "Offer": "14.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/97613a8ec8856b5274b4bb9e70e95936.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -6129,21 +6075,21 @@
     "Fetched_Date": "2026-07-25"
   },
   {
-    "Store": "Hyper Panda",
-    "Product": "Godiva Masterpieces Double Chocolate Bar (35g)",
-    "Price": 7.99,
-    "Old_Price": null,
-    "Offer": "20                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/739116f370ce93d98539adbb2c77401c.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Betty Crocker French Vanilla & Dark Chocolate Brownie Mix",
     "Price": 30.95,
     "Old_Price": 37.9,
     "Offer": "18.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/21/07718181a1b0aea27b29ba7830e283d6.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Godiva Masterpieces Double Chocolate Bar (35g)",
+    "Price": 7.99,
+    "Old_Price": null,
+    "Offer": "20                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/22/739116f370ce93d98539adbb2c77401c.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -10270,15 +10216,6 @@
   },
   {
     "Store": "Danube",
-    "Product": "Cofique Privé Ground Coffee Beans Sachet 5 x 12 g",
-    "Price": 15.99,
-    "Old_Price": 26.0,
-    "Offer": "38.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9296f1a5101afe8a9f0d65e81f4be3fc.jpg",
-    "Fetched_Date": "2026-07-25"
-  },
-  {
-    "Store": "Danube",
     "Product": "Davidoff Cafe coffee 90g",
     "Price": 28.99,
     "Old_Price": 43.0,
@@ -10293,6 +10230,15 @@
     "Old_Price": 34.0,
     "Offer": "20.6                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/7853156ef97d444f07e7e2df60b25d4c.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Cofique Privé Ground Coffee Beans Sachet 5 x 12 g",
+    "Price": 15.99,
+    "Old_Price": 26.0,
+    "Offer": "38.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/9296f1a5101afe8a9f0d65e81f4be3fc.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
@@ -11895,6 +11841,60 @@
     "Old_Price": 18.0,
     "Offer": "27.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/21d3e513808f32add93a1188f71c4cc1.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Wrigley's Extra Sugarfree Gum Strawberry Citrus (15.6g)",
+    "Price": 9.99,
+    "Old_Price": null,
+    "Offer": "16.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/22/e99f00a46e7febecc1e283b5e87e0f8a.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Nova Chewing Gum 20x5 pcs",
+    "Price": 14.99,
+    "Old_Price": 20.0,
+    "Offer": "25                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/389e5557c999d89bfcfecea66f6f852d.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Gandour Gum 32pcs",
+    "Price": 7.99,
+    "Old_Price": 9.95,
+    "Offer": "19.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/bfb858cbc9b83b8224811b93ec270e2b.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube & Hyper Panda",
+    "Product": "Wrigley's Extra Sugarfree Chewing Gum (84g)",
+    "Price": 10.99,
+    "Old_Price": 14.5,
+    "Offer": "24.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/15/650b9da5d2a007e4cb37a8317ab98268.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Airwaves sugarfree Chewing Gum",
+    "Price": 9.99,
+    "Old_Price": 13.95,
+    "Offer": "28.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/4b050dc327fc1eb3424942e2db86582e.jpg",
+    "Fetched_Date": "2026-07-25"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Extra Chewing Gum 67g",
+    "Price": 10.99,
+    "Old_Price": 14.0,
+    "Offer": "21.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/15/c5e522ea02b230bb31314f6c286b163b.jpg",
     "Fetched_Date": "2026-07-25"
   },
   {
