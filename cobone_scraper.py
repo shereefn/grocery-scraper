@@ -553,9 +553,106 @@ def save_html(data: List[Dict]) -> None:
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
 
+
+async def scrape_kfc(url: str) -> List[Dict]:
+    log.info(f"🍗 Connecting to KFC: {url}")
+    results = []
+    today_str = datetime.now().strftime("%Y-%m-%d")
+
+    async with async_playwright() as pw:
+        browser = await pw.chromium.launch(headless=True)
+        context = await browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            viewport={"width": 1366, "height": 768},
+            locale="en-SA",
+            timezone_id="Asia/Riyadh"
+        )
+        page = await context.new_page()
+
+        try:
+            # Wait for network idle to ensure the KFC API has finished loading products
+            await page.goto(url, wait_until="networkidle", timeout=30_000)
+            await asyncio.sleep(5) 
+
+            # EXACT DOM TARGETING BASED ON YOUR SCREENSHOT
+            items = await page.evaluate("""() => {
+                let extracted = [];
+                // Select all product cards by looking for the custom data-item-id attribute
+                let cards = document.querySelectorAll('div[data-item-id]');
+                
+                cards.forEach(card => {
+                    // Use wildcard selectors to ignore the random React hashes (e.g. "_gj6rr_681")
+                    let titleEl = card.querySelector('div[class*="_titleContainer_"]');
+                    let priceEl = card.querySelector('div[class*="_cost_"]');
+                    let oldPriceEl = card.querySelector('div[class*="_strikeOut_"]');
+                    let offerEl = card.querySelector('div[class*="_percentage_"]');
+                    let imgEl = card.querySelector('div[class*="_thumbnailContainer_"] img');
+                    
+                    if (titleEl && priceEl) {
+                        let title = titleEl.innerText.trim();
+                        let priceText = priceEl.innerText || "";
+                        
+                        // Extract only the numbers from the text
+                        let priceMatch = priceText.match(/[0-9]+(?:\\.[0-9]+)?/);
+                        
+                        if (priceMatch) {
+                            let oldPrice = null;
+                            if (oldPriceEl) {
+                                let oldMatch = oldPriceEl.innerText.match(/[0-9]+(?:\\.[0-9]+)?/);
+                                if (oldMatch) oldPrice = parseFloat(oldMatch[0]);
+                            }
+                            
+                            extracted.push({
+                                title: title,
+                                price: parseFloat(priceMatch[0]),
+                                old_price: oldPrice,
+                                offer: offerEl ? offerEl.innerText.trim() : "Exclusive",
+                                image: imgEl ? imgEl.src : ""
+                            });
+                        }
+                    }
+                });
+                return extracted;
+            }""")
+            
+            # Deduplicate and format the data to perfectly match your ETL schema
+            unique_items = {}
+            for item in items:
+                if item['title'] not in unique_items:
+                    unique_items[item['title']] = {
+                        "Store": "KFC",
+                        "Product": item['title'],
+                        "Price": item['price'],
+                        "Old_Price": item['old_price'],
+                        "Offer": item['offer'],
+                        "Image_URL": item['image'],
+                        "Fetched_Date": today_str
+                    }
+            
+            results = list(unique_items.values())
+            log.info(f"  → Found {len(results)} exact deals from KFC DOM")
+
+        except Exception as e:
+            log.error(f"❌ Failed to scrape KFC: {e}")
+        finally:
+            await context.close()
+            await browser.close()
+
+    return results
+
+
+
 async def main() -> None:
-    new_results = await scrape_cobone(TARGET_URL)
-    log.info(f"🏁 Total valid deals extracted: {len(new_results)}")
+    # 1. Fetch Cobone Deals
+    cobone_results = await scrape_cobone(TARGET_URL)
+    log.info(f"🏁 Total valid Cobone deals extracted: {len(cobone_results)}")
+    
+    # 2. Fetch KFC Deals
+    kfc_url = "https://saudi.kfc.me/en/exclusive/1737"
+    kfc_results = await scrape_kfc(kfc_url)
+    
+    # 3. Combine both payloads
+    new_results = cobone_results + kfc_results
     
     # ---> SMART HISTORY MERGER & 7-DAY RETENTION POLICY <---
     historical_data = []
@@ -565,11 +662,9 @@ async def main() -> None:
             if isinstance(raw_history, list):
                 today_date = datetime.now()
                 for item in raw_history:
-                    # Look for the date it was fetched
                     date_str = item.get("Fetched_Date", "2000-01-01")
                     try:
                         item_date = datetime.strptime(date_str, "%Y-%m-%d")
-                        # Only keep deals that are 7 days old or newer
                         if (today_date - item_date).days <= 7:
                             historical_data.append(item)
                     except ValueError:
@@ -579,12 +674,12 @@ async def main() -> None:
 
     merged_dict = {}
     
-    # Load the filtered historical data into the dictionary first
+    # Load history
     for item in historical_data:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
 
-    # Load today's fresh results, overwriting any matching historical items
+    # Load fresh results
     for item in new_results:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
@@ -594,9 +689,9 @@ async def main() -> None:
     if results:
         OUTPUT_JSON.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
         save_html(results)
-        log.info("🎉 Done. %d food deals saved to database.", len(results))
+        log.info("🎉 Done. %d total food deals saved to database.", len(results))
     else:
-        log.warning("🚨 ZERO DEALS SAVED! Ensure the website layout hasn't changed.")
+        log.warning("🚨 ZERO DEALS SAVED!")
         OUTPUT_JSON.write_text("[]", encoding="utf-8")
         save_html([])
 
