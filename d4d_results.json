@@ -1314,6 +1314,15 @@
     "Fetched_Date": "2026-08-01"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "Sadia Chicken Breast Cubes Yoghurt & Arabic Spice/Pepper 600gm",
+    "Price": 17.99,
+    "Old_Price": 24.95,
+    "Offer": "27.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/1c9188aebea7844372c5b39b27f3c19e.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
     "Store": "Nesto & Hyper Al Wafa",
     "Product": "Krypton Citrus Juicer/1L 1 filter",
     "Price": 45.99,
@@ -1329,15 +1338,6 @@
     "Old_Price": 19.0,
     "Offer": "15.8                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/f25258bd21b7f5112af2bfa75262c06f.jpg",
-    "Fetched_Date": "2026-08-01"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Sadia Chicken Breast Cubes Yoghurt & Arabic Spice/Pepper 600gm",
-    "Price": 17.99,
-    "Old_Price": 24.95,
-    "Offer": "27.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/1c9188aebea7844372c5b39b27f3c19e.jpg",
     "Fetched_Date": "2026-08-01"
   },
   {
@@ -7065,7 +7065,7 @@
     "Fetched_Date": "2026-08-01"
   },
   {
-    "Store": "Hyper Al Wafa & Nesto",
+    "Store": "Nesto",
     "Product": "SAMSUNG Galaxy S25 Ultra",
     "Price": 3349.0,
     "Old_Price": 5399,
@@ -12069,6 +12069,447 @@
     "Fetched_Date": "2026-08-01"
   },
   {
+    "Store": "Danube",
+    "Product": "Abu Bint Calrose Rice 5Kg",
+    "Price": 27.99,
+    "Old_Price": 42.95,
+    "Offer": "34.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/84d910bcebf41ed4a0ad734c1bfff029.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube & Hyper Panda",
+    "Product": "Taj Al Hind White Basmati Rice (10Kg)",
+    "Price": 69.99,
+    "Old_Price": null,
+    "Offer": "30                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/1fa6809c1153bcf81f581fef368db75c.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Al Balad Biryani Rice 5kg",
+    "Price": 24.99,
+    "Old_Price": 49.95,
+    "Offer": "50                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/19acc194f0ca736023bc8c31a085baf7.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Asian Star White Aromatic Jasmine Rice 5kg",
+    "Price": 21.99,
+    "Old_Price": 29.99,
+    "Offer": "26.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/75c929f55718a5d35338754d2561aebd.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "AL WALIMAH SELLA BASMATI RICE 5KG",
+    "Price": 32.95,
+    "Old_Price": 39.95,
+    "Offer": "17.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4eea2e8faf041c55bf7c70869ec443fd.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Abu Sumbulatein Mazza Rice 5kg",
+    "Price": 29.99,
+    "Old_Price": 29.99,
+    "Offer": "26.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/df08230f457d3e1bda3e64a1e42d84bb.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Al Walimah Sella Basmati Rice (10Kg)",
+    "Price": 66.99,
+    "Old_Price": null,
+    "Offer": "25.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/de37f3689c09883499007abeda8837ae.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Anas Premium Jasmine Rice Wag Wag 5kg",
+    "Price": 24.99,
+    "Old_Price": 32.95,
+    "Offer": "24.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/954dde120b151715867bee2dd1b93048.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Al Wafa & Othaim Markets",
+    "Product": "Tilda Mazza Basmati Rice 5kg",
+    "Price": 36.99,
+    "Old_Price": 63.99,
+    "Offer": "42.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/7bca84ec7f9a713ed281db47a26491e9.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Sun Garden Jasmine Rice 5kg",
+    "Price": 24.99,
+    "Old_Price": 29.99,
+    "Offer": "16.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/947e62cb96c2945bcaab12f57b2276ee.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "JAISAL GOLD 1121 BASMATI RICE 5KG",
+    "Price": 25.95,
+    "Old_Price": 39.95,
+    "Offer": "35                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/29/0f5d90727c48dff2b46d39d21de54130.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Orlanda Egyptian Calrose Rice 5 Kg",
+    "Price": 26.95,
+    "Old_Price": 39.95,
+    "Offer": "32.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/a862d3c711bd2081fe79bab66bf7ce95.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Vijay Palakkadan Matta Rice 5Kg",
+    "Price": 12.95,
+    "Old_Price": 39.95,
+    "Offer": "67.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/83878de469673f41c3ce3bfcd2c69fa8.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Punjabi White Basmati Rice 10kg",
+    "Price": 85.99,
+    "Old_Price": 102.95,
+    "Offer": "16.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/2d5deaa3a4a6638a61163aba11b73191.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Abu Siouf Mazza Long Grain Rice (10Kg)",
+    "Price": 91.99,
+    "Old_Price": 104.0,
+    "Offer": "12.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/8ead648cb9e30e9d74d869670c5aa0de.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Al Walima Sella Basmati Rice 10 Kg",
+    "Price": 73.99,
+    "Old_Price": 97.0,
+    "Offer": "23.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/dff58058dfd9c6b0bcb374315a941dea.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Kabool Indian Sella Rice 5Kg",
+    "Price": 19.99,
+    "Old_Price": 26.99,
+    "Offer": "25.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/3c0cd5c8dd62f9d65906c6c948e990d1.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "ABU KASS WHITE BASMATI RICE (AMBER) 10KG",
+    "Price": 63.95,
+    "Old_Price": 79.95,
+    "Offer": "20                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/e8b1106bf2f784ea305814941bf2557d.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Alwalimah Indian Mazza Basmati Rice 10kg",
+    "Price": 77.99,
+    "Old_Price": 98.95,
+    "Offer": "21.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/aea006601523350a9f33e21eb6ae6490.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Abu Kass Sella Basmati Rice (5Kg)",
+    "Price": 31.99,
+    "Old_Price": 49.5,
+    "Offer": "34                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/052820dfcf325c1486fa8f5849f8b989.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Najot Basmati Rice XXL1121 5kg",
+    "Price": 32.99,
+    "Old_Price": 49.95,
+    "Offer": "34                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/5a3b0a9c3e870dc05fe36ab231a8553d.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Al Shalan Punj Amber B. Rice 10kg",
+    "Price": 76.99,
+    "Old_Price": 92.99,
+    "Offer": "17.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/2d1b5d63d4c15678477282e9b426ec6e.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "BRAHMINS VADI MATTA RICE 10KG",
+    "Price": 43.95,
+    "Old_Price": 66.95,
+    "Offer": "34.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/26fc507faaf84ed92aad7d39409d4fd7.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "NOORA INDIAN MAZZA SELLA RICE 10KG",
+    "Price": 32.95,
+    "Old_Price": 42.95,
+    "Offer": "23.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/29ebc6a94696019b1711ec973894ea4b.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Hafel Egyptian Rice 5kg",
+    "Price": 23.99,
+    "Old_Price": 37.0,
+    "Offer": "35.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4517e16d4e8148fb774f7c73db53e958.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Al Falak 1121 Basmati Rice 5Kg",
+    "Price": 29.95,
+    "Old_Price": 48.95,
+    "Offer": "38.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/cab787de408bf021127d534b4c99d9bd.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Mak Royal Permel Rice 40Kg",
+    "Price": 129.95,
+    "Old_Price": 149.95,
+    "Offer": "13.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/461cccf342cb61104538f96158bf3c30.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube & Hyper Panda",
+    "Product": "White Swan Egyptian / White Rice 4.5Kg",
+    "Price": 30.99,
+    "Old_Price": 38.95,
+    "Offer": "20.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/147c802b14e0ea297e6b1c83b9d3efcf.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Abu Kass Indian White Basmati Rice (10Kg)",
+    "Price": 74.99,
+    "Old_Price": null,
+    "Offer": "16.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/47e22d64ee92a3c282c402cd58d03cdb.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Mr. Chef 1121 Basmati Rice 5kg",
+    "Price": 32.99,
+    "Old_Price": 48.99,
+    "Offer": "32.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/1c7208b5272a25076b83c8b4f5e522e6.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "ASIAN STAR JASMINE RICE 5KG",
+    "Price": 19.95,
+    "Old_Price": 29.95,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/00e7243b836f9e14b7401d208c52ab7a.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Meezan Indian Sella Rice 10Kg",
+    "Price": 36.99,
+    "Old_Price": 48.95,
+    "Offer": "24.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/767178f40f10d6e3c18bbfe6c85c1762.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Abu Hussain White Basmati Rice 5kg",
+    "Price": 28.95,
+    "Old_Price": 38.95,
+    "Offer": "25.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/d54084c5632968bb6806dceeae2606f1.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Almas Indian Mazza Basmati Rice (10Kg)",
+    "Price": 64.99,
+    "Old_Price": null,
+    "Offer": "23.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/bae9c10eca9dc0fc12ff07df3630078e.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Al Bayt XXL Golden Creamy Sella Basmati Rice 5kg",
+    "Price": 24.99,
+    "Old_Price": 39.95,
+    "Offer": "37.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/7053f150d710b1d881b804fb456c8c81.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "ALBAKHERAH INDIAN SELLA PARMAL RICE 10 KG",
+    "Price": 39.95,
+    "Old_Price": 55.95,
+    "Offer": "28.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/769d861b0f89f1e5b16cdd0837801974.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Routtex Jeerakasala Rice 5Kg",
+    "Price": 54.95,
+    "Old_Price": 79.99,
+    "Offer": "31.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/41c8d314afcd843156e52039c904a1be.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "AL HARAMATH MISRI RICE - 5KG",
+    "Price": 25.95,
+    "Old_Price": 36.95,
+    "Offer": "29.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/d47b661278733bc6086f06746a54c9c0.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Green Farms Indian Mazza Basmati Rice 5kg",
+    "Price": 33.99,
+    "Old_Price": 43.5,
+    "Offer": "21.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/20b7d432ab8c0e52fe3d2a966b637845.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Al Aila Long Grain White Basmati Rice (10Kg)",
+    "Price": 67.99,
+    "Old_Price": 102.55,
+    "Offer": "34                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/d98bc7d33fa104016c7e657365d74f08.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Al fahm 1/4 + Kabsa Rice",
+    "Price": 12.99,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/80e90e90d8cb6611356808f944bb56f4.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Green Farms Kernel White Rice 5kg",
+    "Price": 35.99,
+    "Old_Price": 35.99,
+    "Offer": "26.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/218087d258c2bfc2fe5830d9d5a9d4cd.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Meezan Indian Sella Rice 10Kg",
+    "Price": 34.99,
+    "Old_Price": 48.99,
+    "Offer": "28.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/136838a2df7b4f838a4e7ca3832de4cc.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "ALSAFEER MAZZA BASMATI RICE 5 KG",
+    "Price": 27.95,
+    "Old_Price": 44.95,
+    "Offer": "37.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/771a181bca1acd562d0c8d2cbdc77ac5.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Hyper Al Wafa & LULU Hypermarket & Nesto",
+    "Product": "Pride Of India XXXL 1121 Basmati Rice 5Kg",
+    "Price": 34.99,
+    "Old_Price": 48.99,
+    "Offer": "28.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/2c5dff74008c0f448980057a0ef8110d.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Sun White Calrose Rice 5kg",
+    "Price": 23.95,
+    "Old_Price": 44.95,
+    "Offer": "46.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4a562c05b89c40641012f19b18ee8848.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Tilda Basmati Rice 5kg",
+    "Price": 49.99,
+    "Old_Price": 65.95,
+    "Offer": "24.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/8ffefecf7f8c6aca88f3a8e81cac066c.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Babul Sella Basmathi Rice 10kg",
+    "Price": 43.99,
+    "Old_Price": 48.99,
+    "Offer": "10.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/9fe714084110ccbbbb4b29acfc989665.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
+    "Store": "Grand Hyper",
+    "Product": "Fernando Jasmine AAA Wag Wag Rice 5 Kg",
+    "Price": 22.95,
+    "Old_Price": 29.95,
+    "Offer": "23.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/829370b45cbf71676049030996801d2c.jpg",
+    "Fetched_Date": "2026-08-01"
+  },
+  {
     "Store": "Hyper Al Wafa",
     "Product": "Yoko Spa Milk Salt 300Gm",
     "Price": 3.99,
@@ -12366,393 +12807,6 @@
     "Fetched_Date": "2026-07-31"
   },
   {
-    "Store": "Danube",
-    "Product": "Abu Bint Calrose Rice 5Kg",
-    "Price": 27.99,
-    "Old_Price": 42.95,
-    "Offer": "34.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/84d910bcebf41ed4a0ad734c1bfff029.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube & Hyper Panda",
-    "Product": "Taj Al Hind White Basmati Rice (10Kg)",
-    "Price": 69.99,
-    "Old_Price": null,
-    "Offer": "30                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/1fa6809c1153bcf81f581fef368db75c.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Al Balad Biryani Rice 5kg",
-    "Price": 24.99,
-    "Old_Price": 49.95,
-    "Offer": "50                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/19acc194f0ca736023bc8c31a085baf7.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Asian Star White Aromatic Jasmine Rice 5kg",
-    "Price": 21.99,
-    "Old_Price": 29.99,
-    "Offer": "26.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/75c929f55718a5d35338754d2561aebd.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "AL WALIMAH SELLA BASMATI RICE 5KG",
-    "Price": 32.95,
-    "Old_Price": 39.95,
-    "Offer": "17.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4eea2e8faf041c55bf7c70869ec443fd.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Abu Sumbulatein Mazza Rice 5kg",
-    "Price": 29.99,
-    "Old_Price": 29.99,
-    "Offer": "26.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/df08230f457d3e1bda3e64a1e42d84bb.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Al Walimah Sella Basmati Rice (10Kg)",
-    "Price": 66.99,
-    "Old_Price": null,
-    "Offer": "25.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/de37f3689c09883499007abeda8837ae.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Anas Premium Jasmine Rice Wag Wag 5kg",
-    "Price": 24.99,
-    "Old_Price": 32.95,
-    "Offer": "24.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/954dde120b151715867bee2dd1b93048.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Al Wafa & Othaim Markets",
-    "Product": "Tilda Mazza Basmati Rice 5kg",
-    "Price": 36.99,
-    "Old_Price": 63.99,
-    "Offer": "42.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/7bca84ec7f9a713ed281db47a26491e9.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Mark & Save",
-    "Product": "Orlanda Egyptian Calrose Rice 5 Kg",
-    "Price": 26.95,
-    "Old_Price": 39.95,
-    "Offer": "32.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/a862d3c711bd2081fe79bab66bf7ce95.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Vijay Palakkadan Matta Rice 5Kg",
-    "Price": 12.95,
-    "Old_Price": 39.95,
-    "Offer": "67.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/83878de469673f41c3ce3bfcd2c69fa8.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Punjabi White Basmati Rice 10kg",
-    "Price": 85.99,
-    "Old_Price": 102.95,
-    "Offer": "16.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/2d5deaa3a4a6638a61163aba11b73191.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Abu Siouf Mazza Long Grain Rice (10Kg)",
-    "Price": 91.99,
-    "Old_Price": 104.0,
-    "Offer": "12.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/8ead648cb9e30e9d74d869670c5aa0de.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Sun Garden Jasmine Rice 5kg",
-    "Price": 24.99,
-    "Old_Price": 29.99,
-    "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/947e62cb96c2945bcaab12f57b2276ee.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "JAISAL GOLD 1121 BASMATI RICE 5KG",
-    "Price": 25.95,
-    "Old_Price": 39.95,
-    "Offer": "35                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/29/0f5d90727c48dff2b46d39d21de54130.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "ABU KASS WHITE BASMATI RICE (AMBER) 10KG",
-    "Price": 63.95,
-    "Old_Price": 79.95,
-    "Offer": "20                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/e8b1106bf2f784ea305814941bf2557d.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Alwalimah Indian Mazza Basmati Rice 10kg",
-    "Price": 77.99,
-    "Old_Price": 98.95,
-    "Offer": "21.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/aea006601523350a9f33e21eb6ae6490.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Abu Kass Sella Basmati Rice (5Kg)",
-    "Price": 31.99,
-    "Old_Price": 49.5,
-    "Offer": "34                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/052820dfcf325c1486fa8f5849f8b989.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Najot Basmati Rice XXL1121 5kg",
-    "Price": 32.99,
-    "Old_Price": 49.95,
-    "Offer": "34                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/5a3b0a9c3e870dc05fe36ab231a8553d.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Kabool Indian Sella Rice 5Kg",
-    "Price": 19.99,
-    "Old_Price": 26.99,
-    "Offer": "25.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/3c0cd5c8dd62f9d65906c6c948e990d1.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "NOORA INDIAN MAZZA SELLA RICE 10KG",
-    "Price": 32.95,
-    "Old_Price": 42.95,
-    "Offer": "23.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/29ebc6a94696019b1711ec973894ea4b.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Hafel Egyptian Rice 5kg",
-    "Price": 23.99,
-    "Old_Price": 37.0,
-    "Offer": "35.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4517e16d4e8148fb774f7c73db53e958.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Mark & Save",
-    "Product": "Al Falak 1121 Basmati Rice 5Kg",
-    "Price": 29.95,
-    "Old_Price": 48.95,
-    "Offer": "38.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/cab787de408bf021127d534b4c99d9bd.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "BRAHMINS VADI MATTA RICE 10KG",
-    "Price": 43.95,
-    "Old_Price": 66.95,
-    "Offer": "34.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/26fc507faaf84ed92aad7d39409d4fd7.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Mak Royal Permel Rice 40Kg",
-    "Price": 129.95,
-    "Old_Price": 149.95,
-    "Offer": "13.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/461cccf342cb61104538f96158bf3c30.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube & Hyper Panda",
-    "Product": "White Swan Egyptian / White Rice 4.5Kg",
-    "Price": 30.99,
-    "Old_Price": 38.95,
-    "Offer": "20.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/147c802b14e0ea297e6b1c83b9d3efcf.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Abu Kass Indian White Basmati Rice (10Kg)",
-    "Price": 74.99,
-    "Old_Price": null,
-    "Offer": "16.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/47e22d64ee92a3c282c402cd58d03cdb.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Mr. Chef 1121 Basmati Rice 5kg",
-    "Price": 32.99,
-    "Old_Price": 48.99,
-    "Offer": "32.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/1c7208b5272a25076b83c8b4f5e522e6.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "ASIAN STAR JASMINE RICE 5KG",
-    "Price": 19.95,
-    "Old_Price": 29.95,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/00e7243b836f9e14b7401d208c52ab7a.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Abu Hussain White Basmati Rice 5kg",
-    "Price": 28.95,
-    "Old_Price": 38.95,
-    "Offer": "25.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/d54084c5632968bb6806dceeae2606f1.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Almas Indian Mazza Basmati Rice (10Kg)",
-    "Price": 64.99,
-    "Old_Price": null,
-    "Offer": "23.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/bae9c10eca9dc0fc12ff07df3630078e.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Al Bayt XXL Golden Creamy Sella Basmati Rice 5kg",
-    "Price": 24.99,
-    "Old_Price": 39.95,
-    "Offer": "37.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/28/7053f150d710b1d881b804fb456c8c81.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Mark & Save",
-    "Product": "Routtex Jeerakasala Rice 5Kg",
-    "Price": 54.95,
-    "Old_Price": 79.99,
-    "Offer": "31.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/41c8d314afcd843156e52039c904a1be.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "AL HARAMATH MISRI RICE - 5KG",
-    "Price": 25.95,
-    "Old_Price": 36.95,
-    "Offer": "29.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/d47b661278733bc6086f06746a54c9c0.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Green Farms Indian Mazza Basmati Rice 5kg",
-    "Price": 33.99,
-    "Old_Price": 43.5,
-    "Offer": "21.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/20b7d432ab8c0e52fe3d2a966b637845.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Al Aila Long Grain White Basmati Rice (10Kg)",
-    "Price": 67.99,
-    "Old_Price": 102.55,
-    "Offer": "34                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/d98bc7d33fa104016c7e657365d74f08.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "ALBAKHERAH INDIAN SELLA PARMAL RICE 10 KG",
-    "Price": 39.95,
-    "Old_Price": 55.95,
-    "Offer": "28.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/769d861b0f89f1e5b16cdd0837801974.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Hyper Al Wafa",
-    "Product": "Meezan Indian Sella Rice 10Kg",
-    "Price": 36.99,
-    "Old_Price": 48.95,
-    "Offer": "24.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/767178f40f10d6e3c18bbfe6c85c1762.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Al fahm 1/4 + Kabsa Rice",
-    "Price": 12.99,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/80e90e90d8cb6611356808f944bb56f4.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Danube",
-    "Product": "Green Farms Kernel White Rice 5kg",
-    "Price": 35.99,
-    "Old_Price": 35.99,
-    "Offer": "26.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/218087d258c2bfc2fe5830d9d5a9d4cd.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Sun White Calrose Rice 5kg",
-    "Price": 23.95,
-    "Old_Price": 44.95,
-    "Offer": "46.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/4a562c05b89c40641012f19b18ee8848.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Meezan Indian Sella Rice 10Kg",
-    "Price": 34.99,
-    "Old_Price": 48.99,
-    "Offer": "28.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/136838a2df7b4f838a4e7ca3832de4cc.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "ALSAFEER MAZZA BASMATI RICE 5 KG",
-    "Price": 27.95,
-    "Old_Price": 44.95,
-    "Offer": "37.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/771a181bca1acd562d0c8d2cbdc77ac5.jpg",
-    "Fetched_Date": "2026-07-31"
-  },
-  {
     "Store": "Nesto",
     "Product": "Del Monte Pineapple Juice 240MI",
     "Price": 5.99,
@@ -12804,33 +12858,6 @@
     "Old_Price": 36.5,
     "Offer": "45.2                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/cb8315ddefbc4813e99a9c51a4a169ef.jpg",
-    "Fetched_Date": "2026-07-30"
-  },
-  {
-    "Store": "Othaim Markets",
-    "Product": "Al Walima Sella Basmati Rice 10 Kg",
-    "Price": 73.99,
-    "Old_Price": 97.0,
-    "Offer": "23.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/dff58058dfd9c6b0bcb374315a941dea.jpg",
-    "Fetched_Date": "2026-07-30"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Babul Sella Basmathi Rice 10kg",
-    "Price": 43.99,
-    "Old_Price": 48.99,
-    "Offer": "10.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/9fe714084110ccbbbb4b29acfc989665.jpg",
-    "Fetched_Date": "2026-07-30"
-  },
-  {
-    "Store": "Hyper Al Wafa & LULU Hypermarket & Nesto",
-    "Product": "Pride Of India XXXL 1121 Basmati Rice 5Kg",
-    "Price": 34.99,
-    "Old_Price": 48.99,
-    "Offer": "28.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/2c5dff74008c0f448980057a0ef8110d.jpg",
     "Fetched_Date": "2026-07-30"
   },
   {
@@ -13335,24 +13362,6 @@
     "Old_Price": 5.99,
     "Offer": "50.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/25b4d4123cac4df9f29bd5bd1523d4dc.jpg",
-    "Fetched_Date": "2026-07-29"
-  },
-  {
-    "Store": "Grand Hyper",
-    "Product": "Fernando Jasmine AAA Wag Wag Rice 5 Kg",
-    "Price": 22.95,
-    "Old_Price": 29.95,
-    "Offer": "23.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/29/829370b45cbf71676049030996801d2c.jpg",
-    "Fetched_Date": "2026-07-29"
-  },
-  {
-    "Store": "Othaim Markets",
-    "Product": "Al Shalan Punj Amber B. Rice 10kg",
-    "Price": 76.99,
-    "Old_Price": 92.99,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/28/2d1b5d63d4c15678477282e9b426ec6e.jpg",
     "Fetched_Date": "2026-07-29"
   },
   {
