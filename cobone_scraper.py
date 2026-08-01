@@ -186,37 +186,56 @@ def save_html(data: List[Dict]) -> None:
   .btn-reset {{ padding: 12px; background: #f1f3f4; color: #202124; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: auto; }}
   .btn-reset:hover {{ background: #e8eaed; }}
   
-  .main-wrapper {{ padding: 24px; max-width: 1400px; margin: 0 auto; }}
+  .main-wrapper {{ padding: 24px; max-width: 1600px; margin: 0 auto; }}
   .meta-bar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: #5f6368; }}
   
-  /* CARD LAYOUT */
-  .deal-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }}
+  /* RESPONSIVE GRID LAYOUT */
+  .deal-grid {{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }}
   
-  .card {{ background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
+  @media (min-width: 768px) {{
+    .deal-grid {{ grid-template-columns: repeat(3, 1fr); gap: 16px; }}
+  }}
+  
+  @media (min-width: 1024px) {{
+    .deal-grid {{ grid-template-columns: repeat(5, 1fr); gap: 20px; }}
+  }}
+  
+  .card {{ background: #ffffff; border-radius: 12px; padding: 12px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
+  @media (min-width: 768px) {{ .card {{ padding: 16px; gap: 8px; }} }}
   .card:hover {{ transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }}
   
-  .card-img-wrapper {{ height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; padding: 4px; border-radius: 8px; }}
+  .card-img-wrapper {{ height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; padding: 4px; border-radius: 8px; }}
+  @media (min-width: 768px) {{ .card-img-wrapper {{ height: 180px; margin-bottom: 8px; }} }}
   .card-img-wrapper img {{ max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }}
   .card-img-wrapper img:hover {{ transform: scale(1.05); }}
   
-  .card-title {{ font-size: 15px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 42px; margin-bottom: 4px; }}
+  /* MAKE TITLE HOVERABLE AS A LINK */
+  .title-link {{ text-decoration: none; color: inherit; display: block; margin-bottom: 2px; outline: none; }}
+  .title-link:hover .card-title {{ color: #1a73e8; text-decoration: underline; }}
   
-  /* STICKER PRICE BADGE & CURRENCY */
-  .card-price-row {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
-  .price-badge {{ background-color: #ffcc00; color: #000000; border: 2px solid #000000; border-radius: 8px; padding: 4px 10px; display: inline-flex; align-items: center; box-shadow: 2px 2px 0px #000000; font-weight: 800; }}
+  .card-title {{ font-size: 13px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 36px; transition: color 0.2s ease; }}
+  @media (min-width: 768px) {{ .card-title {{ font-size: 15px; min-height: 42px; }} }}
+  
+  /* CLEAN PRICE STYLING (Yellow Box Removed) */
+  .card-price-row {{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
+  .price-badge {{ color: #202124; display: inline-flex; align-items: center; font-weight: 800; }}
   .card-price {{ font-size: 18px; line-height: 1; }}
+  @media (min-width: 768px) {{ .card-price {{ font-size: 20px; }} }}
   
   /* UNICODE RIYAL SYMBOL */
   .currency-icon {{ font-size: 1.1em; font-weight: 800; margin-right: 4px; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }}
   .currency-icon-small {{ font-size: 0.9em; font-weight: 600; margin-right: 3px; display: inline-block; }}
   
-  .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 14px; font-weight: 600; }}
-  .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 13px; font-weight: 600; }}
+  .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 6px; border-radius: 4px; font-size: 11px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
+  @media (min-width: 768px) {{ .badge-offer {{ padding: 4px 8px; font-size: 12px; }} }}
   
-  /* STORE/RESTAURANT BADGE */
-  .card-store {{ font-size: 12px; color: #1a73e8; background: #e8f0fe; padding: 4px 12px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  /* STORE BADGE */
+  .card-store {{ font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 10px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  @media (min-width: 768px) {{ .card-store {{ font-size: 12px; padding: 4px 12px; }} }}
   
-  .card-date {{ font-size: 12px; color: #80868b; font-weight: 400; margin-top: 2px; }}
+  .card-date {{ font-size: 11px; color: #80868b; font-weight: 400; margin-top: 2px; }}
+  @media (min-width: 768px) {{ .card-date {{ font-size: 12px; }} }}
   
   .loading-indicator {{ text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }}
   
@@ -321,7 +340,9 @@ def save_html(data: List[Dict]) -> None:
   const rawData = {products_json}; 
   let filteredData = [];
   let currentIndex = 0;
-  const CHUNK_SIZE = 30;
+  
+  // CHUNK_SIZE adjusted to 10 to perfectly load 2 rows of 5 cards on laptops
+  const CHUNK_SIZE = 10;
 
   const dealGrid = document.getElementById('deal-grid');
   const sentinel = document.getElementById('sentinel');
@@ -447,6 +468,9 @@ def save_html(data: List[Dict]) -> None:
       
       const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
       const sName = item.Restaurant || item.Store || "Unknown place";
+      
+      // Pull URL from scraped dataset, fallback to # if missing
+      const dealUrl = item.Deal_URL || item.URL || item.Link || "#";
       const safeName = pName.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
       
       const imgTag = item.Image_URL 
@@ -463,9 +487,12 @@ def save_html(data: List[Dict]) -> None:
       const displayDate = formatDisplayDate(item.Fetched_Date);
       const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
 
+      // Title wrapped in an <a> tag linking to the original deal
       card.innerHTML = `
           <div class="card-img-wrapper">${{imgTag}}</div>
-          <div class="card-title">${{pName}}</div>
+          <a href="${{dealUrl}}" target="_blank" class="title-link" title="Go to Deal">
+              <div class="card-title">${{pName}}</div>
+          </a>
           <div class="card-price-row">
               ${{priceHtml}}
               ${{oldPriceHtml}}
@@ -553,141 +580,11 @@ def save_html(data: List[Dict]) -> None:
     OUTPUT_HTML = Path("cobone_results.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
-async def scrape_kfc(url: str) -> List[Dict]:
-    log.info(f"🍗 Connecting to KFC: {url}")
-    results = []
-    today_str = datetime.now().strftime("%Y-%m-%d")
-
-    async with async_playwright() as pw:
-        proxy_string = os.environ.get("PROXY_URL")
-        proxy_settings = {"server": proxy_string} if proxy_string else None
-
-        browser = await pw.chromium.launch(
-            headless=True,
-            proxy=proxy_settings,
-            args=["--disable-blink-features=AutomationControlled"]
-        )
-        
-        context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            viewport={"width": 1920, "height": 1080},
-            locale="en-SA",
-            timezone_id="Asia/Riyadh",
-            ignore_https_errors=True,
-            extra_http_headers={
-                "Accept-Language": "en-SA,en-US;q=0.9,en;q=0.8,ar;q=0.7",
-                "Referer": "https://www.google.com/"
-            }
-        )
-        page = await context.new_page()
-
-        try:
-            # FIX 1: Wait for the actual HTML DOM to load, with a generous 90s timeout for the proxy
-            await page.goto(url, wait_until="domcontentloaded", timeout=90_000)
-            
-            current_url = page.url
-            page_title = await page.title()
-            log.info(f"📍 Landed on URL: {current_url}")
-            log.info(f"📄 Page Title: {page_title}")
-
-            if "Just a moment" in page_title or "Cloudflare" in page_title or "Security" in page_title:
-                log.error("🚨 WAF Block Detected! KFC's firewall is blocking the Proxy IP.")
-                return []
-                
-            await asyncio.sleep(5) 
-
-            try:
-                await page.wait_for_selector('div[data-item-id]', timeout=30_000)
-            except Exception:
-                log.warning("Timeout waiting for KFC cards. Checking what the browser actually sees...")
-                # FIX 2: Safely check if document.body exists before reading it to prevent the null error!
-                body_text = await page.evaluate("document.body ? document.body.innerText.substring(0, 200) : 'EMPTY DOM'")
-                log.info(f"🕵️‍♂️ DOM Text Preview: {body_text.strip().replace(chr(10), ' ')}")
-
-            # Safely scroll
-            await page.evaluate("if (document.body) window.scrollBy(0, document.body.scrollHeight)")
-            await asyncio.sleep(2)
-
-            items = await page.evaluate("""() => {
-                let extracted = [];
-                let cards = document.querySelectorAll('div[data-item-id]');
-                
-                cards.forEach(card => {
-                    let titleEl = card.querySelector('[class*="_titleContainer_"]');
-                    let title = titleEl ? titleEl.innerText.split('\\n')[0].trim() : '';
-                    
-                    if (!title) {
-                        let hTags = card.querySelectorAll('h2, h3, h4');
-                        if (hTags.length) title = hTags[0].innerText.trim();
-                    }
-
-                    let textContent = card.innerText || "";
-                    let priceMatch = textContent.match(/(?:SAR|SR|﷼)?\\s*([0-9]{1,3}\\.[0-9]{2})/i);
-                    let imgEl = card.querySelector('img');
-
-                    if (title && priceMatch) {
-                        let currentPrice = parseFloat(priceMatch[1]);
-                        let oldPrice = null;
-                        let offer = "Exclusive";
-
-                        let oldPriceEl = card.querySelector('[class*="_strikeOut_"]');
-                        if (oldPriceEl) {
-                            let oldMatch = oldPriceEl.innerText.match(/([0-9]+(?:\\.[0-9]+)?)/);
-                            if (oldMatch) oldPrice = parseFloat(oldMatch[1]);
-                        }
-
-                        let offerEl = card.querySelector('[class*="_percentage_"]');
-                        if (offerEl) {
-                            offer = offerEl.innerText.trim();
-                        }
-
-                        extracted.push({
-                            title: title,
-                            price: currentPrice,
-                            old_price: oldPrice,
-                            offer: offer,
-                            image: imgEl ? imgEl.src : ""
-                        });
-                    }
-                });
-                return extracted;
-            }""")
-            
-            unique_items = {}
-            for item in items:
-                if item['title'] not in unique_items:
-                    unique_items[item['title']] = {
-                        "Store": "KFC",
-                        "Product": item['title'],
-                        "Price": item['price'],
-                        "Old_Price": item['old_price'],
-                        "Offer": item['offer'],
-                        "Image_URL": item['image'],
-                        "Fetched_Date": today_str
-                    }
-            
-            results = list(unique_items.values())
-            log.info(f"  → Found {len(results)} exact deals from KFC DOM")
-
-        except Exception as e:
-            log.error(f"❌ Failed to scrape KFC: {e}")
-        finally:
-            await context.close()
-            await browser.close()
-
-    return results
-
+    
 async def main() -> None:
     # 1. Fetch Cobone Deals
-    cobone_results = await scrape_cobone(TARGET_URL)
-    log.info(f"🏁 Total valid Cobone deals extracted: {len(cobone_results)}")
-    
-    # 2. Fetch KFC Deals
-    kfc_url = "https://saudi.kfc.me/en/exclusive/1737"
-    kfc_results = await scrape_kfc(kfc_url)
-    
-    # 3. Combine both payloads
-    new_results = cobone_results + kfc_results
+    new_results = await scrape_cobone(TARGET_URL)
+    log.info(f"🏁 Total valid Cobone deals extracted: {len(new_results)}")
     
     # ---> SMART HISTORY MERGER & 7-DAY RETENTION POLICY <---
     historical_data = []
@@ -732,3 +629,4 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+    
