@@ -696,9 +696,9 @@ def save_html(data: List[Dict]) -> None:
   .card-price {{ font-size: 18px; line-height: 1; }}
   @media (min-width: 768px) {{ .card-price {{ font-size: 20px; }} }}
   
-  /* UNICODE RIYAL SYMBOL */
-  .currency-icon {{ font-size: 1.1em; font-weight: 800; margin-right: 4px; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }}
-  .currency-icon-small {{ font-size: 0.9em; font-weight: 600; margin-right: 3px; display: inline-block; }}
+/* UNICODE RIYAL SYMBOL (WINDOWS FIX) */
+  .currency-icon {{ font-size: 1.1em; font-weight: normal; margin-right: 4px; display: inline-block; font-family: "Tahoma", "Arial", sans-serif; }}
+  .currency-icon-small {{ font-size: 0.9em; font-weight: normal; margin-right: 3px; display: inline-block; font-family: "Tahoma", "Arial", sans-serif; }}
   
   .card-old-price {{ color: #888888; text-decoration: line-through; font-size: 13px; font-weight: 600; }}
   .badge-offer {{ background: #00a859; color: #ffffff; padding: 4px 6px; border-radius: 4px; font-size: 11px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }}
