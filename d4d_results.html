@@ -225,39 +225,32 @@
       return Number(num).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   }
 
-  // 1. Permanently fix broken Mark & Save formatting across the entire dataset
-  rawData.forEach(item => {
-      if (item.Store) {
-          let partsUpper = item.Store.toUpperCase().replace(/&AMP;/gi, "&").split("&").map(x => x.trim());
-          
-          if (partsUpper.includes("MARK") || partsUpper.includes("SAVE")) {
-              let partsOriginal = item.Store.split("&").map(x => x.trim());
-              
-              // Keep normal stores (like NESTO or LULU) but filter out the broken pieces
-              let cleanParts = partsOriginal.filter(p => {
-                  let pUp = p.toUpperCase();
-                  return pUp !== "MARK" && pUp !== "SAVE" && pUp !== "MARK & SAVE";
-              });
-              
-              // Add the properly combined brand back to the array
-              cleanParts.push("MARK & SAVE");
-              
-              // Overwrite the original data so the cards AND filters use the clean version
-              item.Store = cleanParts.join(" & ");
-          }
-      }
-  });
-
-  // 2. Now cleanly split everything to generate perfect 1-store checkboxes
-  const rawStoreList = [];
+  // Now cleanly split everything to generate perfect 1-store checkboxes
+ const rawStoreList = [];
   rawData.forEach(r => {
       if (r.Store) {
           const parts = r.Store.split("&").map(s => s.trim());
-          rawStoreList.push(...parts);
+          let hasMarkSave = false;
+          
+          parts.forEach(part => {
+              const pUp = part.toUpperCase();
+              // If it finds Mark or Save, flag it but don't add it to the list yet
+              if (pUp === "MARK" || pUp === "SAVE" || pUp === "MARK & SAVE") {
+                  hasMarkSave = true;
+              } else if (part.length > 0) {
+                  // Add normal single stores like LULU or NESTO
+                  rawStoreList.push(part);
+              }
+          });
+          
+          // Add Mark & Save exactly once as a single glued item
+          if (hasMarkSave) {
+              rawStoreList.push("MARK & SAVE");
+          }
       }
   });
   const stores = [...new Set(rawStoreList)].sort();
-  const cbContainer = document.getElementById('store-checkboxes');
+   const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {
     if(!s) return;
     const lbl = document.createElement('label');
@@ -306,7 +299,18 @@
           matchSearch = searchTokens.every(token => productName.includes(token));
       }
 
-      const matchStore  = selectedStores.length === 0 || selectedStores.some(selected => item.Store && item.Store.includes(selected));
+     const matchStore = selectedStores.length === 0 || selectedStores.some(selected => {
+          if (!item.Store) return false;
+          const storeUp = item.Store.toUpperCase();
+          
+          // Special rule for our combined checkbox
+          if (selected === "MARK & SAVE") {
+              return storeUp.includes("MARK") || storeUp.includes("SAVE");
+          }
+          
+          // Standard rule for everything else
+          return storeUp.includes(selected.toUpperCase());
+      });
       const matchPrice  = (item.Price === null) || (item.Price <= max);
       
       return matchSearch && matchStore && matchPrice;
