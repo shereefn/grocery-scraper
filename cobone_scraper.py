@@ -367,12 +367,12 @@ def save_html(data: List[Dict]) -> None:
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
 
-  const rawStoreList = [];
+const rawStoreList = [];
   rawData.forEach(r => {{
       const storeName = r.Store || r.Restaurant;
       if (storeName) {{
-          const parts = storeName.split("&").map(s => s.trim());
-          rawStoreList.push(...parts);
+          // Push the exact restaurant name without splitting it
+          rawStoreList.push(storeName.trim());
       }}
   }});
   const stores = [...new Set(rawStoreList)].sort();
