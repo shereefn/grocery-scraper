@@ -1028,17 +1028,17 @@ const rawData = {products_json};
       // ------------------------------
 
       card.innerHTML = `
-          <div class="card-img-wrapper">${imgTag}</div>
-          <div class="card-title">${item.Product || "Unknown item"}</div>
+          <div class="card-img-wrapper">${{imgTag}}</div>
+          <div class="card-title">${{item.Product || "Unknown item"}}</div>
           <div class="card-price-row">
-              ${priceHtml}
-              ${oldPriceHtml}
-              ${offerStr}
+              ${{priceHtml}}
+              ${{oldPriceHtml}}
+              ${{offerStr}}
           </div>
-          <div class="card-store" title="${item.Store || ''}">${displayStore}</div>
-          <div class="card-date">${fetchDate}</div>
+          <div class="card-store" title="${{item.Store || ''}}">${{displayStore}}</div>
+          <div class="card-date">${{fetchDate}}</div>
       `;
-      fragment.appendChild(card);
+            fragment.appendChild(card);
     }});
     
     dealGrid.appendChild(fragment);
