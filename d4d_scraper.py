@@ -817,6 +817,33 @@ def save_html(data: List[Dict]) -> None:
 
 <script>
   const rawData = {products_json}; 
+
+const rawData = {products_json}; 
+  
+  // --- 1. GLOBAL DATA CLEANUP ---
+  rawData.forEach(item => {{
+      if (item.Store) {{
+          const parts = item.Store.split("&").map(s => s.trim());
+          let cleanParts = [];
+          let hasMarkSave = false;
+          
+          parts.forEach(p => {{
+              const pUp = p.toUpperCase();
+              if (pUp === "MARK" || pUp === "SAVE" || pUp === "MARK & SAVE") {{
+                  hasMarkSave = true;
+              }} else if (p.length > 0) {{
+                  cleanParts.push(p);
+              }}
+          }});
+          
+          if (hasMarkSave) cleanParts.push("Mark & Save");
+          
+          // Save the clean version back to the database
+          item.Store = cleanParts.join(" & ");
+      }}
+  }});
+  // ------------------------------
+  
   let filteredData = [];
   let currentIndex = 0;
   
@@ -985,22 +1012,35 @@ def save_html(data: List[Dict]) -> None:
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
-      const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
+      const fetchDate = item.Fetched_Date ? `Updated: ${displayDate}` : "";
+
+      // --- 2. SMART UI TRUNCATION ---
+      let storeArr = (item.Store || "Unknown store").split("&").map(s => s.trim());
+      let displayStore = "";
+      
+      if (storeArr.length > 2) {{
+          // If 3 or more stores, show "Store + 2 more"
+          displayStore = `${storeArr[0]} +${storeArr.length - 1} more`;
+      }} else {{
+          // If 1 or 2 stores, show them normally
+          displayStore = storeArr.join(" & ");
+      }}
+      // ------------------------------
 
       card.innerHTML = `
-          <div class="card-img-wrapper">${{imgTag}}</div>
-          <div class="card-title">${{item.Product || "Unknown item"}}</div>
+          <div class="card-img-wrapper">${imgTag}</div>
+          <div class="card-title">${item.Product || "Unknown item"}</div>
           <div class="card-price-row">
-              ${{priceHtml}}
-              ${{oldPriceHtml}}
-              ${{offerStr}}
+              ${priceHtml}
+              ${oldPriceHtml}
+              ${offerStr}
           </div>
-          <div class="card-store">${{item.Store || "Unknown store"}}</div>
-          <div class="card-date">${{fetchDate}}</div>
+          <div class="card-store" title="${item.Store || ''}">${displayStore}</div>
+          <div class="card-date">${fetchDate}</div>
       `;
       fragment.appendChild(card);
     }});
-
+    
     dealGrid.appendChild(fragment);
     currentIndex += chunk.length;
     
