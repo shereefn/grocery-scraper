@@ -840,14 +840,14 @@ def save_html(data: List[Dict]) -> None:
       if (num == null) return "";
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
-
+  
 const rawStoreList = [];
-  rawData.forEach(r => {
-      if (r.Store) {
+  rawData.forEach(r => {{
+      if (r.Store) {{
           // Push the exact store name without splitting it
           rawStoreList.push(r.Store.trim());
-      }
-  });
+      }}
+  }});
   const stores = [...new Set(rawStoreList)].sort();
   
   const cbContainer = document.getElementById('store-checkboxes');
