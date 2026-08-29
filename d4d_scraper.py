@@ -815,15 +815,15 @@ def save_html(data: List[Dict]) -> None:
   </div>
 </div>
 
+</body>
 <script>
   const rawData = {products_json}; 
-
-const rawData = {products_json}; 
   
   // --- 1. GLOBAL DATA CLEANUP ---
   rawData.forEach(item => {{
       if (item.Store) {{
-          const parts = item.Store.split("&").map(s => s.trim());
+          const storeStr = String(item.Store);
+          const parts = storeStr.split("&").map(s => s.trim());
           let cleanParts = [];
           let hasMarkSave = false;
           
@@ -836,18 +836,14 @@ const rawData = {products_json};
               }}
           }});
           
-          if (hasMarkSave) cleanParts.push("Mark & Save");
-          
-          // Save the clean version back to the database
+          if (hasMarkSave) cleanParts.push("MARK & SAVE");
           item.Store = cleanParts.join(" & ");
       }}
   }});
   // ------------------------------
-  
+
   let filteredData = [];
   let currentIndex = 0;
-  
-  // CHUNK_SIZE adjusted to 10 to perfectly load 2 rows of 5 cards on laptops
   const CHUNK_SIZE = 10;
 
   const dealGrid = document.getElementById('deal-grid');
@@ -868,32 +864,30 @@ const rawData = {products_json};
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
 
-  // Now cleanly split everything to generate perfect 1-store checkboxes
- const rawStoreList = [];
+  // --- 2. CHECKBOX GENERATOR ---
+  const rawStoreList = [];
   rawData.forEach(r => {{
       if (r.Store) {{
-          const parts = r.Store.split("&").map(s => s.trim());
+          const parts = String(r.Store).split("&").map(s => s.trim());
           let hasMarkSave = false;
           
           parts.forEach(part => {{
               const pUp = part.toUpperCase();
-              // If it finds Mark or Save, flag it but don't add it to the list yet
               if (pUp === "MARK" || pUp === "SAVE" || pUp === "MARK & SAVE") {{
                   hasMarkSave = true;
               }} else if (part.length > 0) {{
-                  // Add normal single stores like LULU or NESTO
                   rawStoreList.push(part);
               }}
           }});
           
-          // Add Mark & Save exactly once as a single glued item
           if (hasMarkSave) {{
               rawStoreList.push("MARK & SAVE");
           }}
       }}
   }});
   const stores = [...new Set(rawStoreList)].sort();
-   const cbContainer = document.getElementById('store-checkboxes');
+  
+  const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {{
     if(!s) return;
     const lbl = document.createElement('label');
@@ -918,13 +912,14 @@ const rawData = {products_json};
   
   function getOfferVal(offerStr) {{
       if (!offerStr) return 0;
-      const match = String(offerStr).match(/[\d.]+/);
+      const match = String(offerStr).match(/[\\d.]+/);
       return match ? parseFloat(match[0]) : 0;
   }}
 
+  // --- 3. FILTER ENGINE ---
   function applyFilters() {{
     const searchQuery = document.getElementById('filter-product').value.toLowerCase().trim();
-    const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
+    const searchTokens = searchQuery.split(/\\s+/).filter(token => token.length > 0);
     
     const sortVal     = document.getElementById('sortDropdown').value;
     const max         = parseFloat(slider.value);
@@ -936,28 +931,23 @@ const rawData = {products_json};
 
     filteredData = rawData.filter(item => {{
       const productName = (item.Product || "Unknown item").toLowerCase();
-      
       let matchSearch = true;
       if (searchTokens.length > 0) {{
           matchSearch = searchTokens.every(token => productName.includes(token));
       }}
 
-     const matchStore = selectedStores.length === 0 || selectedStores.some(selected => {{
+      const matchStore = selectedStores.length === 0 || selectedStores.some(selected => {{
           if (!item.Store) return false;
-          
-          // Split the item's store list into exact individual names
-          const itemStoreParts = item.Store.toUpperCase().split("&").map(s => s.trim());
+          const itemStoreParts = String(item.Store).toUpperCase().split("&").map(s => s.trim());
           const selectedUp = selected.toUpperCase();
           
           if (selectedUp === "MARK & SAVE") {{
-              // Check for EXACT matches in the array. This ignores "HYPERMARKET" completely.
               return itemStoreParts.includes("MARK") || itemStoreParts.includes("SAVE") || itemStoreParts.includes("MARK & SAVE");
           }}
-          
-          // Check for exact matches for all other stores (Lulu, Nesto, etc.)
           return itemStoreParts.includes(selectedUp);
       }});
-          const matchPrice  = (item.Price === null) || (item.Price <= max);
+
+      const matchPrice = (item.Price === null) || (item.Price <= max);
       return matchSearch && matchStore && matchPrice;
     }});
 
@@ -971,7 +961,6 @@ const rawData = {products_json};
         filteredData.sort((a, b) => {{
             const offerDiff = getOfferVal(b.Offer) - getOfferVal(a.Offer);
             if (offerDiff !== 0) return offerDiff;
-            
             const dateA = a.Fetched_Date || "";
             const dateB = b.Fetched_Date || "";
             return dateB.localeCompare(dateA);
@@ -980,10 +969,10 @@ const rawData = {products_json};
 
     currentIndex = 0;
     dealGrid.innerHTML = ''; 
-    
     loadMore();
   }}
 
+  // --- 4. HTML GENERATOR ---
   function loadMore() {{
     if (currentIndex >= filteredData.length) {{
         sentinel.style.display = 'none';
@@ -1003,7 +992,6 @@ const rawData = {products_json};
           ? `<img src="${{item.Image_URL}}" alt="${{safeName}}" loading="lazy" onclick="openPopup('${{item.Image_URL}}', '${{safeName}}')">` 
           : "No image";
 
-      // Cleaned up price badge HTML (relies on the new CSS for styling)
       const priceHtml = item.Price 
           ? `<div class="price-badge"><span class="currency-icon">&#x20C1;</span><span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
           : "";
@@ -1012,20 +1000,19 @@ const rawData = {products_json};
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
-      // Double braces added here:
       const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
 
-      // --- 2. SMART UI TRUNCATION ---
-      let storeArr = (item.Store || "Unknown store").split("&").map(s => s.trim());
+      let storeStr = String(item.Store || "Unknown store");
+      let storeArr = storeStr.split("&").map(s => s.trim());
       let displayStore = "";
       
       if (storeArr.length > 2) {{
-          // Double braces added here as well:
           displayStore = `${{storeArr[0]}} +${{storeArr.length - 1}} more`;
       }} else {{
           displayStore = storeArr.join(" & ");
       }}
-      // ------------------------------
+      
+      const safeStore = storeStr.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 
       card.innerHTML = `
           <div class="card-img-wrapper">${{imgTag}}</div>
@@ -1035,15 +1022,14 @@ const rawData = {products_json};
               ${{oldPriceHtml}}
               ${{offerStr}}
           </div>
-          <div class="card-store" title="${{item.Store || ''}}">${{displayStore}}</div>
+          <div class="card-store" title="${{safeStore}}">${{displayStore}}</div>
           <div class="card-date">${{fetchDate}}</div>
       `;
-            fragment.appendChild(card);
+      fragment.appendChild(card);
     }});
-    
+
     dealGrid.appendChild(fragment);
     currentIndex += chunk.length;
-    
     countLabel.innerHTML = `Showing <strong>${{currentIndex}}</strong> of <strong>${{filteredData.length}}</strong> products`;
   }}
 
@@ -1085,9 +1071,7 @@ const rawData = {products_json};
     const img = document.getElementById('popup-img');
     img.src = src;
     img.classList.remove('zoomed'); 
-    
     document.getElementById('popup-title').innerHTML = title;
-    
     document.getElementById('popup-overlay').classList.add('active');
   }}
 
@@ -1099,7 +1083,6 @@ const rawData = {products_json};
 
   function closePopup(e) {{
     if (e && e.target && e.target.id === 'popup-img') return;
-    
     if (!e || e.target === document.getElementById('popup-overlay') || e.currentTarget === document.getElementById('popup-close')) {{
       document.getElementById('popup-overlay').classList.remove('active');
     }}
@@ -1111,7 +1094,6 @@ const rawData = {products_json};
     }}
   }});
 </script>
-</body>
 </html>"""
 
     OUTPUT_HTML = Path("d4d_results.html")
