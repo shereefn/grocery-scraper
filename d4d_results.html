@@ -301,18 +301,20 @@
 
      const matchStore = selectedStores.length === 0 || selectedStores.some(selected => {
           if (!item.Store) return false;
-          const storeUp = item.Store.toUpperCase();
           
-          // Special rule for our combined checkbox
-          if (selected === "MARK & SAVE") {
-              return storeUp.includes("MARK") || storeUp.includes("SAVE");
+          // Split the item's store list into exact individual names
+          const itemStoreParts = item.Store.toUpperCase().split("&").map(s => s.trim());
+          const selectedUp = selected.toUpperCase();
+          
+          if (selectedUp === "MARK & SAVE") {
+              // Check for EXACT matches in the array. This ignores "HYPERMARKET" completely.
+              return itemStoreParts.includes("MARK") || itemStoreParts.includes("SAVE") || itemStoreParts.includes("MARK & SAVE");
           }
           
-          // Standard rule for everything else
-          return storeUp.includes(selected.toUpperCase());
+          // Check for exact matches for all other stores (Lulu, Nesto, etc.)
+          return itemStoreParts.includes(selectedUp);
       });
-      const matchPrice  = (item.Price === null) || (item.Price <= max);
-      
+          const matchPrice  = (item.Price === null) || (item.Price <= max);
       return matchSearch && matchStore && matchPrice;
     });
 
