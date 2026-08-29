@@ -59,7 +59,8 @@
     .deal-grid { grid-template-columns: repeat(5, 1fr); gap: 20px; }
   }
   
-  .card { background: #ffffff; border-radius: 12px; padding: 12px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }
+/* OPTIMIZED MOBILE CARD PADDING */
+  .card { background: #ffffff; border-radius: 12px; padding: 10px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }
   @media (min-width: 768px) { .card { padding: 16px; gap: 8px; } }
   .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
   
@@ -68,34 +69,33 @@
   .card-img-wrapper img { max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }
   .card-img-wrapper img:hover { transform: scale(1.05); }
   
-  /* MAKE TITLE HOVERABLE AS A LINK */
   .title-link { text-decoration: none; color: inherit; display: block; margin-bottom: 2px; outline: none; }
   .title-link:hover .card-title { color: #1a73e8; text-decoration: underline; }
   
   .card-title { font-size: 13px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 36px; transition: color 0.2s ease; }
   @media (min-width: 768px) { .card-title { font-size: 15px; min-height: 42px; } }
   
-  /* CLEAN PRICE STYLING (Yellow Box Removed) */
-  .card-price-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }
+  /* CLEAN PRICE STYLING (MOBILE OPTIMIZED) */
+  .card-price-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }
   .price-badge { color: #202124; display: inline-flex; align-items: center; font-weight: 800; }
-  .card-price { font-size: 18px; line-height: 1; }
+  
+  .card-price { font-size: 16px; line-height: 1; }
   @media (min-width: 768px) { .card-price { font-size: 20px; } }
   
-/* UNICODE RIYAL SYMBOL (WINDOWS FIX) */
+  /* UNICODE RIYAL SYMBOL (WINDOWS FIX) */
   .currency-icon { font-size: 1.1em; font-weight: normal; margin-right: 4px; display: inline-block; font-family: "Tahoma", "Arial", sans-serif; }
   .currency-icon-small { font-size: 0.9em; font-weight: normal; margin-right: 3px; display: inline-block; font-family: "Tahoma", "Arial", sans-serif; }
   
-  .card-old-price { color: #888888; text-decoration: line-through; font-size: 13px; font-weight: 600; }
-  .badge-offer { background: #00a859; color: #ffffff; padding: 4px 6px; border-radius: 4px; font-size: 11px; font-weight: 800; white-space: nowrap; display: inline-block; margin-left: auto; letter-spacing: 0.3px; }
-  @media (min-width: 768px) { .badge-offer { padding: 4px 8px; font-size: 12px; } }
+  .card-old-price { color: #888888; text-decoration: line-through; font-size: 11px; font-weight: 600; }
   
-  /* STORE BADGE */
-  .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 10px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
+  .badge-offer { background: #00a859; color: #ffffff; padding: 3px 5px; border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }
+  @media (min-width: 768px) { .badge-offer { padding: 4px 8px; font-size: 12px; margin-left: auto; } }
+  
+  .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
   @media (min-width: 768px) { .card-store { font-size: 12px; padding: 4px 12px; } }
   
   .card-date { font-size: 11px; color: #80868b; font-weight: 400; margin-top: 2px; }
-  @media (min-width: 768px) { .card-date { font-size: 12px; } }
-  
+  @media (min-width: 768px) { .card-date { font-size: 12px; } }  
   .loading-indicator { text-align: center; padding: 20px; color: #5f6368; font-size: 14px; font-weight: 500; grid-column: 1 / -1; }
   
   /* THEATER MODE POPUP */
@@ -221,12 +221,12 @@
       return Number(num).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   }
 
-  const rawStoreList = [];
+const rawStoreList = [];
   rawData.forEach(r => {
       const storeName = r.Store || r.Restaurant;
       if (storeName) {
-          const parts = storeName.split("&").map(s => s.trim());
-          rawStoreList.push(...parts);
+          // Push the exact restaurant name without splitting it
+          rawStoreList.push(storeName.trim());
       }
   });
   const stores = [...new Set(rawStoreList)].sort();

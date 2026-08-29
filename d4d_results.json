@@ -3016,7 +3016,7 @@
   },
   {
     "Store": "Hyper Al Wafa & Nesto",
-    "Product": "Parachute Coconut & Almond Shampoo 600MI",
+    "Product": "Parachute Shampoo 600MI",
     "Price": 9.99,
     "Old_Price": 21.95,
     "Offer": "54.5                    % Off",
@@ -3105,6 +3105,15 @@
     "Fetched_Date": "2026-08-29"
   },
   {
+    "Store": "Danube & LULU Hypermarket",
+    "Product": "Himalaya Shampoo 400ml Assorted",
+    "Price": 9.99,
+    "Old_Price": 17.5,
+    "Offer": "42.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/baa4d55a6901ca760c748634a141629a.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
     "Store": "Danube",
     "Product": "Pantene Shampoo 375ml / Conditioner 360ml",
     "Price": 12.99,
@@ -3147,15 +3156,6 @@
     "Old_Price": 19.9,
     "Offer": "31.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/19301b111d0e8089f37ce86e678ef880.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Danube & LULU Hypermarket",
-    "Product": "Himalaya Shampoo 400ml Assorted",
-    "Price": 9.99,
-    "Old_Price": 17.5,
-    "Offer": "42.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/baa4d55a6901ca760c748634a141629a.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -3259,11 +3259,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Dabur Amla Kids Nourishing Shampoo 200ml",
-    "Price": 9.99,
-    "Old_Price": 12.5,
-    "Offer": "20.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/471366bd1c1b696887764bc2ec0f146d.jpg",
+    "Product": "Pantene Shampoo 500ml Assorted",
+    "Price": 14.99,
+    "Old_Price": 27.5,
+    "Offer": "30.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/1ada8f0a80598093e317918f741b55c7.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -3313,11 +3313,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Pantene Shampoo 500ml Assorted",
-    "Price": 14.99,
-    "Old_Price": 27.5,
-    "Offer": "30.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/1ada8f0a80598093e317918f741b55c7.jpg",
+    "Product": "Garnier Shampoo Ultra Doux 600ml Assorted",
+    "Price": 15.99,
+    "Old_Price": 27.95,
+    "Offer": "42.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/e369df69ebe7b5f05721e268c1938ccc.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -3358,11 +3358,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Garnier Shampoo Ultra Doux 600ml Assorted",
-    "Price": 15.99,
-    "Old_Price": 27.95,
-    "Offer": "42.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/e369df69ebe7b5f05721e268c1938ccc.jpg",
+    "Product": "Dabur Amla Kids Nourishing Shampoo 200ml",
+    "Price": 9.99,
+    "Old_Price": 12.5,
+    "Offer": "20.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/471366bd1c1b696887764bc2ec0f146d.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -3498,15 +3498,6 @@
     "Old_Price": 21.99,
     "Offer": "59.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/28/cb2f59dbc7c822697eac8856e022d14f.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Hyper Panda & LULU Hypermarket",
-    "Product": "Dabur Vatika Shampoo & Conditioners 400ml Assorted",
-    "Price": 8.99,
-    "Old_Price": 18.75,
-    "Offer": "52.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/e642d7fb4495a1cb7f6d72c3fd74c95a.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -4359,9 +4350,9 @@
     "Store": "LULU Hypermarket",
     "Product": "Impex Refrigerator IRF220 206Ltr",
     "Price": 999.0,
-    "Old_Price": 1199.0,
+    "Old_Price": 1199,
     "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/224a513ee6af4e60d95e8ae733ab493f.jpg",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/391dd195d6ad1c8b52a2d67d0c0fd073.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -4563,6 +4554,15 @@
     "Fetched_Date": "2026-08-29"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "TCL QD-MiniLED TV 98T8D 98inch",
+    "Price": 2199.0,
+    "Old_Price": 9999,
+    "Offer": "56                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/499664cda54c0be0ed189043aa5b958a.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "Samsung 85\" Smart TV UA85DU7000UX",
     "Price": 9999.0,
@@ -4605,15 +4605,6 @@
     "Old_Price": 4499,
     "Offer": "48.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/1b5b8c5a849d4d424ae70ad545fc21b1.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "TCL QD-MiniLED TV 98T8D 98inch",
-    "Price": 2199.0,
-    "Old_Price": 9999,
-    "Offer": "56                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/499664cda54c0be0ed189043aa5b958a.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -4770,21 +4761,21 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "Mark & Save",
-    "Product": "Toshiro 55\" 4K Smart Led Tv",
-    "Price": 899.0,
-    "Old_Price": 1199,
-    "Offer": "25                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/28/9bd42fcd37a93056ba86578715246db2.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Hisense 4K Mini ULED TV 65E8SE 65inch",
     "Price": 2449.0,
     "Old_Price": 6599,
     "Offer": "62.9                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/040d40edce939f4d97b60d46450ddc51.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Mark & Save",
+    "Product": "Toshiro 55\" 4K Smart Led Tv",
+    "Price": 899.0,
+    "Old_Price": 1199,
+    "Offer": "25                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/28/9bd42fcd37a93056ba86578715246db2.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -4905,6 +4896,15 @@
     "Fetched_Date": "2026-08-29"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "IKON 4K Smart QLED TV IKVWQ65 65 Inch",
+    "Price": 1599.0,
+    "Old_Price": 2799,
+    "Offer": "42.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/103d6e6157e9e1be44f4c07408d6e8cd.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "Xiaomi 65\" Smart TV L65MBAPME",
     "Price": 3999.0,
@@ -4915,11 +4915,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "IKON 4K Smart QLED TV IKVWQ65 65 Inch",
-    "Price": 1599.0,
-    "Old_Price": 2799,
-    "Offer": "42.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/103d6e6157e9e1be44f4c07408d6e8cd.jpg",
+    "Product": "Skyworth QLED Google Smart TV 65Q6820H 65inch",
+    "Price": 2299.0,
+    "Old_Price": 3499,
+    "Offer": "34.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/e554886166fa4762fa14fb79d7d07131.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -4929,15 +4929,6 @@
     "Old_Price": 1199,
     "Offer": "18.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/28/d7d1d46d5fafc458ca9cc4aa9842741d.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Skyworth QLED Google Smart TV 65Q6820H 65inch",
-    "Price": 2299.0,
-    "Old_Price": 3499,
-    "Offer": "34.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/e554886166fa4762fa14fb79d7d07131.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -5031,21 +5022,21 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "Jarir Bookstore",
-    "Product": "LG 75\" QNED AI 2025 Smart TV",
-    "Price": 7099.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/dd4e270d4daf805dca09fb1477c029e3.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "Impex Gloria 50Q Smart QLED TV",
     "Price": 699.0,
     "Old_Price": 1399,
     "Offer": "50                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/0752b4c3fd81592667207812a923f6f9.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Jarir Bookstore",
+    "Product": "LG 75\" QNED AI 2025 Smart TV",
+    "Price": 7099.0,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/dd4e270d4daf805dca09fb1477c029e3.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -5418,15 +5409,6 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "Hyper Al Wafa & Nesto",
-    "Product": "Canon Wireless Printer Pixma TS3640/TS3640s",
-    "Price": 179.0,
-    "Old_Price": 240,
-    "Offer": "25.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/23/25e37050974efe55a98ab54055336b99.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "eXtra",
     "Product": "Canon Inkjet Printer, Print, Copy, Scan, Black",
     "Price": 179.0,
@@ -5496,6 +5478,15 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/i/26/07/04/d9db59a233935e3fff1c6daca081de5b.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Hyper Al Wafa & Nesto",
+    "Product": "Canon Wireless Printer Pixma TS3640/TS3640s",
+    "Price": 179.0,
+    "Old_Price": 240,
+    "Offer": "25.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/23/25e37050974efe55a98ab54055336b99.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -7056,21 +7047,21 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "Jarir Bookstore",
-    "Product": "OtterBox Glass Screen Protector for Galaxy A37/A36 5G",
-    "Price": 39.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/8dcd0cdcc9062147c4d9234cf323490f.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "LULU Hypermarket",
     "Product": "SAMSUNG Galaxy S21FE",
     "Price": 1499.0,
     "Old_Price": 2849,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/1d7bc396e9ce8362b8cd0f613cf747ec.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Jarir Bookstore",
+    "Product": "OtterBox Glass Screen Protector for Galaxy A37/A36 5G",
+    "Price": 39.0,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/8dcd0cdcc9062147c4d9234cf323490f.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -7110,6 +7101,15 @@
     "Fetched_Date": "2026-08-29"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "Samsung Galaxy Watch-9 44mm BT L350",
+    "Price": 1699.0,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/74925299305aced9ac43351e75f9d38c.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
     "Store": "Jarir Bookstore",
     "Product": "Ararree Aero Flex Flip case for Galaxy Z Fold7",
     "Price": 89.0,
@@ -7125,15 +7125,6 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/07/4/9d0979ea8387f95b040e4c9516c14be2.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Samsung Galaxy Watch-9 44mm BT L350",
-    "Price": 1699.0,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/74925299305aced9ac43351e75f9d38c.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -8190,183 +8181,21 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "Al Madina Hypermarket & Danube & Othaim Markets",
-    "Product": "Saudia Tomato Paste 8X135GM",
-    "Price": 10.99,
-    "Old_Price": 15.0,
-    "Offer": "26.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/90d512e4ae8f989c9143723d9a206da7.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Othaim Markets & Nesto",
-    "Product": "Saudia Tomato Paste 8x135Gm",
-    "Price": 11.99,
-    "Old_Price": 13.99,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/c9f4c9746f58c854f6024bd3265b704b.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Heinz Tomato Ketchup Squeez (910g)",
-    "Price": 13.99,
-    "Old_Price": 24.99,
-    "Offer": "60                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/9a21f506536f017fc5909838607609e1.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Hyper Al Wafa & Nesto",
-    "Product": "Green Garden Tomato Ketchup 3Kg",
-    "Price": 13.99,
-    "Old_Price": 21.99,
-    "Offer": "36.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/787c4c0af26c5ad80eecc5999b978fa3.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "HELWA TOMATO PUREE 8X135GM",
-    "Price": 6.95,
-    "Old_Price": 9.95,
-    "Offer": "30.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/56eaa099ac34bb37351adf82b4197d55.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "LuLu Tomato Paste 750g",
-    "Price": 10.99,
-    "Old_Price": 16.95,
-    "Offer": "35.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/a66f1d001999f2e18cc07a7aa615abc1.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Othaim Markets",
-    "Product": "Alalali Tomato Paste 130g 7+1Free",
-    "Price": 9.75,
-    "Old_Price": 16.99,
-    "Offer": "42.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/7ac388e0bb0e07596567ab6d676c172a.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "Heinz Tomato Ketchup Zero (425g) / Classic BBQ Sauce (480g)",
-    "Price": 19.99,
-    "Old_Price": 27.99,
-    "Offer": "28.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/5118fd6bbc24218e1bada790c9dad4ed.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "HEINZ TOMATO KETCHUP 910GM",
-    "Price": 14.95,
-    "Old_Price": 28.95,
-    "Offer": "48.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/2ff00b6dec695c90b35f1e2f6a6ff11a.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Danube & LULU Hypermarket",
-    "Product": "Saudia Tomato Ketchup 510gm",
-    "Price": 9.99,
-    "Old_Price": 14.95,
-    "Offer": "33.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/430d7864647f5e9a47e52e1a42585d09.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "Nesto",
     "Product": "515 Sardine In Tomato Sauce 155Gm",
     "Price": 1.99,
     "Old_Price": 3.99,
     "Offer": "50.1                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/12ce12441bf6d18e7738c8e65ea04ed6.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Othaim Markets",
-    "Product": "Nada/Haley Tomato Paste 8x135g",
-    "Price": 15.99,
-    "Old_Price": null,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/c111593e853adfe6868079c221c44321.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Baidar Tomato Ketchup 2Kg",
-    "Price": 14.95,
-    "Old_Price": 17.95,
-    "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/fd98a190eb4205b8a85932e50c22923f.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Heinz Tomato Ketchup 700gm",
-    "Price": 18.99,
-    "Old_Price": 28.95,
-    "Offer": "34.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/9ec676e2d4272cabc3c956ad38a536f6.jpg",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/50a16b3838398af07b45c6205cf13172.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
     "Store": "Danube",
-    "Product": "Heinz Tomato Ketchup 460gm",
-    "Price": 12.99,
-    "Old_Price": 19.99,
-    "Offer": "35                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/614f17fcf89a2a417f817d6484dade35.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Libbys Tomato Ketchup 760gm",
-    "Price": 18.99,
-    "Old_Price": 23.5,
-    "Offer": "19.2                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/2fc40033d270d87d27c9a0b1e13c4dac.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Othaim Markets",
-    "Product": "Alalali Tomato Ketchup 1050g",
-    "Price": 15.5,
-    "Old_Price": 25.99,
-    "Offer": "40.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/5b2ae3be490b2355b9a12e47859c80a3.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Hyper Panda",
-    "Product": "American Garden Tomato Ketchup Squeeze (1.02Kg)",
-    "Price": 16.99,
-    "Old_Price": 24.99,
-    "Offer": "",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/5062f326bbc230efc3e6857c40bdeb96.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "Al Madina Hypermarket",
-    "Product": "Saudia Tomato Paste 135g x8 Pieces",
-    "Price": 9.95,
-    "Old_Price": 16.95,
-    "Offer": "41.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/892df3a0a00b4b78355b2cba518c4f10.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Kimball Tomato Ketchup 325gm X 3 pcs",
-    "Price": 13.5,
-    "Old_Price": 20.85,
-    "Offer": "35.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/64843c82a07b03d058cf39b6b9fd2c98.jpg",
+    "Product": "Heinz Tomato Ketchup 910gm",
+    "Price": 15.99,
+    "Old_Price": 34.5,
+    "Offer": "53.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/62b4427ad91146f6613167bb5641eabe.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -8388,12 +8217,30 @@
     "Fetched_Date": "2026-08-29"
   },
   {
+    "Store": "Hyper Al Wafa & Nesto",
+    "Product": "Green Garden Tomato Ketchup 3kg",
+    "Price": 13.99,
+    "Old_Price": 21.99,
+    "Offer": "36.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/i/26/08/25/4d4c8b690cb36455ae9ab9ceb084d25c.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
     "Store": "LULU Hypermarket",
     "Product": "Tiffany Tomato Ketchup 500gm 3s",
     "Price": 11.95,
     "Old_Price": 23.95,
     "Offer": "50.1                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/db4d5417664d251b116a3d7a84c852d3.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Danube & LULU Hypermarket",
+    "Product": "Saudia Tomato Ketchup 510gm",
+    "Price": 9.99,
+    "Old_Price": 14.95,
+    "Offer": "33.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/96108fe6dc6394b614609bf43a779d58.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -8412,6 +8259,15 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/2b9436bc2e8313cf542826d53db14013.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "Saudia Tomato Paste 8x135Gm",
+    "Price": 11.99,
+    "Old_Price": 14.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/72ff4b91263dc81ee8bb2db8e49a94e0.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -10476,21 +10332,21 @@
     "Fetched_Date": "2026-08-29"
   },
   {
-    "Store": "LULU Hypermarket",
-    "Product": "Gillette Shave Gel Sensitive Skin Soothing Aloe Vera 200ml",
-    "Price": 16.99,
-    "Old_Price": 25.95,
-    "Offer": "34.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/9c0f246b07e92561302dcef998fd5531.jpg",
-    "Fetched_Date": "2026-08-29"
-  },
-  {
     "Store": "Hyper Panda",
     "Product": "Gillette Simply Venus Razors (8+4)",
     "Price": 51.5,
     "Old_Price": null,
     "Offer": "12                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/905bd984f0a15fadc13c123f44d4a431.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Gillette Shave Gel Sensitive Skin Soothing Aloe Vera 200ml",
+    "Price": 16.99,
+    "Old_Price": 25.95,
+    "Offer": "34.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/9c0f246b07e92561302dcef998fd5531.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
@@ -12921,6 +12777,150 @@
     "Old_Price": 16.5,
     "Offer": "33.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/e5e4e6d4d239c2a7dac91c78109242cc.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Hyper Panda & LULU Hypermarket",
+    "Product": "Dabur Vatika Shampoo & Conditioners 400ml Assorted",
+    "Price": 8.99,
+    "Old_Price": 18.75,
+    "Offer": "52.1                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/19/e642d7fb4495a1cb7f6d72c3fd74c95a.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Al Madina Hypermarket & Danube & Othaim Markets",
+    "Product": "Saudia Tomato Paste 8X135GM",
+    "Price": 10.99,
+    "Old_Price": 15.0,
+    "Offer": "26.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/90d512e4ae8f989c9143723d9a206da7.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Heinz Tomato Ketchup Squeez (910g)",
+    "Price": 13.99,
+    "Old_Price": 24.99,
+    "Offer": "60                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/9a21f506536f017fc5909838607609e1.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "HELWA TOMATO PUREE 8X135GM",
+    "Price": 6.95,
+    "Old_Price": 9.95,
+    "Offer": "30.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/56eaa099ac34bb37351adf82b4197d55.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "LuLu Tomato Paste 750g",
+    "Price": 10.99,
+    "Old_Price": 16.95,
+    "Offer": "35.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/a66f1d001999f2e18cc07a7aa615abc1.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Alalali Tomato Paste 130g 7+1Free",
+    "Price": 9.75,
+    "Old_Price": 16.99,
+    "Offer": "42.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/7ac388e0bb0e07596567ab6d676c172a.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "Heinz Tomato Ketchup Zero (425g) / Classic BBQ Sauce (480g)",
+    "Price": 19.99,
+    "Old_Price": 27.99,
+    "Offer": "28.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/5118fd6bbc24218e1bada790c9dad4ed.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "HEINZ TOMATO KETCHUP 910GM",
+    "Price": 14.95,
+    "Old_Price": 28.95,
+    "Offer": "48.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/2ff00b6dec695c90b35f1e2f6a6ff11a.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Nada/Haley Tomato Paste 8x135g",
+    "Price": 15.99,
+    "Old_Price": null,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/c111593e853adfe6868079c221c44321.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Baidar Tomato Ketchup 2Kg",
+    "Price": 14.95,
+    "Old_Price": 17.95,
+    "Offer": "16.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/fd98a190eb4205b8a85932e50c22923f.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Heinz Tomato Ketchup 700gm",
+    "Price": 18.99,
+    "Old_Price": 28.95,
+    "Offer": "34.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/9ec676e2d4272cabc3c956ad38a536f6.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Libbys Tomato Ketchup 760gm",
+    "Price": 18.99,
+    "Old_Price": 23.5,
+    "Offer": "19.2                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/2fc40033d270d87d27c9a0b1e13c4dac.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Othaim Markets",
+    "Product": "Alalali Tomato Ketchup 1050g",
+    "Price": 15.5,
+    "Old_Price": 25.99,
+    "Offer": "40.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/27/5b2ae3be490b2355b9a12e47859c80a3.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Hyper Panda",
+    "Product": "American Garden Tomato Ketchup Squeeze (1.02Kg)",
+    "Price": 16.99,
+    "Old_Price": 24.99,
+    "Offer": "",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/26/5062f326bbc230efc3e6857c40bdeb96.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "Al Madina Hypermarket",
+    "Product": "Saudia Tomato Paste 135g x8 Pieces",
+    "Price": 9.95,
+    "Old_Price": 16.95,
+    "Offer": "41.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/892df3a0a00b4b78355b2cba518c4f10.jpg",
+    "Fetched_Date": "2026-08-29"
+  },
+  {
+    "Store": "LULU Hypermarket",
+    "Product": "Kimball Tomato Ketchup 325gm X 3 pcs",
+    "Price": 13.5,
+    "Old_Price": 20.85,
+    "Offer": "35.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/08/25/64843c82a07b03d058cf39b6b9fd2c98.jpg",
     "Fetched_Date": "2026-08-29"
   },
   {
