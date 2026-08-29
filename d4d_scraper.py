@@ -1012,17 +1012,17 @@ const rawData = {products_json};
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
-      const fetchDate = item.Fetched_Date ? `Updated: ${displayDate}` : "";
+      // Double braces added here:
+      const fetchDate = item.Fetched_Date ? `Updated: ${{displayDate}}` : "";
 
       // --- 2. SMART UI TRUNCATION ---
       let storeArr = (item.Store || "Unknown store").split("&").map(s => s.trim());
       let displayStore = "";
       
       if (storeArr.length > 2) {{
-          // If 3 or more stores, show "Store + 2 more"
-          displayStore = `${storeArr[0]} +${storeArr.length - 1} more`;
+          // Double braces added here as well:
+          displayStore = `${{storeArr[0]}} +${{storeArr.length - 1}} more`;
       }} else {{
-          // If 1 or 2 stores, show them normally
           displayStore = storeArr.join(" & ");
       }}
       // ------------------------------
