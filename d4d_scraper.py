@@ -844,12 +844,24 @@ def save_html(data: List[Dict]) -> None:
 const rawStoreList = [];
   rawData.forEach(r => {{
       if (r.Store) {{
-          // Push the exact store name without splitting it
-          rawStoreList.push(r.Store.trim());
+          // 1. Protect "MARK & SAVE" from being split by temporarily renaming it
+          let safeStoreStr = r.Store.replace(/MARK\s*&\s*SAVE/gi, "MARK_AND_SAVE_PROTECTED");
+          
+          // 2. Now it is safe to split by "&" to separate the different stores
+          const parts = safeStoreStr.split("&").map(s => s.trim());
+          
+          // 3. Loop through the separated stores and restore our protected brand
+          parts.forEach(part => {{
+              if (part === "MARK_AND_SAVE_PROTECTED") {{
+                  rawStoreList.push("MARK & SAVE");
+              }} else if (part.length > 0 && part !== "MARK" && part !== "SAVE") {{
+                  // This adds normal stores (like LULU or NESTO) to the list individually
+                  rawStoreList.push(part);
+              }}
+          }});
       }}
   }});
-  const stores = [...new Set(rawStoreList)].sort();
-  
+  const stores = [...new Set(rawStoreList)].sort();  
   const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {{
     if(!s) return;
