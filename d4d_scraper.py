@@ -840,28 +840,39 @@ def save_html(data: List[Dict]) -> None:
       if (num == null) return "";
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
-  
-const rawStoreList = [];
-  rawData.forEach(r => {{
-      if (r.Store) {{
-          // 1. Protect "MARK & SAVE" from being split by temporarily renaming it
-          let safeStoreStr = r.Store.replace(/MARK\s*&\s*SAVE/gi, "MARK_AND_SAVE_PROTECTED");
+
+  // 1. Permanently fix broken Mark & Save formatting across the entire dataset
+  rawData.forEach(item => {{
+      if (item.Store) {{
+          let partsUpper = item.Store.toUpperCase().replace(/&AMP;/gi, "&").split("&").map(x => x.trim());
           
-          // 2. Now it is safe to split by "&" to separate the different stores
-          const parts = safeStoreStr.split("&").map(s => s.trim());
-          
-          // 3. Loop through the separated stores and restore our protected brand
-          parts.forEach(part => {{
-              if (part === "MARK_AND_SAVE_PROTECTED") {{
-                  rawStoreList.push("MARK & SAVE");
-              }} else if (part.length > 0 && part !== "MARK" && part !== "SAVE") {{
-                  // This adds normal stores (like LULU or NESTO) to the list individually
-                  rawStoreList.push(part);
-              }}
-          }});
+          if (partsUpper.includes("MARK") || partsUpper.includes("SAVE")) {{
+              let partsOriginal = item.Store.split("&").map(x => x.trim());
+              
+              // Keep normal stores (like NESTO or LULU) but filter out the broken pieces
+              let cleanParts = partsOriginal.filter(p => {{
+                  let pUp = p.toUpperCase();
+                  return pUp !== "MARK" && pUp !== "SAVE" && pUp !== "MARK & SAVE";
+              }});
+              
+              // Add the properly combined brand back to the array
+              cleanParts.push("MARK & SAVE");
+              
+              // Overwrite the original data so the cards AND filters use the clean version
+              item.Store = cleanParts.join(" & ");
+          }}
       }}
   }});
-  const stores = [...new Set(rawStoreList)].sort();  
+
+  // 2. Now cleanly split everything to generate perfect 1-store checkboxes
+  const rawStoreList = [];
+  rawData.forEach(r => {{
+      if (r.Store) {{
+          const parts = r.Store.split("&").map(s => s.trim());
+          rawStoreList.push(...parts);
+      }}
+  }});
+  const stores = [...new Set(rawStoreList)].sort();
   const cbContainer = document.getElementById('store-checkboxes');
   stores.forEach(s => {{
     if(!s) return;
