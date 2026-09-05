@@ -1084,7 +1084,7 @@ def save_html(data: List[Dict]) -> None:
 </script>
 </html>"""
 
-    OUTPUT_HTML = Path("d4d_results.html")
+    OUTPUT_HTML = Path("index.html")
     OUTPUT_HTML.write_text(html, encoding="utf-8")
     log.info("Saved HTML → %s", OUTPUT_HTML)
 # ---------------------------------------------------------------------------
