@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Prevents iOS Safari from zooming in on dropdown clicks -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GoDeals | Find Local Offers</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+        
+        /* Vibrant animated gradient background */
+        body { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            background: linear-gradient(135deg, #1a73e8, #00a859, #fbbc05);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .logo { font-size: 32px; font-weight: 800; color: #1a73e8; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .logo span { color: #00a859; }
+        
+        .subtitle { color: #5f6368; font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
+
+        /* Custom Input Styling */
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; font-size: 12px; font-weight: 700; color: #202124; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        select {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px; /* 16px prevents iOS zoom */
+            border: 2px solid #e8eaed;
+            border-radius: 12px;
+            background-color: #ffffff;
+            color: #202124;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%235f6368%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px top 50%;
+            background-size: 12px auto;
+            transition: border-color 0.2s;
+            outline: none;
+            cursor: pointer;
+        }
+
+        select:focus { border-color: #1a73e8; }
+        select:disabled { background-color: #f1f3f4; cursor: not-allowed; opacity: 0.7; }
+
+        /* CTA Button */
+        .cta-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: #1a73e8;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .cta-btn:hover:not(:disabled) { background: #1557b0; transform: translateY(-2px); box-shadow: 0 8px 16px rgba(26, 115, 232, 0.3); }
+        .cta-btn:active:not(:disabled) { transform: translateY(0); }
+        .cta-btn:disabled { background: #dadce0; color: #80868b; cursor: not-allowed; }
+
+        .footer-text { margin-top: 20px; font-size: 12px; color: #80868b; }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <div class="logo">go<span>deals</span>.me</div>
+        <p class="subtitle">Select your location to discover hypermarket offers and food deals near you.</p>
+
+        <div class="input-group">
+            <label for="country">1. Choose Country</label>
+            <select id="country" onchange="updateCities()">
+                <option value="" disabled selected>Select a country...</option>
+                <option value="sa">Saudi Arabia</option>
+                <option value="ae">United Arab Emirates</option>
+                <option value="in">India</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="city">2. Choose City</label>
+            <select id="city" disabled onchange="checkSelection()">
+                <option value="" disabled selected>Select a country first</option>
+            </select>
+        </div>
+
+        <button id="goBtn" class="cta-btn" disabled onclick="navigateToCity()">Explore Deals</button>
+        
+        <div class="footer-text">Deals updated daily</div>
+    </div>
+
+    <script>
+        // Database of available locations and their subdomain prefixes
+        const locationData = {
+            "sa": {
+                name: "Saudi Arabia",
+                cities: [
+                    { name: "Riyadh", slug: "riyadh" },
+                    { name: "Jeddah", slug: "jeddah" },
+                    { name: "Dammam", slug: "dammam" },
+                    { name: "AlUla", slug: "alula" }
+                ]
+            },
+            "ae": {
+                name: "United Arab Emirates",
+                cities: [
+                    { name: "Dubai", slug: "dubai" },
+                    { name: "Abu Dhabi", slug: "abudhabi" }
+                ]
+            },
+            "in": {
+                name: "India",
+                cities: [
+                    { name: "Kochi", slug: "kochi" },
+                    { name: "Trivandrum", slug: "trivandrum" },
+                    { name: "Kozhikode", slug: "kozhikode" }
+                ]
+            }
+        };
+
+        const countrySelect = document.getElementById('country');
+        const citySelect = document.getElementById('city');
+        const goBtn = document.getElementById('goBtn');
+
+        function updateCities() {
+            const countryCode = countrySelect.value;
+            citySelect.innerHTML = '<option value="" disabled selected>Select your city...</option>';
+            
+            if (countryCode && locationData[countryCode]) {
+                const cities = locationData[countryCode].cities;
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.slug;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+                
+                citySelect.disabled = false;
+            } else {
+                citySelect.disabled = true;
+            }
+            checkSelection();
+        }
+
+        function checkSelection() {
+            if (countrySelect.value && citySelect.value) {
+                goBtn.disabled = false;
+                goBtn.textContent = `Go to ${citySelect.options[citySelect.selectedIndex].text}`;
+            } else {
+                goBtn.disabled = true;
+                goBtn.textContent = "Explore Deals";
+            }
+        }
+
+        function navigateToCity() {
+            const citySlug = citySelect.value;
+            if (citySlug) {
+                // Redirects to https://riyadh.godeals.me
+                window.location.href = `https://${citySlug}.godeals.me`;
+            }
+        }
+    </script>
+</body>
+</html>
