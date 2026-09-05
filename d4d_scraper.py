@@ -678,25 +678,22 @@ def save_html(data: List[Dict]) -> None:
     .deal-grid {{ grid-template-columns: repeat(5, 1fr); gap: 20px; }}
   }}
 
- /* OPTIMIZED MOBILE CARD PADDING & EQUAL HEIGHT */
+/* OPTIMIZED MOBILE CARD PADDING & EQUAL HEIGHT */
   .card {{ background: #ffffff; border-radius: 12px; padding: 10px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }}
   @media (min-width: 768px) {{ .card {{ padding: 16px; gap: 8px; }} }}
   .card:hover {{ transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }}
   
-  .card-img-wrapper {{ height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; padding: 4px; border-radius: 8px; }}
+  .card-img-wrapper {{ height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; padding: 4px; border-radius: 8px; flex-shrink: 0; }}
   @media (min-width: 768px) {{ .card-img-wrapper {{ height: 180px; margin-bottom: 8px; }} }}
   .card-img-wrapper img {{ max-height: 100%; max-width: 100%; object-fit: contain; cursor: pointer; transition: transform 0.2s; }}
   .card-img-wrapper img:hover {{ transform: scale(1.05); }}
   
-  /* flex-grow: 1 forces the title to expand, pushing the price and store to the absolute bottom perfectly aligned! */
-  .title-link {{ text-decoration: none; color: inherit; display: block; margin-bottom: 2px; outline: none; flex-grow: 1; }}
-  .title-link:hover .card-title {{ color: #1a73e8; text-decoration: underline; }}
-  
-  .card-title {{ font-size: 13px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s ease; }}
+  /* flex-grow: 1 applied DIRECTLY to card-title forces it to absorb empty space */
+  .card-title {{ font-size: 13px; font-weight: 600; color: #202124; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s ease; flex-grow: 1; }}
   @media (min-width: 768px) {{ .card-title {{ font-size: 15px; }} }}
   
-  /* CLEAN PRICE STYLING (MOBILE OPTIMIZED) */
-  .card-price-row {{ display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-bottom: 4px; }}
+  /* margin-top: auto pushes the price, store, and date to the absolute bottom! */
+  .card-price-row {{ display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: auto; margin-bottom: 4px; }}
   .price-badge {{ color: #202124; display: inline-flex; align-items: center; font-weight: 800; }}
   
   .card-price {{ font-size: 16px; line-height: 1; }}
