@@ -63,9 +63,7 @@
   }
 
 /* OPTIMIZED MOBILE CARD PADDING & EQUAL HEIGHT */
-  .card { background: #ffffff; border-radius: 12px; padding: 10px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; }
-  @media (min-width: 768px) { .card { padding: 16px; gap: 8px; } }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+  .card { background: #ffffff; border-radius: 12px; padding: 10px; border: 1px solid #dadce0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-direction: column; height: 100%; transition: transform 0.2s ease; position: relative; min-width: 0; }
   
   .card-img-wrapper { height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; padding: 4px; border-radius: 8px; flex-shrink: 0; }
   @media (min-width: 768px) { .card-img-wrapper { height: 180px; margin-bottom: 8px; } }
@@ -91,9 +89,8 @@
   
   .badge-offer { background: #00a859; color: #ffffff; padding: 3px 5px; border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }
   @media (min-width: 768px) { .badge-offer { padding: 4px 8px; font-size: 12px; margin-left: auto; } }
-  
-  .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
-  @media (min-width: 768px) { .card-store { font-size: 12px; padding: 4px 12px; } }
+
+  .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; max-width: 100%; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
   
   .card-date { font-size: 11px; color: #80868b; font-weight: 400; margin-top: 2px; }
   @media (min-width: 768px) { .card-date { font-size: 12px; } }
