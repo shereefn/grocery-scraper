@@ -90,10 +90,8 @@
   .badge-offer { background: #00a859; color: #ffffff; padding: 3px 5px; border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap; display: inline-block; letter-spacing: 0.3px; }
   @media (min-width: 768px) { .badge-offer { padding: 4px 8px; font-size: 12px; margin-left: auto; } }
 
-  .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; max-width: 100%; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
-  .card-store { cursor: pointer; } 
-  /* Add to your existing .card-store rule if you want a pointer finger on laptops */
-  .card-store.expanded { white-space: normal; word-break: break-word; }
+ .card-store { font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; width: fit-content; max-width: 100%; box-sizing: border-box; white-space: normal; word-wrap: break-word; line-height: 1.4; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }
+  @media (min-width: 768px) { .card-store { font-size: 12px; padding: 4px 12px; } }
   
   .card-date { font-size: 11px; color: #80868b; font-weight: 400; margin-top: 2px; }
   @media (min-width: 768px) { .card-date { font-size: 12px; } }
@@ -386,17 +384,9 @@
 
       let storeStr = String(item.Store || "Unknown store");
       let storeArr = storeStr.split("&").map(s => s.trim());
-      let displayStore = "";
-      
-      if (storeArr.length > 2) {
-          displayStore = `${storeArr[0]} +${storeArr.length - 1} more`;
-      } else {
-          displayStore = storeArr.join(" & ");
-      }
-      
-      const safeStore = storeStr.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+      let displayStore = storeArr.join(" & ");
 
-    card.innerHTML = `
+      card.innerHTML = `
           <div class="card-img-wrapper">${imgTag}</div>
           <div class="card-title">${item.Product || "Unknown item"}</div>
           <div class="card-price-row">
@@ -404,13 +394,12 @@
               ${oldPriceHtml}
               ${offerStr}
           </div>
-          <div class="card-store" title="${safeStore}" onclick="this.classList.toggle('expanded')">${displayStore}</div>
+          <div class="card-store">${displayStore}</div>
           <div class="card-date">${fetchDate}</div>
       `;
-
       fragment.appendChild(card);
     });
-
+      
     dealGrid.appendChild(fragment);
     currentIndex += chunk.length;
     countLabel.innerHTML = `Showing <strong>${currentIndex}</strong> of <strong>${filteredData.length}</strong> products`;
