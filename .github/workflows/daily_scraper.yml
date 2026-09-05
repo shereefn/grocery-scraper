@@ -52,7 +52,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Only add files if they were successfully created during this run
-          if [ -f d4d_results.html ]; then git add d4d_results.html d4d_results.json; fi
+          if [ -f index.html ]; then git add index.html d4d_results.json; fi
           if [ -f cobone_results.html ]; then git add cobone_results.html cobone_results.json; fi
           
           git commit -m "🤖 Auto-updated grocery and food deals" || exit 0
