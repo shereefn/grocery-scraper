@@ -619,7 +619,7 @@ def save_html(data: List[Dict]) -> None:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Deals | Groceries</title>
+<title>Go Deals | Home</title>
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; overflow-x: hidden; }}
@@ -627,12 +627,18 @@ def save_html(data: List[Dict]) -> None:
   /* NAVBAR & HERO SEARCH BAR UI */
   .navbar {{ display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #ffffff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }}
   .nav-left {{ display: flex; align-items: center; gap: 16px; justify-content: flex-start; }}
+  
+  /* Dropdown Styles for Brand Group */
+  .brand-group {{ display: flex; flex-direction: column; justify-content: center; }}
+  .nav-city-dropdown {{ appearance: none; background: transparent; border: none; font-size: 0.75rem; font-weight: 600; color: #6b7280; cursor: pointer; padding: 0; margin-bottom: -2px; outline: none; }}
+  .nav-city-dropdown:hover {{ color: #3b82f6; }}
+  
   .nav-center {{ flex: 1; display: flex; justify-content: center; padding: 0 20px; min-width: 300px; }}
   .nav-right {{ display: flex; gap: 8px; flex-wrap: wrap; }}
   
   .hamburger {{ background: none; border: none; font-size: 26px; cursor: pointer; color: #5f6368; display: flex; align-items: center; justify-content: center; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }}
   .hamburger:hover {{ background: #f1f3f4; color: #202124; }}
-  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; margin: 0; }}
+  h1 {{ color: #202124; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; white-space: nowrap; margin: 0; line-height: 1; }}
   
   .search-container {{ width: 100%; max-width: 700px; position: relative; }}
   .search-container input {{ width: 100%; padding: 16px 24px 16px 48px; border: 2px solid #e1e4e8; border-radius: 40px; font-size: 16px; font-weight: 500; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background: #f8f9fa; }}
@@ -737,7 +743,18 @@ def save_html(data: List[Dict]) -> None:
 <div class="navbar">
   <div class="nav-left">
     <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
-    <h1>My Deals</h1>
+    
+    <div class="brand-group">
+      <select id="nav-city-select" class="nav-city-dropdown" aria-label="Select City">
+        <option value="riyadh">Riyadh</option>
+        <option value="jeddah">Jeddah</option>
+        <option value="dammam">Dammam</option>
+        <option value="mecca">Mecca</option>
+        <option value="medina">Medina</option>
+      </select>
+      <h1>Go Deals</h1>
+    </div>
+
   </div>
   
   <div class="nav-center">
@@ -747,7 +764,7 @@ def save_html(data: List[Dict]) -> None:
   </div>
 
   <div class="nav-right">
-    <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Groceries</a>
+    <a href="d4d_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #1a73e8; color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); pointer-events: none;">🛒 Home</a>
     <a href="cobone_results.html" style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; background: #f1f3f4; color: #202124; border: 1px solid #dadce0;">🍽️ Food</a>
   </div>
 </div>
@@ -813,6 +830,31 @@ def save_html(data: List[Dict]) -> None:
 
 </body>
 <script>
+  // --- SUBDOMAIN CITY ROUTING SCRIPT ---
+  document.addEventListener('DOMContentLoaded', () => {{
+      const cityDropdown = document.getElementById('nav-city-select');
+      if(cityDropdown) {{
+          // Read current subdomain (e.g. "riyadh")
+          const currentHostname = window.location.hostname;
+          const currentCity = currentHostname.split('.')[0];
+          
+          // Auto-select correct dropdown item
+          Array.from(cityDropdown.options).forEach(option => {{
+            if (option.value === currentCity) {{
+              option.selected = true;
+            }}
+          }});
+
+          // Handle redirection on city change
+          cityDropdown.addEventListener('change', (e) => {{
+            const selectedCity = e.target.value;
+            if (selectedCity && selectedCity !== currentCity) {{
+              window.location.href = `https://${{selectedCity}}.godeals.me`;
+            }}
+          }});
+      }}
+  }});
+
   const rawData = {products_json}; 
   
   // --- 1. GLOBAL DATA CLEANUP ---
