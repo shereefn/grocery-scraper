@@ -148,7 +148,7 @@ def save_html(data: List[Dict]) -> None:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Deals | Food Offers</title>
+<title>GoDeals | Food Offers</title>
 <!-- CLEANED: Linking to central stylesheet -->
 <link rel="stylesheet" href="/style.css">
 <!-- CLEANED: Linking to central navbar injection script -->
@@ -267,7 +267,6 @@ const rawStoreList = [];
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
   
-  // This is called globally from nav.js hamburger button
   window.toggleSidebar = function() {{
     sidebar.classList.toggle('open');
     overlay.classList.toggle('active');
@@ -280,7 +279,6 @@ const rawStoreList = [];
   }}
 
   window.applyFilters = function() {{
-    // Check if nav.js has injected the search bar yet
     const searchInput = document.getElementById('filter-product');
     const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : "";
     const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
@@ -390,7 +388,6 @@ const rawStoreList = [];
     countLabel.innerHTML = `Showing <strong>${{currentIndex}}</strong> of <strong>${{filteredData.length}}</strong> deals`;
   }}
 
-  // Make sure we wait for nav.js to inject the DOM before applying filters
   setTimeout(() => {{
       const observer = new IntersectionObserver((entries) => {{
         if (entries[0].isIntersecting) {{
@@ -432,7 +429,9 @@ const rawStoreList = [];
     const img = document.getElementById('popup-img');
     img.src = src;
     img.classList.remove('zoomed'); 
+    
     document.getElementById('popup-title').innerHTML = title;
+    
     document.getElementById('popup-overlay').classList.add('active');
   }};
 
@@ -444,6 +443,7 @@ const rawStoreList = [];
 
   window.closePopup = function(e) {{
     if (e && e.target && e.target.id === 'popup-img') return;
+    
     if (!e || e.target === document.getElementById('popup-overlay') || e.currentTarget === document.getElementById('popup-close')) {{
       document.getElementById('popup-overlay').classList.remove('active');
     }}
@@ -462,11 +462,9 @@ const rawStoreList = [];
     log.info("Saved HTML → %s", OUTPUT_HTML)
     
 async def main() -> None:
-    # 1. Fetch Cobone Deals
     new_results = await scrape_cobone(TARGET_URL)
     log.info(f"🏁 Total valid Cobone deals extracted: {len(new_results)}")
     
-    # ---> SMART HISTORY MERGER & 7-DAY RETENTION POLICY <---
     historical_data = []
     if OUTPUT_JSON.exists():
         try:
@@ -486,12 +484,10 @@ async def main() -> None:
 
     merged_dict = {}
     
-    # Load history
     for item in historical_data:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
 
-    # Load fresh results
     for item in new_results:
         key = f"{item.get('Product', '').strip().lower()}|{item.get('Store', '').strip().lower()}"
         merged_dict[key] = item
