@@ -707,6 +707,9 @@ def save_html(data: List[Dict]) -> None:
   @media (min-width: 768px) {{ .badge-offer {{ padding: 4px 8px; font-size: 12px; margin-left: auto; }} }}
 
   .card-store {{ font-size: 11px; color: #1a73e8; background: #e8f0fe; padding: 4px 8px; border-radius: 20px; font-weight: 700; display: inline-block; max-width: 100%; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.3px; border: 1px solid #d2e3fc; }}
+  .card-store {{ cursor: pointer; }} 
+  /* Add to your existing .card-store rule if you want a pointer finger on laptops */
+  .card-store.expanded {{ white-space: normal; word-break: break-word; }}
   
   .card-date {{ font-size: 11px; color: #80868b; font-weight: 400; margin-top: 2px; }}
   @media (min-width: 768px) {{ .card-date {{ font-size: 12px; }} }}
@@ -1009,7 +1012,7 @@ def save_html(data: List[Dict]) -> None:
       
       const safeStore = storeStr.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 
-      card.innerHTML = `
+    card.innerHTML = `
           <div class="card-img-wrapper">${{imgTag}}</div>
           <div class="card-title">${{item.Product || "Unknown item"}}</div>
           <div class="card-price-row">
@@ -1017,9 +1020,10 @@ def save_html(data: List[Dict]) -> None:
               ${{oldPriceHtml}}
               ${{offerStr}}
           </div>
-          <div class="card-store" title="${{safeStore}}">${{displayStore}}</div>
+          <div class="card-store" title="${{safeStore}}" onclick="this.classList.toggle('expanded')">${{displayStore}}</div>
           <div class="card-date">${{fetchDate}}</div>
       `;
+
       fragment.appendChild(card);
     }});
 
