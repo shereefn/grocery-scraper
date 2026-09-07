@@ -58,7 +58,7 @@ SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQun2gtRH47g93L
 
 CARD_SELECTOR = "a.product-card"
 
-TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore","SACO","Home Box"]
+TEST_STORES = ["LULU Hypermarket", "Hyper Panda", "Othaim Markets", "Nesto", "eXtra", "Danube", "Mark & Save", "Grand Hyper", "Hyper Al Wafa", "Al Madina Hypermarket", "Jarir Bookstore","SACO","Home Box","Carrefour","City Flower"]
 TARGET_PRODUCTS = [] 
 
 OUTPUT_HTML = Path("index.html")
