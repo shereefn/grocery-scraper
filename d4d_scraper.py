@@ -1,3 +1,11 @@
+Here is your fully updated **`d4d_scraper.py`** code.
+
+I have applied both permanent fixes directly inside the HTML generation section (`save_html` function):
+
+1. **The Currency Fix:** Removed the problematic `&#x20C1;` code and replaced it with the universally supported `﷼` symbol wrapped in a standard Arial font so it never turns into a box.
+2. **The Duplicate Fix:** Added the JavaScript `Map` logic to instantly filter out duplicate product names before the cards or store checkboxes are generated.
+
+```python
 import asyncio
 import json
 import logging
@@ -516,15 +524,15 @@ async def scrape(target_list: List[str]) -> List[Dict]:
 
         page        = await context.new_page()
 
-            # --- Paste this right here to block heavy images and speed up the scraper ---
-            async def block_heavy_assets(route):
-                if route.request.resource_type in ["image", "media", "font", "stylesheet"]:
-                    await route.abort()
-                else:
-                    await route.continue_()
+        # --- Paste this right here to block heavy images and speed up the scraper ---
+        async def block_heavy_assets(route):
+            if route.request.resource_type in ["image", "media", "font", "stylesheet"]:
+                await route.abort()
+            else:
+                await route.continue_()
 
-            await page.route("**/*", block_heavy_assets)
-            # ----------------------------------------------------------------------------
+        await page.route("**/*", block_heavy_assets)
+        # ----------------------------------------------------------------------------
         all_results = []
 
         try:
@@ -661,7 +669,7 @@ def save_html(data: List[Dict]) -> None:
       <label>Max Price</label>
       <div class="slider-container">
         <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
-        <span id="price-range-label"><span class="currency-icon-small">&#x20C1;</span>10,000</span>
+        <span id="price-range-label"><span style="font-family: Arial, sans-serif;">﷼</span> 10,000</span>
       </div>
     </div>
     
@@ -699,7 +707,9 @@ def save_html(data: List[Dict]) -> None:
 <script>
   const rawData = {products_json}; 
   
-  // --- 1. GLOBAL DATA CLEANUP ---
+  // --- 1. GLOBAL DATA CLEANUP & DEDUPLICATION ---
+  // Create a unique list based on Product name to kill duplicates immediately!
+  let uniqueDealsMap = new Map();
   rawData.forEach(item => {{
       if (item.Store) {{
           const storeStr = String(item.Store);
@@ -719,8 +729,15 @@ def save_html(data: List[Dict]) -> None:
           if (hasMarkSave) cleanParts.push("MARK & SAVE");
           item.Store = cleanParts.join(" & ");
       }}
+      // Only keep the first instance of each product name
+      const title = item.Product || "Unknown item";
+      if (!uniqueDealsMap.has(title)) {{
+          uniqueDealsMap.set(title, item);
+      }}
   }});
-  // ------------------------------
+  
+  const uniqueDeals = Array.from(uniqueDealsMap.values());
+  // ----------------------------------------------
 
   let filteredData = [];
   let currentIndex = 0;
@@ -746,7 +763,7 @@ def save_html(data: List[Dict]) -> None:
 
   // --- 2. CHECKBOX GENERATOR ---
   const rawStoreList = [];
-  rawData.forEach(r => {{
+  uniqueDeals.forEach(r => {{
       if (r.Store) {{
           const parts = String(r.Store).split("&").map(s => s.trim());
           let hasMarkSave = false;
@@ -776,12 +793,12 @@ def save_html(data: List[Dict]) -> None:
     cbContainer.appendChild(lbl);
   }});
 
-  const prices = rawData.map(r => r.Price).filter(p => p > 0);
+  const prices = uniqueDeals.map(r => r.Price).filter(p => p > 0);
   const maxPrice = prices.length ? Math.ceil(Math.max(...prices) / 10) * 10 : 100;
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(maxPrice);
+  document.getElementById('price-range-label').innerHTML = '<span style="font-family: Arial, sans-serif;">﷼</span> ' + formatPriceNumber(maxPrice);
 
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -809,9 +826,9 @@ def save_html(data: List[Dict]) -> None:
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(max);
+    document.getElementById('price-range-label').innerHTML = '<span style="font-family: Arial, sans-serif;">﷼</span> ' + formatPriceNumber(max);
 
-    filteredData = rawData.filter(item => {{
+    filteredData = uniqueDeals.filter(item => {{
       const productName = (item.Product || "Unknown item").toLowerCase();
       let matchSearch = true;
       if (searchTokens.length > 0) {{
@@ -867,6 +884,8 @@ def save_html(data: List[Dict]) -> None:
     const chunk = filteredData.slice(currentIndex, currentIndex + CHUNK_SIZE);
     const fragment = document.createDocumentFragment();
 
+    const riyalSymbol = `<span style="font-family: Arial, sans-serif;" aria-label="SAR" title="SAR">﷼</span>`;
+
     chunk.forEach(item => {{
       const card = document.createElement('div');
       card.className = 'card';
@@ -877,10 +896,10 @@ def save_html(data: List[Dict]) -> None:
           : "No image";
 
       const priceHtml = item.Price 
-          ? `<div class="price-badge"><span class="currency-icon">&#x20C1;</span><span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
+          ? `<div class="price-badge">${{riyalSymbol}} <span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
           : "";
           
-      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price"><span class="currency-icon-small">&#x20C1;</span>${{formatPriceNumber(item.Old_Price)}}</span>` : "";
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">${{riyalSymbol}} ${{formatPriceNumber(item.Old_Price)}}</span>` : "";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
@@ -1079,3 +1098,5 @@ async def main() -> None:
         log.warning("No results found.")
 if __name__ == "__main__":
     asyncio.run(main())
+
+```
