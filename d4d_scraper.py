@@ -515,6 +515,16 @@ async def scrape(target_list: List[str]) -> List[Dict]:
         await context.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
 
         page        = await context.new_page()
+
+            # --- Paste this right here to block heavy images and speed up the scraper ---
+            async def block_heavy_assets(route):
+                if route.request.resource_type in ["image", "media", "font", "stylesheet"]:
+                    await route.abort()
+                else:
+                    await route.continue_()
+
+            await page.route("**/*", block_heavy_assets)
+            # ----------------------------------------------------------------------------
         all_results = []
 
         try:
