@@ -1,11 +1,3 @@
-Here is your fully updated **`d4d_scraper.py`** code.
-
-I have applied both permanent fixes directly inside the HTML generation section (`save_html` function):
-
-1. **The Currency Fix:** Removed the problematic `&#x20C1;` code and replaced it with the universally supported `﷼` symbol wrapped in a standard Arial font so it never turns into a box.
-2. **The Duplicate Fix:** Added the JavaScript `Map` logic to instantly filter out duplicate product names before the cards or store checkboxes are generated.
-
-```python
 import asyncio
 import json
 import logging
@@ -1098,5 +1090,3 @@ async def main() -> None:
         log.warning("No results found.")
 if __name__ == "__main__":
     asyncio.run(main())
-
-```
