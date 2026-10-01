@@ -2,8 +2,10 @@ name: Daily Deals Scraper
 
 on:
   schedule:
-    # 01:00 UTC = 4:00 AM Saudi Time (Runs EVERY DAY)
-    - cron: '0 1 * * *'
+    # 1st Run: 00:00 UTC = 3:00 AM Saudi Time (Runs ONLY on Wednesday)
+    - cron: '0 0 * * 3'
+    # 2nd Run: 06:00 UTC = 9:00 AM Saudi Time (Runs ONLY on Wednesday)
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 # --- Gives the robot permission to save files to your repository ---
