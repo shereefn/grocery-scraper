@@ -12,11 +12,12 @@ permissions:
 
 jobs:
   scrape-deals:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # <-- FIXED: Resolves the ubuntu-latest deprecation warning
+    timeout-minutes: 355  # <-- ADDED: Fails gracefully before the 6-hour hard limit
 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Note: Node 20 warning here is auto-handled by GitHub
 
       - name: Set up Python
         uses: actions/setup-python@v5
