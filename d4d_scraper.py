@@ -457,7 +457,7 @@ async def enrich_product_names(products: List[Dict]) -> List[Dict]:
             uncached_products.append(p)
 
     if uncached_products:
-        MAX_BUDGET_ITEMS = 3000
+        MAX_BUDGET_ITEMS = 1500
         if len(uncached_products) > MAX_BUDGET_ITEMS:
             log.warning(f"💰 BUDGET CAP ACTIVE: Found {len(uncached_products)} new items. Limiting to {MAX_BUDGET_ITEMS} to protect API costs.")
             uncached_products = uncached_products[:MAX_BUDGET_ITEMS]
