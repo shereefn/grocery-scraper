@@ -4,7 +4,7 @@ on:
   schedule:
     # 1st Run: 00:00 UTC = 3:00 AM Saudi Time (Runs ONLY on Wednesday)
     - cron: '0 0 * * 3'
-    # 2nd Run: 06:00 UTC = 9:00 AM Saudi Time (Runs ONLY on Wednesday)
+    # 2nd Run: 06:00 UTC = 9:00 AM Saudi Time (Daily Runs)
     - cron: '0 6 * * *'
   workflow_dispatch:
 
