@@ -120,16 +120,6 @@
     "Fetched_Date": "2026-10-07"
   },
   {
-    "Store": "Multiple Locations 100+ Sold",
-    "Product": "BOGO Cheese Burger at Lucca Steak House",
-    "Price": 49.0,
-    "Old_Price": 98.0,
-    "Offer": "50% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/206088/1.webp?v=10",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/burger-lucca-steak-house/216678",
-    "Fetched_Date": "2026-10-05"
-  },
-  {
     "Store": "Braira Al Nakheel Hotel 4K+ Sold",
     "Product": "Seafood Market Buffet at Braira Al Nakheel Hotel",
     "Price": 129.0,
@@ -228,16 +218,6 @@
     "Image_URL": "https://cdn.cobone.com/deals/sau/202746/1.webp?v=12",
     "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-lunch-buffet-holiday-inn-olaya/206836",
     "Fetched_Date": "2026-10-12"
-  },
-  {
-    "Store": "Courtyard by Marriott Riyadh Diplomatic Quarter 2K+ Sold",
-    "Product": "Dinner Buffet @ Courtyard by Marriott Riyadh Diplomatic Quarter",
-    "Price": 169.0,
-    "Old_Price": 280.0,
-    "Offer": "40% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/220120/1.webp?v=15",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-dinner-buffet-courtyard-marriott-diplomatic/220120",
-    "Fetched_Date": "2026-10-05"
   },
   {
     "Store": "Madareem Hotel 800+ Sold",
@@ -350,16 +330,6 @@
     "Fetched_Date": "2026-10-10"
   },
   {
-    "Store": "Hilton Riyadh Olaya Hotel 400+ Sold",
-    "Product": "International Breakfast Buffet at Hilton",
-    "Price": 89.0,
-    "Old_Price": 180.0,
-    "Offer": "51% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/192218/breakfaast%201%20copy.webp?v=8",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-at-hilton/216312",
-    "Fetched_Date": "2026-10-05"
-  },
-  {
     "Store": "Mercure Al Anoud Hotel 600+ Sold",
     "Product": "Breakfast Buffet at Mercure Al Anoud Hotel",
     "Price": 49.0,
@@ -398,16 +368,6 @@
     "Image_URL": "https://cdn.cobone.com/deals/sau/218899/1.webp?v=33",
     "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-flavor-market-dinner-at-braira-hotel-qurtubah/218899",
     "Fetched_Date": "2026-10-12"
-  },
-  {
-    "Store": "CINNZEO KSA",
-    "Product": "Cinnaroll with Coffee & Dubai Chocolate at Cinnzeo",
-    "Price": 15.0,
-    "Old_Price": 27.0,
-    "Offer": "44% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/212572/1.webp?v=4",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-cinnaroll-americano-chocolate-cinnzeo-ksa/214731",
-    "Fetched_Date": "2026-10-05"
   },
   {
     "Store": "Lanterns",
