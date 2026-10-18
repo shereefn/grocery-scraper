@@ -40,16 +40,6 @@
     "Fetched_Date": "2026-10-12"
   },
   {
-    "Store": "DoubleTree by Hilton Riyadh Financial District 1K+ Sold",
-    "Product": "Lunch Buffet at DoubleTree Financial District",
-    "Price": 119.0,
-    "Old_Price": 160.0,
-    "Offer": "26% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/219526/1l.webp?v=24",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-buffet-doubletree-by-hilton-riyadh/219526",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
     "Store": "Rosh Olaya Hotel 1K+ Sold",
     "Product": "Breakfast Buffet at 5* Rosh Rayhaan by Rotana",
     "Price": 89.0,
@@ -180,16 +170,6 @@
     "Fetched_Date": "2026-10-12"
   },
   {
-    "Store": "Holiday Inn Izdihar 400+ Sold",
-    "Product": "International Dinner at Holiday Inn Izdihar",
-    "Price": 105.0,
-    "Old_Price": 212.0,
-    "Offer": "50% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/215760/a.webp?v=12",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-dinner-buffet-holiday-inn-izdihar/215760",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
     "Store": "Holiday Inn Olaya 700+ Sold",
     "Product": "Int'l Lunch Buffet at Holiday Inn Olaya",
     "Price": 79.0,
@@ -260,16 +240,6 @@
     "Fetched_Date": "2026-10-12"
   },
   {
-    "Store": "Braira Al Yarmouk Hotel",
-    "Product": "FLASH SALE! International breakfast at Braira Al Yarmouk",
-    "Price": 49.0,
-    "Old_Price": 75.0,
-    "Offer": "35% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/206991/1.webp?v=32",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-braira-al-yarmouk/220130",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
     "Store": "Papa Johns KSA 600+ Sold",
     "Product": "Buy One Get One Free on Medium Pizza at Papa Johns",
     "Price": 5.0,
@@ -280,26 +250,6 @@
     "Fetched_Date": "2026-10-12"
   },
   {
-    "Store": "Azara Hotel",
-    "Product": "International Breakfast Buffet at Azara Hotel",
-    "Price": 38.0,
-    "Old_Price": 60.0,
-    "Offer": "37% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/221537/1.webp?v=6",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/breakfast-buffet-at-azara-hotel/221537",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
-    "Store": "Mercure Al Anoud Hotel 600+ Sold",
-    "Product": "Breakfast Buffet at Mercure Al Anoud Hotel",
-    "Price": 49.0,
-    "Old_Price": 95.0,
-    "Offer": "48% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/199921/1.webp?v=12",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-international-breakfast-buffet-mercure-al-anoud/205785",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
     "Store": "Holiday Inn Olaya 200+ Sold",
     "Product": "Friday Brunch & Pool Access at Holiday Inn Olaya",
     "Price": 109.0,
@@ -308,16 +258,6 @@
     "Image_URL": "https://cdn.cobone.com/deals/sau/202752/5.webp?v=12",
     "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-friday-brunch-pool-holiday-inn-olaya/206837",
     "Fetched_Date": "2026-10-12"
-  },
-  {
-    "Store": "DoubleTree by Hilton Riyadh Financial District 600+ Sold",
-    "Product": "Breakfast at 5* DoubleTree by Hilton Riyadh",
-    "Price": 84.0,
-    "Old_Price": 99.0,
-    "Offer": "15% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/221476/1.webp?v=9",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-doubletree-financial-district/221476",
-    "Fetched_Date": "2026-10-10"
   },
   {
     "Store": "Braira Hotel - Qurtubah 200+ Sold",
@@ -378,26 +318,6 @@
     "Image_URL": "https://cdn.cobone.com/deals/sau/215728/3.webp?v=20",
     "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-breakfast-buffet-at-dalin-hotel-olaya/215728",
     "Fetched_Date": "2026-10-12"
-  },
-  {
-    "Store": "Holiday Inn Riyadh the Business District, an IHG H 60+ Sold",
-    "Product": "Lunch at Holiday Inn Riyadh Business District",
-    "Price": 99.0,
-    "Old_Price": 175.0,
-    "Offer": "43% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/205172/1.webp?v=19",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-lunch-buffet-holiday-inn-business-district/205172",
-    "Fetched_Date": "2026-10-10"
-  },
-  {
-    "Store": "Holiday Inn Riyadh the Business District, an IHG H 100+ Sold",
-    "Product": "Dinner at Holiday Inn Riyadh Business District",
-    "Price": 99.0,
-    "Old_Price": 175.0,
-    "Offer": "43% Off",
-    "Image_URL": "https://cdn.cobone.com/deals/sau/205172/1.webp?v=8",
-    "Deal_URL": "https://www.cobone.com/en/deals/food-dining-riyadh/1-dinner-buffet-holiday-inn-business-district/219528",
-    "Fetched_Date": "2026-10-10"
   },
   {
     "Store": "Madareem Hotel 900+ Sold",
