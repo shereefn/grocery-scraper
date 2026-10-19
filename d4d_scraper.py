@@ -634,6 +634,7 @@ def save_html(data: List[Dict]) -> None:
 <link rel="stylesheet" href="/style.css">
 <!-- CLEANED: Linking to central navbar injection script -->
 <script src="/nav.js" defer></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6223148495032323" crossorigin="anonymous"></script>
 </head>
 <body>
 
