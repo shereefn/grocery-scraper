@@ -9,10 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="brand-group">
             <select id="nav-city-select" class="nav-city-dropdown" aria-label="Select City">
               <option value="riyadh">Riyadh</option>
-              <option value="jeddah">Jeddah</option>
-              <option value="dammam">Dammam</option>
-              <option value="mecca">Mecca</option>
-              <option value="medina">Medina</option>
             </select>
             <h1>Go Deals</h1>
           </div>
