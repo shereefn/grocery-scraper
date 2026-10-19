@@ -152,6 +152,7 @@ def save_html(data: List[Dict]) -> None:
 <!-- CLEANED: Linking to central stylesheet -->
 <link rel="stylesheet" href="/style.css">
 <!-- CLEANED: Linking to central navbar injection script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6223148495032323" crossorigin="anonymous"></script>
 <script src="/nav.js" defer></script>
 </head>
 <body>
@@ -454,6 +455,7 @@ const rawStoreList = [];
       document.getElementById('popup-overlay').classList.remove('active');
     }}
   }});
+  
 </script>
 </body>
 </html>"""
