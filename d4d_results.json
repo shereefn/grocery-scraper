@@ -2475,21 +2475,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Carrefour",
-    "Product": "DARI OR HABRA MINCED MUTTON OR CHICKEN 400GM",
-    "Price": 7.99,
-    "Old_Price": 9.95,
-    "Offer": "19.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/fc8924597b875263242cb1468c87a08f.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Nesto",
     "Product": "Doux Griller Chicken 1.2 Kg",
     "Price": 15.99,
     "Old_Price": 23.99,
     "Offer": "33.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/524e405483ce3a6174bae92e10828edd.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Carrefour",
+    "Product": "DARI OR HABRA MINCED MUTTON OR CHICKEN 400GM",
+    "Price": 7.99,
+    "Old_Price": 9.95,
+    "Offer": "19.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/fc8924597b875263242cb1468c87a08f.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2620,11 +2620,11 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Sadia Brd Chicken Jalapeno/ Garlic Parmesary/Mango Habanero 700Gm",
-    "Price": 22.99,
-    "Old_Price": 33.99,
-    "Offer": "32.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/9b7beb775a9ee01926d226eddcb876c2.jpg",
+    "Product": "Royal Chicken Tender 1Kg",
+    "Price": 18.99,
+    "Old_Price": 29.99,
+    "Offer": "36.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/17/b7ee3ef6e0d56a1f9dd63de67f36745b.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2638,11 +2638,11 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Royal Chicken Tender 1Kg",
-    "Price": 18.99,
-    "Old_Price": 29.99,
-    "Offer": "36.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/17/b7ee3ef6e0d56a1f9dd63de67f36745b.jpg",
+    "Product": "Sadia Brd Chicken Jalapeno/ Garlic Parmesary/Mango Habanero 700Gm",
+    "Price": 22.99,
+    "Old_Price": 33.99,
+    "Offer": "32.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/9b7beb775a9ee01926d226eddcb876c2.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -13644,15 +13644,6 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Nesto",
-    "Product": "AAA Supra White Rice 5kg",
-    "Price": 18.99,
-    "Old_Price": 25.99,
-    "Offer": "26.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/d35017b6c1a7e25e7cea673b3eee60fd.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Hyper Al Wafa & Nesto",
     "Product": "Silver Sparrows AAA Jasmine Rice 5Kg",
     "Price": 24.99,
@@ -13722,6 +13713,15 @@
     "Old_Price": 91.99,
     "Offer": "21.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/c293418c842e0dfad140d1ab566533f4.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Nesto",
+    "Product": "AAA Supra White Rice 5kg",
+    "Price": 18.99,
+    "Old_Price": 25.99,
+    "Offer": "26.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/d35017b6c1a7e25e7cea673b3eee60fd.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -15237,15 +15237,6 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Hyper Al Wafa & Nesto",
-    "Product": "Olio Sasso Olive Oil Can 175MI",
-    "Price": 13.99,
-    "Old_Price": 18.99,
-    "Offer": "26.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/8/c2acda76140a2c041aea6854d303f2c7.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Al Madina Hypermarket",
     "Product": "SALGADO POMACE OLIVE OIL GLASS 500ML",
     "Price": 20.0,
@@ -15288,6 +15279,15 @@
     "Old_Price": 35.95,
     "Offer": "19.4                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/7/d07402a05b473015ab0d27e80b5be4be.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Hyper Al Wafa & Nesto",
+    "Product": "Olio Sasso Olive Oil Can 175MI",
+    "Price": 13.99,
+    "Old_Price": 18.99,
+    "Offer": "26.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/8/c2acda76140a2c041aea6854d303f2c7.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
