@@ -2178,21 +2178,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "Americana Chunky Chicken Lemon&Pepper / Escalope 750gm",
+    "Price": 25.99,
+    "Old_Price": 38.95,
+    "Offer": "33.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/1f6e9400b52eac2d8db3a0106aa86afc.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
     "Store": "Carrefour & Hyper Panda",
     "Product": "Sadia Nuggets / Crispy / Kids Triangle / Breaded Tenders / Chicken Pop Corn 750g",
     "Price": 18.99,
     "Old_Price": 22.95,
     "Offer": "17.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/d4f90f02b90d8624b80f0da74beadf8f.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "Al Kabeer Chicken Nuggets 750gm",
-    "Price": 19.99,
-    "Old_Price": 29.95,
-    "Offer": "33.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9b46cfab609cc1ef2ed30d7ba7cf2e04.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2206,11 +2206,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Americana Chunky Chicken Lemon&Pepper / Escalope 750gm",
-    "Price": 25.99,
-    "Old_Price": 38.95,
+    "Product": "Al Kabeer Chicken Nuggets 750gm",
+    "Price": 19.99,
+    "Old_Price": 29.95,
     "Offer": "33.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/1f6e9400b52eac2d8db3a0106aa86afc.jpg",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9b46cfab609cc1ef2ed30d7ba7cf2e04.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2296,11 +2296,11 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Chill Bery Breaded Chicken Strips Regular/Spicy 400 gm",
-    "Price": 15.99,
-    "Old_Price": 26.99,
-    "Offer": "40.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/7d78b8560127a9cc3cb95d6314e0db71.jpg",
+    "Product": "Seara Chicken Fillet Spicy 750gm",
+    "Price": 24.99,
+    "Old_Price": 42.99,
+    "Offer": "41.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/362b2803862f3f1646faa144cca50eb6.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2322,6 +2322,15 @@
     "Fetched_Date": "2026-10-20"
   },
   {
+    "Store": "Nesto",
+    "Product": "Chill Bery Breaded Chicken Strips Regular/Spicy 400 gm",
+    "Price": 15.99,
+    "Old_Price": 26.99,
+    "Offer": "40.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/7d78b8560127a9cc3cb95d6314e0db71.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
     "Store": "Carrefour & Carrefour Market",
     "Product": "TANMIAH FRESH CHICKEN BAG 1KG",
     "Price": 15.99,
@@ -2340,15 +2349,6 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Nesto",
-    "Product": "Sadia Breaded Chicken Tenders/Escalopes 480gm",
-    "Price": 11.99,
-    "Old_Price": 19.99,
-    "Offer": "40                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/25f8df9543987b5774652fadc1a2f83f.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Carrefour",
     "Product": "Sadia Frozen Chicken 1500G X8",
     "Price": 112.99,
@@ -2359,11 +2359,11 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Sadia B.Chicken Nuggets Crispy/Tradtonl / Mini Chef/ Popcrm/ Tenders/ 750Gm",
-    "Price": 15.99,
-    "Old_Price": 29.99,
-    "Offer": "46.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f26ddaa2151c098a7e121d1d25a202ca.jpg",
+    "Product": "Sadia Breaded Chicken Tenders/Escalopes 480gm",
+    "Price": 11.99,
+    "Old_Price": 19.99,
+    "Offer": "40                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/25f8df9543987b5774652fadc1a2f83f.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2377,11 +2377,11 @@
   },
   {
     "Store": "Nesto",
-    "Product": "Seara Chicken Fillet Spicy 750gm",
-    "Price": 24.99,
-    "Old_Price": 42.99,
-    "Offer": "41.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/362b2803862f3f1646faa144cca50eb6.jpg",
+    "Product": "Sadia B.Chicken Nuggets Crispy/Tradtonl / Mini Chef/ Popcrm/ Tenders/ 750Gm",
+    "Price": 15.99,
+    "Old_Price": 29.99,
+    "Offer": "46.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f26ddaa2151c098a7e121d1d25a202ca.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -2637,21 +2637,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Hyper Al Wafa & Nesto",
-    "Product": "Doux Chicken Strips Regular / Hot 700Gm",
-    "Price": 18.99,
-    "Old_Price": 32.99,
-    "Offer": "42.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f218423f01516671348e07b2b9b3afa2.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Nesto",
     "Product": "Royal Chicken Tender 1Kg",
     "Price": 18.99,
     "Old_Price": 29.99,
     "Offer": "36.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/17/b7ee3ef6e0d56a1f9dd63de67f36745b.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Hyper Al Wafa & Nesto",
+    "Product": "Doux Chicken Strips Regular / Hot 700Gm",
+    "Price": 18.99,
+    "Old_Price": 32.99,
+    "Offer": "42.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f218423f01516671348e07b2b9b3afa2.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -4501,11 +4501,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Tiffany Delight Chocolate Chip Cookies 90gm 4s",
-    "Price": 8.99,
-    "Old_Price": 12.95,
-    "Offer": "30.6                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/f4df7a1fcbe6fbeedc2e77f11e5ba9f0.jpg",
+    "Product": "Choco Chips Cookies Pk.",
+    "Price": 6.95,
+    "Old_Price": 9.9,
+    "Offer": "29.8                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9e6cb1940fc8c250201046b4cb0f00a5.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -4528,11 +4528,11 @@
   },
   {
     "Store": "LULU Hypermarket",
-    "Product": "Choco Chips Cookies Pk.",
-    "Price": 6.95,
-    "Old_Price": 9.9,
-    "Offer": "29.8                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9e6cb1940fc8c250201046b4cb0f00a5.jpg",
+    "Product": "Tiffany Delight Chocolate Chip Cookies 90gm 4s",
+    "Price": 8.99,
+    "Old_Price": 12.95,
+    "Offer": "30.6                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/f4df7a1fcbe6fbeedc2e77f11e5ba9f0.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -8883,6 +8883,15 @@
     "Fetched_Date": "2026-10-20"
   },
   {
+    "Store": "LULU Hypermarket",
+    "Product": "London Dairy Ice Cream Vanilla/Praline/Natural Strawberry/Cookies & Cream 500ml",
+    "Price": 14.99,
+    "Old_Price": 20.25,
+    "Offer": "26                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9d77fa3a18290d3690838f8cfe6b225f.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
     "Store": "Danube",
     "Product": "Oreo Ice Cream 425 g",
     "Price": 16.99,
@@ -8898,15 +8907,6 @@
     "Old_Price": 19.99,
     "Offer": "25                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/5173ec9089d117e9cbd97e952975f76c.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
-    "Store": "LULU Hypermarket",
-    "Product": "London Dairy Ice Cream Vanilla/Praline/Natural Strawberry/Cookies & Cream 500ml",
-    "Price": 14.99,
-    "Old_Price": 20.25,
-    "Offer": "26                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/9d77fa3a18290d3690838f8cfe6b225f.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -10674,21 +10674,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Greek Calamata Olives Giant 140/160",
-    "Price": 30.0,
-    "Old_Price": 34.99,
-    "Offer": "14.3                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f07e2db5fdcca4b6f250aac8970c398b.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Nesto",
     "Product": "Jordan Green Olives 1 KG",
     "Price": 16.99,
     "Old_Price": 28.0,
     "Offer": "39.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/25fa6e4b1c4b51ce47d6f8e1f3498cd9.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Greek Calamata Olives Giant 140/160",
+    "Price": 30.0,
+    "Old_Price": 34.99,
+    "Offer": "14.3                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/f07e2db5fdcca4b6f250aac8970c398b.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -13644,6 +13644,15 @@
     "Fetched_Date": "2026-10-20"
   },
   {
+    "Store": "Nesto",
+    "Product": "AAA Supra White Rice 5kg",
+    "Price": 18.99,
+    "Old_Price": 25.99,
+    "Offer": "26.9                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/d35017b6c1a7e25e7cea673b3eee60fd.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
     "Store": "Hyper Al Wafa & Nesto",
     "Product": "Silver Sparrows AAA Jasmine Rice 5Kg",
     "Price": 24.99,
@@ -13713,15 +13722,6 @@
     "Old_Price": 91.99,
     "Offer": "21.7                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/c293418c842e0dfad140d1ab566533f4.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "AAA Supra White Rice 5kg",
-    "Price": 18.99,
-    "Old_Price": 25.99,
-    "Offer": "26.9                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/d35017b6c1a7e25e7cea673b3eee60fd.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -14148,6 +14148,15 @@
     "Fetched_Date": "2026-10-20"
   },
   {
+    "Store": "Nesto",
+    "Product": "Al Shehana Sella Mazza Rice 10kg",
+    "Price": 49.99,
+    "Old_Price": 59.99,
+    "Offer": "16.7                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/17/b184b3226b962b371260afa6c52ce03a.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
     "Store": "Carrefour",
     "Product": "AL AILA WHITE BASMATI RICE 5KG",
     "Price": 45.99,
@@ -14190,15 +14199,6 @@
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/14/ba237c3be86d09a3175829af41243fd0.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
-    "Store": "Nesto",
-    "Product": "Al Shehana Sella Mazza Rice 10kg",
-    "Price": 49.99,
-    "Old_Price": 59.99,
-    "Offer": "16.7                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/17/b184b3226b962b371260afa6c52ce03a.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -14328,21 +14328,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Danube",
-    "Product": "Freshly Whole Kernel Corn (No Sugar, No Salt) 340 GM",
-    "Price": 8.99,
-    "Old_Price": 13.5,
-    "Offer": "33.4                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/7/324e711160f0daf5c288d07211d173e5.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Carrefour",
     "Product": "AL TAYEB White Cheese Low Salt - Per Kg",
     "Price": 39.99,
     "Old_Price": null,
     "Offer": "",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/4be12e9cab9a1cf10ee3f087a654585a.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Danube",
+    "Product": "Freshly Whole Kernel Corn (No Sugar, No Salt) 340 GM",
+    "Price": 8.99,
+    "Old_Price": 13.5,
+    "Offer": "33.4                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/7/324e711160f0daf5c288d07211d173e5.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
@@ -14544,21 +14544,21 @@
     "Fetched_Date": "2026-10-20"
   },
   {
-    "Store": "Hyper Al Wafa",
-    "Product": "Raway Mini Fan Asst.d",
-    "Price": 10.0,
-    "Old_Price": 29.0,
-    "Offer": "65.5                    % Off",
-    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/4bae7a223c608b562010dc3130d178f7.jpg",
-    "Fetched_Date": "2026-10-20"
-  },
-  {
     "Store": "Carrefour",
     "Product": "AFIA DELUXE MIXED NUTS CAN 450G",
     "Price": 38.99,
     "Old_Price": 56.75,
     "Offer": "31.3                    % Off",
     "Image_URL": "https://cdn.d4donline.com/u/a/26/10/15/657bd25031b7108db0c6b1d46823a16a.jpg",
+    "Fetched_Date": "2026-10-20"
+  },
+  {
+    "Store": "Hyper Al Wafa",
+    "Product": "Raway Mini Fan Asst.d",
+    "Price": 10.0,
+    "Old_Price": 29.0,
+    "Offer": "65.5                    % Off",
+    "Image_URL": "https://cdn.d4donline.com/u/a/26/10/13/4bae7a223c608b562010dc3130d178f7.jpg",
     "Fetched_Date": "2026-10-20"
   },
   {
