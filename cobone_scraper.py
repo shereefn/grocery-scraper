@@ -7,12 +7,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict
 from bs4 import BeautifulSoup
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright, TimeoutError as PwTimeout
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-TARGET_URL = "https://www.cobone.com/en/deals/food-dining-riyadh?srsltid=AfmBOorhxHFDXHVmx_Pg9F4rvaXmw9DuBhhAN4QhT1O1eDqjvQ5pBnQS"
+TARGET_URL = "https://www.cobone.com/en/deals/food-dining-riyadh"
 
 # 1. Create the food directory if it doesn't exist
 os.makedirs("food", exist_ok=True)
@@ -40,7 +40,14 @@ async def scrape_cobone(url: str) -> List[Dict]:
         log.info("🔍 Loading Cobone Riyadh Food Deals...")
         
         try:
-            await page.goto(url, wait_until="commit", timeout=90_000)
+            # ---> FIX 1: Wait for DOM to load, not just 'commit' <---
+            await page.goto(url, wait_until="domcontentloaded", timeout=90_000)
+            
+            # ---> FIX 2: Explicitly wait for the deal cards to render <---
+            try:
+                await page.wait_for_selector("a[href*='/deals/']", timeout=15_000)
+            except PwTimeout:
+                log.warning("Timeout waiting for deals to appear, but continuing anyway...")
             
             # Scroll to load all dynamic deal cards
             for i in range(8):
@@ -151,8 +158,9 @@ def save_html(data: List[Dict]) -> None:
 <title>GoDeals | Food Offers</title>
 <!-- CLEANED: Linking to central stylesheet -->
 <link rel="stylesheet" href="/style.css">
-<!-- CLEANED: Linking to central navbar injection script -->
+<!-- GOOGLE ADSENSE SCRIPT -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6223148495032323" crossorigin="anonymous"></script>
+<!-- CLEANED: Linking to central navbar injection script -->
 <script src="/nav.js" defer></script>
 </head>
 <body>
@@ -181,7 +189,7 @@ def save_html(data: List[Dict]) -> None:
       <label>Max Price</label>
       <div class="slider-container">
         <input type="range" id="filter-price" min="0" max="10000" value="10000" step="5" oninput="applyFilters()">
-        <span id="price-range-label"><span class="currency-icon-small">&#x20C1;</span>10,000</span>
+        <span id="price-range-label"><span style="font-family: Arial, sans-serif;">﷼</span> 10,000</span>
       </div>
     </div>
     
@@ -218,6 +226,18 @@ def save_html(data: List[Dict]) -> None:
 
 <script>
   const rawData = {products_json}; 
+  
+  // --- 1. GLOBAL DATA CLEANUP & DEDUPLICATION ---
+  let uniqueDealsMap = new Map();
+  rawData.forEach(item => {{
+      const title = item.Product || item.Deal_Name || item.Deal_Title || "Unknown item";
+      if (!uniqueDealsMap.has(title)) {{
+          uniqueDealsMap.set(title, item);
+      }}
+  }});
+  const uniqueDeals = Array.from(uniqueDealsMap.values());
+  // ----------------------------------------------
+
   let filteredData = [];
   let currentIndex = 0;
   const CHUNK_SIZE = 10;
@@ -240,8 +260,8 @@ def save_html(data: List[Dict]) -> None:
       return Number(num).toLocaleString('en-US', {{ minimumFractionDigits: 0, maximumFractionDigits: 2 }});
   }}
 
-const rawStoreList = [];
-  rawData.forEach(r => {{
+  const rawStoreList = [];
+  uniqueDeals.forEach(r => {{
       const storeName = r.Store || r.Restaurant;
       if (storeName) {{
           rawStoreList.push(storeName.trim());
@@ -258,12 +278,12 @@ const rawStoreList = [];
     cbContainer.appendChild(lbl);
   }});
 
-  const prices = rawData.map(r => r.Price).filter(p => p > 0);
+  const prices = uniqueDeals.map(r => r.Price).filter(p => p > 0);
   const maxPrice = prices.length ? Math.ceil(Math.max(...prices) / 10) * 10 : 100;
   const slider = document.getElementById('filter-price');
   slider.max   = maxPrice;
   slider.value = maxPrice;
-  document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(maxPrice);
+  document.getElementById('price-range-label').innerHTML = '<span style="font-family: Arial, sans-serif;">﷼</span> ' + formatPriceNumber(maxPrice);
 
   const sidebar = document.getElementById('filterSidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -275,14 +295,14 @@ const rawStoreList = [];
   
   function getOfferVal(offerStr) {{
       if (!offerStr) return 0;
-      const match = String(offerStr).match(/[\d.]+/);
+      const match = String(offerStr).match(/[\\d.]+/);
       return match ? parseFloat(match[0]) : 0;
   }}
 
   window.applyFilters = function() {{
     const searchInput = document.getElementById('filter-product');
     const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : "";
-    const searchTokens = searchQuery.split(/\s+/).filter(token => token.length > 0);
+    const searchTokens = searchQuery.split(/\\s+/).filter(token => token.length > 0);
     
     const sortVal     = document.getElementById('sortDropdown').value;
     const max         = parseFloat(slider.value);
@@ -290,9 +310,9 @@ const rawStoreList = [];
     const checkedBoxes = Array.from(document.querySelectorAll('.store-cb:checked'));
     const selectedStores = checkedBoxes.map(cb => cb.value);
 
-    document.getElementById('price-range-label').innerHTML = '<span class="currency-icon-small">&#x20C1;</span> ' + formatPriceNumber(max);
+    document.getElementById('price-range-label').innerHTML = '<span style="font-family: Arial, sans-serif;">﷼</span> ' + formatPriceNumber(max);
 
-    filteredData = rawData.filter(item => {{
+    filteredData = uniqueDeals.filter(item => {{
       const pName = item.Deal_Name || item.Product || item.Deal_Title || "Unknown item";
       const productName = pName.toLowerCase();
       
@@ -343,6 +363,8 @@ const rawStoreList = [];
     const chunk = filteredData.slice(currentIndex, currentIndex + CHUNK_SIZE);
     const fragment = document.createDocumentFragment();
 
+    const riyalSymbol = `<span style="font-family: Arial, sans-serif;" aria-label="SAR" title="SAR">﷼</span>`;
+
     chunk.forEach(item => {{
       const card = document.createElement('div');
       card.className = 'card';
@@ -358,10 +380,10 @@ const rawStoreList = [];
           : "No image";
 
       const priceHtml = item.Price 
-          ? `<div class="price-badge"><span class="currency-icon">&#x20C1;</span><span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
+          ? `<div class="price-badge">${{riyalSymbol}} <span class="card-price">${{formatPriceNumber(item.Price)}}</span></div>` 
           : "";
           
-      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price"><span class="currency-icon-small">&#x20C1;</span>${{formatPriceNumber(item.Old_Price)}}</span>` : "";
+      const oldPriceHtml = item.Old_Price ? `<span class="card-old-price">${{riyalSymbol}} ${{formatPriceNumber(item.Old_Price)}}</span>` : "";
       const offerStr = item.Offer ? `<span class="badge-offer">${{item.Offer}}</span>` : "";
 
       const displayDate = formatDisplayDate(item.Fetched_Date);
@@ -507,3 +529,4 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
